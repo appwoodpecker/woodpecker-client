@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14269.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <tableCellView id="QFl-1K-crJ" customClass="KeyChainValueCell">
+            <rect key="frame" x="0.0" y="0.0" width="221" height="28"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1SB-nO-CVu">
+                    <rect key="frame" x="4" y="6" width="213" height="17"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" id="crA-ER-hig">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yYT-LQ-xfS">
+                    <rect key="frame" x="1" y="0.0" width="50" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSQuickLookTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="GmE-aA-KIE">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="valueButtonPressed:" target="QFl-1K-crJ" id="3un-oU-1bX"/>
+                    </connections>
+                </button>
+            </subviews>
+            <connections>
+                <outlet property="actionButton" destination="yYT-LQ-xfS" id="SQ1-HZ-3tn"/>
+                <outlet property="textField" destination="1SB-nO-CVu" id="fgJ-Vh-vcB"/>
+                <outlet property="valueTextfield" destination="1SB-nO-CVu" id="ftD-zY-vXW"/>
+            </connections>
+            <point key="canvasLocation" x="-109.5" y="-59"/>
+        </tableCellView>
+    </objects>
+    <resources>
+        <image name="NSQuickLookTemplate" width="19" height="12"/>
+    </resources>
+</document>

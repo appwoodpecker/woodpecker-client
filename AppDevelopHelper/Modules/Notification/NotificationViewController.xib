@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NotificationViewController">
+            <connections>
+                <outlet property="infoRefreshButton" destination="u50-bd-Qnh" id="kEM-dX-Cw5"/>
+                <outlet property="refreshButton" destination="FWq-Qf-9Pl" id="Ho7-8R-a7O"/>
+                <outlet property="segmentControl" destination="TeD-sb-4at" id="9KG-Vj-jcM"/>
+                <outlet property="tabView" destination="7nH-XP-sq4" id="SH6-w6-RgT"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="795" height="652"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ge-BT-Veb">
+                    <rect key="frame" x="0.0" y="620" width="795" height="32"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWq-Qf-9Pl">
+                            <rect key="frame" x="10" y="6" width="28" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="icon_refresh" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="yhH-5M-ovT">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <button toolTip="Refresh" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u50-bd-Qnh">
+                            <rect key="frame" x="10" y="6" width="28" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="icon_refresh" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="IRt-Fj-VaT">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TeD-sb-4at">
+                            <rect key="frame" x="249" y="3" width="297" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Fhw-TE-AlN">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment label="Local Notification"/>
+                                    <segment label="Activity" selected="YES" tag="1"/>
+                                    <segment label="Infomation"/>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <action selector="segmentControlValueChanged:" target="-2" id="yk5-2v-bXf"/>
+                            </connections>
+                        </segmentedControl>
+                    </subviews>
+                </customView>
+                <tabView fixedFrame="YES" type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="7nH-XP-sq4">
+                    <rect key="frame" x="0.0" y="0.0" width="795" height="620"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <font key="font" metaFont="system"/>
+                </tabView>
+            </subviews>
+            <point key="canvasLocation" x="373.5" y="303"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="icon_refresh" width="160" height="160"/>
+    </resources>
+</document>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StackTestViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nvX-Z6-V5F">
+                    <rect key="frame" x="67" y="89" width="241" height="256"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIV-4o-FcN">
+                            <rect key="frame" x="0.0" y="0.0" width="241" height="128"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jP-3v-yzt">
+                            <rect key="frame" x="0.0" y="128" width="241" height="128"/>
+                            <color key="backgroundColor" red="0.97647058819999999" green="0.26274509800000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="2jP-3v-yzt" firstAttribute="top" secondItem="nvX-Z6-V5F" secondAttribute="top" constant="128" id="odn-mz-8TJ"/>
+                    </constraints>
+                </stackView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5aD-Xi-icJ">
+                    <rect key="frame" x="0.0" y="451" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem title="Item" id="Aaw-Tv-xId"/>
+                        <barButtonItem title="Item" id="hKx-AD-dTh"/>
+                        <barButtonItem title="Item" id="Go9-yd-yoH"/>
+                        <barButtonItem title="Item" id="EYV-L6-L54"/>
+                        <barButtonItem title="Item" id="5bN-7Q-PGN"/>
+                        <barButtonItem title="Item" id="qGj-jq-V6Q"/>
+                        <barButtonItem title="Item" id="o66-lm-U5S"/>
+                    </items>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="nvX-Z6-V5F" secondAttribute="trailing" constant="67" id="KXj-gP-4q9"/>
+                <constraint firstItem="nvX-Z6-V5F" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="67" id="Wup-fG-Xet"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nvX-Z6-V5F" secondAttribute="bottom" id="fI0-15-ZJL"/>
+                <constraint firstItem="nvX-Z6-V5F" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="kuf-Te-22E"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="nvX-Z6-V5F" secondAttribute="bottom" constant="322" id="nMM-78-gWD"/>
+                <constraint firstItem="nvX-Z6-V5F" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="69" id="vO1-5j-bib"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="138.40000000000001" y="154.27286356821591"/>
+        </view>
+    </objects>
+</document>

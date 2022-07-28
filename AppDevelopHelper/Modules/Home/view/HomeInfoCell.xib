@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <tableCellView id="5wd-mm-T5A" customClass="HomeInfoCell">
+            <rect key="frame" x="0.0" y="0.0" width="388" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vy8-IC-9OG">
+                    <rect key="frame" x="37" y="11" width="203" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="Ti8-hN-qvA">
+                        <font key="font" metaFont="menu" size="14"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="voK-SU-MRg">
+                    <rect key="frame" x="0.0" y="0.0" width="388" height="1"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                </customView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RXv-s7-ZU9">
+                    <rect key="frame" x="12" y="11" width="18" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Dor-tB-8s5"/>
+                </imageView>
+            </subviews>
+            <connections>
+                <outlet property="contentLabel" destination="vy8-IC-9OG" id="H2D-R8-Wa1"/>
+                <outlet property="iconImageView" destination="RXv-s7-ZU9" id="1wq-CL-kBp"/>
+                <outlet property="lineView" destination="voK-SU-MRg" id="5fD-dO-AMM"/>
+                <outlet property="textField" destination="vy8-IC-9OG" id="NYH-cZ-Q8e"/>
+            </connections>
+            <point key="canvasLocation" x="99" y="-82"/>
+        </tableCellView>
+    </objects>
+</document>

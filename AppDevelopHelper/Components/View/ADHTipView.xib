@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="eMf-JH-zY3" customClass="ADHTipView">
+            <rect key="frame" x="0.0" y="0.0" width="180" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" tag="100" translatesAutoresizingMaskIntoConstraints="NO" id="yj0-y6-kFL">
+                    <rect key="frame" x="28" y="42" width="138" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Multiline Label" id="VZj-dc-gqZ">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" tag="102" translatesAutoresizingMaskIntoConstraints="NO" id="Pcf-6Z-wYk">
+                    <rect key="frame" x="6" y="74" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="circular" image="icon_welcome_delete" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="1xF-69-yGe">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="closeButtonPressed:" target="eMf-JH-zY3" id="fS9-j0-zc8"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cay-PG-0QY">
+                    <rect key="frame" x="30" y="10" width="83" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="bevel" title="update" bezelStyle="rounded" alignment="left" imageScaling="proportionallyDown" inset="2" id="HT2-vx-JW8">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="actionButtonPressed:" target="eMf-JH-zY3" id="9pE-hM-j46"/>
+                    </connections>
+                </button>
+            </subviews>
+            <connections>
+                <outlet property="actionButton" destination="Cay-PG-0QY" id="wTo-I6-e8N"/>
+                <outlet property="contentLabel" destination="yj0-y6-kFL" id="Vb2-5w-VsJ"/>
+            </connections>
+            <point key="canvasLocation" x="134" y="157"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="icon_welcome_delete" width="160" height="160"/>
+    </resources>
+</document>

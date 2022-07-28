@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <tableCellView id="Pof-0x-NGf" customClass="ViewAutoresizeAttributeCell">
+            <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6do-KE-nnz">
+                    <rect key="frame" x="2" y="2" width="60" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xFI-wg-nXw">
+                            <rect key="frame" x="3" y="25" width="10" height="10"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="autoresize_h" id="oh0-5H-ESR"/>
+                        </imageView>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q4Q-Ww-pj6">
+                            <rect key="frame" x="47" y="25" width="10" height="10"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="autoresize_h" id="34k-eh-cPa"/>
+                        </imageView>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WnS-rj-Wla">
+                            <rect key="frame" x="25" y="47" width="10" height="10"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="autoresize_v" id="3i3-Jq-O5r"/>
+                        </imageView>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9TO-11-bae">
+                            <rect key="frame" x="25" y="3" width="10" height="10"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="autoresize_v" id="7AA-Fg-wdS"/>
+                        </imageView>
+                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z7b-8W-AlH">
+                            <rect key="frame" x="14" y="14" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jY7-zJ-hCG">
+                                    <rect key="frame" x="2" y="2" width="28" height="28"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="autoresize_width" id="bbH-AG-C0v"/>
+                                </imageView>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fra-7H-HWF">
+                                    <rect key="frame" x="2" y="2" width="28" height="28"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="autoresize_height" id="YNq-5n-M9n"/>
+                                </imageView>
+                            </subviews>
+                        </customView>
+                    </subviews>
+                </customView>
+            </subviews>
+            <connections>
+                <outlet property="boxLayout" destination="6do-KE-nnz" id="TkG-ji-BO6"/>
+                <outlet property="heightResize" destination="fra-7H-HWF" id="BbF-I9-TUd"/>
+                <outlet property="hleft" destination="xFI-wg-nXw" id="tz9-So-9fN"/>
+                <outlet property="hright" destination="Q4Q-Ww-pj6" id="kgk-lH-ZuP"/>
+                <outlet property="layout" destination="z7b-8W-AlH" id="4KZ-PH-muR"/>
+                <outlet property="vbottom" destination="9TO-11-bae" id="qgH-zO-3JU"/>
+                <outlet property="vtop" destination="WnS-rj-Wla" id="3l7-qR-cGC"/>
+                <outlet property="widthResize" destination="jY7-zJ-hCG" id="H1p-eV-kpa"/>
+            </connections>
+            <point key="canvasLocation" x="-73" y="-55"/>
+        </tableCellView>
+    </objects>
+    <resources>
+        <image name="autoresize_h" width="24" height="24"/>
+        <image name="autoresize_height" width="64" height="64"/>
+        <image name="autoresize_v" width="24" height="24"/>
+        <image name="autoresize_width" width="64" height="64"/>
+    </resources>
+</document>

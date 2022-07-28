@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DeviceViewController">
+            <connections>
+                <outlet property="infoLayout" destination="xv2-r1-SoP" id="MXi-63-1dF"/>
+                <outlet property="screenshotLayout" destination="z0q-2t-gl6" id="Fm6-WN-sMt"/>
+                <outlet property="splitView" destination="sZI-0q-u2a" id="yVp-KL-IvA"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView misplaced="YES" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="783" height="505"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <splitView misplaced="YES" arrangesAllSubviews="NO" vertical="YES" id="sZI-0q-u2a">
+                    <rect key="frame" x="0.0" y="0.0" width="783" height="505"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <customView id="z0q-2t-gl6">
+                            <rect key="frame" x="0.0" y="0.0" width="363" height="505"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </customView>
+                        <customView id="xv2-r1-SoP">
+                            <rect key="frame" x="372" y="0.0" width="411" height="505"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </customView>
+                    </subviews>
+                    <holdingPriorities>
+                        <real value="250"/>
+                        <real value="250"/>
+                    </holdingPriorities>
+                    <connections>
+                        <outlet property="delegate" destination="-2" id="WWm-GR-dSQ"/>
+                    </connections>
+                </splitView>
+            </subviews>
+            <point key="canvasLocation" x="-59.5" y="121.5"/>
+        </customView>
+    </objects>
+</document>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DeviceManageViewController">
+            <connections>
+                <outlet property="allowAddView" destination="MjP-J1-26R" id="1ON-l8-ml3"/>
+                <outlet property="allowCheckButton" destination="f3U-wg-15N" id="QTb-qa-17E"/>
+                <outlet property="allowHeadView" destination="ija-gw-d8j" id="8m5-9M-o5s"/>
+                <outlet property="allowSegmentControl" destination="R2E-fB-uEX" id="2MK-pL-pXU"/>
+                <outlet property="allowTextField" destination="EqO-zv-UxC" id="7VZ-dG-t0K"/>
+                <outlet property="disallowAddView" destination="BPf-r3-Bmz" id="YXA-JP-0fF"/>
+                <outlet property="disallowHeadView" destination="Xkw-Ax-zKX" id="LW1-hK-Oqf"/>
+                <outlet property="disallowSegmentControl" destination="gld-yI-Afc" id="2BM-MH-pb7"/>
+                <outlet property="disallowTextField" destination="cRZ-SW-Ec3" id="ZqA-zQ-3Wp"/>
+                <outlet property="tableView" destination="WSO-mW-FMI" id="D9p-ZQ-yUu"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="572" height="501"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Txt-8Z-l1B">
+                    <rect key="frame" x="0.0" y="0.0" width="572" height="501"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <clipView key="contentView" ambiguous="YES" id="2ak-ge-k3m">
+                        <rect key="frame" x="0.0" y="0.0" width="572" height="501"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="WSO-mW-FMI">
+                                <rect key="frame" x="0.0" y="0.0" width="572" height="501"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <size key="intercellSpacing" width="3" height="2"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <tableColumns>
+                                    <tableColumn width="569" minWidth="40" maxWidth="1000" id="zSP-gr-Xd1">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                            <font key="font" metaFont="menu" size="11"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="tAH-x0-1rJ">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <prototypeCellViews>
+                                            <tableCellView id="G8t-ZQ-e6v">
+                                                <rect key="frame" x="1" y="1" width="569" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gV4-Uc-meF">
+                                                        <rect key="frame" x="0.0" y="0.0" width="569" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="ntd-le-RAS">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <connections>
+                                                    <outlet property="textField" destination="gV4-Uc-meF" id="Nog-TZ-Snm"/>
+                                                </connections>
+                                            </tableCellView>
+                                        </prototypeCellViews>
+                                    </tableColumn>
+                                </tableColumns>
+                                <connections>
+                                    <outlet property="dataSource" destination="-2" id="SN5-wi-wdS"/>
+                                    <outlet property="delegate" destination="-2" id="gIz-qI-DVJ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="QVI-Pr-84D">
+                        <rect key="frame" x="0.0" y="465" width="552" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="1wh-Vw-X2y">
+                        <rect key="frame" x="224" y="17" width="15" height="102"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+            <point key="canvasLocation" x="187" y="255.5"/>
+        </customView>
+        <customView id="ija-gw-d8j">
+            <rect key="frame" x="0.0" y="0.0" width="572" height="28"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField toolTip="Devices that could connect" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nhZ-oP-gAK">
+                    <rect key="frame" x="18" y="6" width="200" height="16"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Allowed devices" id="2zI-jq-iTO">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField toolTip="If checked, only allowed devices could connect" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6x-uB-6M3">
+                    <rect key="frame" x="367" y="6" width="157" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Disallow all other devices" id="kmg-qJ-SGu">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button toolTip="If checked, only allowed device could connect" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f3U-wg-15N">
+                    <rect key="frame" x="528" y="5" width="22" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="oGw-Od-Bg5">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="allowCheckButtonPressed:" target="-2" id="okO-Uo-DPg"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="181" y="594"/>
+        </customView>
+        <customView id="Xkw-Ax-zKX">
+            <rect key="frame" x="0.0" y="0.0" width="572" height="28"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField toolTip="Devices that could not connect" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F7L-el-XR0">
+                    <rect key="frame" x="18" y="6" width="147" height="16"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Disallowed devices" id="kST-Lc-d9I">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="181" y="677"/>
+        </customView>
+        <customView id="MjP-J1-26R">
+            <rect key="frame" x="0.0" y="0.0" width="578" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EqO-zv-UxC">
+                    <rect key="frame" x="20" y="19" width="287" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" placeholderString="Input allowed device name" id="zyf-is-wkt">
+                        <font key="font" metaFont="menu" size="14"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button toolTip="Add allowed device" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OQX-od-ewq">
+                    <rect key="frame" x="534" y="18" width="24" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="icon_add" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="LP4-Sn-drl">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="allowAddButtonPressed:" target="-2" id="3yv-Mq-ghH"/>
+                    </connections>
+                </button>
+                <segmentedControl toolTip="Match means &quot;name totaly match your device name&quot;. Contains means &quot;name contains your device name&quot;." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R2E-fB-uEX">
+                    <rect key="frame" x="312" y="20" width="126" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="GND-Ck-cWf">
+                        <font key="font" metaFont="label" size="12"/>
+                        <segments>
+                            <segment label="Match" width="61"/>
+                            <segment label="Contains" width="60" selected="YES" tag="1"/>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
+            </subviews>
+            <point key="canvasLocation" x="184" y="788"/>
+        </customView>
+        <customView id="BPf-r3-Bmz">
+            <rect key="frame" x="0.0" y="0.0" width="578" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRZ-SW-Ec3">
+                    <rect key="frame" x="20" y="19" width="287" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" placeholderString="Input disallowed device name" id="djo-cC-mhP">
+                        <font key="font" metaFont="menu" size="14"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button toolTip="Add disallowed device" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sjg-XY-SN9">
+                    <rect key="frame" x="534" y="18" width="24" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="icon_add" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="ikU-DQ-tJt">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="disallowAddButtonPressed:" target="-2" id="Pk5-zc-7Za"/>
+                    </connections>
+                </button>
+                <segmentedControl toolTip="Match means &quot;name totaly match your device name&quot;. Contains means &quot;name contains your device name&quot;." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gld-yI-Afc">
+                    <rect key="frame" x="312" y="20" width="126" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="WDq-iA-GJ5">
+                        <font key="font" metaFont="label" size="12"/>
+                        <segments>
+                            <segment label="Match" width="61"/>
+                            <segment label="Contains" width="60" selected="YES" tag="1"/>
+                        </segments>
+                    </segmentedCell>
+                </segmentedControl>
+            </subviews>
+            <point key="canvasLocation" x="184" y="902"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="icon_add" width="160" height="160"/>
+    </resources>
+</document>

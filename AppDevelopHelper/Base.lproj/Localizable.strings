@@ -1,0 +1,112 @@
+/* 
+  Localizable.strings
+  AppDevelopHelper
+
+  Created by 张小刚 on 2018/3/2.
+  Copyright © 2018年 lifebetter. All rights reserved.
+*/
+
+
+"web_home"                  = "/index.html";
+"web_usage"                 = "/usage.html";
+"web_connection"            = "/connection.html";
+"web_plugin"                = "/plugin.html";
+"web_privacy"               = "/privacy_policy.html";
+"web_termsofuse"            = "/termsofuse.html";
+"web_tool_sandbox"          = "/tools/sandbox.html";
+"web_tool_network"          = "/tools/network.html";
+"web_tool_io"               = "/tools/io.html";
+"web_tool_webconsole"       = "/tools/webconsole.html";
+"web_tool_userdefaults"     = "/tools/userdefaults.html";
+"web_tool_deviceinfo"       = "/tools/deviceinfo.html";
+"web_tool_notification"     = "/tools/notification.html";
+"web_tool_localization"     = "/tools/localization.html";
+"web_tool_keychain"         = "/tools/keychain.html";
+
+"web_pluginlist"            = "/pluginlist.html";
+"web_versionlist"           = "/versionlist";
+
+"welcome_home"              = "What is Woodpecker ?";
+"welcome_usage"             = "How to use Woodpecker ?";
+"welcome_connection"        = "Has problem with connection ?";
+"welcome_plugin"            = "How to custom my tool ?";
+"welcome_tool_sandbox"      = "How to use Sandbox ?";
+"welcome_tool_network"      = "How to use Network ?";
+"welcome_tool_io"           = "How to use I/O ?";
+"welcome_tool_webconsole"   = "How to use Web Console ?";
+"welcome_tool_userdefaults" = "How to use User Defaults ?";
+"welcome_tool_deviceinfo"   = "How to use Device ?";
+
+"update_tool_notification"  = "Add new tool Notification, click to learn more !";
+"update_tool_io_console"  = "Now, we could view app's console log in tool I/O !";
+"update_tool_file_activity" = "Add file monitor in tool Sandbox, we can know file changes in realtime";
+"update_tool_localization" = "Add new tool Localization，we can view, export localization texts easily";
+"update_tool_keychain"      = "Add new tool KeyChain, click to learn more !";
+"update_tool_view"          = "Add new tool View, we can inspect app's view hierarchy and edit attributes online!";
+"update_tool_bundle"        = "Add new tool Bundle, we can view bundle files in 1 second";
+"update_v122_1"             = "I can debug Mac apps now, have a try~";
+"update_v123_1"             = "Add new tool iCloud, we can browser icloud documents and userdefaults now!";
+"update_v124_1"             = "Dark mode support!";
+"update_v125_1"             = "Add device management in mac, we can specify which device could or couldn't connect to us，you can find it at Help->Device Management menu";
+"update_v126_1"             = "Add new tool State Master，We can save and restore app's data with one click!";
+"update_v127_1"             = "New home page, please upgrade framework to 1.2.7+";
+"update_v127_2"             = "Add new tool Utility, which will provides many productive tools in the future";
+"update_v128_1"             = "Add new tool Firebase Remote Config, with this tool we can browser config items easily and fetch latest update from firebase immediately.  If you use firebase in your app, you should never miss it.";
+"update_v129_1"             = "⚠️iOS 14 add a new privacy about local network usage, please add two keys in your app's Info.plist:\n\n1. Add description in Privacy - Local Network Usage Description\n2. Add _adhp._tcp in Bonjour services list";
+
+"frameworkversion_tip"      = "🌿Woodpecker framework %@ is available, current %@";
+"update_tip"                = "What's new in %@";
+"frameworkrequire_tip"      = "🌿Woodpecker framework has new version，please update to %@+ to continue.";
+
+///Sandbox
+"sandbox_webview_openfailed" = "<p style='color: %@'>Open <b>%@</b> failed, please use external tool to open.</p>";
+"sandbox_clear_cache" = "Do you want to delete local sandbox caches?";
+"sandbox_clear_allcache" = "Do you want to delete all local sandbox caches?";
+"sandbox_wordir_alert" = "Please setup your app's work directory";
+"sandbox_wordir_info" = "Your app is not under sandbox mode, you need to setup a work directory before continue";
+"sandbox_delete_file" = "Are you sure to delete this file?";
+
+///App Bundle
+"bundle_clear_cache" = "Do you want to delete app bundle caches?";
+"bundle_clear_allcache" = "Do you want to delete all bundle caches?";
+
+//Common
+"common_text_copied"        = "Text Copied";
+"alert_title" = "Alert";
+"update"   = "Update";
+"yes" = "Yes";
+"no" = "No";
+"cancel"="Cancel";
+"confirm"="Confirm";
+"start" = "Start";
+"next" = "Next";
+
+//purchase
+"pro_title" = "Go Pro Edition👑";
+"pro_info" = "Pro user have access to all the features，and get lifetime productivity+ with the same cost as a cup of coffee ☕️\n\nSpecial features:\n\n1. Edit, upload sandbox files\n2. Edit UserDefault items\n3. Export localization strings to excel file\n4. Edit your app's iCloud contents\n5. Save and restore app's data quickly using State Master without any limitation\n 6. More special features will coming soon...\n\n";
+"restore_purchase" = "Restore Purchase";
+"pro_success_title" = "Congratulations! You're Pro now🎉";
+"pro_success_info" = "You can access to all the features，start now!";
+"pro_success_start" = "Start";
+"pro_upgrade" = "Go Pro";
+"pro_failed_title" = "Sorry, something was wrong";
+"pro_failed_info" = "Thanks for your support, please try later";
+"pro_feature_title" ="Premium features";
+"pro_rate_title" ="User review";
+"pro_restore" ="Restore purchase";
+"pro_privacy" ="Privacy";
+"pro_termsofuse" ="Terms of use";
+"pro_thanks" ="Thanks for using";
+"pro_yeartip"= "Recommended";
+"pro_forevertip"= "Pay once, use for life";
+
+//Rate
+"rate_title"="Please rate us";
+"rate_default"="We are working hard for more productive tools and hope to be your friend during development. We'd greately appreciate if you can rate us";
+"rate_value_low"="Oh, no!\nPlease leave us some feedback";
+"rate_value_high"="We like you too!";
+
+//State Master
+"state_add_title"="Save and Restore app's data with one click";
+"state_sync_succeed"="Sync Done";
+"state_sync_failed"="Sync Failed";

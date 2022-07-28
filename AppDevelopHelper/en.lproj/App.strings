@@ -1,0 +1,20 @@
+/* 
+  App.strings
+  AppDevelopHelper
+
+  Created by 张小刚 on 2018/8/4.
+  Copyright © 2018 lifebetter. All rights reserved.
+*/
+
+
+//Alert
+"Cancel"="Cancel";
+"Confirm"="Confirm";
+
+//DataBase
+"Empty Table" = "Empty Table";
+"Empty Table Alert" = "Are you sure to empty this table's data?";
+
+
+//UserDefaults
+"value_updated" = "Value Updated";

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="StateMasterViewController">
+            <connections>
+                <outlet property="actionLayout" destination="1sj-Vx-0BG" id="D7R-6f-QUG"/>
+                <outlet property="lineView" destination="j88-ch-xhW" id="fjA-F0-gwt"/>
+                <outlet property="segmentControl" destination="Mgs-TB-2Ls" id="mbQ-ZF-9Oi"/>
+                <outlet property="tabView" destination="oRL-G9-RRd" id="Fmu-tg-Zqd"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="703" height="556"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1sj-Vx-0BG">
+                    <rect key="frame" x="0.0" y="524" width="703" height="32"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zdw-MZ-VqF">
+                            <rect key="frame" x="0.0" y="0.0" width="703" height="1"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        </customView>
+                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j88-ch-xhW">
+                            <rect key="frame" x="0.0" y="0.0" width="703" height="1"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        </customView>
+                        <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mgs-TB-2Ls">
+                            <rect key="frame" x="263" y="4" width="179" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Ltx-P5-dJL">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment label="Sandbox"/>
+                                    <segment label="UserDefaults" selected="YES" tag="1"/>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <action selector="segmentControlValueChanged:" target="-2" id="zvK-dL-RME"/>
+                            </connections>
+                        </segmentedControl>
+                    </subviews>
+                </customView>
+                <tabView fixedFrame="YES" type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="oRL-G9-RRd">
+                    <rect key="frame" x="0.0" y="0.0" width="703" height="524"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <font key="font" metaFont="system"/>
+                </tabView>
+            </subviews>
+            <point key="canvasLocation" x="251.5" y="296"/>
+        </customView>
+    </objects>
+</document>

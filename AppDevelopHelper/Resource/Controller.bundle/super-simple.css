@@ -1,0 +1,154 @@
+:root {
+/*    #C6C1B4*/
+  --nodethemecolor: #B0AB9F;
+  --navthemecolor: #646499;
+  --tabthemecolor: #8C7171;
+  --pagethemecolor: #D2C355;
+  --containerthemecolor: #2BA1D4;
+  --presentthemecolor: #868FC7;
+  --visiblethemecolor: #25A261;
+}
+
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0; }
+
+/* optional Container STYLES */
+.chart { height: 100%; width: 100%; margin: 5px; margin: 5px auto; }
+
+.node {
+	border: 1px solid;
+	border-radius: 6px;
+	width: 120px;
+	height: 100px;
+	overflow: hidden;
+	border-color: var(--nodethemecolor);
+}
+
+/*nav*/
+.navnode {
+	border-color: var(--navthemecolor);
+}
+
+/*tab*/
+.tabnode {
+	border-color: var(--tabthemecolor);
+}
+
+/*pageview*/
+.pagenode {
+	border-color: var(--pagethemecolor);
+}
+
+/*container*/
+.containernode {
+	border-color: var(--containerthemecolor);
+}
+
+/*presenting*/
+.presentnode {
+	border-color: var(--presentthemecolor);
+}
+
+/*was presented*/
+.presentednode {
+	border-radius: 6px 6px 0px 0px;
+}
+
+.visiblenode {
+	border-color: var(--visiblethemecolor);
+}
+
+
+
+/*node name background*/
+.node-name {
+	background-color: var(--nodethemecolor);
+}
+
+.navnode .node-name {
+	background-color: var(--navthemecolor);
+}
+
+.tabnode .node-name {
+	background-color: var(--tabthemecolor);
+}
+
+.pagenode .node-name {
+	background-color: var(--pagethemecolor);
+}
+
+.containernode .node-name {
+	background-color: var(--containerthemecolor);
+}
+
+.presentnode .node-name {
+	background-color: var(--presentthemecolor);
+}
+
+.visiblenode .node-name {
+	background-color: var(--visiblethemecolor);
+}
+
+
+/*文字部分*/
+.node-name {
+	color: white;
+	font-size:13px;
+	padding: 0 10px;
+	height: 30px;
+	line-height: 30px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align:center;
+}
+
+.node-title {
+	color: #333;
+	padding: 5px;
+	font-size:12px;
+	line-height: 18px;
+	height: 32px;
+	word-break: break-all;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.node-desc {
+	width:100%;
+	line-height: 20px;
+	position: absolute;
+	bottom: 4px;
+	left: 0;
+	font-size:13px;
+	color: #ddd;
+	text-align:center;
+	font-weight: bold;
+	font-style: italic;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space:nowrap;
+}
+
+
+#snapshot {
+	position: fixed;
+	right: 0px;
+	top: 0px;
+	width: 50px;
+	height: 50px;
+	/*background-color:red;*/
+}
+
+#snapshot-icon {
+	margin-top:12px;
+	margin-left:6px;
+	width:32px;
+}
+
+
+
+
+
+
+

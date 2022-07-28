@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	    <meta name="viewport" content="width=device-width">
+		<title> Controller Hierarchy </title>
+		<link rel="stylesheet" href="treant/Treant.css">
+		<link rel="stylesheet" href="super-simple.css?1">
+		<script type="text/javascript" src="../adh.bundle/adhjs.js"></script>
+		<script type="text/javascript" src="html2canvas.min.js"></script>
+		<script type="text/javascript" src="vendor/raphael.js"></script>
+		<script type="text/javascript" src="treant/Treant.js"></script>
+		<script type="text/javascript" src="super-simple.js"></script>
+	</head>
+
+	<body id='body'>
+		<div class="chart" id="chart">
+		</div>
+		<div id='snapshot' onclick="snapshot()">
+			<img id="snapshot-icon" src="icon_snapshot.png">
+		</div>
+		<script>
+            
+            function isDark() {
+                var value = false;
+                var theme = window.theme;
+                if(window.theme == 'dark') {
+                    value = true;
+                }
+                return value;
+            }
+            
+            function updateThemeUI() {
+                var body = document.getElementById('body');
+                var chart = document.getElementById('chart');
+                if(isDark()) {
+                    body.style.backgroundColor = '#1E2022';
+                    chart.style.backgroundColor = '#1E2022';
+                }else {
+                    body.style.backgroundColor = '#fff';
+                    chart.style.backgroundColor = '#fff';
+                }
+            }
+        
+			//get theme on startup
+            adhGetTheme(function (value) {
+                window.theme = value;
+                updateThemeUI();
+            });
+            
+            registerPluginHandler('onThemeUpdate', function(value){
+                window.theme = value;
+                updateThemeUI();
+                loadContent();
+            });
+        
+            function loadContent() {
+                loadControllerHierarchy(function (chart){
+                    new Treant(chart);
+                });
+            }
+        
+			setTimeout(function (){
+                loadContent();
+			},100);
+
+			function snapshot(){
+				var content = document.getElementById('chart');
+				var height = content.scrollHeight;
+	            var width = content.scrollWidth;
+	            alert('wh: '+width+","+height);
+				html2canvas(content,{
+					'windowWidth': width,
+					'windowHeight': height,
+				})
+				.then(function(canvas) {
+	      			var dataURL = canvas.toDataURL("image/png");
+	      			if(dataURL != null) {
+	      				var action = 'webSnapshot';
+		      			var data = {
+		      				"dataURL" : dataURL,
+		      			}
+		      			adhCallLocalApi(action,data);
+	      			}
+	       		});
+			}
+		</script>
+
+	</body>
+</html>
+
+
+
+
+

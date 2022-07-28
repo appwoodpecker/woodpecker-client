@@ -1,0 +1,42 @@
+--YEAR
+y--2020--Year, no padding
+yy--20--Year, two digits (padding with a zero if necessary)
+yyyy--2020--Year, minimum of four digits (padding with zeros if necessary)
+--QUARTER
+Q--3--The quarter of the year. Use QQ if you want zero padding.
+QQQ--Q3--Quarter including "Q"
+QQQQ--3rd quarter--Quarter spelled out
+--MONTH
+M--7--The numeric month of the year. A single M will use '1' for January.
+MM--07--The numeric month of the year. A double M will use '01' for January.
+MMM--Jul--The shorthand name of the month
+MMMM--July--Full name of the month
+MMMMM--J--Narrow name of the month
+--DAY
+d--18--The day of the month. A single d will use 1 for January 1st.
+dd--18--The day of the month. A double d will use 01 for January 1st.
+--WEEK
+F--3 Tuesday in December--The day of week in the month
+E--Sat--The abbreviation for the: day of the week
+EEEE--Saturday--The wide name of the day of the week
+EEEEE--S--The narrow day of week
+EEEEEE--Sa--The short day of week
+--HOUR
+h--4--The 12-hour hour.
+hh--04--The 12-hour hour padding with a zero if there is only 1 digit
+H--16--The 24-hour hour.
+HH--16--The 24-hour hour padding with a zero if there is only 1 digit.
+a--PM--AM / PM for 12-hour time formats
+--MINUTE
+m--35--The minute, with no padding for zeroes.
+mm--35--The minute with zero padding.
+--SECOND
+s--8--The seconds, with no padding for zeroes.
+ss--08--The seconds with zero padding.
+SSS--123--The milliseconds.
+--TIME ZONE
+zzz--GMT+8--The 3 letter name of the time zone. Falls back to GMT-08:00 (hour offset) if the name is not known.
+zzzz--China Standard Time--The expanded time zone name, falls back to GMT-08:00 (hour offset) if name is not known.
+ZZZZ--GMT+08:00--Time zone with abbreviation and offset
+Z--+0800--RFC 822 GMT format. Can also match a literal Z for Zulu (UTC) time.
+ZZZZZ--+08:00--ISO 8601 time zone format

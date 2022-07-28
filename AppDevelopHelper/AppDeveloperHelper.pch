@@ -1,0 +1,28 @@
+//
+//  AppDeveloperHelper.pch
+//  AppDevelopHelper
+//
+//  Created by 张小刚 on 2017/10/29.
+//  Copyright © 2017年 lifebetter. All rights reserved.
+//
+
+#ifndef AppDeveloperHelper_pch
+#define AppDeveloperHelper_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef __OBJC__
+
+#import "ADHProtocol.h"
+#import "ADHDispatcher.h"
+#import "ADHApiClient.h"
+#import "component.h"
+#import "mac_service.h"
+#import "Appearance.h"
+#import "AppContextManager.h"
+#import "Preference.h"
+#import "ToolModule.h"
+
+#endif
+
+#endif /* AppDeveloperHelper_pch */

@@ -1,0 +1,12 @@
+
+/* Class = "NSTextFieldCell"; title = "😄"; ObjectID = "NBJ-jt-5rc"; */
+"NBJ-jt-5rc.title" = "😄";
+
+/* Class = "NSButtonCell"; title = "Rate"; ObjectID = "S7N-Tb-haj"; */
+"S7N-Tb-haj.title" = "评分";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "TLw-5F-n22"; */
+"TLw-5F-n22.title" = "Label";
+
+/* Class = "NSButtonCell"; title = "Feedback"; ObjectID = "sHP-69-nGa"; */
+"sHP-69-nGa.title" = "反馈";

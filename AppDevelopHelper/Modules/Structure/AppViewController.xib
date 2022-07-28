@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AppViewController">
+            <connections>
+                <outlet property="connectionStatusIcon" destination="Rfk-dc-fhZ" id="YJs-Py-MDB"/>
+                <outlet property="connectionStatusLabel" destination="Frg-3t-EdC" id="cfj-mZ-EXt"/>
+                <outlet property="connectionView" destination="QiX-sg-RMD" id="WJb-5d-5oZ"/>
+                <outlet property="tabLayout" destination="wyS-eH-xnD" id="N3M-WY-4KU"/>
+                <outlet property="view" destination="2Tu-GA-O1w" id="MI6-l4-K2Z"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="2Tu-GA-O1w">
+            <rect key="frame" x="0.0" y="0.0" width="412" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wyS-eH-xnD">
+                    <rect key="frame" x="8" y="0.0" width="405" height="40"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </customView>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QiX-sg-RMD">
+                    <rect key="frame" x="8" y="9" width="158" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rfk-dc-fhZ">
+                            <rect key="frame" x="8" y="5" width="14" height="14"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="LGI-KY-Qez"/>
+                        </imageView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Frg-3t-EdC">
+                            <rect key="frame" x="26" y="4" width="126" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="waiting connect" id="5fh-C2-c3u">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8j2-Id-afh">
+                            <rect key="frame" x="0.0" y="0.0" width="156" height="24"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="JM3-4d-bdH">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="controlContent" size="11"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="connectionButtonPressed:" target="-2" id="ENQ-V1-6dD"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
+            </subviews>
+            <point key="canvasLocation" x="20" y="48"/>
+        </customView>
+        <button verticalHuggingPriority="750" id="wxy-OZ-Sw1">
+            <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="icon_delete" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="XS3-qW-eR4">
+                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                <font key="font" metaFont="system"/>
+            </buttonCell>
+            <color key="contentTintColor" red="0.96078431372549022" green="0.96470588235294119" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <point key="canvasLocation" x="482" y="43"/>
+        </button>
+    </objects>
+    <resources>
+        <image name="icon_delete" width="160" height="160"/>
+    </resources>
+</document>

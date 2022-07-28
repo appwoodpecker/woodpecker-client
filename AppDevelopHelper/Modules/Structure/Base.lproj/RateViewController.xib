@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="RateViewController">
+            <connections>
+                <outlet property="emotionLabel" destination="ptS-S5-jk7" id="Vfw-Uu-qYE"/>
+                <outlet property="feedbackButton" destination="0xA-Hk-H5h" id="uH3-kK-aBg"/>
+                <outlet property="rateButton" destination="cWH-Ax-Asw" id="Tt8-R2-SdM"/>
+                <outlet property="starLayout" destination="VnX-2L-Sdt" id="KPo-nc-63T"/>
+                <outlet property="tipLabel" destination="flt-g8-P4m" id="jP9-eh-ya3"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="376" height="306"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="flt-g8-P4m">
+                    <rect key="frame" x="16" y="138" width="344" height="68"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" alignment="center" title="Label" id="TLw-5F-n22">
+                        <font key="font" metaFont="system" size="14"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <customView id="VnX-2L-Sdt">
+                    <rect key="frame" x="44" y="84" width="288" height="36"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ptS-S5-jk7">
+                    <rect key="frame" x="163" y="226" width="51" height="61"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="😄" id="NBJ-jt-5rc">
+                        <font key="font" size="42" name=".AppleColorEmojiUI"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" id="cWH-Ax-Asw">
+                    <rect key="frame" x="122" y="21" width="132" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Rate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="S7N-Tb-haj">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="rateButtonPressed:" target="-2" id="YL9-f4-8aq"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" id="0xA-Hk-H5h">
+                    <rect key="frame" x="122" y="21" width="132" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Feedback" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sHP-69-nGa">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="feedbackButtonPressed:" target="-2" id="yJ7-Nk-P7b"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="400" y="139"/>
+        </customView>
+    </objects>
+</document>

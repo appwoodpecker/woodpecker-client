@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ConsoleViewController">
+            <connections>
+                <outlet property="pauseButton" destination="MRZ-IX-ZWR" id="fjA-j1-dcX"/>
+                <outlet property="startButton" destination="SOs-2f-UwE" id="cOT-gB-Q4l"/>
+                <outlet property="textView" destination="6tn-dy-B3N" id="ZSl-ru-HSY"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="695" height="387"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <customView id="xMP-Ey-0fl">
+                    <rect key="frame" x="0.0" y="363" width="695" height="24"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <button toolTip="Start Log message" verticalHuggingPriority="750" id="SOs-2f-UwE">
+                            <rect key="frame" x="6" y="2" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" title="Start" bezelStyle="shadowlessSquare" image="icon_record" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="djy-ut-cKZ">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="startButtonPressed:" target="-2" id="Vpt-MJ-sGJ"/>
+                            </connections>
+                        </button>
+                        <button toolTip="Stop Log message" verticalHuggingPriority="750" id="MRZ-IX-ZWR">
+                            <rect key="frame" x="6" y="2" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" title="Pause" bezelStyle="rounded" image="icon_record_pause" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="1zA-Qq-p0V">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="pauseButtonPressed:" target="-2" id="Y4K-H3-Hme"/>
+                            </connections>
+                        </button>
+                        <button toolTip="Clear" verticalHuggingPriority="750" id="kgf-du-lLU">
+                            <rect key="frame" x="34" y="2" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="icon_trash" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Kl0-s9-wKz">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="trashButtonPressed:" target="-2" id="6F5-Yc-0oe"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
+                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="gWh-KQ-JSm">
+                    <rect key="frame" x="0.0" y="0.0" width="695" height="363"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <clipView key="contentView" id="9W2-Um-6hh">
+                        <rect key="frame" x="0.0" y="0.0" width="695" height="363"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="bar" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" textCompletion="NO" id="6tn-dy-B3N">
+                                <rect key="frame" x="0.0" y="0.0" width="695" height="363"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="minSize" width="695" height="363"/>
+                                <size key="maxSize" width="717" height="10000000"/>
+                                <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="rbP-t1-U7v">
+                        <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="EPs-8k-kU8">
+                        <rect key="frame" x="679" y="0.0" width="16" height="363"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+            <point key="canvasLocation" x="633.5" y="203.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="icon_record" width="160" height="160"/>
+        <image name="icon_record_pause" width="160" height="160"/>
+        <image name="icon_trash" width="160" height="160"/>
+    </resources>
+</document>

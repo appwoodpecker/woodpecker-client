@@ -1,0 +1,319 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <script type="text/javascript" src="../adh.bundle/adhjs.js"></script>
+    </head>
+    <body id='body'>
+        <!-- show result -->
+        <div id="resultarea">
+        </div>
+        <!-- input -->
+        <div class="inputarea">
+            <span class='input-indicator'><img src="./img/arrow_input.png"></span>
+            <textarea type="text" id='cmdinput' autofocus placeholder="javascript code..."></textarea>
+        </div>
+        
+        <script type="text/javascript">
+            
+            window.addEventListener('keydown', function(){
+                var key = event.key;
+                if(key == 'ArrowUp' || key == 'ArrowDown'){
+                    event.preventDefault();
+                }
+                var text = '';
+                if(key == 'ArrowUp'){
+                    text = getPreviousJs();
+                }else if(key == 'ArrowDown'){
+                    text = getNextJs();
+                }
+                if(text.length > 0){
+                    setInputText(text);
+                }
+            });
+                                    
+            window.addEventListener('keypress', function(){
+                var content = document.getElementById('cmdinput').value;
+                if(event.key == 'Enter'){
+                    event.preventDefault();
+                    if (event.getModifierState('Shift')) {
+                        content += '\n';
+                        document.getElementById('cmdinput').value = content;
+                    }else{
+                        if(content){
+                            sendAction(content);
+                        }
+                    }
+                }
+            });
+                
+            function sendAction(content){
+                var body = {
+                    'js' : content,
+                };
+                adhCallClientApi('adh.webconsole','jscall',body,'',function (data,payload){
+                     var success = data['success'];
+                     if(success > 0){
+                        var response = data['response'];
+                        insertResult(response, content,true);
+                    }else{
+                        var msg = data['msg'];
+                        insertResult(msg, content,false);
+                    }
+                });
+                addJsHistory(content);
+                resetHistoryIndex();
+                syncUserJsHistory();
+            }
+        
+            function setInputText(text){
+                var inputview = document.getElementById('cmdinput');
+                inputview.value = text;
+            }
+            
+            function insertResult(response, content,success){
+                var dark = isDark();
+                //clear input
+                setInputText('');
+                /**
+                 replace '/n' -> '<br/>', ' ' -> '&nbsp'
+                 */
+                response = response.replace(/\n/g,'<br/>');
+                response = response.replace(/ /g,'&nbsp');
+                
+                content = content.replace(/\n/g,'<br/>');
+                content = content.replace(/ /g,'&nbsp');
+                
+                //reuslt
+                var insertBody = document.getElementById('resultarea');
+                //in
+                var node = document.createElement('p');
+                node.className = 'result-in';
+                if(dark) {
+                    node.className += ' dark';
+                }
+                node.innerHTML = content;
+                insertBody.appendChild(node);
+                //out
+                node = document.createElement('p');
+                if(success){
+                    node.className = 'result-out';
+                }else{
+                    node.className = 'result-out-error';
+                }
+                if(dark) {
+                    node.className += ' dark';
+                }
+                node.innerHTML = response;
+                insertBody.appendChild(node);
+                //seperator
+                node = document.createElement('hr');
+                node.className = 'result-seperator';
+                if(dark) {
+                    node.className += ' dark';
+                }
+                insertBody.appendChild(node);
+            }
+            
+            /**
+             cmd history
+             */
+            function initHistory(){
+                window.jslist = new Array();
+                window.cmdIndex = -1;
+            }
+            //init
+            initHistory();
+            
+            function addJsHistory(js){
+                var jslist = window.jslist;
+                jslist.push(js);
+            }
+            
+            function getJsHistoryList(){
+                var jslist = window.jslist;
+                return jslist;
+            }
+            
+            function setHistoryIndex(index){
+                window.cmdIndex = index;
+            }
+            
+            function resetHistoryIndex(){
+                window.cmdIndex = -1;
+            }
+            
+            function getHistoryIndex(){
+                var cmdIndex = window.cmdIndex;
+                return cmdIndex;
+            }
+            
+            function moveIndexUp(){
+                var jslist = getJsHistoryList();
+                var count = jslist.length;
+                var cmdIndex = getHistoryIndex();
+                var previousIndex = cmdIndex-1;
+                if(previousIndex >= 0 && previousIndex < count){
+                    setHistoryIndex(previousIndex);
+                }
+            }
+            
+            function moveIndexDown(){
+                var jslist = getJsHistoryList();
+                var count = jslist.length;
+                var cmdIndex = getHistoryIndex();
+                var nextIndex = cmdIndex+1;
+                if(nextIndex >= 0 && nextIndex < count){
+                    setHistoryIndex(nextIndex);
+                }
+            }
+            
+            function getPreviousJs(){
+                var js = "";
+                var jslist = getJsHistoryList();
+                var count = jslist.length;
+                if(count == 0){
+                    return js;
+                }
+                var cmdIndex = getHistoryIndex();
+                if(cmdIndex == -1){
+                    //set to bottom if none
+                    cmdIndex = count-1;
+                    setHistoryIndex(cmdIndex);
+                }else{
+                    moveIndexUp();
+                    cmdIndex = getHistoryIndex();
+                }
+                if(cmdIndex >= 0 && cmdIndex < count){
+                    js = jslist[cmdIndex];
+                }
+                return js;
+            }
+            
+            function getNextJs(){
+                var js = "";
+                var jslist = getJsHistoryList();
+                var count = jslist.length;
+                if(count == 0){
+                    return js;
+                }
+                var cmdIndex = getHistoryIndex();
+                if(cmdIndex == -1){
+                    //set to bottom if none
+                    cmdIndex = count-1;
+                    setHistoryIndex(cmdIndex);
+                }else{
+                    moveIndexDown();
+                    cmdIndex = getHistoryIndex();
+                }
+                if(cmdIndex >= 0 && cmdIndex < count){
+                    js = jslist[cmdIndex];
+                }
+                return js;
+            }
+            
+            function requestUserJsHistory(){
+                adhGetPreference('jslist',function(value){
+                    if(value instanceof Array){
+                        var jslist = value;
+                        window.jslist = jslist;
+                    }
+                });
+            }
+            
+            requestUserJsHistory();
+            
+            function syncUserJsHistory(){
+                var MAX_COUNT = 100;
+                var jslist = getJsHistoryList();
+                var count = jslist.length;
+                if(count == 0) return;
+                if(count > MAX_COUNT){
+                    //count = 120 begin = 120 - 100 = 20
+                    var begin = count - MAX_COUNT;
+                    jslist = jslist.slice(count-MAX_COUNT);
+                }
+                adhSetPreference('jslist',jslist);
+            }
+            
+            function onReceiveLog(data) {
+                var dark = isDark();
+                var content = data['content'];
+                var logType = data['logType'];
+                
+                content = content.replace(/\n/g,'<br/>');
+                content = content.replace(/ /g,'&nbsp');
+                
+                //reuslt
+                var insertBody = document.getElementById('resultarea');
+                //out
+                node = document.createElement('p');
+                var className = getLogClassName(logType);
+                if(dark) {
+                    className += ' dark';
+                }
+                node.className = className;
+                node.innerHTML = content;
+                insertBody.appendChild(node);
+                //seperator
+                node = document.createElement('hr');
+                node.className = "result-seperator";
+                if(dark) {
+                    node.className += ' dark';
+                }
+                insertBody.appendChild(node);
+            }
+
+            function getLogClassName(type) {
+                var className = '';
+                if(type == 'info') {
+                    className = 'result-out-info';
+                }else if(type == 'warn') {
+                    className = 'result-out-warn';
+                }else if(type == 'debug') {
+                    className = 'result-out-debug';
+                }else if(type == 'error') {
+                    className = 'result-out-logerror';
+                }else {
+                    className = 'result-out-log';
+                }
+                return className;
+            }
+
+            registerPluginHandler('log', onReceiveLog);
+            
+            function isDark() {
+                var value = false;
+                var theme = window.theme;
+                if(window.theme == 'dark') {
+                    value = true;
+                }
+                return value;
+            }
+                
+            function updateThemeUI() {
+                var textarea = document.getElementById('cmdinput');
+                var body = document.getElementById('body');
+                if(isDark()) {
+                    textarea.style.color = "#FFF";
+                    textarea.style.backgroundColor = '#1E2022';
+                    body.style.backgroundColor = '#1E2022';
+                }else {
+                    textarea.style.backgroundColor = '#FFF';
+                    body.style.backgroundColor = '#FFF';
+                }
+            }
+            
+            //get theme on startup
+            adhGetTheme(function (value) {
+                window.theme = value;
+                updateThemeUI();
+            });
+            
+        </script>
+    </body>
+</html>
+
+
+
+
+

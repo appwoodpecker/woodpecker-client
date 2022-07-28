@@ -1,0 +1,27 @@
+//
+//  ADHClient.pch
+//  AppDevelopHelper
+//
+//  Created by 张小刚 on 2017/11/4.
+//  Copyright © 2017年 lifebetter. All rights reserved.
+//
+
+#ifndef ADHClient_pch
+#define ADHClient_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef __OBJC__
+
+#import "ADHProtocol.h"
+#import "ADHDispatcher.h"
+#import "ADHApiClient.h"
+#import "ADHRequest.h"
+#import "ADHService.h"
+#import "ADHOrganizer.h"
+#import "ADHOrganizerPrivate.h"
+#import "client_component.h"
+
+#endif
+
+#endif /* ADHClient_pch */

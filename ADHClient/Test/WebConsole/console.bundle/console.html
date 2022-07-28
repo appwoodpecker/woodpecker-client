@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>
+	<title>Console Test</title>
+	<style type="text/css">
+        p {font-size: 20px}
+    </style>
+</head>
+<body>
+
+<p onclick="log('log')">log a message</p>
+<p onclick="log('info')">info a message</p>
+<p onclick="log('warn')">warn a message</p>
+<p onclick="log('debug')">debug a message</p>
+<p onclick="log('error')">error a message</p>
+<p onclick="logObject()">log object</p>
+<p onclick="logObjects()">log objects</p>
+<p onclick="throwError()">thrown error</p>
+
+<iframe src="frame.html"></iframe>
+
+<script>
+
+function log(method) {
+	var message = new Date();
+	if(method == 'info') {
+		console.info(message);
+	}else if(method == 'warn') {
+		console.warn(message);
+	}else if(method == 'debug') {
+		console.debug(message);
+	}else if(method == 'error') {
+		console.error(message);
+	}else {
+		console.log(message);
+	}
+}
+
+function logObject() {
+	var obj = {
+		"a" : "1",
+		"b" : "2",
+		"c" : "3",
+	};
+	console.log(obj);
+}
+
+function logObjects() {
+	var obj = {
+		"a" : "1",
+		"b" : "2",
+		"c" : "3",
+	};
+	var obj2 = {
+		"a" : "4",
+		"b" : "5",
+		"c" : "6",
+	};
+	console.log(obj,obj2);
+}
+
+function throwError() {
+	throw new Error('1111111');
+}
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "7ge-u8-Woy"; */
+"7ge-u8-Woy.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "need help ?"; ObjectID = "Eke-wB-VXh"; */
+"Eke-wB-VXh.title" = "需要帮助 ?";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "Hpm-K2-KpE"; */
+"Hpm-K2-KpE.title" = "Table View Cell";
+
+/* Class = "NSTextFieldCell"; title = "No device connected"; ObjectID = "fbY-sf-34c"; */
+"fbY-sf-34c.title" = "无设备连接";

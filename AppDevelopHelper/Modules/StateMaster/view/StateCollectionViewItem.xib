@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="StateCollectionViewItem">
+            <connections>
+                <outlet property="moreButton" destination="yf4-q6-cf0" id="Y9Z-WD-H52"/>
+                <outlet property="pauseButton" destination="bcC-Io-emu" id="u2S-6R-1KY"/>
+                <outlet property="progressView" destination="INE-9Z-N79" id="kJ6-Sn-MLA"/>
+                <outlet property="sharedLabel" destination="jV1-o9-n1W" id="pyV-BC-WSz"/>
+                <outlet property="syncButton" destination="GzM-s6-TDj" id="wOZ-0k-IXj"/>
+                <outlet property="titleTextField" destination="lLC-Q4-Qry" id="Cgl-Cb-8hE"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="220" height="160"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lLC-Q4-Qry" customClass="ADHClickTextField">
+                    <rect key="frame" x="13" y="104" width="174" height="38"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" title="啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦" id="v0H-gU-OBY">
+                        <font key="font" metaFont="menu" size="14"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yf4-q6-cf0">
+                    <rect key="frame" x="193" y="118" width="16" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="icon_more" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="vWm-3X-ACP">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="moreButtonClicked:" target="-2" id="KfP-e9-pwI"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jV1-o9-n1W">
+                    <rect key="frame" x="164" y="12" width="47" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Shared" id="1n5-Hk-hsV">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xm0-rf-YlQ">
+                    <rect key="frame" x="94" y="47" width="32" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <button toolTip="Sync to App" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GzM-s6-TDj">
+                            <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="icon_apply" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="Hlm-Ke-8If">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="syncButtonPressed:" target="-2" id="zg8-Bz-GRt"/>
+                            </connections>
+                        </button>
+                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="INE-9Z-N79" customClass="CircularProgressView">
+                            <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </customView>
+                        <button toolTip="Pause" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcC-Io-emu">
+                            <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="icon_apply_pause" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="eav-oU-XQj">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="pauseButtonPressed:" target="-2" id="6uw-fe-Jqe"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
+            </subviews>
+            <point key="canvasLocation" x="125" y="124"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="icon_apply" width="32" height="32"/>
+        <image name="icon_apply_pause" width="32" height="32"/>
+        <image name="icon_more" width="20" height="30"/>
+    </resources>
+</document>

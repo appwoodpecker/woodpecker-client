@@ -1,0 +1,16 @@
+//
+//  NSBezierPath+Bezier.h
+//  Woodpecker
+//
+//  Created by 张小刚 on 2020/6/19.
+//  Copyright © 2020 lifebetter. All rights reserved.
+//
+
+#import <AppKit/AppKit.h>
+#import <Cocoa/Cocoa.h>
+
+@interface NSBezierPath (Bezier)
+
+- (CGPathRef)cgPath;
+
+@end

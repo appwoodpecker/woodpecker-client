@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ScreenshotViewController">
+            <connections>
+                <outlet property="actionLayout" destination="MPY-fB-vjw" id="3Iw-UT-b3S"/>
+                <outlet property="cacheButton" destination="L7w-LZ-Oia" id="dYT-lq-6yI"/>
+                <outlet property="downloadButton" destination="xDP-IZ-7nx" id="H1M-AT-OVQ"/>
+                <outlet property="homeView" destination="zEl-Hk-ubA" id="5di-q6-zak"/>
+                <outlet property="screenImageView" destination="wmY-pZ-2mE" id="1Eo-vb-3eP"/>
+                <outlet property="screenshotLayout" destination="FFs-y9-8xt" id="Nhr-lS-LlK"/>
+                <outlet property="updateButton" destination="nhb-ZH-lFJ" id="tro-qx-ipV"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="477" height="798"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPY-fB-vjw">
+                    <rect key="frame" x="0.0" y="762" width="122" height="36"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <button toolTip="Refresh" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nhb-ZH-lFJ">
+                            <rect key="frame" x="20" y="14" width="22" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="icon_refresh_light" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="ePv-gb-9Me">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="updateButtonPressed:" target="-2" id="rir-UU-NWD"/>
+                            </connections>
+                        </button>
+                        <button toolTip="Snapshot" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xDP-IZ-7nx">
+                            <rect key="frame" x="50" y="14" width="22" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="icon_snapshot" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="jsu-JE-zaw">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="saveButtonPressed:" target="-2" id="ze3-Ti-hKO"/>
+                            </connections>
+                        </button>
+                        <button toolTip="Snapshot" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L7w-LZ-Oia">
+                            <rect key="frame" x="80" y="14" width="22" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="icon_cache" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="96a-CQ-kYM">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="cacheButtonPressed:" target="-2" id="Nf7-BZ-ASX"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FFs-y9-8xt">
+                    <rect key="frame" x="99" y="201" width="279" height="435"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wmY-pZ-2mE">
+                            <rect key="frame" x="13" y="60" width="254" height="355"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="x7F-Mg-NFc"/>
+                        </imageView>
+                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zEl-Hk-ubA">
+                            <rect key="frame" x="119" y="12" width="40" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </customView>
+                    </subviews>
+                </customView>
+            </subviews>
+            <point key="canvasLocation" x="115.5" y="427"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="icon_cache" width="160" height="160"/>
+        <image name="icon_refresh_light" width="160" height="160"/>
+        <image name="icon_snapshot" width="160" height="160"/>
+    </resources>
+</document>

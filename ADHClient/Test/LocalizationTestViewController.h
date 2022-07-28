@@ -1,0 +1,13 @@
+//
+//  LocalizationTestViewController.h
+//  ADHClient
+//
+//  Created by 张小刚 on 2018/6/23.
+//  Copyright © 2018 lifebetter. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface LocalizationTestViewController : UIViewController
+
+@end

@@ -1,0 +1,114 @@
+/* 
+  Localizable.strings
+  AppDevelopHelper
+
+  Created by 张小刚 on 2018/3/2.
+  Copyright © 2018年 lifebetter. All rights reserved.
+*/
+
+"web_home"                  = "/cnindex.html";
+"web_usage"                 = "/cnusage.html";
+"web_connection"            = "/cnconnection.html";
+"web_plugin"                = "/cnplugin.html";
+"web_privacy"               = "/privacy_policy.html";
+"web_termsofuse"            = "/cntermsofuse.html";
+"web_tool_sandbox"          = "/tools/cnsandbox.html";
+"web_tool_network"          = "/tools/cnnetwork.html";
+"web_tool_io"               = "/tools/cnio.html";
+"web_tool_webconsole"       = "/tools/cnwebconsole.html";
+"web_tool_userdefaults"     = "/tools/cnuserdefaults.html";
+"web_tool_deviceinfo"       = "/tools/cndeviceinfo.html";
+"web_tool_notification"     = "/tools/cnnotification.html";
+"web_tool_localization"     = "/tools/cnlocalization.html";
+"web_tool_keychain"         = "/tools/cnkeychain.html";
+
+"web_pluginlist"            = "/cnpluginlist.html";
+"web_versionlist"           = "/cnversionlist";
+
+"welcome_home"              = "Woodpecker是什么 ?";
+"welcome_usage"             = "如何使用Woodpecker ?";
+"welcome_connection"        = "App连接Mac客户端出现问题 ?";
+"welcome_plugin"            = "如何编写插件 ?";
+"welcome_tool_sandbox"      = "如何使用Sandbox ?";
+"welcome_tool_network"      = "如何使用Network ?";
+"welcome_tool_io"           = "如何使用I/O ?";
+"welcome_tool_webconsole"   = "如何使用Web Console ?";
+"welcome_tool_userdefaults" = "如何使用User Defaults ?";
+"welcome_tool_deviceinfo"   = "如何使用 Device ?";
+
+//update
+"update_tool_notification"  = "新增工具Notification，点击了解更多";
+"update_tool_io_console"  = "现在，我们可以在工具I/O中查看应用Console日志！";
+"update_tool_file_activity" = "Sandbox增加文件监控功能，我们可以实时了解哪些文件正在操作";
+"update_tool_localization" = "新增工具Localization，轻松查看，导出应用多语言文本";
+"update_tool_keychain"      = "新增工具KeyChain, 点击了解更多 !";
+"update_tool_view"          = "新增工具View，查看View层级，在线编辑属性！";
+"update_tool_bundle"        = "新增工具Bundle，方便查看应用Bundle信息";
+"update_v122_1"             = "我可以调试Mac应用啦，快来试试吧~";
+"update_v123_1"             = "新增工具iCloud，现在我们可以轻松查看iCloud文件和UserDefaults数据！";
+"update_v124_1"             = "支持深色模式！";
+"update_v125_1"             = "新增设备链接管理，我们可以设置允许或禁止的设备链接，请在Help-Device Management菜单进行设置";
+"update_v126_1"             = "新增工具State Master，帮助我们快速备份和恢复App数据，赶紧试试吧~";
+"update_v127_1"             = "全新首页，请升级1.2.7 framework进行体验";
+"update_v127_2"             = "新增Utility工具，用来收集开发中的常用小工具";
+"update_v128_1"             = "新增工具Firebase Remote Config，通过它我们可以轻松查看所有Firebase配置项，并且可以立刻获取到最新的远端配置。如果您在项目中使用了Firebase，一定不要错过 !";
+"update_v129_1"             = "⚠️iOS 14系统增加了本地网络访问权限开关，请在App的Info.plist增加下面两项：\n\n1.  在Privacy - Local Network Usage Description添加本地网络描述\n2. 在Bonjour services列表添加 _adhp._tcp";
+
+
+"frameworkversion_tip"      = "🌿Woodpecker framework最新版%@, 当前版本%@";
+"update_tip"                = "%@ 更新内容";
+"frameworkrequire_tip"      = "🌿Woodpecker framework有新版本，请升级至%@+，\n然后继续使用";
+
+///Sandbox
+"sandbox_webview_openfailed" = "<p style='color: %@'>打开 <b>%@</b> 失败, 请使用外部工具打开</p>";
+"sandbox_clear_cache" = "确定要清除本地沙盒缓存吗?";
+"sandbox_clear_allcache" = "确定要清除所有本地沙盒缓存吗?";
+"sandbox_wordir_alert" = "请设置应用工作目录";
+"sandbox_wordir_info" = "您的应用为非沙盒模式，请先设置应用的工作目录，然后再继续使用";
+"sandbox_delete_file" = "确定要删除文件吗?";
+
+///App Bundle
+"bundle_clear_cache" = "确定要清除应用Bundle缓存吗?";
+"bundle_clear_allcache" = "确定要清除所有应用Bundle缓存吗?";
+
+//Common
+"common_text_copied"        = "已复制";
+"alert_title" = "提示";
+"update" = "更新";
+"yes" = "是的";
+"no" = "否";
+"cancel"="取消";
+"confirm"="确认";
+"start" = "开始";
+"next" = "下一步";
+
+
+//purchase
+"pro_title" = "升级为Pro用户👑";
+"pro_info" = "Pro用户可以使用应用内所有功能，仅需一场电影🌅的费用，即可永久提升效率，您将获得以下高级功能：\n\n1. 编辑、上传沙盒文件\n2. 编辑UserDefaults内容\n3. 导出应用Localization文本项到Excel表格\n4. 编辑应用iCloud内容\n5. 无限制使用State Master快速存储和恢复应用数据\n6. 一次付费，终生使用\n7. 更多专属功能陆续增加中...\n";
+"restore_purchase" = "恢复购买";
+"pro_success_title" = "恭喜您成为Pro用户🎉";
+"pro_success_info" = "现在您可以使用所有高级功能了，赶快开始吧";
+"pro_success_start" = "开始";
+"pro_upgrade" = "升级";
+"pro_failed_title" = "购买出错了";
+"pro_failed_info" = "感谢您的支持，请稍后重试";
+"pro_feature_title" ="高级功能";
+"pro_rate_title" ="用户评价";
+"pro_restore" ="恢复购买";
+"pro_privacy" ="隐私协议";
+"pro_termsofuse" ="使用条款";
+"pro_thanks" ="感谢使用";
+"pro_yeartip"= "开发者推荐";
+"pro_forevertip"= "一次付费，终生使用";
+
+//Rate
+"rate_title"="请给我们评分";
+"rate_default"="我们一直在努力给您提供更高效的工具，愿成为您开发中的朋友。如果您能给我们评价，我们将非常感激";
+"rate_value_low"="一定要这么残忍吗:(\n请把您宝贵的意见留给我们吧。";
+"rate_value_high"="我们也喜欢你!";
+
+//State Master
+"state_add_title"="快速备份和恢复应用数据";
+"state_sync_succeed"="同步完成";
+"state_sync_failed"="同步失败";
