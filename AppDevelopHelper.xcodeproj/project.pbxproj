@@ -238,8 +238,6 @@
 		1F3AD2CC2048F5A10010A156 /* PresentAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3AD2CA2048F54E0010A156 /* PresentAnimator.m */; };
 		1F3AD2D02048F8190010A156 /* NSView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3AD2CE2048F7B70010A156 /* NSView+Size.m */; };
 		1F3AD2D620493E1F0010A156 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F3AD2D820493E1F0010A156 /* Localizable.strings */; };
-		1F3C14032174B84F005F34F9 /* WoodPeckeriOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C14022174B84F005F34F9 /* WoodPeckeriOSTests.m */; };
-		1F3C14052174B84F005F34F9 /* WoodPeckeriOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F53D30320021AB600A09429 /* WoodPeckeriOS.framework */; };
 		1F3C22611FEE257700421A91 /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C22601FEE257700421A91 /* NetworkService.m */; };
 		1F3ED2251FCC678700B9E30A /* ADHFilePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3ED2231FCC678700B9E30A /* ADHFilePreviewController.m */; };
 		1F3ED2261FCC678700B9E30A /* ADHFilePreviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3ED2241FCC678700B9E30A /* ADHFilePreviewController.xib */; };
@@ -734,13 +732,6 @@
 			remoteGlobalIDString = 1F26E5FC2298D6E700BFD5E0;
 			remoteInfo = WoodpeckerMacOS;
 		};
-		1F3C14062174B84F005F34F9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F457C921F9F65C500C7D604 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1F53D30220021AB600A09429;
-			remoteInfo = WoodPeckeriOS;
-		};
 		1F53D30820021AB600A09429 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1F457C921F9F65C500C7D604 /* Project object */;
@@ -1117,9 +1108,6 @@
 		1F3AD2CE2048F7B70010A156 /* NSView+Size.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSView+Size.m"; sourceTree = "<group>"; };
 		1F3AD2D720493E1F0010A156 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1F3AD2D920493E270010A156 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1F3C14002174B84F005F34F9 /* WoodPeckeriOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WoodPeckeriOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F3C14022174B84F005F34F9 /* WoodPeckeriOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WoodPeckeriOSTests.m; sourceTree = "<group>"; };
-		1F3C14042174B84F005F34F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F3C225F1FEE257700421A91 /* NetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkService.h; sourceTree = "<group>"; };
 		1F3C22601FEE257700421A91 /* NetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkService.m; sourceTree = "<group>"; };
 		1F3ED2221FCC678700B9E30A /* ADHFilePreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADHFilePreviewController.h; sourceTree = "<group>"; };
@@ -1852,14 +1840,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1F3C13FD2174B84F005F34F9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1F3C14052174B84F005F34F9 /* WoodPeckeriOS.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1F457C971F9F65C500C7D604 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2575,15 +2555,6 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		1F3C14012174B84F005F34F9 /* WoodPeckeriOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				1F3C14022174B84F005F34F9 /* WoodPeckeriOSTests.m */,
-				1F3C14042174B84F005F34F9 /* Info.plist */,
-			);
-			path = WoodPeckeriOSTests;
-			sourceTree = "<group>";
-		};
 		1F3ED4DB1FF1377000A98AB4 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -2658,7 +2629,6 @@
 				1F457C9C1F9F65C500C7D604 /* AppDevelopHelper */,
 				1FD0BED61FA21CF000B1BA5C /* ADHClient */,
 				1F53D30420021AB600A09429 /* WoodPeckeriOS */,
-				1F3C14012174B84F005F34F9 /* WoodPeckeriOSTests */,
 				1F26E5E72298D5F700BFD5E0 /* MacClient */,
 				1F26E5FE2298D6E700BFD5E0 /* WoodpeckerMacOS */,
 				1F457C9B1F9F65C500C7D604 /* Products */,
@@ -2674,7 +2644,6 @@
 				1F457C9A1F9F65C500C7D604 /* Woodpecker.app */,
 				1FD0BED51FA21CF000B1BA5C /* ADHClient.app */,
 				1F53D30320021AB600A09429 /* WoodPeckeriOS.framework */,
-				1F3C14002174B84F005F34F9 /* WoodPeckeriOSTests.xctest */,
 				1F26E5E62298D5F600BFD5E0 /* MacClient.app */,
 				1F26E5FD2298D6E700BFD5E0 /* WoodpeckerMacOS.framework */,
 			);
@@ -4439,24 +4408,6 @@
 			productReference = 1F26E5FD2298D6E700BFD5E0 /* WoodpeckerMacOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		1F3C13FF2174B84F005F34F9 /* WoodPeckeriOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1F3C140B2174B84F005F34F9 /* Build configuration list for PBXNativeTarget "WoodPeckeriOSTests" */;
-			buildPhases = (
-				1F3C13FC2174B84F005F34F9 /* Sources */,
-				1F3C13FD2174B84F005F34F9 /* Frameworks */,
-				1F3C13FE2174B84F005F34F9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1F3C14072174B84F005F34F9 /* PBXTargetDependency */,
-			);
-			name = WoodPeckeriOSTests;
-			productName = WoodPeckeriOSTests;
-			productReference = 1F3C14002174B84F005F34F9 /* WoodPeckeriOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		1F457C991F9F65C500C7D604 /* Woodpecker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F457CAB1F9F65C500C7D604 /* Build configuration list for PBXNativeTarget "Woodpecker" */;
@@ -4540,10 +4491,6 @@
 						CreatedOnToolsVersion = 10.1;
 						ProvisioningStyle = Automatic;
 					};
-					1F3C13FF2174B84F005F34F9 = {
-						CreatedOnToolsVersion = 10.0;
-						ProvisioningStyle = Automatic;
-					};
 					1F457C991F9F65C500C7D604 = {
 						CreatedOnToolsVersion = 9.0.1;
 						ProvisioningStyle = Automatic;
@@ -4594,7 +4541,6 @@
 				1F457C991F9F65C500C7D604 /* Woodpecker */,
 				1FD0BED41FA21CF000B1BA5C /* ADHClient */,
 				1F53D30220021AB600A09429 /* WoodPeckeriOS */,
-				1F3C13FF2174B84F005F34F9 /* WoodPeckeriOSTests */,
 				1F26E5E52298D5F600BFD5E0 /* MacClient */,
 				1F26E5FC2298D6E700BFD5E0 /* WoodpeckerMacOS */,
 			);
@@ -4628,13 +4574,6 @@
 				1F26E64A2299344000BFD5E0 /* ADHMacConnectViewController.xib in Resources */,
 				1FF88F90229C27AA001CC3E3 /* assets.xcassets in Resources */,
 				1F26E65522993D9900BFD5E0 /* ADHMacRemoteServiceCell.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1F3C13FE2174B84F005F34F9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4975,14 +4914,6 @@
 				1F26E6302298EA8000BFD5E0 /* ADHFileUtil.m in Sources */,
 				1F26E660229A7A8200BFD5E0 /* ADHLocalizationBundle.m in Sources */,
 				1FF88F79229ADA8A001CC3E3 /* ADHLogger.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1F3C13FC2174B84F005F34F9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1F3C14032174B84F005F34F9 /* WoodPeckeriOSTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5429,11 +5360,6 @@
 			target = 1F26E5FC2298D6E700BFD5E0 /* WoodpeckerMacOS */;
 			targetProxy = 1F28FB3A22A0187000C2CF25 /* PBXContainerItemProxy */;
 		};
-		1F3C14072174B84F005F34F9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1F53D30220021AB600A09429 /* WoodPeckeriOS */;
-			targetProxy = 1F3C14062174B84F005F34F9 /* PBXContainerItemProxy */;
-		};
 		1F53D30920021AB600A09429 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1F53D30220021AB600A09429 /* WoodPeckeriOS */;
@@ -5718,69 +5644,6 @@
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Beta;
-		};
-		1F3C14082174B84F005F34F9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
-				INFOPLIST_FILE = WoodPeckeriOSTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.WoodPeckeriOSTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		1F3C14092174B84F005F34F9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
-				INFOPLIST_FILE = WoodPeckeriOSTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.WoodPeckeriOSTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		1F3C140A2174B84F005F34F9 /* Beta */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
-				INFOPLIST_FILE = WoodPeckeriOSTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.WoodPeckeriOSTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Beta;
 		};
@@ -6281,16 +6144,6 @@
 				1F26E6072298D6E700BFD5E0 /* Debug */,
 				1F26E6082298D6E700BFD5E0 /* Release */,
 				1F26E6092298D6E700BFD5E0 /* Beta */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1F3C140B2174B84F005F34F9 /* Build configuration list for PBXNativeTarget "WoodPeckeriOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1F3C14082174B84F005F34F9 /* Debug */,
-				1F3C14092174B84F005F34F9 /* Release */,
-				1F3C140A2174B84F005F34F9 /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
