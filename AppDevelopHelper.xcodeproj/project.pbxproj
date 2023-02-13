@@ -651,7 +651,6 @@
 		1FE5C60D208C2BC0000EC631 /* ControllerHierarchyTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5C60B208C2BC0000EC631 /* ControllerHierarchyTestViewController.xib */; };
 		1FE5D679280AC18C007E0179 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D677280AC18C007E0179 /* PayViewController.m */; };
 		1FE5D67A280AC18C007E0179 /* PayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5D678280AC18C007E0179 /* PayViewController.xib */; };
-		1FE5D67D280BFB6E007E0179 /* AttributeTyper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D67C280BFB6E007E0179 /* AttributeTyper.m */; };
 		1FE5D680280C098F007E0179 /* NSView+ADHExtends.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D67E280C098F007E0179 /* NSView+ADHExtends.m */; };
 		1FE5D6EE2812F4BE007E0179 /* PayService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D6C22812F4BE007E0179 /* PayService.m */; };
 		1FE5D6EF2812F4BE007E0179 /* NSNotification+XYStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D6CA2812F4BE007E0179 /* NSNotification+XYStore.m */; };
@@ -710,6 +709,7 @@
 		1FF88F90229C27AA001CC3E3 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF88F8F229C27AA001CC3E3 /* assets.xcassets */; };
 		1FF89E4220DDE81A00211CD1 /* LocalizationTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF89E4020DDE81A00211CD1 /* LocalizationTestViewController.m */; };
 		1FF89E4320DDE81A00211CD1 /* LocalizationTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF89E4120DDE81A00211CD1 /* LocalizationTestViewController.xib */; };
+		1FF966FB299A782600D3E4DB /* AttributeTyper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF966FA299A782500D3E4DB /* AttributeTyper.m */; };
 		1FFDCE2924828E4300FB4192 /* StateMasterIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDCE2724828E4300FB4192 /* StateMasterIndexViewController.m */; };
 		1FFDCE2A24828E4300FB4192 /* StateMasterIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FFDCE2824828E4300FB4192 /* StateMasterIndexViewController.xib */; };
 		1FFDCE2D2482911A00FB4192 /* StateMasterService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDCE2C2482911A00FB4192 /* StateMasterService.m */; };
@@ -1700,8 +1700,6 @@
 		1FE5D676280AC18C007E0179 /* PayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayViewController.h; sourceTree = "<group>"; };
 		1FE5D677280AC18C007E0179 /* PayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayViewController.m; sourceTree = "<group>"; };
 		1FE5D678280AC18C007E0179 /* PayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayViewController.xib; sourceTree = "<group>"; };
-		1FE5D67B280BFB6D007E0179 /* AttributeTyper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttributeTyper.h; path = "../../../../../../Desktop/半边山下/code/app-ios/bbsx/bbsx/Component/Util/AttributeTyper.h"; sourceTree = "<group>"; };
-		1FE5D67C280BFB6E007E0179 /* AttributeTyper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttributeTyper.m; path = "../../../../../../Desktop/半边山下/code/app-ios/bbsx/bbsx/Component/Util/AttributeTyper.m"; sourceTree = "<group>"; };
 		1FE5D67E280C098F007E0179 /* NSView+ADHExtends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+ADHExtends.m"; sourceTree = "<group>"; };
 		1FE5D67F280C098F007E0179 /* NSView+ADHExtends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+ADHExtends.h"; sourceTree = "<group>"; };
 		1FE5D6C12812F4BE007E0179 /* PayService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayService.h; sourceTree = "<group>"; };
@@ -1795,6 +1793,8 @@
 		1FF89E3F20DDE81A00211CD1 /* LocalizationTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalizationTestViewController.h; sourceTree = "<group>"; };
 		1FF89E4020DDE81A00211CD1 /* LocalizationTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalizationTestViewController.m; sourceTree = "<group>"; };
 		1FF89E4120DDE81A00211CD1 /* LocalizationTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocalizationTestViewController.xib; sourceTree = "<group>"; };
+		1FF966F9299A782500D3E4DB /* AttributeTyper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeTyper.h; sourceTree = "<group>"; };
+		1FF966FA299A782500D3E4DB /* AttributeTyper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeTyper.m; sourceTree = "<group>"; };
 		1FFAE36B25263AAD007B504C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/WelcomeViewController.strings"; sourceTree = "<group>"; };
 		1FFDCE2624828E4300FB4192 /* StateMasterIndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StateMasterIndexViewController.h; sourceTree = "<group>"; };
 		1FFDCE2724828E4300FB4192 /* StateMasterIndexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StateMasterIndexViewController.m; sourceTree = "<group>"; };
@@ -1963,10 +1963,10 @@
 				1F11B87620A7E8890033B568 /* ADHLogUtil.m */,
 				1FC7DD9F21154C2A004A9520 /* LocalizationUtil.h */,
 				1FC7DDA021154C2A004A9520 /* LocalizationUtil.m */,
+				1FF966F9299A782500D3E4DB /* AttributeTyper.h */,
+				1FF966FA299A782500D3E4DB /* AttributeTyper.m */,
 				1FC9592821E6377700FB7128 /* EntitlementUtil.h */,
 				1FC9592921E6377700FB7128 /* EntitlementUtil.m */,
-				1FE5D67B280BFB6D007E0179 /* AttributeTyper.h */,
-				1FE5D67C280BFB6E007E0179 /* AttributeTyper.m */,
 				1FA5721724C28DDD008795DB /* UIUtil.h */,
 				1FA5721824C28DDD008795DB /* UIUtil.m */,
 			);
@@ -4994,6 +4994,7 @@
 				1FFDCE2D2482911A00FB4192 /* StateMasterService.m in Sources */,
 				1F74F277219704B60012B7CB /* NSString+ADHBase64.m in Sources */,
 				1F5F2F2F2222C33E00B8B0DA /* ADHViewDebugUtil.m in Sources */,
+				1FF966FB299A782600D3E4DB /* AttributeTyper.m in Sources */,
 				1F224BF1249C3FE2004766DC /* CircularProgressView.m in Sources */,
 				1FC7A2721FB9CD5F006780AD /* DBItem.m in Sources */,
 				1F68AE1620E71C7D00CBEB05 /* core.c in Sources */,
@@ -5093,7 +5094,6 @@
 				1F5F2F5F222BC9FC00B8B0DA /* ViewStepperAttributeCell.m in Sources */,
 				1F9F966520C395A8006C5BAC /* NotificationViewController.m in Sources */,
 				1FE5D6EF2812F4BE007E0179 /* NSNotification+XYStore.m in Sources */,
-				1FE5D67D280BFB6E007E0179 /* AttributeTyper.m in Sources */,
 				1F6195F81FCAAC030095D22E /* PlainTextViewController.m in Sources */,
 				1F9F966B20C3AD1C006C5BAC /* NotificationCellItem.m in Sources */,
 				1F224C1E24B01F57004766DC /* HomeViewController.m in Sources */,
