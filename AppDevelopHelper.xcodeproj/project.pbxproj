@@ -545,7 +545,6 @@
 		1FA5721E24C5179D008795DB /* FirebaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5721C24C5179D008795DB /* FirebaseViewController.m */; };
 		1FA5721F24C5179D008795DB /* FirebaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FA5721D24C5179D008795DB /* FirebaseViewController.xib */; };
 		1FA5722424C51818008795DB /* ADHFirebaseActionService.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA5722224C51818008795DB /* ADHFirebaseActionService.h */; };
-		1FA5722624C51AB3008795DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FA5722524C51AB2008795DB /* GoogleService-Info.plist */; };
 		1FA9F91B23561033008029B0 /* ADHKeepAliveService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F06B708217238FD000CAD80 /* ADHKeepAliveService.m */; };
 		1FAC37A71FD3ADBD00D70851 /* NetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC37A51FD3ADBD00D70851 /* NetworkViewController.m */; };
 		1FAC37C01FD6F8CE00D70851 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC37BE1FD6F8CE00D70851 /* TestViewController.m */; };
@@ -1545,7 +1544,6 @@
 		1FA5721D24C5179D008795DB /* FirebaseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirebaseViewController.xib; sourceTree = "<group>"; };
 		1FA5722124C51818008795DB /* ADHFirebaseActionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADHFirebaseActionService.m; sourceTree = "<group>"; };
 		1FA5722224C51818008795DB /* ADHFirebaseActionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADHFirebaseActionService.h; sourceTree = "<group>"; };
-		1FA5722524C51AB2008795DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FAB5A292145018800FAB1BC /* UNLegacyNotificationTrigger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNLegacyNotificationTrigger.h; sourceTree = "<group>"; };
 		1FAC37A41FD3ADBD00D70851 /* NetworkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkViewController.h; sourceTree = "<group>"; };
 		1FAC37A51FD3ADBD00D70851 /* NetworkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkViewController.m; sourceTree = "<group>"; };
@@ -4058,7 +4056,6 @@
 			children = (
 				1F11B87020A7E5C00033B568 /* Components */,
 				1F37C125202AC804004B21E8 /* ADHClient.entitlements */,
-				1FA5722524C51AB2008795DB /* GoogleService-Info.plist */,
 				1FAC37BC1FD6F8B500D70851 /* Test */,
 				1F33D4F51FAEC84E00E81794 /* Organizer */,
 				1F0F0C261FADAE4200E2CCC8 /* Resource */,
@@ -4888,7 +4885,6 @@
 				1FC7A27B1FB9E9B4006780AD /* hi.sqlite in Resources */,
 				1FD0BEE11FA21CF000B1BA5C /* Assets.xcassets in Resources */,
 				1F28C44820DE90B700593A5B /* Extra.strings in Resources */,
-				1FA5722624C51AB3008795DB /* GoogleService-Info.plist in Resources */,
 				1F28C44220DE906900593A5B /* App.strings in Resources */,
 				1FAC37C81FD6FC5600D70851 /* NetworkTestViewController.xib in Resources */,
 				1FAC37C11FD6F8CE00D70851 /* TestViewController.xib in Resources */,
