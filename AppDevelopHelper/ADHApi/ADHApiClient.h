@@ -18,7 +18,6 @@ typedef void (^ADHApiClientFailedBlock)(NSError *error);
  终端接口
  所有回调转到主线程
  */
-@class ADHProtocol;
 @class ADHGCDAsyncSocket;
 @class ADHSession;
 @interface ADHApiClient : NSObject
@@ -35,8 +34,7 @@ typedef void (^ADHApiClientFailedBlock)(NSError *error);
                    payload: (NSData *)payload
            progressChanged: (ADHApiClientProgressBlock)progressBlock
                  onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback
-                overSocket: (ADHGCDAsyncSocket *)socket;
+                  onFailed: (ADHApiClientFailedBlock)failedCallback;
 
 //no progress
 - (void)requestWithService: (NSString *)service
@@ -50,14 +48,6 @@ typedef void (^ADHApiClientFailedBlock)(NSError *error);
                  onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
                   onFailed: (ADHApiClientFailedBlock)failedCallback;
 
-//with progress
-- (void)requestWithService: (NSString *)service
-                    action: (NSString *)action
-                      body: (NSDictionary *)body
-                   payload: (NSData *)payload
-           progressChanged: (ADHApiClientProgressBlock)progressBlock
-                 onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback;
 
 - (void)requestWithService: (NSString *)service
                     action: (NSString *)action

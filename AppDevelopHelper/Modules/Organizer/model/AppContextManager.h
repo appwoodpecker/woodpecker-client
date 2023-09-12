@@ -10,9 +10,8 @@
 #import "AppContext.h"
 #import "MacConnector.h"
 
-extern NSString *const kAppContextAppStatusUpdate;
-
 NS_ASSUME_NONNULL_BEGIN
+extern NSString *const kAppContextAppStatusUpdate;
 
 @protocol AppContextManagerObserver;
 @interface AppContextManager : NSObject <MacConnectorDelegate>
@@ -31,22 +30,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)removeApp: (AppContext *)context;
 
-
-
 @end
-
-NS_ASSUME_NONNULL_END
 
 @protocol AppContextManagerObserver <NSObject>
 
 @optional
 //new app
-- (void)appDidAdd: (AppContext *)context;
+- (void)appDidAdd:(AppContext *)context;
 //remove from list
-- (void)appWillRemove: (AppContext *)context;
+- (void)appWillRemove:(AppContext *)context;
 //connect, disconnect
-- (void)appConnectionStateUpdate: (AppContext *)context;
+- (void)appConnectionStateUpdate:(AppContext *)context;
 //top app update
-- (void)topContextUpdate: (AppContext *)context;
+- (void)topContextUpdate:(AppContext *)context;
 
 @end
+
+NS_ASSUME_NONNULL_END

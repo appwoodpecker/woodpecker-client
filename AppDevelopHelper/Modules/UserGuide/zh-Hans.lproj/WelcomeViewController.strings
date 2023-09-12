@@ -6,10 +6,10 @@
 "62g-Ap-Jvd.title" = "下一步";
 
 /* Class = "NSTextFieldCell"; title = "We use local network connection to transfer data between mac and your app, on iOS 14, system add a new privacy about local network usage,  we need add two keys in your app's Info.plist file:"; ObjectID = "9Fa-ew-PY5"; */
-"9Fa-ew-PY5.title" = "我们使用本地网络在Mac和App之间传输数据，iOS 14系统对本地网络使用增加了权限，因此我们需要您在App应用的Info.plist增加以下两项：";
+"9Fa-ew-PY5.title" = "我们支持USB或本地Wifi进行通信，如果您使用本地Wifi通信，由于iOS 14系统对本地网络使用增加了权限，因此需要您在App应用的Info.plist增加以下两项：";
 
 /* Class = "NSTextFieldCell"; title = "Local Network Configuration"; ObjectID = "N6l-UF-P8k"; */
-"N6l-UF-P8k.title" = "本地网络配置";
+"N6l-UF-P8k.title" = "通信设置";
 
 /* Class = "NSTextFieldCell"; title = "1.  Add description in Privacy - Local Network Usage Description"; ObjectID = "Sxw-UL-2MX"; */
 "Sxw-UL-2MX.title" = "1. 在Privacy - Local Network Usage Description 添加本地网络描述";
@@ -24,13 +24,13 @@
 "ffo-aS-La8.title" = "3. 手动安装";
 
 /* Class = "NSTextFieldCell"; title = "Run your app,  have fun"; ObjectID = "mW8-ch-ow5"; */
-"mW8-ch-ow5.title" = "运行App，立刻体验";
+"mW8-ch-ow5.title" = "运行App，立刻使用";
 
 /* Class = "NSButtonCell"; title = "Next"; ObjectID = "nG7-xe-5qy"; */
 "nG7-xe-5qy.title" = "下一步";
 
 /* Class = "NSTextFieldCell"; title = "they will connect automatically, please ensure your iOS device and your mac are in the same network."; ObjectID = "pXH-Kb-R0n"; */
-"pXH-Kb-R0n.title" = "Woodpecker将尝试与您的App建立连接，请确认App设备和与Mac在同一网络下，您将在App首次运行时看到本地网络权限弹窗，请允许此权限";
+"pXH-Kb-R0n.title" = "Woodpecker将尝试与您的App建立连接，请连接USB电缆，或者如果您使用Wifi无线连接，请确认App设备和与Mac在同一网络下，您将在App首次运行时看到本地网络权限弹窗，请允许此权限";
 
 /* Class = "NSButtonCell"; title = "Need help ?"; ObjectID = "pwp-4P-vB2"; */
 "pwp-4P-vB2.title" = "需要帮助 ?";

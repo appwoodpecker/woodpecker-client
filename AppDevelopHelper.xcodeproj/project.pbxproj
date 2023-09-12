@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F052678227D8AD4003D84C1 /* WebDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F052676227D8AD4003D84C1 /* WebDebugViewController.m */; };
 		1F052679227D8AD4003D84C1 /* WebDebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F052677227D8AD4003D84C1 /* WebDebugViewController.xib */; };
+		1F05AF452AB0C80B00D08DBF /* ADHAppConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0C3A1FAEB0DB00E2CCC8 /* ADHAppConnector.m */; };
 		1F06B70A217238FD000CAD80 /* ADHKeepAliveService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F06B708217238FD000CAD80 /* ADHKeepAliveService.m */; };
 		1F06B70B217238FD000CAD80 /* ADHKeepAliveService.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F06B709217238FD000CAD80 /* ADHKeepAliveService.h */; };
 		1F085EF62520B4F5008A91E3 /* ViewInsetsAttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F085EF52520B4F5008A91E3 /* ViewInsetsAttributeCell.m */; };
@@ -97,7 +98,6 @@
 		1F26E6172298E30700BFD5E0 /* ADHUserDefaultsActionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCC1B8C204F6A6600E018EE /* ADHUserDefaultsActionService.m */; };
 		1F26E6182298E30D00BFD5E0 /* ADHAppInfoActionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F33D50C1FAF590A00E81794 /* ADHAppInfoActionService.m */; };
 		1F26E6192298E31200BFD5E0 /* ADHAppDefaultActionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F33D5031FAF004E00E81794 /* ADHAppDefaultActionService.m */; };
-		1F26E61B2298E7A700BFD5E0 /* ADHAppConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0C3A1FAEB0DB00E2CCC8 /* ADHAppConnector.m */; };
 		1F26E61D2298E7C300BFD5E0 /* ADHDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0BC41FAD6D9C00E2CCC8 /* ADHDispatcher.m */; };
 		1F26E61E2298E7C300BFD5E0 /* ADHService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0BD01FAD6E0600E2CCC8 /* ADHService.m */; };
 		1F26E61F2298E7C300BFD5E0 /* ADHRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0BC11FAD6D9C00E2CCC8 /* ADHRequest.m */; };
@@ -105,7 +105,7 @@
 		1F26E6212298E7C800BFD5E0 /* ADHApiCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F967420C3FE2C006C5BAC /* ADHApiCommon.m */; };
 		1F26E6222298E7D800BFD5E0 /* NSObject+ADHUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA18FA51FA4BD7400DC85E2 /* NSObject+ADHUtil.m */; };
 		1F26E6232298E7E000BFD5E0 /* ADHGCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CCB1F9F92AD00C7D604 /* ADHGCDAsyncSocket.m */; };
-		1F26E6252298E7E700BFD5E0 /* ADHProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CB41F9F679500C7D604 /* ADHProtocol.m */; };
+		1F26E6252298E7E700BFD5E0 /* ADHSocketChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CB41F9F679500C7D604 /* ADHSocketChannel.m */; };
 		1F26E6262298E7E700BFD5E0 /* ADHPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CB71F9F749800C7D604 /* ADHPRequest.m */; };
 		1F26E6272298E7E700BFD5E0 /* ADHPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CBA1F9F74A500C7D604 /* ADHPResponse.m */; };
 		1F26E6282298E7E700BFD5E0 /* ADHSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CC01F9F779300C7D604 /* ADHSession.m */; };
@@ -186,6 +186,27 @@
 		1F3257871FE510AD00D165D0 /* NetworkPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3257841FE510AD00D165D0 /* NetworkPreviewViewController.xib */; };
 		1F3257941FE65B3F00D165D0 /* WebDebuggerTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3257901FE65B3F00D165D0 /* WebDebuggerTestViewController.xib */; };
 		1F3257951FE6C15400D165D0 /* WebDebuggerTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F32578F1FE65B3F00D165D0 /* WebDebuggerTestViewController.m */; };
+		1F3310F42AA2BE2800EBBE26 /* ADHPTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3310EA2AA2BE2800EBBE26 /* ADHPTUSBHub.m */; };
+		1F3310F52AA2BE2800EBBE26 /* ADHPTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3310EA2AA2BE2800EBBE26 /* ADHPTUSBHub.m */; };
+		1F3310F62AA2BE2800EBBE26 /* ADHPTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3310EB2AA2BE2800EBBE26 /* ADHPTProtocol.m */; };
+		1F3310F72AA2BE2800EBBE26 /* ADHPTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3310EB2AA2BE2800EBBE26 /* ADHPTProtocol.m */; };
+		1F3310F92AA2BE2800EBBE26 /* ADHPTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3310ED2AA2BE2800EBBE26 /* ADHPTChannel.m */; };
+		1F3310FA2AA2BE2800EBBE26 /* ADHPTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3310ED2AA2BE2800EBBE26 /* ADHPTChannel.m */; };
+		1F33110A2AA3069E00EBBE26 /* ADHUsbChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3311082AA3069E00EBBE26 /* ADHUsbChannel.m */; };
+		1F33110C2AA3076B00EBBE26 /* ADHUsbChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3311082AA3069E00EBBE26 /* ADHUsbChannel.m */; };
+		1F33110D2AA3076D00EBBE26 /* ADHUsbChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3311082AA3069E00EBBE26 /* ADHUsbChannel.m */; };
+		1F33110F2AA3081700EBBE26 /* ADHProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3311032AA3047600EBBE26 /* ADHProtocol.m */; };
+		1F3311102AA3081800EBBE26 /* ADHProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3311032AA3047600EBBE26 /* ADHProtocol.m */; };
+		1F3311112AA3081900EBBE26 /* ADHProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3311032AA3047600EBBE26 /* ADHProtocol.m */; };
+		1F3311122AA31F8400EBBE26 /* ADHPTUSBHub.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3310EA2AA2BE2800EBBE26 /* ADHPTUSBHub.m */; };
+		1F3311132AA31F8400EBBE26 /* ADHPTChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3310ED2AA2BE2800EBBE26 /* ADHPTChannel.m */; };
+		1F3311142AA31F8400EBBE26 /* ADHPTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3310EB2AA2BE2800EBBE26 /* ADHPTProtocol.m */; };
+		1F3311172AA33C9700EBBE26 /* ADHDispatcher+Default.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F3311152AA33C9700EBBE26 /* ADHDispatcher+Default.h */; };
+		1F3311182AA33C9700EBBE26 /* ADHDispatcher+Default.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3311162AA33C9700EBBE26 /* ADHDispatcher+Default.m */; };
+		1F3311312AA6187800EBBE26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3311302AA6187800EBBE26 /* main.m */; };
+		1F33113C2AA61E3100EBBE26 /* install.sh in Resources */ = {isa = PBXBuildFile; fileRef = 1F33113A2AA61DF600EBBE26 /* install.sh */; };
+		1F3311402AA8BF4400EBBE26 /* ADHUsb.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F33113F2AA8BF4400EBBE26 /* ADHUsb.m */; };
+		1F3311432AAC1E8700EBBE26 /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3311422AAC1E8700EBBE26 /* DeviceManager.m */; };
 		1F33659F213B606A00D7A10A /* KeyChainValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F33659E213B606A00D7A10A /* KeyChainValueCell.m */; };
 		1F3365A1213B60CF00D7A10A /* KeyChainValueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3365A0213B60CF00D7A10A /* KeyChainValueCell.xib */; };
 		1F3365A5213B82BE00D7A10A /* KeyChainItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3365A4213B82BE00D7A10A /* KeyChainItem.m */; };
@@ -256,7 +277,7 @@
 		1F457CA11F9F65C500C7D604 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F457CA01F9F65C500C7D604 /* Assets.xcassets */; };
 		1F457CA41F9F65C500C7D604 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F457CA21F9F65C500C7D604 /* MainMenu.xib */; };
 		1F457CA71F9F65C500C7D604 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CA61F9F65C500C7D604 /* main.m */; };
-		1F457CB51F9F679500C7D604 /* ADHProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CB41F9F679500C7D604 /* ADHProtocol.m */; };
+		1F457CB51F9F679500C7D604 /* ADHSocketChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CB41F9F679500C7D604 /* ADHSocketChannel.m */; };
 		1F457CB81F9F749800C7D604 /* ADHPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CB71F9F749800C7D604 /* ADHPRequest.m */; };
 		1F457CBB1F9F74A500C7D604 /* ADHPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CBA1F9F74A500C7D604 /* ADHPResponse.m */; };
 		1F457CC11F9F779300C7D604 /* ADHSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CC01F9F779300C7D604 /* ADHSession.m */; };
@@ -311,7 +332,7 @@
 		1F53D31420021EB600A09429 /* ADHRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0BC11FAD6D9C00E2CCC8 /* ADHRequest.m */; };
 		1F53D31520021EBB00A09429 /* NSObject+ADHUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA18FA51FA4BD7400DC85E2 /* NSObject+ADHUtil.m */; };
 		1F53D31620021EBE00A09429 /* ADHGCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CCB1F9F92AD00C7D604 /* ADHGCDAsyncSocket.m */; };
-		1F53D31820021EC200A09429 /* ADHProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CB41F9F679500C7D604 /* ADHProtocol.m */; };
+		1F53D31820021EC200A09429 /* ADHSocketChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CB41F9F679500C7D604 /* ADHSocketChannel.m */; };
 		1F53D31920021EDC00A09429 /* ADHPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CB71F9F749800C7D604 /* ADHPRequest.m */; };
 		1F53D31A20021EE000A09429 /* ADHPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CBA1F9F74A500C7D604 /* ADHPResponse.m */; };
 		1F53D31B20021EE300A09429 /* ADHSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F457CC01F9F779300C7D604 /* ADHSession.m */; };
@@ -398,13 +419,6 @@
 		1F6195FE1FCAAFC90095D22E /* FileTypeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6195FD1FCAAFC90095D22E /* FileTypeUtil.m */; };
 		1F630AE82518268E00054038 /* UtilityTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F630AE62518268E00054038 /* UtilityTestViewController.m */; };
 		1F630AE92518268E00054038 /* UtilityTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F630AE72518268E00054038 /* UtilityTestViewController.xib */; };
-		1F6419712471301E005919BE /* DeviceManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64196F2471301E005919BE /* DeviceManageViewController.m */; };
-		1F6419722471301E005919BE /* DeviceManageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F6419702471301E005919BE /* DeviceManageViewController.xib */; };
-		1F64197A2478CD59005919BE /* DeviceManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6419792478CD59005919BE /* DeviceManageCell.m */; };
-		1F64197C2478CD71005919BE /* DeviceManageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F64197B2478CD71005919BE /* DeviceManageCell.xib */; };
-		1F64198424791B89005919BE /* ADHAllowDeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64198324791B89005919BE /* ADHAllowDeviceUtil.m */; };
-		1F64198524791B96005919BE /* ADHAllowDeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64198324791B89005919BE /* ADHAllowDeviceUtil.m */; };
-		1F64198624791B97005919BE /* ADHAllowDeviceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F64198324791B89005919BE /* ADHAllowDeviceUtil.m */; };
 		1F65DF952250954E00AB10A2 /* RateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F65DF932250954E00AB10A2 /* RateViewController.m */; };
 		1F65DF9F2250A0B200AB10A2 /* RateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F65DFA12250A0B200AB10A2 /* RateViewController.xib */; };
 		1F68AE0E20E71C7D00CBEB05 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F68ADFB20E71C7D00CBEB05 /* zip.c */; };
@@ -531,6 +545,7 @@
 		1FA5721E24C5179D008795DB /* FirebaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5721C24C5179D008795DB /* FirebaseViewController.m */; };
 		1FA5721F24C5179D008795DB /* FirebaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FA5721D24C5179D008795DB /* FirebaseViewController.xib */; };
 		1FA5722424C51818008795DB /* ADHFirebaseActionService.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA5722224C51818008795DB /* ADHFirebaseActionService.h */; };
+		1FA5722624C51AB3008795DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FA5722524C51AB2008795DB /* GoogleService-Info.plist */; };
 		1FA9F91B23561033008029B0 /* ADHKeepAliveService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F06B708217238FD000CAD80 /* ADHKeepAliveService.m */; };
 		1FAC37A71FD3ADBD00D70851 /* NetworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC37A51FD3ADBD00D70851 /* NetworkViewController.m */; };
 		1FAC37C01FD6F8CE00D70851 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC37BE1FD6F8CE00D70851 /* TestViewController.m */; };
@@ -651,6 +666,7 @@
 		1FE5C60D208C2BC0000EC631 /* ControllerHierarchyTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5C60B208C2BC0000EC631 /* ControllerHierarchyTestViewController.xib */; };
 		1FE5D679280AC18C007E0179 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D677280AC18C007E0179 /* PayViewController.m */; };
 		1FE5D67A280AC18C007E0179 /* PayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5D678280AC18C007E0179 /* PayViewController.xib */; };
+		1FE5D67D280BFB6E007E0179 /* AttributeTyper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D67C280BFB6E007E0179 /* AttributeTyper.m */; };
 		1FE5D680280C098F007E0179 /* NSView+ADHExtends.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D67E280C098F007E0179 /* NSView+ADHExtends.m */; };
 		1FE5D6EE2812F4BE007E0179 /* PayService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D6C22812F4BE007E0179 /* PayService.m */; };
 		1FE5D6EF2812F4BE007E0179 /* NSNotification+XYStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D6CA2812F4BE007E0179 /* NSNotification+XYStore.m */; };
@@ -709,7 +725,6 @@
 		1FF88F90229C27AA001CC3E3 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF88F8F229C27AA001CC3E3 /* assets.xcassets */; };
 		1FF89E4220DDE81A00211CD1 /* LocalizationTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF89E4020DDE81A00211CD1 /* LocalizationTestViewController.m */; };
 		1FF89E4320DDE81A00211CD1 /* LocalizationTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF89E4120DDE81A00211CD1 /* LocalizationTestViewController.xib */; };
-		1FF966FB299A782600D3E4DB /* AttributeTyper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF966FA299A782500D3E4DB /* AttributeTyper.m */; };
 		1FFDCE2924828E4300FB4192 /* StateMasterIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDCE2724828E4300FB4192 /* StateMasterIndexViewController.m */; };
 		1FFDCE2A24828E4300FB4192 /* StateMasterIndexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FFDCE2824828E4300FB4192 /* StateMasterIndexViewController.xib */; };
 		1FFDCE2D2482911A00FB4192 /* StateMasterService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDCE2C2482911A00FB4192 /* StateMasterService.m */; };
@@ -752,6 +767,24 @@
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F3311292AA6181800EBBE26 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 12;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F33112C2AA6187800EBBE26 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 		1F53D30F20021AB600A09429 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -1018,6 +1051,27 @@
 		1F32578E1FE65B3F00D165D0 /* WebDebuggerTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebDebuggerTestViewController.h; sourceTree = "<group>"; };
 		1F32578F1FE65B3F00D165D0 /* WebDebuggerTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebDebuggerTestViewController.m; sourceTree = "<group>"; };
 		1F3257901FE65B3F00D165D0 /* WebDebuggerTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebDebuggerTestViewController.xib; sourceTree = "<group>"; };
+		1F3310EA2AA2BE2800EBBE26 /* ADHPTUSBHub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADHPTUSBHub.m; sourceTree = "<group>"; };
+		1F3310EB2AA2BE2800EBBE26 /* ADHPTProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADHPTProtocol.m; sourceTree = "<group>"; };
+		1F3310ED2AA2BE2800EBBE26 /* ADHPTChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADHPTChannel.m; sourceTree = "<group>"; };
+		1F3310EE2AA2BE2800EBBE26 /* ADHPTDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADHPTDefines.h; sourceTree = "<group>"; };
+		1F3310EF2AA2BE2800EBBE26 /* ADHPTPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADHPTPrivate.h; sourceTree = "<group>"; };
+		1F3310F02AA2BE2800EBBE26 /* ADHPTProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADHPTProtocol.h; sourceTree = "<group>"; };
+		1F3310F12AA2BE2800EBBE26 /* ADHPTUSBHub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADHPTUSBHub.h; sourceTree = "<group>"; };
+		1F3310F22AA2BE2800EBBE26 /* ADHPTChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADHPTChannel.h; sourceTree = "<group>"; };
+		1F3311022AA3047600EBBE26 /* ADHProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADHProtocol.h; sourceTree = "<group>"; };
+		1F3311032AA3047600EBBE26 /* ADHProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADHProtocol.m; sourceTree = "<group>"; };
+		1F3311072AA3069E00EBBE26 /* ADHUsbChannel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADHUsbChannel.h; sourceTree = "<group>"; };
+		1F3311082AA3069E00EBBE26 /* ADHUsbChannel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADHUsbChannel.m; sourceTree = "<group>"; };
+		1F3311152AA33C9700EBBE26 /* ADHDispatcher+Default.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ADHDispatcher+Default.h"; sourceTree = "<group>"; };
+		1F3311162AA33C9700EBBE26 /* ADHDispatcher+Default.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ADHDispatcher+Default.m"; sourceTree = "<group>"; };
+		1F33112E2AA6187800EBBE26 /* woodpk */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = woodpk; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F3311302AA6187800EBBE26 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1F33113A2AA61DF600EBBE26 /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install.sh; sourceTree = "<group>"; };
+		1F33113E2AA8BF4400EBBE26 /* ADHUsb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADHUsb.h; sourceTree = "<group>"; };
+		1F33113F2AA8BF4400EBBE26 /* ADHUsb.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADHUsb.m; sourceTree = "<group>"; };
+		1F3311412AAC1E8700EBBE26 /* DeviceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceManager.h; sourceTree = "<group>"; };
+		1F3311422AAC1E8700EBBE26 /* DeviceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceManager.m; sourceTree = "<group>"; };
 		1F33659D213B606A00D7A10A /* KeyChainValueCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyChainValueCell.h; sourceTree = "<group>"; };
 		1F33659E213B606A00D7A10A /* KeyChainValueCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyChainValueCell.m; sourceTree = "<group>"; };
 		1F3365A0213B60CF00D7A10A /* KeyChainValueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyChainValueCell.xib; sourceTree = "<group>"; };
@@ -1141,8 +1195,8 @@
 		1F457CA51F9F65C500C7D604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F457CA61F9F65C500C7D604 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F457CA81F9F65C500C7D604 /* AppDevelopHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppDevelopHelper.entitlements; sourceTree = "<group>"; };
-		1F457CB31F9F679500C7D604 /* ADHProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADHProtocol.h; sourceTree = "<group>"; };
-		1F457CB41F9F679500C7D604 /* ADHProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADHProtocol.m; sourceTree = "<group>"; };
+		1F457CB31F9F679500C7D604 /* ADHSocketChannel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADHSocketChannel.h; sourceTree = "<group>"; };
+		1F457CB41F9F679500C7D604 /* ADHSocketChannel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADHSocketChannel.m; sourceTree = "<group>"; };
 		1F457CB61F9F749800C7D604 /* ADHPRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADHPRequest.h; sourceTree = "<group>"; };
 		1F457CB71F9F749800C7D604 /* ADHPRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADHPRequest.m; sourceTree = "<group>"; };
 		1F457CB91F9F74A500C7D604 /* ADHPResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADHPResponse.h; sourceTree = "<group>"; };
@@ -1300,14 +1354,6 @@
 		1F630AE52518268E00054038 /* UtilityTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UtilityTestViewController.h; sourceTree = "<group>"; };
 		1F630AE62518268E00054038 /* UtilityTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UtilityTestViewController.m; sourceTree = "<group>"; };
 		1F630AE72518268E00054038 /* UtilityTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UtilityTestViewController.xib; sourceTree = "<group>"; };
-		1F64196E2471301E005919BE /* DeviceManageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceManageViewController.h; sourceTree = "<group>"; };
-		1F64196F2471301E005919BE /* DeviceManageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceManageViewController.m; sourceTree = "<group>"; };
-		1F6419702471301E005919BE /* DeviceManageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceManageViewController.xib; sourceTree = "<group>"; };
-		1F6419782478CD59005919BE /* DeviceManageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceManageCell.h; sourceTree = "<group>"; };
-		1F6419792478CD59005919BE /* DeviceManageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceManageCell.m; sourceTree = "<group>"; };
-		1F64197B2478CD71005919BE /* DeviceManageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceManageCell.xib; sourceTree = "<group>"; };
-		1F64198224791B89005919BE /* ADHAllowDeviceUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADHAllowDeviceUtil.h; sourceTree = "<group>"; };
-		1F64198324791B89005919BE /* ADHAllowDeviceUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADHAllowDeviceUtil.m; sourceTree = "<group>"; };
 		1F65DF922250954E00AB10A2 /* RateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RateViewController.h; sourceTree = "<group>"; };
 		1F65DF932250954E00AB10A2 /* RateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RateViewController.m; sourceTree = "<group>"; };
 		1F65DFA02250A0B200AB10A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/RateViewController.xib; sourceTree = "<group>"; };
@@ -1499,6 +1545,7 @@
 		1FA5721D24C5179D008795DB /* FirebaseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirebaseViewController.xib; sourceTree = "<group>"; };
 		1FA5722124C51818008795DB /* ADHFirebaseActionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADHFirebaseActionService.m; sourceTree = "<group>"; };
 		1FA5722224C51818008795DB /* ADHFirebaseActionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADHFirebaseActionService.h; sourceTree = "<group>"; };
+		1FA5722524C51AB2008795DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FAB5A292145018800FAB1BC /* UNLegacyNotificationTrigger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNLegacyNotificationTrigger.h; sourceTree = "<group>"; };
 		1FAC37A41FD3ADBD00D70851 /* NetworkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkViewController.h; sourceTree = "<group>"; };
 		1FAC37A51FD3ADBD00D70851 /* NetworkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkViewController.m; sourceTree = "<group>"; };
@@ -1700,6 +1747,8 @@
 		1FE5D676280AC18C007E0179 /* PayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayViewController.h; sourceTree = "<group>"; };
 		1FE5D677280AC18C007E0179 /* PayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayViewController.m; sourceTree = "<group>"; };
 		1FE5D678280AC18C007E0179 /* PayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayViewController.xib; sourceTree = "<group>"; };
+		1FE5D67B280BFB6D007E0179 /* AttributeTyper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttributeTyper.h; path = "../../../../../../Desktop/半边山下/code/app-ios/bbsx/bbsx/Component/Util/AttributeTyper.h"; sourceTree = "<group>"; };
+		1FE5D67C280BFB6E007E0179 /* AttributeTyper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttributeTyper.m; path = "../../../../../../Desktop/半边山下/code/app-ios/bbsx/bbsx/Component/Util/AttributeTyper.m"; sourceTree = "<group>"; };
 		1FE5D67E280C098F007E0179 /* NSView+ADHExtends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+ADHExtends.m"; sourceTree = "<group>"; };
 		1FE5D67F280C098F007E0179 /* NSView+ADHExtends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+ADHExtends.h"; sourceTree = "<group>"; };
 		1FE5D6C12812F4BE007E0179 /* PayService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayService.h; sourceTree = "<group>"; };
@@ -1793,8 +1842,6 @@
 		1FF89E3F20DDE81A00211CD1 /* LocalizationTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalizationTestViewController.h; sourceTree = "<group>"; };
 		1FF89E4020DDE81A00211CD1 /* LocalizationTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalizationTestViewController.m; sourceTree = "<group>"; };
 		1FF89E4120DDE81A00211CD1 /* LocalizationTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocalizationTestViewController.xib; sourceTree = "<group>"; };
-		1FF966F9299A782500D3E4DB /* AttributeTyper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeTyper.h; sourceTree = "<group>"; };
-		1FF966FA299A782500D3E4DB /* AttributeTyper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeTyper.m; sourceTree = "<group>"; };
 		1FFAE36B25263AAD007B504C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/WelcomeViewController.strings"; sourceTree = "<group>"; };
 		1FFDCE2624828E4300FB4192 /* StateMasterIndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StateMasterIndexViewController.h; sourceTree = "<group>"; };
 		1FFDCE2724828E4300FB4192 /* StateMasterIndexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StateMasterIndexViewController.m; sourceTree = "<group>"; };
@@ -1837,6 +1884,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F28FBA022A2C52F00C2CF25 /* UserNotifications.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F33112B2AA6187800EBBE26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1939,7 +1993,7 @@
 			isa = PBXGroup;
 			children = (
 				1F0F0BEE1FAD786F00E2CCC8 /* component_util.h */,
-				1F74F267219704B60012B7CB /* 加密 */,
+				1F74F267219704B60012B7CB /* Encrypt */,
 				1F3234611FBFFB32007C2AA7 /* ADHUserDefaultUtil.h */,
 				1F3234601FBFFB32007C2AA7 /* ADHUserDefaultUtil.m */,
 				1F4C05CA1FB3463F00A0AFD1 /* ADHFileHash.h */,
@@ -1958,15 +2012,15 @@
 				1FE5C5F02083888C000EC631 /* UrlUtil.m */,
 				1F11B86B20A7D56F0033B568 /* FunctionUtil.h */,
 				1F11B86C20A7D56F0033B568 /* FunctionUtil.m */,
-				1F53D2EA2001D73300A09429 /* 事件通知 */,
+				1F53D2EA2001D73300A09429 /* Notification */,
 				1F11B87520A7E8890033B568 /* ADHLogUtil.h */,
 				1F11B87620A7E8890033B568 /* ADHLogUtil.m */,
 				1FC7DD9F21154C2A004A9520 /* LocalizationUtil.h */,
 				1FC7DDA021154C2A004A9520 /* LocalizationUtil.m */,
-				1FF966F9299A782500D3E4DB /* AttributeTyper.h */,
-				1FF966FA299A782500D3E4DB /* AttributeTyper.m */,
 				1FC9592821E6377700FB7128 /* EntitlementUtil.h */,
 				1FC9592921E6377700FB7128 /* EntitlementUtil.m */,
+				1FE5D67B280BFB6D007E0179 /* AttributeTyper.h */,
+				1FE5D67C280BFB6E007E0179 /* AttributeTyper.m */,
 				1FA5721724C28DDD008795DB /* UIUtil.h */,
 				1FA5721824C28DDD008795DB /* UIUtil.m */,
 			);
@@ -2072,10 +2126,10 @@
 				1F3234681FC07247007C2AA7 /* ADHRemoteService.m */,
 				1F0F0C3B1FAEB0DC00E2CCC8 /* MacConnector.h */,
 				1F0F0C391FAEB0DB00E2CCC8 /* MacConnector.m */,
+				1F33113E2AA8BF4400EBBE26 /* ADHUsb.h */,
+				1F33113F2AA8BF4400EBBE26 /* ADHUsb.m */,
 				1F32346B1FC072C0007C2AA7 /* ADHApp.h */,
 				1F32346C1FC072C0007C2AA7 /* ADHApp.m */,
-				1F64198224791B89005919BE /* ADHAllowDeviceUtil.h */,
-				1F64198324791B89005919BE /* ADHAllowDeviceUtil.m */,
 			);
 			path = Connector;
 			sourceTree = "<group>";
@@ -2352,6 +2406,50 @@
 			path = WebDebugger;
 			sourceTree = "<group>";
 		};
+		1F3310E52AA2BB1200EBBE26 /* Wireless */ = {
+			isa = PBXGroup;
+			children = (
+				1F457CC81F9F92AD00C7D604 /* GCD */,
+				1F457CB31F9F679500C7D604 /* ADHSocketChannel.h */,
+				1F457CB41F9F679500C7D604 /* ADHSocketChannel.m */,
+			);
+			path = Wireless;
+			sourceTree = "<group>";
+		};
+		1F3310E62AA2BB2000EBBE26 /* Usb */ = {
+			isa = PBXGroup;
+			children = (
+				1F3310E92AA2BE2800EBBE26 /* peertalk */,
+				1F3311072AA3069E00EBBE26 /* ADHUsbChannel.h */,
+				1F3311082AA3069E00EBBE26 /* ADHUsbChannel.m */,
+			);
+			path = Usb;
+			sourceTree = "<group>";
+		};
+		1F3310E92AA2BE2800EBBE26 /* peertalk */ = {
+			isa = PBXGroup;
+			children = (
+				1F3310EA2AA2BE2800EBBE26 /* ADHPTUSBHub.m */,
+				1F3310EB2AA2BE2800EBBE26 /* ADHPTProtocol.m */,
+				1F3310ED2AA2BE2800EBBE26 /* ADHPTChannel.m */,
+				1F3310EE2AA2BE2800EBBE26 /* ADHPTDefines.h */,
+				1F3310EF2AA2BE2800EBBE26 /* ADHPTPrivate.h */,
+				1F3310F02AA2BE2800EBBE26 /* ADHPTProtocol.h */,
+				1F3310F12AA2BE2800EBBE26 /* ADHPTUSBHub.h */,
+				1F3310F22AA2BE2800EBBE26 /* ADHPTChannel.h */,
+			);
+			path = peertalk;
+			sourceTree = "<group>";
+		};
+		1F33112F2AA6187800EBBE26 /* woodpk */ = {
+			isa = PBXGroup;
+			children = (
+				1F33113A2AA61DF600EBBE26 /* install.sh */,
+				1F3311302AA6187800EBBE26 /* main.m */,
+			);
+			path = woodpk;
+			sourceTree = "<group>";
+		};
 		1F33659C213B604D00D7A10A /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -2376,6 +2474,8 @@
 			children = (
 				1F33D4F21FAEBFEE00E81794 /* MacOrganizer.h */,
 				1F33D4F31FAEBFEE00E81794 /* MacOrganizer.m */,
+				1F3311412AAC1E8700EBBE26 /* DeviceManager.h */,
+				1F3311422AAC1E8700EBBE26 /* DeviceManager.m */,
 			);
 			path = Organizer;
 			sourceTree = "<group>";
@@ -2631,6 +2731,7 @@
 				1F53D30420021AB600A09429 /* WoodPeckeriOS */,
 				1F26E5E72298D5F700BFD5E0 /* MacClient */,
 				1F26E5FE2298D6E700BFD5E0 /* WoodpeckerMacOS */,
+				1F33112F2AA6187800EBBE26 /* woodpk */,
 				1F457C9B1F9F65C500C7D604 /* Products */,
 				1FDB2A8D219C615F00A1A0AA /* Frameworks */,
 				97533ED13A328944C6E6DCE1 /* Pods */,
@@ -2646,6 +2747,7 @@
 				1F53D30320021AB600A09429 /* WoodPeckeriOS.framework */,
 				1F26E5E62298D5F600BFD5E0 /* MacClient.app */,
 				1F26E5FD2298D6E700BFD5E0 /* WoodpeckerMacOS.framework */,
+				1F33112E2AA6187800EBBE26 /* woodpk */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2672,10 +2774,11 @@
 		1F457CB21F9F674000C7D604 /* ADHProtocol */ = {
 			isa = PBXGroup;
 			children = (
+				1F3311022AA3047600EBBE26 /* ADHProtocol.h */,
+				1F3311032AA3047600EBBE26 /* ADHProtocol.m */,
+				1F3310E62AA2BB2000EBBE26 /* Usb */,
+				1F3310E52AA2BB1200EBBE26 /* Wireless */,
 				1FA18FA31FA4BD2000DC85E2 /* Util */,
-				1F457CC81F9F92AD00C7D604 /* GCD */,
-				1F457CB31F9F679500C7D604 /* ADHProtocol.h */,
-				1F457CB41F9F679500C7D604 /* ADHProtocol.m */,
 				1F457CB61F9F749800C7D604 /* ADHPRequest.h */,
 				1F457CB71F9F749800C7D604 /* ADHPRequest.m */,
 				1F457CB91F9F74A500C7D604 /* ADHPResponse.h */,
@@ -2839,7 +2942,7 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		1F53D2EA2001D73300A09429 /* 事件通知 */ = {
+		1F53D2EA2001D73300A09429 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
 				1F53D2EB2001D73300A09429 /* NSNotificationCenter+AsyncNotify.h */,
@@ -2847,7 +2950,7 @@
 				1F53D2EE2001D73300A09429 /* NSObject+AsyncNotify.h */,
 				1F53D2EC2001D73300A09429 /* NSObject+AsyncNotify.m */,
 			);
-			path = "事件通知";
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		1F53D2F32001DA9800A09429 /* View */ = {
@@ -3255,14 +3358,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		1F74F267219704B60012B7CB /* 加密 */ = {
+		1F74F267219704B60012B7CB /* Encrypt */ = {
 			isa = PBXGroup;
 			children = (
 				1F74F274219704B60012B7CB /* ADHEncryptUtil.h */,
 				1F74F268219704B60012B7CB /* ADHEncryptUtil.m */,
 				1F74F269219704B60012B7CB /* AESCrypt-ObjC */,
 			);
-			path = "加密";
+			path = Encrypt;
 			sourceTree = "<group>";
 		};
 		1F74F269219704B60012B7CB /* AESCrypt-ObjC */ = {
@@ -3424,6 +3527,8 @@
 				1F0F0BBF1FAD6D9C00E2CCC8 /* ADHRequest.h */,
 				1F0F0BC11FAD6D9C00E2CCC8 /* ADHRequest.m */,
 				1F46EBD720CBE08E0037445F /* ADHRequestPrivate.h */,
+				1F3311152AA33C9700EBBE26 /* ADHDispatcher+Default.h */,
+				1F3311162AA33C9700EBBE26 /* ADHDispatcher+Default.m */,
 			);
 			path = ADHServer;
 			sourceTree = "<group>";
@@ -3454,13 +3559,13 @@
 				1F32346E1FC153A5007C2AA7 /* Plugin */,
 				1F33D5051FAF025B00E81794 /* ServiceApi */,
 				1FA18FAE1FA5AB6400DC85E2 /* FileBrowser */,
-				1FA18FAC1FA5AB4E00DC85E2 /* Structure */,
+				1FA18FAC1FA5AB4E00DC85E2 /* Organizer */,
 				1F3AD2A8204838530010A156 /* UserGuide */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		1FA18FAC1FA5AB4E00DC85E2 /* Structure */ = {
+		1FA18FAC1FA5AB4E00DC85E2 /* Organizer */ = {
 			isa = PBXGroup;
 			children = (
 				1FBB9325204986EC008AB8CF /* model */,
@@ -3480,14 +3585,11 @@
 				1F65DF922250954E00AB10A2 /* RateViewController.h */,
 				1F65DF932250954E00AB10A2 /* RateViewController.m */,
 				1F65DFA12250A0B200AB10A2 /* RateViewController.xib */,
-				1F64196E2471301E005919BE /* DeviceManageViewController.h */,
-				1F64196F2471301E005919BE /* DeviceManageViewController.m */,
-				1F6419702471301E005919BE /* DeviceManageViewController.xib */,
 				1FCCDA5E24D5609500A37559 /* ToolCustomViewController.h */,
 				1FCCDA5F24D5609500A37559 /* ToolCustomViewController.m */,
 				1FCCDA6024D5609500A37559 /* ToolCustomViewController.xib */,
 			);
-			path = Structure;
+			path = Organizer;
 			sourceTree = "<group>";
 		};
 		1FA18FAE1FA5AB6400DC85E2 /* FileBrowser */ = {
@@ -3822,9 +3924,6 @@
 				1FBB932020498243008AB8CF /* ConnectItemCell.xib */,
 				1F3827E421C1D88C000FD7B7 /* AppScrollView.h */,
 				1F3827E521C1D88C000FD7B7 /* AppScrollView.m */,
-				1F6419782478CD59005919BE /* DeviceManageCell.h */,
-				1F6419792478CD59005919BE /* DeviceManageCell.m */,
-				1F64197B2478CD71005919BE /* DeviceManageCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3959,6 +4058,7 @@
 			children = (
 				1F11B87020A7E5C00033B568 /* Components */,
 				1F37C125202AC804004B21E8 /* ADHClient.entitlements */,
+				1FA5722524C51AB2008795DB /* GoogleService-Info.plist */,
 				1FAC37BC1FD6F8B500D70851 /* Test */,
 				1F33D4F51FAEC84E00E81794 /* Organizer */,
 				1F0F0C261FADAE4200E2CCC8 /* Resource */,
@@ -4353,6 +4453,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F3311172AA33C9700EBBE26 /* ADHDispatcher+Default.h in Headers */,
 				1F06B70B217238FD000CAD80 /* ADHKeepAliveService.h in Headers */,
 				1FA5722424C51818008795DB /* ADHFirebaseActionService.h in Headers */,
 				1F11B86D20A7D56F0033B568 /* FunctionUtil.h in Headers */,
@@ -4408,6 +4509,23 @@
 			productReference = 1F26E5FD2298D6E700BFD5E0 /* WoodpeckerMacOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		1F33112D2AA6187800EBBE26 /* woodpk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F3311322AA6187900EBBE26 /* Build configuration list for PBXNativeTarget "woodpk" */;
+			buildPhases = (
+				1F33112A2AA6187800EBBE26 /* Sources */,
+				1F33112B2AA6187800EBBE26 /* Frameworks */,
+				1F33112C2AA6187800EBBE26 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = woodpk;
+			productName = wdpk;
+			productReference = 1F33112E2AA6187800EBBE26 /* woodpk */;
+			productType = "com.apple.product-type.tool";
+		};
 		1F457C991F9F65C500C7D604 /* Woodpecker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F457CAB1F9F65C500C7D604 /* Build configuration list for PBXNativeTarget "Woodpecker" */;
@@ -4417,6 +4535,7 @@
 				1F457C971F9F65C500C7D604 /* Frameworks */,
 				1F457C981F9F65C500C7D604 /* Resources */,
 				1F6195F41FCAA5310095D22E /* Embed Frameworks */,
+				1F3311292AA6181800EBBE26 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -4477,7 +4596,7 @@
 				TargetAttributes = {
 					1F26E5E52298D5F600BFD5E0 = {
 						CreatedOnToolsVersion = 10.1;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -4489,6 +4608,10 @@
 					};
 					1F26E5FC2298D6E700BFD5E0 = {
 						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+					};
+					1F33112D2AA6187800EBBE26 = {
+						CreatedOnToolsVersion = 14.0;
 						ProvisioningStyle = Automatic;
 					};
 					1F457C991F9F65C500C7D604 = {
@@ -4543,6 +4666,7 @@
 				1F53D30220021AB600A09429 /* WoodPeckeriOS */,
 				1F26E5E52298D5F600BFD5E0 /* MacClient */,
 				1F26E5FC2298D6E700BFD5E0 /* WoodpeckerMacOS */,
+				1F33112D2AA6187800EBBE26 /* woodpk */,
 			);
 		};
 /* End PBXProject section */
@@ -4618,7 +4742,6 @@
 				1FDB8A6422159B0700B835FD /* ViewHierarchyViewController.xib in Resources */,
 				1F37C116202950F7004B21E8 /* LocalInfoViewController.xib in Resources */,
 				1F052679227D8AD4003D84C1 /* WebDebugViewController.xib in Resources */,
-				1F64197C2478CD71005919BE /* DeviceManageCell.xib in Resources */,
 				1F55F6BC247B44F600312CA2 /* StateSandboxViewController.xib in Resources */,
 				1F577DD522D09E5B00823B12 /* SharedPrefsAddViewController.xib in Resources */,
 				1F7FE0DC20E7CDB000B7DF7D /* WebViewJavascriptBridge-LICENSE.txt in Resources */,
@@ -4687,6 +4810,7 @@
 				1FC9593221E7874B00FB7128 /* UserDefaultSuiteViewController.xib in Resources */,
 				1F7FE0DA20E7CD4B00B7DF7D /* libxlsxwriter-LICENSE.txt in Resources */,
 				1F28FB4722A217DE00C2CF25 /* SandboxWorkpathCell.xib in Resources */,
+				1F33113C2AA61E3100EBBE26 /* install.sh in Resources */,
 				1F46B26720F64B0C000A0E6C /* FileActivityViewController.xib in Resources */,
 				1F0F0C241FADA6DB00E2CCC8 /* DatabaseViewController.xib in Resources */,
 				1FA5721F24C5179D008795DB /* FirebaseViewController.xib in Resources */,
@@ -4707,7 +4831,6 @@
 				1FDB8A5E21F5F93500B835FD /* LocalizationSelectionCell.xib in Resources */,
 				1F9F966620C395AD006C5BAC /* NotificationViewController.xib in Resources */,
 				1FC086682051172200644F74 /* UDKVItemCell.xib in Resources */,
-				1F6419722471301E005919BE /* DeviceManageViewController.xib in Resources */,
 				1F0F0BDA1FAD779400E2CCC8 /* FSItemView.xib in Resources */,
 				1F46B26220F64091000A0E6C /* IndexTestViewController.xib in Resources */,
 				1F902ADB200A02E100716817 /* adh.bundle in Resources */,
@@ -4765,6 +4888,7 @@
 				1FC7A27B1FB9E9B4006780AD /* hi.sqlite in Resources */,
 				1FD0BEE11FA21CF000B1BA5C /* Assets.xcassets in Resources */,
 				1F28C44820DE90B700593A5B /* Extra.strings in Resources */,
+				1FA5722624C51AB3008795DB /* GoogleService-Info.plist in Resources */,
 				1F28C44220DE906900593A5B /* App.strings in Resources */,
 				1FAC37C81FD6FC5600D70851 /* NetworkTestViewController.xib in Resources */,
 				1FAC37C11FD6F8CE00D70851 /* TestViewController.xib in Resources */,
@@ -4871,15 +4995,18 @@
 				1F26E6122298DEBE00BFD5E0 /* ADHMetaService.m in Sources */,
 				1F26E62B2298E7F600BFD5E0 /* ADHRemoteService.m in Sources */,
 				1F26E6332298EA9500BFD5E0 /* FunctionUtil.m in Sources */,
+				1F3311122AA31F8400EBBE26 /* ADHPTUSBHub.m in Sources */,
 				1F26E6562299462100BFD5E0 /* ADHRemoteServiceItem.m in Sources */,
 				1F26E6292298E7E700BFD5E0 /* ADHPackage.m in Sources */,
+				1F05AF452AB0C80B00D08DBF /* ADHAppConnector.m in Sources */,
 				1F26E657229A6ABF00BFD5E0 /* ADHAppBundleActionService.m in Sources */,
 				1F26E65322993D8B00BFD5E0 /* ADHMacRemoteServiceCell.m in Sources */,
+				1F3311142AA31F8400EBBE26 /* ADHPTProtocol.m in Sources */,
 				1F26E62E2298EA5E00BFD5E0 /* ADHUserDefaultUtil.m in Sources */,
 				1F26E6322298EA8D00BFD5E0 /* ADHDateUtil.m in Sources */,
 				1F26E6492299344000BFD5E0 /* ADHMacConnectViewController.m in Sources */,
-				1F64198624791B97005919BE /* ADHAllowDeviceUtil.m in Sources */,
 				1F26E63E2299213E00BFD5E0 /* PlatformDefines.m in Sources */,
+				1F3311102AA3081800EBBE26 /* ADHProtocol.m in Sources */,
 				1F26E6112298DE2000BFD5E0 /* ADHLaunchOptions.m in Sources */,
 				1F26E63B2298EFA500BFD5E0 /* ADHFileActivityItem.m in Sources */,
 				1F26E678229A7F0E00BFD5E0 /* ADHNotificationActionService.m in Sources */,
@@ -4889,18 +5016,19 @@
 				1F26E6182298E30D00BFD5E0 /* ADHAppInfoActionService.m in Sources */,
 				1F26E6312298EA8000BFD5E0 /* NSObject+Json.m in Sources */,
 				1F26E6442299341400BFD5E0 /* ADHMacWindow.m in Sources */,
+				1F3311132AA31F8400EBBE26 /* ADHPTChannel.m in Sources */,
 				1F26E63D2298EFB800BFD5E0 /* ADHFileBrowserUtil.m in Sources */,
 				1FBDBE73229A8A200040153A /* ADHNetworkUtility.m in Sources */,
 				1FA9F91B23561033008029B0 /* ADHKeepAliveService.m in Sources */,
-				1F26E6252298E7E700BFD5E0 /* ADHProtocol.m in Sources */,
+				1F26E6252298E7E700BFD5E0 /* ADHSocketChannel.m in Sources */,
 				1F26E62F2298EA6D00BFD5E0 /* ADHFileHash.m in Sources */,
 				1F26E679229A7F0E00BFD5E0 /* ADHNotificationObserver.m in Sources */,
-				1F26E61B2298E7A700BFD5E0 /* ADHAppConnector.m in Sources */,
 				1F26E61E2298E7C300BFD5E0 /* ADHService.m in Sources */,
 				1F26E6222298E7D800BFD5E0 /* NSObject+ADHUtil.m in Sources */,
 				1F26E6392298EF9E00BFD5E0 /* ADHFileBrowserActionService.m in Sources */,
 				1F26E6102298DBBB00BFD5E0 /* ADHLogUtil.m in Sources */,
 				1F26E658229A6AC800BFD5E0 /* ADHKeyChainActionService.m in Sources */,
+				1F33110D2AA3076D00EBBE26 /* ADHUsbChannel.m in Sources */,
 				1FF88F78229ADA83001CC3E3 /* ADHConsoleObserver.m in Sources */,
 				1F26E60E2298D76600BFD5E0 /* ADHMacClientOrganizer.m in Sources */,
 				1F26E6212298E7C800BFD5E0 /* ADHApiCommon.m in Sources */,
@@ -4917,6 +5045,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1F33112A2AA6187800EBBE26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F3311312AA6187800EBBE26 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F457C961F9F65C500C7D604 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4925,7 +5061,6 @@
 				1FBC3D6F2290150E006F5892 /* ApiItemCell.m in Sources */,
 				1F3257851FE510AD00D165D0 /* NetworkPreviewViewController.m in Sources */,
 				1F085EF62520B4F5008A91E3 /* ViewInsetsAttributeCell.m in Sources */,
-				1F64198424791B89005919BE /* ADHAllowDeviceUtil.m in Sources */,
 				1F9F963720C03969006C5BAC /* NSData+Compress.m in Sources */,
 				1F0F0C161FADA6B400E2CCC8 /* EGODatabaseRequest.m in Sources */,
 				1FE5D6FC2812F4BE007E0179 /* XYStoreKeychainPersistence.m in Sources */,
@@ -4959,6 +5094,7 @@
 				1F28C44E20DF819A00593A5B /* LocalizationItemCell.m in Sources */,
 				1F0F0BDE1FAD77C100E2CCC8 /* ADHFileItem.m in Sources */,
 				1F0F0BD11FAD6E0600E2CCC8 /* ADHService.m in Sources */,
+				1F3310F42AA2BE2800EBBE26 /* ADHPTUSBHub.m in Sources */,
 				1F68AE1120E71C7D00CBEB05 /* shared_strings.c in Sources */,
 				1F1ECE92205B833300AA4F14 /* DeviceInfoViewController.m in Sources */,
 				1F238CB4223F1A76009F2B12 /* ViewDebugDomain.m in Sources */,
@@ -4974,6 +5110,8 @@
 				1FEC935F22356FD800B24162 /* ViewFontViewController.m in Sources */,
 				1F1ECE8D205A41BD00AA4F14 /* ScreenshotViewController.m in Sources */,
 				1F68AE1820E71C7D00CBEB05 /* workbook.c in Sources */,
+				1F3311432AAC1E8700EBBE26 /* DeviceManager.m in Sources */,
+				1F3310F62AA2BE2800EBBE26 /* ADHPTProtocol.m in Sources */,
 				1F6B3D32213A81790038098A /* KeyChainViewController.m in Sources */,
 				1F37C115202950F7004B21E8 /* LocalInfoViewController.m in Sources */,
 				1F68AE1320E71C7D00CBEB05 /* utility.c in Sources */,
@@ -4994,7 +5132,6 @@
 				1FFDCE2D2482911A00FB4192 /* StateMasterService.m in Sources */,
 				1F74F277219704B60012B7CB /* NSString+ADHBase64.m in Sources */,
 				1F5F2F2F2222C33E00B8B0DA /* ADHViewDebugUtil.m in Sources */,
-				1FF966FB299A782600D3E4DB /* AttributeTyper.m in Sources */,
 				1F224BF1249C3FE2004766DC /* CircularProgressView.m in Sources */,
 				1FC7A2721FB9CD5F006780AD /* DBItem.m in Sources */,
 				1F68AE1620E71C7D00CBEB05 /* core.c in Sources */,
@@ -5043,7 +5180,6 @@
 				1F224C19249EF7C9004766DC /* ADHClickTextField.m in Sources */,
 				1F55F6BB247B44F600312CA2 /* StateSandboxViewController.m in Sources */,
 				1F9DB0BB221AE87B00561BFF /* ViewColorAttributeCell.m in Sources */,
-				1F6419712471301E005919BE /* DeviceManageViewController.m in Sources */,
 				1F4C060C1FB727A200A0AFD1 /* DBTestViewController.m in Sources */,
 				1FDB2A9A21A017A100A1A0AA /* AppViewController.m in Sources */,
 				1F6F9DFB22199CA100598471 /* ViewFrameAttributeCell.m in Sources */,
@@ -5057,9 +5193,8 @@
 				1F3ED2251FCC678700B9E30A /* ADHFilePreviewController.m in Sources */,
 				1F6195ED1FCAA2A30095D22E /* RichTextPreviewTestViewController.m in Sources */,
 				1F28C45320DF838600593A5B /* LocalizationSectionView.m in Sources */,
-				1F64197A2478CD59005919BE /* DeviceManageCell.m in Sources */,
 				1F4C05E61FB6AD8500A0AFD1 /* DBTableCell.m in Sources */,
-				1F457CB51F9F679500C7D604 /* ADHProtocol.m in Sources */,
+				1F457CB51F9F679500C7D604 /* ADHSocketChannel.m in Sources */,
 				1FB43AAE20A9CE1100BD5B85 /* NetworkCookieTableAdapter.m in Sources */,
 				1F457CC71F9F7AF900C7D604 /* ADHProtocolConfig.m in Sources */,
 				1F28FB4522A217D300C2CF25 /* SandboxWorkpathCell.m in Sources */,
@@ -5069,6 +5204,7 @@
 				1FB43AA220A9BA0800BD5B85 /* SimpleTableAdapter.m in Sources */,
 				1F457CB81F9F749800C7D604 /* ADHPRequest.m in Sources */,
 				1F224BF4249C41D0004766DC /* NSBezierPath+Bezier.m in Sources */,
+				1F3311402AA8BF4400EBBE26 /* ADHUsb.m in Sources */,
 				1F68AE1D20E71C7D00CBEB05 /* relationships.c in Sources */,
 				1FE5D6F92812F4BE007E0179 /* XYInAppReceipt.m in Sources */,
 				1FEC9337222F496A00B24162 /* ViewBooleanAttributeCell.m in Sources */,
@@ -5094,6 +5230,7 @@
 				1F5F2F5F222BC9FC00B8B0DA /* ViewStepperAttributeCell.m in Sources */,
 				1F9F966520C395A8006C5BAC /* NotificationViewController.m in Sources */,
 				1FE5D6EF2812F4BE007E0179 /* NSNotification+XYStore.m in Sources */,
+				1FE5D67D280BFB6E007E0179 /* AttributeTyper.m in Sources */,
 				1F6195F81FCAAC030095D22E /* PlainTextViewController.m in Sources */,
 				1F9F966B20C3AD1C006C5BAC /* NotificationCellItem.m in Sources */,
 				1F224C1E24B01F57004766DC /* HomeViewController.m in Sources */,
@@ -5116,6 +5253,7 @@
 				1F052678227D8AD4003D84C1 /* WebDebugViewController.m in Sources */,
 				1F5F2F33222367A400B8B0DA /* ViewAutoresizeAttributeCell.m in Sources */,
 				1F68AE1A20E71C7D00CBEB05 /* drawing.c in Sources */,
+				1F3311182AA33C9700EBBE26 /* ADHDispatcher+Default.m in Sources */,
 				1F2AD91320E1138800597929 /* LocalizationRow.m in Sources */,
 				1F74F281219704B60012B7CB /* NSData+ADHBase64.m in Sources */,
 				1F0A6E1C2337136600417E9D /* ADHCloudItem.m in Sources */,
@@ -5124,6 +5262,7 @@
 				1FEC93592235265600B24162 /* ViewValueAttributeCell.m in Sources */,
 				1F7DCD67249302910099A982 /* StateCollectionSectionView.m in Sources */,
 				1FB918AD221930D4008D5B0F /* ViewAttributeViewController.m in Sources */,
+				1F3310F92AA2BE2800EBBE26 /* ADHPTChannel.m in Sources */,
 				1FBB9328204986F7008AB8CF /* ConnectItem.m in Sources */,
 				1F4C05F41FB6D41E00A0AFD1 /* ADHTableView.m in Sources */,
 				1F28FB4A22A2208A00C2CF25 /* SandboxWorkpathItem.m in Sources */,
@@ -5143,11 +5282,13 @@
 				1F6195E51FCA5DD60095D22E /* ADHOutlineView.m in Sources */,
 				1F3257801FE4FF6800D165D0 /* ADHDateUtil.m in Sources */,
 				1F361ECB228FF4E800F67BC0 /* LogConsoleCell.m in Sources */,
+				1F33110A2AA3069E00EBBE26 /* ADHUsbChannel.m in Sources */,
 				1F33D5141FB1E9C500E81794 /* FileBrowserService.m in Sources */,
 				1FC9592A21E6377700FB7128 /* EntitlementUtil.m in Sources */,
 				1F46B26120F64091000A0E6C /* IndexTestViewController.m in Sources */,
 				1F3257701FE2B8F600D165D0 /* NetworkDetailViewController.m in Sources */,
 				1F0F0C151FADA6B400E2CCC8 /* EGODatabase.m in Sources */,
+				1F3311112AA3081900EBBE26 /* ADHProtocol.m in Sources */,
 				1FEC9368223B1D7500B24162 /* ViewAttriWebNaviCell.m in Sources */,
 				1FE5C5F12083888C000EC631 /* UrlUtil.m in Sources */,
 				1FB918B6221932B9008D5B0F /* ViewDebugViewController.m in Sources */,
@@ -5233,16 +5374,19 @@
 				1F06B70A217238FD000CAD80 /* ADHKeepAliveService.m in Sources */,
 				1FB43A9620A9AC2E00BD5B85 /* ADHNetworkCookie.m in Sources */,
 				1F3890DD208F6D8600D5F2F4 /* ADHControllerHierarchy.m in Sources */,
+				1F3310F52AA2BE2800EBBE26 /* ADHPTUSBHub.m in Sources */,
 				1F53D31420021EB600A09429 /* ADHRequest.m in Sources */,
 				1F53D32B20021F3D00A09429 /* ADHNetworkObserver.m in Sources */,
 				1F91E27F211876ED007ED751 /* ADHLaunchOptions.m in Sources */,
+				1F33110C2AA3076B00EBBE26 /* ADHUsbChannel.m in Sources */,
 				1FEAD92B20F9F34C00BE387B /* ADHFileActivityItem.m in Sources */,
 				1FFDCE3624839E9500FB4192 /* ADHStateMasterActionService.m in Sources */,
-				1F64198524791B96005919BE /* ADHAllowDeviceUtil.m in Sources */,
 				1F53D3392002207C00A09429 /* ADHFileHash.m in Sources */,
 				1F3952AE232E3F9C004257CD /* ADHCloudItem.m in Sources */,
+				1F3310F72AA2BE2800EBBE26 /* ADHPTProtocol.m in Sources */,
 				1F53D3342002201D00A09429 /* ADHFileBrowserUtil.m in Sources */,
 				1F9F965120C23674006C5BAC /* ADHNotificationActionService.m in Sources */,
+				1F33110F2AA3081700EBBE26 /* ADHProtocol.m in Sources */,
 				1F7089D424D50E2F00C94940 /* NSObject+ADHCategory.m in Sources */,
 				1F9631982053FFDA001FE39E /* ADHKVItem.m in Sources */,
 				1F4BEE0620BAD03B00410C69 /* ADHWebDebugService.m in Sources */,
@@ -5292,12 +5436,13 @@
 				1F53D33120021F5000A09429 /* ADHAppDefaultActionService.m in Sources */,
 				1F53D32A20021F3A00A09429 /* ADHNetworkActionService.m in Sources */,
 				1F9161512003C93B00F2BEE2 /* ADHMetaService.m in Sources */,
+				1F3310FA2AA2BE2800EBBE26 /* ADHPTChannel.m in Sources */,
 				1FEC93442233AB3800B24162 /* ADHAttributeContainer.m in Sources */,
 				1F5F2F2C2222C29600B8B0DA /* PlatformDefines.m in Sources */,
 				1F9DB0B8221AE7B600561BFF /* ADHViewNode.m in Sources */,
 				1F1B35FC221D884B000E1E09 /* ADHAttribute.m in Sources */,
 				1F9F967620C3FE3B006C5BAC /* ADHApiCommon.m in Sources */,
-				1F53D31820021EC200A09429 /* ADHProtocol.m in Sources */,
+				1F53D31820021EC200A09429 /* ADHSocketChannel.m in Sources */,
 				1F5043BD24BAA87C00C4FB8F /* ADHUtilityActionService.m in Sources */,
 				1F53D31920021EDC00A09429 /* ADHPRequest.m in Sources */,
 				1F6B3D272130F74F0038098A /* ADHKeyChainActionService.m in Sources */,
@@ -5507,9 +5652,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = MacClient/MacClient.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MacClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -5518,6 +5664,7 @@
 				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.MacClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -5527,9 +5674,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = MacClient/MacClient.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MacClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -5537,6 +5685,7 @@
 				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.MacClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -5546,9 +5695,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = MacClient/MacClient.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MacClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -5556,6 +5706,7 @@
 				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.MacClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Beta;
 		};
@@ -5578,7 +5729,7 @@
 				INFOPLIST_FILE = WoodpeckerMacOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.WoodpeckerMacOS;
@@ -5608,7 +5759,7 @@
 				INFOPLIST_FILE = WoodpeckerMacOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.WoodpeckerMacOS;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -5637,13 +5788,62 @@
 				INFOPLIST_FILE = WoodpeckerMacOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.WoodpeckerMacOS;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Beta;
+		};
+		1F3311332AA6187900EBBE26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1F3311342AA6187900EBBE26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1F3311352AA6187900EBBE26 /* Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Beta;
 		};
@@ -5763,10 +5963,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = WoodPecker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 70;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
+				CURRENT_PROJECT_VERSION = 73;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppDevelopHelper/Modules/FileBrowser/PlainText",
@@ -5790,7 +5991,7 @@
 					"$(PROJECT_DIR)/AppDevelopHelper/Components/ReceiptCheck/OpenSSL-OSX/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5804,10 +6005,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = WoodPecker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 70;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
+				CURRENT_PROJECT_VERSION = 73;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppDevelopHelper/Modules/FileBrowser/PlainText",
@@ -5827,7 +6029,7 @@
 					"$(PROJECT_DIR)/AppDevelopHelper/Components/ReceiptCheck/OpenSSL-OSX/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -5838,16 +6040,12 @@
 		1F53D30D20021AB600A09429 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					x86_64,
-					i386,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 70;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -5856,10 +6054,10 @@
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ADHClient/ADHClient.pch";
 				INFOPLIST_FILE = WoodPeckeriOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = mh_dylib;
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.4.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -5877,16 +6075,12 @@
 		1F53D30E20021AB600A09429 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					x86_64,
-					i386,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 70;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -5894,10 +6088,10 @@
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ADHClient/ADHClient.pch";
 				INFOPLIST_FILE = WoodPeckeriOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = mh_dylib;
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.4.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -5971,10 +6165,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = WoodPecker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 70;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
+				CURRENT_PROJECT_VERSION = 73;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppDevelopHelper/Modules/FileBrowser/PlainText",
@@ -5995,7 +6190,7 @@
 					"$(PROJECT_DIR)/AppDevelopHelper/Components/ReceiptCheck/OpenSSL-OSX/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -6011,14 +6206,14 @@
 				CODE_SIGN_ENTITLEMENTS = ADHClient/ADHClient.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ADHClient/ADHClient.pch";
 				INFOPLIST_FILE = ADHClient/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6032,16 +6227,12 @@
 		1FC7DD9B210A125C004A9520 /* Beta */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					x86_64,
-					i386,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 70;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -6049,10 +6240,10 @@
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ADHClient/ADHClient.pch";
 				INFOPLIST_FILE = WoodPeckeriOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = mh_dylib;
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.4.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -6076,7 +6267,7 @@
 				CODE_SIGN_ENTITLEMENTS = ADHClient/ADHClient.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -6087,7 +6278,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = ADHClient/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6106,14 +6297,14 @@
 				CODE_SIGN_ENTITLEMENTS = ADHClient/ADHClient.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ADHClient/ADHClient.pch";
 				INFOPLIST_FILE = ADHClient/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker.demo;
@@ -6144,6 +6335,16 @@
 				1F26E6072298D6E700BFD5E0 /* Debug */,
 				1F26E6082298D6E700BFD5E0 /* Release */,
 				1F26E6092298D6E700BFD5E0 /* Beta */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F3311322AA6187900EBBE26 /* Build configuration list for PBXNativeTarget "woodpk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F3311332AA6187900EBBE26 /* Debug */,
+				1F3311342AA6187900EBBE26 /* Release */,
+				1F3311352AA6187900EBBE26 /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

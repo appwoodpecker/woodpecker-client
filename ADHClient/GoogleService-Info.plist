@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>959147050446-tl95sqisu2j48ongq0d5435lfd4jmjsm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.959147050446-tl95sqisu2j48ongq0d5435lfd4jmjsm</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDrMDcH6vst1VzLyrXIxNlVgsA2hm_68zc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>959147050446</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>lifebetter.woodpecker.demo</string>
+	<key>PROJECT_ID</key>
+	<string>woodpecker-408ee</string>
+	<key>STORAGE_BUCKET</key>
+	<string>woodpecker-408ee.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:959147050446:ios:37efaafab98b80a82cd79f</string>
+	<key>DATABASE_URL</key>
+	<string>https://woodpecker-408ee.firebaseio.com</string>
+</dict>
+</plist>

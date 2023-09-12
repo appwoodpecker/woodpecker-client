@@ -59,7 +59,7 @@
 {
     NSMutableDictionary * metadata = [NSMutableDictionary dictionary];
     //tag
-    metadata[@"tag"] =  [NSString stringWithFormat:@"%lld",self.request.session.tag];
+    metadata[@"tag"] =  [NSString stringWithFormat:@"%d",self.request.session.tag];
     //body package
     metadata[@"isbody"] = self.isBody ? @"1":@"0";
     if(self.isBody){
@@ -106,7 +106,7 @@
                 NSUInteger payloadSize = [metaInfo[@"size"] integerValue];
                 package.responsePayloadSize = payloadSize;
             }
-            NSInteger tag =[metaInfo[@"tag"] integerValue];
+            uint32_t tag = (uint32_t)[metaInfo[@"tag"] unsignedIntValue];
             NSString * rangeStr = metaInfo[@"range"];
             NSRange payloadRange = NSMakeRange(NSNotFound, 0);
             if(rangeStr.length > 0){

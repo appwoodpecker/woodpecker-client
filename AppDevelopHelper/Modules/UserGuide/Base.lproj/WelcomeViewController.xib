@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,6 +17,7 @@
                 <outlet property="page1Leading" destination="IcU-TL-YzF" id="4qp-5N-Kus"/>
                 <outlet property="page2" destination="CHZ-KI-YJ9" id="Ybt-E9-Yqv"/>
                 <outlet property="page2Leading" destination="M0M-g5-UH9" id="JRr-B0-eGx"/>
+                <outlet property="privacyDescLabel" destination="cC3-Y4-mS6" id="f4U-8k-jux"/>
                 <outlet property="privacyLabel1" destination="X2l-Ba-tbk" id="dRb-sL-YPs"/>
                 <outlet property="privacyLabel2" destination="ICc-AV-BA6" id="Af6-6n-5eV"/>
                 <outlet property="privacyLeading" destination="xIK-NG-Egq" id="gyX-Qf-fdj"/>
@@ -67,7 +68,7 @@
                                                     <fragment content="Before Start">
                                                         <attributes>
                                                             <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                            <font key="NSFont" metaFont="user"/>
+                                                            <font key="NSFont" usesAppearanceFont="YES"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
@@ -90,7 +91,7 @@
                                     </scroller>
                                 </scrollView>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G0P-7C-hR5">
-                                    <rect key="frame" x="58" y="217" width="106" height="20"/>
+                                    <rect key="frame" x="58" y="217" width="105" height="20"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="1.  CocoaPods" id="Yew-Ao-qun">
                                         <font key="font" metaFont="systemLight" size="16"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -98,7 +99,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="THl-5U-c2K">
-                                    <rect key="frame" x="172" y="217" width="20" height="20"/>
+                                    <rect key="frame" x="171" y="217" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="dOo-Jt-YnQ"/>
                                         <constraint firstAttribute="width" constant="20" id="pum-iq-Ted"/>
@@ -112,7 +113,7 @@
                                     </connections>
                                 </button>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jcl-JG-BE0">
-                                    <rect key="frame" x="58" y="173" width="89" height="20"/>
+                                    <rect key="frame" x="58" y="173" width="88" height="20"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="2. Carthage" id="aVN-tS-moH">
                                         <font key="font" metaFont="systemLight" size="16"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -120,7 +121,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vCc-mV-Sxr">
-                                    <rect key="frame" x="155" y="173" width="20" height="20"/>
+                                    <rect key="frame" x="154" y="173" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="KSX-L6-IMg"/>
                                         <constraint firstAttribute="height" constant="20" id="d6o-y0-Fvt"/>
@@ -199,20 +200,20 @@
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Jgs-oH-BSR">
                             <rect key="frame" x="530" y="0.0" width="530" height="432"/>
                             <subviews>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kiT-vl-ghi">
+                                    <rect key="frame" x="28" y="326" width="160" height="24"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Connection Setup" id="N6l-UF-P8k">
+                                        <font key="font" metaFont="systemLight" size="20"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cC3-Y4-mS6">
-                                    <rect key="frame" x="28" y="230" width="444" height="57"/>
+                                    <rect key="frame" x="28" y="229" width="444" height="57"/>
                                     <textFieldCell key="cell" id="9Fa-ew-PY5">
                                         <font key="font" metaFont="systemLight" size="16"/>
                                         <string key="title">We use local network to transfer data between mac and your app, on iOS 14, system add a new privacy about local network usage,  we need add two keys in your app's Info.plist file:</string>
                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kiT-vl-ghi">
-                                    <rect key="frame" x="28" y="327" width="246" height="23"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Local Network Configuration" id="N6l-UF-P8k">
-                                        <font key="font" metaFont="systemLight" size="20"/>
-                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
@@ -230,9 +231,8 @@
                                         <action selector="privacyPreviousButtonPressed:" target="-2" id="A1s-l2-Ziv"/>
                                     </connections>
                                 </button>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X2l-Ba-tbk">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X2l-Ba-tbk">
                                     <rect key="frame" x="28" y="167" width="484" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <gestureRecognizers>
                                         <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="26b-8S-6BV">
                                             <connections>
@@ -246,9 +246,8 @@
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ICc-AV-BA6">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ICc-AV-BA6">
                                     <rect key="frame" x="28" y="139" width="484" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <gestureRecognizers>
                                         <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="JDi-vv-4ZK">
                                             <connections>
@@ -280,13 +279,17 @@
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="9BZ-ec-ixz" secondAttribute="bottom" constant="28" id="6XE-aQ-1GW"/>
                                 <constraint firstItem="aE0-tG-tYA" firstAttribute="leading" secondItem="Jgs-oH-BSR" secondAttribute="leading" constant="30" id="ASx-D9-v65"/>
+                                <constraint firstItem="X2l-Ba-tbk" firstAttribute="top" secondItem="cC3-Y4-mS6" secondAttribute="bottom" constant="40" id="GMU-5d-ti6"/>
                                 <constraint firstAttribute="width" constant="530" id="TY4-Dk-Kcb"/>
+                                <constraint firstItem="ICc-AV-BA6" firstAttribute="leading" secondItem="X2l-Ba-tbk" secondAttribute="leading" id="YUq-LO-29S"/>
                                 <constraint firstAttribute="trailing" secondItem="cC3-Y4-mS6" secondAttribute="trailing" constant="60" id="avt-4I-Roh"/>
                                 <constraint firstItem="9BZ-ec-ixz" firstAttribute="centerX" secondItem="Jgs-oH-BSR" secondAttribute="centerX" id="chV-Qm-IZL"/>
                                 <constraint firstItem="cC3-Y4-mS6" firstAttribute="top" secondItem="kiT-vl-ghi" secondAttribute="bottom" constant="40" id="fLs-On-Y4Q"/>
+                                <constraint firstItem="X2l-Ba-tbk" firstAttribute="leading" secondItem="cC3-Y4-mS6" secondAttribute="leading" id="uPl-if-1n6"/>
                                 <constraint firstItem="kiT-vl-ghi" firstAttribute="leading" secondItem="Jgs-oH-BSR" secondAttribute="leading" constant="30" id="v7I-wZ-Ygr"/>
                                 <constraint firstAttribute="bottom" secondItem="aE0-tG-tYA" secondAttribute="bottom" constant="28" id="x45-Kd-SgP"/>
                                 <constraint firstItem="kiT-vl-ghi" firstAttribute="top" secondItem="Jgs-oH-BSR" secondAttribute="top" constant="82" id="xmr-7s-YPi"/>
+                                <constraint firstItem="ICc-AV-BA6" firstAttribute="top" secondItem="X2l-Ba-tbk" secondAttribute="bottom" constant="6" id="y6q-eK-694"/>
                                 <constraint firstItem="cC3-Y4-mS6" firstAttribute="leading" secondItem="kiT-vl-ghi" secondAttribute="leading" id="ycZ-wF-LPh"/>
                             </constraints>
                         </customView>
@@ -294,10 +297,10 @@
                             <rect key="frame" x="1060" y="0.0" width="530" height="432"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yyv-ID-qYc">
-                                    <rect key="frame" x="28" y="211" width="444" height="76"/>
+                                    <rect key="frame" x="28" y="191" width="444" height="95"/>
                                     <textFieldCell key="cell" id="pXH-Kb-R0n">
                                         <font key="font" metaFont="systemLight" size="16"/>
-                                        <string key="title">Woodpecker will try to connect to your app, please ensure your app's device and Mac are in the same network, and you should see the privacy alert on the first launch of your app, please grant the permission.</string>
+                                        <string key="title">Woodpecker are trying to connect to your app, please connect your usb cable, or if you use wifi, please ensure your app's device and Mac are in the same network, and if you see the privacy alert on the first launch of your app, please grant the permission.</string>
                                         <color key="textColor" red="0.3803921569" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -317,7 +320,7 @@
                                     </connections>
                                 </button>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Phw-RI-Uqp">
-                                    <rect key="frame" x="28" y="327" width="202" height="23"/>
+                                    <rect key="frame" x="28" y="326" width="206" height="24"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Run your app,  have fun" id="mW8-ch-ow5">
                                         <font key="font" metaFont="systemLight" size="20"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
@@ -372,7 +375,7 @@
                 <constraint firstAttribute="bottom" secondItem="jTr-ub-gcb" secondAttribute="bottom" id="A15-TA-VuU"/>
                 <constraint firstItem="jTr-ub-gcb" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="EzS-K8-Fsl"/>
             </constraints>
-            <point key="canvasLocation" x="273" y="226"/>
+            <point key="canvasLocation" x="274" y="226"/>
         </customView>
     </objects>
     <resources>

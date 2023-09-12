@@ -23,10 +23,16 @@ NSString * const kADHErrorDomain = @"ADH";
 
 NSInteger const kADHErrorCodeTimeOut = -1000;
 
+//USB
+int const kADHUsbPort = 9999;
+uint32_t const kADHUsbFrameTypeShake = 100;
+uint32_t const kADHUsbFrameTypeData = 101;
+
+NSTimeInterval const kADHUsbReconnectDelay = 0.8;
+
 @implementation ADHProtocolConfig
 
-+ (ADHProtocolConfig *)config
-{
++ (ADHProtocolConfig *)config {
     static dispatch_once_t onceToken;
     static ADHProtocolConfig * sharedConfig;
     dispatch_once(&onceToken, ^{

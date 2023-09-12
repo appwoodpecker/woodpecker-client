@@ -173,7 +173,7 @@
         NSInteger currentValue = [versionText integerValue];
         if(requiredValue > currentValue) {
             self.frameversionLabel.stringValue = [NSString stringWithFormat:@"Framework: %@\n Required: %@",version,requiredVersion];
-            self.frameversionLabel.textColor = [NSColor secondaryLabelColor];
+            self.frameversionLabel.textColor = [Appearance themeColor];
         }else {
             self.frameversionLabel.stringValue = [NSString stringWithFormat:@"Framework: %@",version];
             self.frameversionLabel.textColor = [NSColor tertiaryLabelColor];

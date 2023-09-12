@@ -10,10 +10,10 @@
 #import "ADHProtocol.h"
 #import "ADHDispatcher.h"
 
-@interface ADHApiClient ()<ADHProtocolDelegate>
+@interface ADHApiClient ()<ADHChannelDelegate>
 
 @property (nonatomic, weak) ADHProtocol * mProtocol;
-@property (nonatomic, weak) ADHDispatcher *mDispatcher;
+@property (nonatomic, strong) ADHDispatcher *mDispatcher;
 
 @end
 
@@ -28,10 +28,9 @@
     return sharedApi;
 }
 
-- (void)setProtocol: (ADHProtocol *)protocol
-{
+- (void)setProtocol: (ADHProtocol *)protocol {
     self.mProtocol = protocol;
-    self.mProtocol.delegate = self;
+    [self.mProtocol setDelegete:self];
 }
 
 - (void)setDispatcher: (ADHDispatcher *)dispatcher {
@@ -44,9 +43,7 @@
                    payload: (NSData *)payload
            progressChanged: (ADHApiClientProgressBlock)progressBlock
                  onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback
-                overSocket: (ADHGCDAsyncSocket *)socket
-{
+                  onFailed: (ADHApiClientFailedBlock)failedCallback {
     NSMutableDictionary * body = [NSMutableDictionary dictionary];
     NSDictionary * serviceInfo = @{
                                @"service" : adhvf_safestringfy(service),
@@ -57,26 +54,15 @@
         userInfo = @{};
     }
     body[@"userinfo"] = userInfo;
-    [self _requestWithBody:body payload:payload progressChanged:progressBlock onSuccess:successCallback onFailed:failedCallback overSocket:socket];
+    [self _requestWithBody:body payload:payload progressChanged:progressBlock onSuccess:successCallback onFailed:failedCallback];
 }
 
 - (void)requestWithService: (NSString *)service
                     action: (NSString *)action
                       body: (NSDictionary *)userInfo
                  onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback
-                overSocket: (ADHGCDAsyncSocket *)socket
-{
-    [self requestWithService:service action:action body:userInfo payload:nil progressChanged:nil onSuccess:successCallback onFailed:failedCallback overSocket:socket];
-}
-
-- (void)requestWithService: (NSString *)service
-                    action: (NSString *)action
-                      body: (NSDictionary *)userInfo
-                 onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback
-{
-    [self requestWithService:service action:action body:userInfo payload:nil progressChanged:nil onSuccess:successCallback onFailed:failedCallback overSocket:nil];
+                  onFailed: (ADHApiClientFailedBlock)failedCallback {
+    [self requestWithService:service action:action body:userInfo payload:nil progressChanged:nil onSuccess:successCallback onFailed:failedCallback];
 }
 
 - (void)requestWithService: (NSString *)service
@@ -84,49 +70,34 @@
                  onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
                   onFailed: (ADHApiClientFailedBlock)failedCallback
 {
-    [self requestWithService:service action:action body:nil payload:nil progressChanged:nil onSuccess:successCallback onFailed:failedCallback overSocket:nil];
+    [self requestWithService:service action:action body:nil payload:nil progressChanged:nil onSuccess:successCallback onFailed:failedCallback];
 }
 
-//with progress
-- (void)requestWithService: (NSString *)service
-                    action: (NSString *)action
-                      body: (NSDictionary *)body
-                   payload: (NSData *)payload
-           progressChanged: (ADHApiClientProgressBlock)progressBlock
-                 onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback
-{
-    [self requestWithService:service action:action body:body payload:payload progressChanged:progressBlock onSuccess:successCallback onFailed:failedCallback overSocket:nil];
+
+- (void)requestWithService:(NSString *)service
+                    action:(NSString *)action
+                      body:(NSDictionary *)body
+           progressChanged:(ADHApiClientProgressBlock)progressBlock
+                 onSuccess:(ADHApiClientRequestSuccessBlock)successCallback
+                  onFailed:(ADHApiClientFailedBlock)failedCallback {
+    [self requestWithService:service action:action body:body payload:nil progressChanged:progressBlock onSuccess:successCallback onFailed:failedCallback];
 }
 
-- (void)requestWithService: (NSString *)service
-                    action: (NSString *)action
-                      body: (NSDictionary *)body
-           progressChanged: (ADHApiClientProgressBlock)progressBlock
-                 onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback
-{
-    [self requestWithService:service action:action body:body payload:nil progressChanged:progressBlock onSuccess:successCallback onFailed:failedCallback overSocket:nil];
-}
-
-- (void)requestWithService: (NSString *)service
-                    action: (NSString *)action
-           progressChanged: (ADHApiClientProgressBlock)progressBlock
-                 onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback
-{
-    [self requestWithService:service action:action body:nil payload:nil progressChanged:progressBlock onSuccess:successCallback onFailed:failedCallback overSocket:nil];
+- (void)requestWithService:(NSString *)service
+                    action:(NSString *)action
+           progressChanged:(ADHApiClientProgressBlock)progressBlock
+                 onSuccess:(ADHApiClientRequestSuccessBlock)successCallback
+                  onFailed:(ADHApiClientFailedBlock)failedCallback {
+    [self requestWithService:service action:action body:nil payload:nil progressChanged:progressBlock onSuccess:successCallback onFailed:failedCallback];
 }
 
 //Client Api
-- (void)_requestWithBody: (NSDictionary *)body
-                payload: (NSData *)payload
-        progressChanged: (ADHApiClientProgressBlock)progressBlock
-              onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-               onFailed: (ADHApiClientFailedBlock)failedCallback
-             overSocket: (ADHGCDAsyncSocket *)socket
-{
-    [self.mProtocol requestWithBody:body payload:payload onSendChanged:^(ADHSession *session) {
+- (void)_requestWithBody:(NSDictionary *)body
+                 payload:(NSData *)payload
+         progressChanged:(ADHApiClientProgressBlock)progressBlock
+               onSuccess:(ADHApiClientRequestSuccessBlock)successCallback
+                onFailed:(ADHApiClientFailedBlock)failedCallback {
+    [self.mProtocol.workChannel requestWithBody:body payload:payload onSendChanged:^(ADHSession *session) {
         [self performInMainQueue:^{
             if(progressBlock){
                 progressBlock([session progress]);
@@ -160,12 +131,11 @@
                 failedCallback(nil);
             }
         }];
-    } overSocket:socket];
+    }];
 }
 
 /**
  Server Api
- 
  server dispatch request to different services on the protocol queue,
  after service finish handle a request, then response on the same protocol queue
  */
@@ -188,7 +158,7 @@
         body = @{};
     }
 //    NSLog(@"response session: %lld",session.tag);
-    [self.mProtocol responseSession:session withBody:body payload:payload onSendChanged:^(ADHSession *session) {
+    [self.mProtocol.workChannel responseSession:session withBody:body payload:payload onSendChanged:^(ADHSession *session) {
         if(progressBlock){
             progressBlock(0.5);
         }
@@ -207,8 +177,7 @@
 
 #pragma mark -----------------   main queue   ----------------
 
-- (void)performInMainQueue:(dispatch_block_t)block
-{
+- (void)performInMainQueue:(dispatch_block_t)block {
     dispatch_async(dispatch_get_main_queue(), block);
 }
 

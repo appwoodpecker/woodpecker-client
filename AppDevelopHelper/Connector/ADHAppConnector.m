@@ -9,6 +9,7 @@
 #import "ADHProtocolConfig.h"
 #import "ADHAppConnector.h"
 #import "ADHUtil.h"
+#import "ADHPTChannel.h"
 
 NSString * const kADHConnectorConnectStatusUpdate = @"ADHConnectorConnectStatusUpdate";
 
@@ -19,7 +20,9 @@ static const NSTimeInterval kADHConnectorServiceResolveTimeout = 30;
 //socket连接超时时间
 static const NSTimeInterval kADHConnectorConnectTimeout = 30;
 
-@interface ADHAppConnector ()<ADHGCDAsyncSocketDelegate,NSNetServiceBrowserDelegate,NSNetServiceDelegate>
+static const NSTimeInterval kADHUsbListenInterval = 0.3;
+
+@interface ADHAppConnector ()<ADHGCDAsyncSocketDelegate,NSNetServiceBrowserDelegate,NSNetServiceDelegate, ADHPTChannelDelegate>
 
 @property (nonatomic, strong) ADHGCDAsyncSocket * mSocket;
 //根据type,domain搜索service(此时service地址TXTData还未resolve)
@@ -37,49 +40,59 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
 @property (nonatomic, strong) ADHAppConnectorConnectSuccessBlock connectSuccessBlock;
 @property (nonatomic, strong) ADHAppConnectorConnectFailedBlock connectFailedBlock;
 
+//当前(app)channel
+@property (nonatomic, weak) ADHPTChannel *mChannel;
+//对方(mac)channel
+@property (nonatomic, weak) ADHPTChannel *mPeerChannel;
+
+
 @end
 
 @implementation ADHAppConnector
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.mRemoteServices = [NSMutableArray array];
         self.mRemoteNetServices = [NSMutableArray array];
+        [self setupObserver];
     }
     return self;
 }
 
-- (BOOL)isConnecting
-{
+- (void)setupObserver {
+#if TARGET_OS_IPHONE
+    [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidBecomeActiveNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+        [self tryRecoverUsbConnectIfNeeded];
+    }];
+#else
+    
+#endif
+}
+
+- (BOOL)isConnecting {
     return self.mSocket && ![self.mSocket isConnected];
 }
 
-- (BOOL)isConnected
-{
+- (BOOL)isSocketConnected {
     return self.mSocket && [self.mSocket isConnected];
 }
 
-- (BOOL)isSearching
-{
+- (BOOL)isSearching {
     return (self.mNetServiceBrowser != nil);
 }
 
-- (NSString *)connectedHost
-{
+- (NSString *)connectedHost {
     return self.mSocket.connectedHost;
 }
 
-- (uint16_t)connectedPort
-{
+- (uint16_t)connectedPort {
     return self.mSocket.connectedPort;
 }
 
-- (BOOL)isRemoteServiceConnected: (ADHRemoteService *)remoteService
-{
+- (BOOL)isRemoteServiceConnected: (ADHRemoteService *)remoteService {
     BOOL ret = NO;
-    BOOL connected = [self isConnected];
+    BOOL connected = [self isSocketConnected];
     if(connected){
         NSString * remoteHost = self.mSocket.connectedHost;
         uint16_t remotePort = self.mSocket.connectedPort;
@@ -90,19 +103,20 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
     return ret;
 }
 
-- (NSArray <ADHRemoteService *>*) serviceList
-{
+- (NSArray <ADHRemoteService *>*) serviceList {
     return [NSArray arrayWithArray:self.mRemoteServices];
 }
 
-- (ADHGCDAsyncSocket *)socket
-{
+- (ADHGCDAsyncSocket *)socket {
     return self.mSocket;
 }
 
+- (void)startUsbConnection {
+    [self enqueueStartUsbListening];
+}
+
 //搜索服务
-- (void)startSearchServiceWithUpdateBlock: (ADHAppConnectorSearchUpdateBlock)updateBlock error: (ADHAppConnectorSearchFailedBlock)failedBlock
-{
+- (void)startSearchServiceWithUpdateBlock: (ADHAppConnectorSearchUpdateBlock)updateBlock error: (ADHAppConnectorSearchFailedBlock)failedBlock {
     self.searchUpdateBlock = nil;
     self.searchFailedBlock = nil;
     [self stopSearchService];
@@ -117,8 +131,7 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
 }
 
 //停止搜索服务
-- (void)stopSearchService
-{
+- (void)stopSearchService {
     [self.mRemoteServices removeAllObjects];
     [self.mRemoteNetServices removeAllObjects];
     [self.mNetServiceBrowser stop];
@@ -150,8 +163,7 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
 
 #pragma mark -----------------   NetService Browser Delegate   ----------------
 
-- (void)netServiceBrowser:(NSNetServiceBrowser *)browser didFindService:(NSNetService *)service moreComing:(BOOL)moreComing
-{
+- (void)netServiceBrowser:(NSNetServiceBrowser *)browser didFindService:(NSNetService *)service moreComing:(BOOL)moreComing {
     //find service, try resolve address
     [self.mRemoteNetServices addObject:service];
     service.delegate = self;
@@ -163,17 +175,16 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
 - (void)netServiceDidResolveAddress:(NSNetService *)service {
 //    NSLog(@"did resove new address");
     NSArray<NSData *> * addresses = service.addresses;
-    for (NSData * address in addresses) {
-        NSString * host = [ADHGCDAsyncSocket hostFromAddress:address];
-        NSInteger port = [ADHGCDAsyncSocket portFromAddress:address];
+//    for (NSData * address in addresses) {
+//        NSString * host = [ADHGCDAsyncSocket hostFromAddress:address];
+//        NSInteger port = [ADHGCDAsyncSocket portFromAddress:address];
 //        NSLog(@"host: %@ port: %ld",host,port);
-    }
+//    }
     if(addresses.count == 0){
         return;
     }
     NSData * address = nil;
     BOOL isSimulator = NO;
-    BOOL isUSB = NO;
     //simulator?
     NSData *extractedExpr = [self getSimulatorAddressData:addresses];
     NSData *simAddress = extractedExpr;
@@ -181,16 +192,6 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
         isSimulator = YES;
         address = simAddress;
     }
-    //usb?
-    /*
-    if (address == nil) {
-        NSData *usbAddress = [self getUSBAddressData:addresses];
-        if (usbAddress != nil) {
-            isUSB = YES;
-            address = usbAddress;
-        }
-    }
-     */
     if (address == nil) {
         address = [self getPreferedAddressData:addresses];
     }
@@ -217,7 +218,6 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
         service.host = host;
         service.port = port;
         service.simulator = isSimulator;
-        service.usb = isUSB;
         service.ruleData = ruleData;
 //        NSLog(@"host: %@ port: %ld",host,port);
         [self.mRemoteServices addObject:service];
@@ -363,15 +363,13 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
 
 /* Sent to the NSNetService instance's delegate when an error in resolving the instance occurs. The error dictionary will contain two key/value pairs representing the error domain and code (see the NSNetServicesError enumeration above for error code constants).
  */
-- (void)netService:(NSNetService *)sender didNotResolve:(NSDictionary<NSString *, NSNumber *> *)errorDict
-{
+- (void)netService:(NSNetService *)sender didNotResolve:(NSDictionary<NSString *, NSNumber *> *)errorDict {
 //    NSLog(@"did not resolve %@",errorDict);
 }
 
 /* Sent to the NSNetServiceBrowser instance's delegate when an error in searching for domains or services has occurred. The error dictionary will contain two key/value pairs representing the error domain and code (see the NSNetServicesError enumeration above for error code constants). It is possible for an error to occur after a search has been started successfully.
  */
-- (void)netServiceBrowser:(NSNetServiceBrowser *)browser didNotSearch:(NSDictionary<NSString *, NSNumber *> *)errorDict
-{
+- (void)netServiceBrowser:(NSNetServiceBrowser *)browser didNotSearch:(NSDictionary<NSString *, NSNumber *> *)errorDict {
     if(self.searchFailedBlock){
         NSError * error = [NSError errorWithDomain:@"adh.servicesearch" code:002 userInfo:@{NSLocalizedFailureReasonErrorKey:@"search service failed"}];
         self.searchFailedBlock(error);
@@ -381,16 +379,14 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
 
 /* Sent to the NSNetServiceBrowser instance's delegate when the instance's previous running search request has stopped.
  */
-- (void)netServiceBrowserDidStopSearch:(NSNetServiceBrowser *)browser
-{
+- (void)netServiceBrowserDidStopSearch:(NSNetServiceBrowser *)browser {
     if(self.searchFailedBlock){
         self.searchFailedBlock(nil);
     }
     [self clearSearchTimer];
 }
 
-- (BOOL)isRemoteServiceExists: (NSString *)remoteHost port:(uint16_t)remotePort serviceName: (NSString *)serviceName
-{
+- (BOOL)isRemoteServiceExists: (NSString *)remoteHost port:(uint16_t)remotePort serviceName: (NSString *)serviceName {
     BOOL isExists = NO;
     for (ADHRemoteService * service in self.mRemoteServices) {
         NSString * host = service.host;
@@ -414,8 +410,7 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
 - (void)connectToRemoteHost: (NSString *)host
                        port: (uint16_t)port
                successBlock: (ADHAppConnectorConnectSuccessBlock)successBlock
-                 errorBlock:(ADHAppConnectorConnectFailedBlock)failedBlock
-{
+                 errorBlock:(ADHAppConnectorConnectFailedBlock)failedBlock {
     //断开前一个链接
     [self closeConnection];
     self.connectSuccessBlock = successBlock;
@@ -433,8 +428,7 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
 }
 
 //中断socket链接
-- (void)closeConnection
-{
+- (void)closeConnection {
     self.connectSuccessBlock = nil;
     self.connectFailedBlock = nil;
     self.mSocket.delegate = nil;
@@ -447,8 +441,7 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
 /**
  连接server成功
  **/
-- (void)socket:(ADHGCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
-{
+- (void)socket:(ADHGCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port {
     if(self.connectSuccessBlock){
         self.connectSuccessBlock(sock);
     }
@@ -464,8 +457,7 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
  * Server/Client
  * socket断开链接
  **/
-- (void)socketDidDisconnect:(ADHGCDAsyncSocket *)sock withError:(nullable NSError *)err
-{
+- (void)socketDidDisconnect:(ADHGCDAsyncSocket *)sock withError:(nullable NSError *)err {
     if(self.mSocket == sock){
         self.mSocket.delegate = self;
         self.mSocket = nil;
@@ -485,15 +477,13 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
 /**
  * Called when a socket has completed writing the requested data. Not called if there is an error.
  **/
-- (void)socket:(ADHGCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
-{
+- (void)socket:(ADHGCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
     if(self.socketIODelegate && [self.socketIODelegate respondsToSelector:@selector(socket:didWriteDataWithTag:)]){
         [self.socketIODelegate socket:sock didWriteDataWithTag:tag];
     }
 }
 
-- (void)socket:(ADHGCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
-{
+- (void)socket:(ADHGCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
     if(self.socketIODelegate && [self.socketIODelegate respondsToSelector:@selector(socket:didReadData:withTag:)]){
         [self.socketIODelegate socket:sock didReadData:data withTag:tag];
     }
@@ -501,8 +491,7 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
 
 - (NSTimeInterval)socket:(ADHGCDAsyncSocket *)sock shouldTimeoutReadWithTag:(long)tag
                  elapsed:(NSTimeInterval)elapsed
-               bytesDone:(NSUInteger)length
-{
+               bytesDone:(NSUInteger)length {
     NSTimeInterval interval = 0;
     if(self.socketIODelegate && [self.socketIODelegate respondsToSelector:@selector(socket:shouldTimeoutReadWithTag:elapsed:bytesDone:)]){
         interval = [self.socketIODelegate socket:sock shouldTimeoutReadWithTag:tag elapsed:elapsed bytesDone:length];
@@ -512,8 +501,7 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
 
 - (NSTimeInterval)socket:(ADHGCDAsyncSocket *)sock shouldTimeoutWriteWithTag:(long)tag
                  elapsed:(NSTimeInterval)elapsed
-               bytesDone:(NSUInteger)length
-{
+               bytesDone:(NSUInteger)length {
     NSTimeInterval interval = 0;
     if(self.socketIODelegate && [self.socketIODelegate respondsToSelector:@selector(socket:shouldTimeoutWriteWithTag:elapsed:bytesDone:)]){
         interval = [self.socketIODelegate socket:sock shouldTimeoutWriteWithTag:tag elapsed:elapsed bytesDone:length];
@@ -521,6 +509,111 @@ static const NSTimeInterval kADHConnectorConnectTimeout = 30;
     return interval;
 }
 
+#pragma mark - USB
 
+- (BOOL)isUsbConnected {
+    return self.mPeerChannel.isConnected;
+}
+
+- (ADHPTChannel *)usbChannel {
+    return self.mPeerChannel;
+}
+
+//连接USB，只有iOS支持
+- (void)enqueueStartUsbListening {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(enqueueStartUsbListening) object:nil];
+    [self startUsbListening];
+}
+
+- (void)startUsbListening {
+#if TARGET_OS_IPHONE
+        //listening on our IPv4 port
+        if (self.mChannel != nil) {
+            self.mChannel.delegate = nil;
+            [self.mChannel cancel];
+            self.mChannel = nil;
+        }
+        ADHPTChannel *channel = [ADHPTChannel channelWithDelegate:self];
+        [channel listenOnPort:kADHUsbPort IPv4Address:INADDR_LOOPBACK callback:^(NSError *error) {
+            if (error) {
+//                NSLog(@"[Woodpecker USB] Failed to listen on 127.0.0.1:%d: %@", kADHUsbPort, error);
+                [self performSelector:@selector(enqueueStartUsbListening) withObject:nil afterDelay:kADHUsbListenInterval];
+            } else {
+//                NSLog(@"[Woodpecker USB] Listening on 127.0.0.1:%d", kADHUsbPort);
+                self.mChannel = channel;
+            }
+        }];
+#endif
+}
+
+- (void)tryRecoverUsbConnectIfNeeded {
+    /*
+     lockscreen，长时间进入后台等，导致listen channel已经断开
+     */
+    if (![self isUsbConnected]) {
+        [self performSelector:@selector(enqueueStartUsbListening) withObject:nil afterDelay:kADHUsbListenInterval];
+    }
+}
+
+// Invoked to accept an incoming frame on a channel. Reply NO ignore the
+// incoming frame. If not implemented by the delegate, all frames are accepted.
+- (BOOL)ioFrameChannel:(ADHPTChannel*)channel shouldAcceptFrameOfType:(uint32_t)type tag:(uint32_t)tag payloadSize:(uint32_t)payloadSize {
+    if (channel != self.mPeerChannel) {
+      // A previous channel that has been canceled but not yet ended. Ignore.
+      return NO;
+    }
+    return YES;
+}
+
+// Invoked when a new frame has arrived on a channel.
+- (void)ioFrameChannel:(ADHPTChannel*)channel didReceiveFrameOfType:(uint32_t)type tag:(uint32_t)tag payload:(NSData *)payload {
+    [self.usbIODelegate ioFrameChannel:channel didReceiveFrameOfType:type tag:tag payload:payload];
+}
+
+// Invoked when the channel closed. If it closed because of an error, *error* is
+// a non-nil NSError object.
+- (void)ioFrameChannel:(ADHPTChannel*)channel didEndWithError:(NSError*)error {
+    if (channel == self.mChannel) {
+        /*
+         listen channel断开
+         - lockscreen
+         - 进入后台
+         会引起listen channel异常，重新设置一下
+         */
+//        NSLog(@"[Woodpecker USB] listen channel errror: %@",error);
+        [self performSelector:@selector(enqueueStartUsbListening) withObject:nil afterDelay:kADHUsbListenInterval];
+    } else if (channel == self.mPeerChannel) {
+        /*
+         连接断开
+         - mac端关闭
+         - lockscreen
+         - 进入后台
+         */
+        if (self.mPeerChannel != nil) {
+            self.mPeerChannel.delegate = nil;
+            [self.mPeerChannel cancel];
+        }
+        self.mPeerChannel = nil;
+//        NSLog(@"[Woodpecker USB] peer channel errror: %@",error);
+        [[NSNotificationCenter defaultCenter] postNotificationName:kADHConnectorConnectStatusUpdate object:self userInfo:nil];
+    }
+}
+
+// For listening channels, this method is invoked when a new connection has been
+// accepted.
+- (void)ioFrameChannel:(ADHPTChannel*)channel didAcceptConnection:(ADHPTChannel*)otherChannel fromAddress:(ADHPTAddress*)address {
+    // Cancel any other connection. We are FIFO, so the last connection
+    // established will cancel any previous connection and "take its place".
+    if (self.mPeerChannel != nil) {
+        self.mPeerChannel.delegate = nil;
+      [self.mPeerChannel cancel];
+    }
+    // Weak pointer to current connection. Connection objects live by themselves
+    // (owned by its parent dispatch queue) until they are closed.
+    self.mPeerChannel = otherChannel;
+    self.mPeerChannel.userInfo = address;
+//    NSLog(@"[Woodpecker USB] Connected to %@", address);
+    [[NSNotificationCenter defaultCenter] postNotificationName:kADHConnectorConnectStatusUpdate object:self userInfo:nil];
+}
 
 @end

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
+   LastUpgradeVersion = "1400"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1F457C991F9F65C500C7D604"
-               BuildableName = "Woodpecker.app"
-               BlueprintName = "Woodpecker"
+               BlueprintIdentifier = "1F33112D2AA6187800EBBE26"
+               BuildableName = "woodpk"
+               BlueprintName = "woodpk"
                ReferencedContainer = "container:AppDevelopHelper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,15 +27,6 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1F457C991F9F65C500C7D604"
-            BuildableName = "Woodpecker.app"
-            BlueprintName = "Woodpecker"
-            ReferencedContainer = "container:AppDevelopHelper.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
       </Testables>
    </TestAction>
@@ -48,14 +39,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      viewDebuggingEnabled = "No">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1F457C991F9F65C500C7D604"
-            BuildableName = "Woodpecker.app"
-            BlueprintName = "Woodpecker"
+            BlueprintIdentifier = "1F33112D2AA6187800EBBE26"
+            BuildableName = "woodpk"
+            BlueprintName = "woodpk"
             ReferencedContainer = "container:AppDevelopHelper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -70,9 +62,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1F457C991F9F65C500C7D604"
-            BuildableName = "Woodpecker.app"
-            BlueprintName = "Woodpecker"
+            BlueprintIdentifier = "1F33112D2AA6187800EBBE26"
+            BuildableName = "woodpk"
+            BlueprintName = "woodpk"
             ReferencedContainer = "container:AppDevelopHelper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

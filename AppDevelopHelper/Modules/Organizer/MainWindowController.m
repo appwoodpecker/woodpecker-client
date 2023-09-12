@@ -30,10 +30,10 @@
 #import "WelcomeViewController.h"
 #import "DeviceUtil.h"
 #import "ApiViewController.h"
-#import "DeviceManageViewController.h"
 
 
 static NSInteger const kProMenuTag = 100;
+static NSInteger const kToolMenuTag = 101;
 
 
 @interface MainWindowController ()<NSToolbarDelegate,AppContextManagerObserver>
@@ -182,23 +182,26 @@ static NSInteger const kProMenuTag = 100;
     downloadSubItem.target = self;
     downloadSubItem.action = @selector(downloadMenuSelected:);
     
-    //Device Management
-    NSMenuItem * deviceSubItem = [helpMenu itemAtIndex:2];
-    deviceSubItem.target = self;
-    deviceSubItem.action = @selector(deviceMenuSelected:);
-    
     //Local IP
-    NSMenuItem * ipSubItem = [helpMenu itemAtIndex:3];
+    NSMenuItem * ipSubItem = [helpMenu itemAtIndex:2];
     ipSubItem.target = self;
     ipSubItem.action = @selector(localIPMenuSelected:);
     //rate
-    NSMenuItem * rateSubItem = [helpMenu itemAtIndex:4];
+    NSMenuItem * rateSubItem = [helpMenu itemAtIndex:3];
     rateSubItem.target = self;
     rateSubItem.action = @selector(rateMenuSelected:);
     //feedback
-    NSMenuItem * feedbackItem = [helpMenu itemAtIndex:5];
+    NSMenuItem * feedbackItem = [helpMenu itemAtIndex:4];
     feedbackItem.target = self;
     feedbackItem.action = @selector(feedbackMenuSelected:);
+    
+    //cmd
+    /*
+    NSMenuItem *cmdItem = [helpMenu itemWithTag:kToolMenuTag];
+    cmdItem.target = self;
+    cmdItem.action = @selector(cmdMenuSelected:);
+    */
+    
     //pro
     [self updateProMenuUI];
 }
@@ -395,11 +398,6 @@ static NSInteger const kProMenuTag = 100;
     [[NSWorkspace sharedWorkspace] openURL:requestURL];
 }
 
-- (void)deviceMenuSelected: (NSMenuItem *)menu {
-    DeviceManageViewController *vc = [[DeviceManageViewController alloc] init];
-    [self.tabVC presentViewControllerAsModalWindow:vc];
-}
-
 - (void)localIPMenuSelected: (NSMenuItem *)menu {
     LocalInfoViewController * infoVC = [[LocalInfoViewController alloc] init];
     [self.tabVC presentViewControllerAsModalWindow:infoVC];
@@ -429,6 +427,13 @@ static NSInteger const kProMenuTag = 100;
 
 - (void)downloadMenuSelected: (NSMenuItem *)menuItem {
     [UrlUtil openExternalLocalizedUrl:@"web_usage"];
+}
+
+- (void)cmdMenuSelected:(NSMenuItem *)menuItem {
+    NSString *path = [[[NSBundle mainBundle] sharedSupportPath] stringByAppendingPathComponent:@"install.sh"];
+    NSString *cmd = [NSString stringWithFormat:@"sh %@",path];
+    [DeviceUtil pasteText:cmd];
+    [self.window.contentView showToastWithIcon:@"icon_status_ok" statusText:@"Script copied, Please run in the terminal"];
 }
 
 /**

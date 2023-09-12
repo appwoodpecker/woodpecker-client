@@ -20,6 +20,12 @@ extern NSTimeInterval const kADHProtocolPackageTimeout;
 extern NSString * const kADHErrorDomain;
 extern NSInteger const kADHErrorCodeTimeOut;
 
+//USB
+extern int const kADHUsbPort;
+extern uint32_t const kADHUsbFrameTypeShake;
+extern uint32_t const kADHUsbFrameTypeData;
+
+extern NSTimeInterval const kADHUsbReconnectDelay;
 
 @interface ADHProtocolConfig : NSObject
 

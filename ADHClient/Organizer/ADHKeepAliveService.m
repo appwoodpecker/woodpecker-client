@@ -45,7 +45,7 @@ static NSTimeInterval const kPingSendInterval = 5;
     #elif TARGET_OS_MAC
     connector = [[ADHMacClientOrganizer sharedOrganizer] connector];
     #endif
-    if([connector isConnected]) {
+    if([connector isSocketConnected]) {
         [self pingStart];
     }else {
         [self pingStop];

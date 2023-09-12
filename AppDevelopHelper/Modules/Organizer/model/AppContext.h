@@ -8,20 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "ADHApiClient.h"
-#import "ADHProtocol.h"
 #import "ADHApp.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AppContext : NSObject
 
-@property (nonatomic, strong) NSString * deviceName;
-@property (nonatomic, strong) NSString * appName;
-@property (nonatomic, strong) NSString * bundleId;
+@property (nonatomic, strong) NSString *deviceName;
+@property (nonatomic, strong) NSString *appName;
+@property (nonatomic, strong) NSString *bundleId;
 //是否处于连接状态
 @property (nonatomic, assign,getter=isConnected) BOOL connected;
-
-
 
 @property (nonatomic, assign) NSInteger tag;
 @property (nonatomic, assign, getter=isTopApp) BOOL topApp;
@@ -30,10 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL notworking;
 
 + (AppContext *)context;
-- (ADHApiClient *)getApiClient;
+- (ADHApiClient *)apiClient;
 - (ADHProtocol *)protocol;
 - (ADHApp *)app;
-- (void)setApp: (ADHApp *)app;
+- (void)setApp:(ADHApp *)app;
 - (void)unsetApp;
 
 @end

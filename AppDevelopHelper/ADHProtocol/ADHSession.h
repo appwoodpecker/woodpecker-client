@@ -28,6 +28,7 @@ typedef NS_ENUM(NSUInteger, SessionStatus) {
 };
 
 @class ADHGCDAsyncSocket;
+@class ADHPTChannel;
 @interface ADHSession : NSObject
 
 @property (nonatomic, assign, getter=isLocalToRemote) BOOL localToRemote;
@@ -35,7 +36,7 @@ typedef NS_ENUM(NSUInteger, SessionStatus) {
 @property (nonatomic, strong) ADHPRequest * request;
 @property (nonatomic, strong) ADHPResponse * response;
 
-@property (nonatomic, assign) uint64_t tag;
+@property (nonatomic, assign) uint32_t tag;
 
 @property (nonatomic, strong) ADHProtocolSessionProgress sendProgressCallback;
 @property (nonatomic, strong) ADHProtocolSessionProgress receiveProgressCallback;
@@ -43,8 +44,6 @@ typedef NS_ENUM(NSUInteger, SessionStatus) {
 @property (nonatomic, strong) ADHProtocolSessionFailed failedCallback;
 
 @property (nonatomic, strong) NSError * error;
-
-@property (nonatomic, weak) ADHGCDAsyncSocket * socket;
 
 + (ADHSession *)session;
 - (void)setTag;

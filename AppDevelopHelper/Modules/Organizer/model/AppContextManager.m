@@ -9,6 +9,7 @@
 #import "AppContextManager.h"
 #import "MacOrganizer.h"
 #import "ConnectItem.h"
+#import "DeviceManager.h"
 
 NSString *const kAppContextAppStatusUpdate = @"kAppContextAppStatusUpdate";
 
@@ -187,22 +188,29 @@ NSString *const kAppContextAppStatusUpdate = @"kAppContextAppStatusUpdate";
 
 #pragma mark -----------------   remove app   ----------------
 
-- (void)removeApp: (AppContext *)context {
+- (void)removeApp:(AppContext *)context {
     [self removeAppView:context];
+    ADHApp *app = context.app;
+    if (app.isUSB) {
+        NSNumber *deviceId = app.usbDeviceId;
+        if (deviceId != nil) {
+            [DeviceManager.shared addClosedDeviceId:deviceId];
+        }
+    }
     if([context isConnected]) {
         __weak typeof(self) wself = self;
         //tell app that it will closed, and do not auto-connect.
-        [[context getApiClient] requestWithService:@"adh.appinfo" action:@"closeapp" onSuccess:^(NSDictionary *body, NSData *payload) {
+        [[context apiClient] requestWithService:@"adh.appinfo" action:@"closeapp" onSuccess:^(NSDictionary *body, NSData *payload) {
             [wself removeAppConnection:context];
         } onFailed:^(NSError *error) {
             [wself removeAppConnection:context];
         }];
-    }else {
+    } else {
         [self removeAppConnection:context];
     }
 }
 
-- (void)removeAppView: (AppContext *)context {
+- (void)removeAppView:(AppContext *)context {
     context.visible = NO;
     //remove page
     for (id<AppContextManagerObserver> observer in self.mObserverList) {

@@ -20,10 +20,10 @@ NSString *const kCarthageText = @"binary \"https://raw.githubusercontent.com/app
 
 NSString *const kDemoUrl = @"https://github.com/appwoodpecker/woodpecker-ios";
 
-NSString *const kIapSharedSecret = @"";
-NSString *const kIapForeverId = @"";
-NSString *const kIapYearlyId = @"";
-NSString *const kIapWeekId = @"";
+NSString *const kIapSharedSecret = @"498971ab2ec64d7db4268b7ec866e31b";
+NSString *const kIapForeverId = @"lifebetter.woodpecker.pro";
+NSString *const kIapYearlyId = @"lifebetter.woodpecker.year";
+NSString *const kIapWeekId = @"lifebetter.woodpecker.weektest";
 
 @implementation Constance
 

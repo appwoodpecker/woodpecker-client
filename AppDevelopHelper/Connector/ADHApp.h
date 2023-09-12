@@ -9,9 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "PlatformDefines.h"
 
+
+@class ADHApiClient;
+@class ADHUsb;
 @interface ADHApp : NSObject
 
-@property (nonatomic, strong) ADHGCDAsyncSocket * socket;
+@property (nonatomic, strong) ADHApiClient *apiClient;
+@property (nonatomic, strong) ADHProtocol *protocol;
 @property (nonatomic, strong) NSString * host;
 @property (nonatomic, assign) uint16_t port;
 @property (nonatomic, strong) NSString * deviceName;
@@ -21,6 +25,8 @@
 @property (nonatomic, assign) ADHPlatform platform;
 @property (nonatomic, assign, getter=isSandboxed) BOOL sandbox;
 @property (nonatomic, assign, getter=isSimulator) BOOL simulator;
+@property (nonatomic, weak) ADHUsb *usb;
+
 //App特有工具集
 @property (nonatomic, strong) NSArray *appToolList;
 
@@ -28,6 +34,8 @@
 @property (nonatomic, strong) NSDictionary *appInfo;
 
 @property (nonatomic, strong) NSString * frameworkVersion;
+
+@property (nonatomic, strong) NSString *shakeId;
 
 //本地工作路径
 - (NSString *)basePath;
@@ -43,5 +51,7 @@
 
 - (BOOL)isMacOS;
 - (BOOL)isAndroid;
+- (BOOL)isUSB;
+- (NSNumber *)usbDeviceId;
 
 @end

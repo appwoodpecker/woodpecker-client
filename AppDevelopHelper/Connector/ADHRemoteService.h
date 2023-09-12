@@ -16,12 +16,6 @@
 @property (nonatomic, strong) NSDictionary *ruleData;
 @property (nonatomic, assign) BOOL simulator;
 @property (nonatomic, assign) BOOL usb;
- 
-//allowed
-- (BOOL)isRuleMatch;
-
-//not disallowed
-- (BOOL)isNotDisallowed;
 
 //local
 - (BOOL)isLocalDirect;

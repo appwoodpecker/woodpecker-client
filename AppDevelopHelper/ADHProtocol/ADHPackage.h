@@ -27,7 +27,7 @@
 
 //response
 @property (nonatomic, weak) ADHPResponse * response;
-@property (nonatomic, assign) NSInteger responseTag;
+@property (nonatomic, assign) uint32_t responseTag;
 @property (nonatomic, strong) NSDictionary * body;
 @property (nonatomic, assign) NSUInteger responsePayloadSize;
 @property (nonatomic, strong) NSData * responsePayloadData;

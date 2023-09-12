@@ -2,61 +2,67 @@
 //  ADHProtocol.h
 //  AppDevelopHelper
 //
-//  Created by 张小刚 on 2017/10/24.
-//  Copyright © 2017年 lifebetter. All rights reserved.
+//  Created by 张小刚 on 2023/9/2.
+//  Copyright © 2023 lifebetter. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "ADHSession.h"
-#import "ADHPackage.h"
 #import "ADHGCDAsyncSocket.h"
-#import "ADHDefine.h"
+#import "ADHPTChannel.h"
 
-@protocol ADHProtocolDelegate;
-@interface ADHProtocol : NSObject<ADHGCDAsyncSocketDelegate>
-
-+ (ADHProtocol *)protocol;
-
-/**
- 传输底层socket
- 对于Mac端来说，可以同时与多个App socket同时通信，此socket为当前工作socket
- 对于App端，只有一个socket
- */
-- (void)setSocket:(ADHGCDAsyncSocket *)socket;
-- (ADHGCDAsyncSocket *)socket;
-@property (nonatomic, weak) id <ADHProtocolDelegate> delegate;
-
-- (dispatch_queue_t)workQueue;
+@class ADHSocketChannel;
+@class ADHUsbChannel;
+@protocol ADHChannel <NSObject>
 
 /**
  body: 主要数据(key,value)
  payload: 负载数据
  所有回调在protocol work queue
  */
-- (void)requestWithBody: (NSDictionary *)body
-                        payload: (NSData *)payload
-                  onSendChanged: (ADHProtocolSessionProgress)sendProgressCallback
-               onReceiveChanged: (ADHProtocolSessionProgress)receiveProgressCallback
-                      onSuccess: (ADHProtocolSessionSuccess)successCallback
-                       onFailed: (ADHProtocolSessionFailed)failedCallback
-                     overSocket: (ADHGCDAsyncSocket *)socket;
+- (void)requestWithBody:(NSDictionary *)body
+                payload:(NSData *)payload
+          onSendChanged:(ADHProtocolSessionProgress)sendProgressCallback
+       onReceiveChanged:(ADHProtocolSessionProgress)receiveProgressCallback
+              onSuccess:(ADHProtocolSessionSuccess)successCallback
+               onFailed:(ADHProtocolSessionFailed)failedCallback;
 
-- (void)responseSession: (ADHSession *)session
-                       withBody: (NSDictionary *)body
-                        payload: (NSData *)payload
-                  onSendChanged: (ADHProtocolSessionProgress)sendProgressCallback
-                      onSuccess: (ADHProtocolSessionSuccess)successCallback
-                       onFailed: (ADHProtocolSessionFailed)failedCallback;
+- (void)responseSession:(ADHSession *)session
+               withBody:(NSDictionary *)body
+                payload:(NSData *)payload
+          onSendChanged:(ADHProtocolSessionProgress)sendProgressCallback
+              onSuccess:(ADHProtocolSessionSuccess)successCallback
+               onFailed:(ADHProtocolSessionFailed)failedCallback;
+
+- (BOOL)isSocket;
+- (BOOL)isUsb;
 
 @end
 
-
-@protocol ADHProtocolDelegate<NSObject>
+@protocol ADHChannelDelegate<NSObject>
 
 @optional
 - (void)protocolDidReceiveRequest: (ADHSession *)session;
 
 @end
 
+@interface ADHProtocol : NSObject
+
++ (ADHProtocol *)protocol;
+- (void)setDelegete:(id<ADHChannelDelegate>)delegate;
+- (id<ADHChannel>)workChannel;
+
+- (void)setSocket:(ADHGCDAsyncSocket *)socket;
+- (ADHSocketChannel *)socketChannel;
+
+- (void)setUsb:(ADHPTChannel *)usbChannel;
+- (ADHUsbChannel *)usbChannel;
+
+- (BOOL)matchWithSocket:(ADHGCDAsyncSocket *)socket;
+- (BOOL)matchWithUsb:(ADHPTChannel *)channel;
+
+- (BOOL)isConnected;
+- (void)disConnect;
 
 
+@end

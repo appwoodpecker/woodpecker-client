@@ -13,8 +13,6 @@
 #import "AppContextManager.h"
 #import "ConnectionViewController.h"
 #import "DeviceUtil.h"
-#import "ADHAllowDeviceUtil.h"
-#import "DeviceManageViewController.h"
 
 NSString * const kConnectionItemStatusUpdate = @"kConnectionItemStatusUpdate";
 
@@ -299,96 +297,7 @@ static CGFloat const kTabItemWidth = 240.0f;
 }
 
 - (void)cellRightClicked: (ADHView *)itemView point: (NSPoint)point {
-    NSInteger tag = itemView.vtag;
-    AppContext *context = [[AppContextManager manager] contextWithTag:tag];
-    NSString *deviceName = context.deviceName;
-    deviceName = [deviceName lowercaseString];
-    NSDictionary *ruleData = [DeviceUtil getDeviceAllowData];
-    NSArray *allowList = ruleData[@"a"];
-    BOOL match = NO;
-    for (NSDictionary *data in allowList) {
-        NSString *name = [data[@"n"] lowercaseString];
-        NSString *type = data[@"t"];
-        if([type isEqualToString:@"e"]) {
-            match = [deviceName isEqualToString:name];
-        }
-        if(match) {
-            break;
-        }
-    }
-    NSMenu * menu = [[NSMenu alloc] init];
-    menu.autoenablesItems = NO;
-    if(match) {
-        //disallow
-        NSMenuItem * matchMenu = [[NSMenuItem alloc] initWithTitle:@"Disallow this device" action:@selector(disallowMenuItemSelected:) keyEquivalent:adhvf_const_emptystr()];
-        matchMenu.target = self;
-        matchMenu.representedObject = context.deviceName;
-        [menu addItem:matchMenu];
-    }else {
-        //allow
-        NSMenuItem * matchMenu = [[NSMenuItem alloc] initWithTitle:@"Allow this device" action:@selector(allowMenuItemSelected:) keyEquivalent:adhvf_const_emptystr()];
-        matchMenu.target = self;
-        matchMenu.representedObject = context.deviceName;
-        [menu addItem:matchMenu];
-    }
-    NSMenuItem * deviceMenu = [[NSMenuItem alloc] initWithTitle:@"Device Management" action:@selector(deviceMenuItemSelected:) keyEquivalent:adhvf_const_emptystr()];
-    deviceMenu.target = self;
-    [menu addItem:deviceMenu];
-    
-    [menu popUpMenuPositioningItem:nil atLocation:point inView:itemView];
-}
-
-- (void)allowMenuItemSelected: (NSMenuItem *)item {
-    NSString *deviceName = item.representedObject;
-    NSArray *allowList = [Preference getAllowedDeviceList];
-    NSMutableArray *resultList = [allowList mutableCopy];
-    NSDictionary *data = @{
-        @"n" : adhvf_safestringfy(deviceName),
-        @"t" : @"e",
-    };
-    [resultList insertObject:data atIndex:0];
-    [Preference saveAllowedDeviceList:resultList];
-}
-
-- (void)disallowMenuItemSelected: (NSMenuItem *)item {
-    NSString *deviceName = item.representedObject;
-    NSString *tmpName = [deviceName lowercaseString];
-    //remove allow list
-    NSArray *allowList = [Preference getAllowedDeviceList];
-    NSMutableArray *resultList = [allowList mutableCopy];
-    NSInteger matchIndex = NSNotFound;
-    for (NSInteger i=0;i<resultList.count;i++) {
-        NSDictionary *data = resultList[i];
-        NSString *name = [data[@"n"] lowercaseString];
-        NSString *type = data[@"t"];
-        BOOL match = NO;
-        if([type isEqualToString:@"e"]) {
-            match = [tmpName isEqualToString:name];
-        }
-        if(match) {
-            matchIndex = i;
-            break;
-        }
-    }
-    if(matchIndex != NSNotFound) {
-        [resultList removeObjectAtIndex:matchIndex];
-    }
-    [Preference saveAllowedDeviceList:resultList];
-    
-    //add disallow list
-    NSArray *disallowList = [Preference getDisallowedDeviceList];
-    NSMutableArray *tmpList = [disallowList mutableCopy];
-    NSDictionary *data = @{
-        @"n" : adhvf_safestringfy(deviceName),
-        @"t" : @"e",
-    };
-    [tmpList insertObject:data atIndex:0];
-    [Preference saveDisallowedDeviceList:tmpList];
-}
-
-- (void)deviceMenuItemSelected: (NSMenuItem *)item {
-    DeviceManageViewController *vc = [[DeviceManageViewController alloc] init];
-    [self presentViewControllerAsModalWindow:vc];
+   //do nothing
 }
 
 - (IBAction)connectionButtonPressed:(id)sender {

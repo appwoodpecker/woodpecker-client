@@ -14,6 +14,7 @@
 + (NSString *)getSSID;
 + (NSString *)getLocalIPAddress;
 + (NSString *)localUSBIP;
++ (BOOL)isSimulator;
 
 //mac only
 + (BOOL)isSandboxed;

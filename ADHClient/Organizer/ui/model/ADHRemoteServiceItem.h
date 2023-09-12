@@ -25,10 +25,4 @@ typedef NS_ENUM(NSUInteger, ADHRemoteServiceStatus) {
 
 @property (nonatomic, assign) ADHRemoteServiceStatus connectStatus;
 
-//allowed
-- (BOOL)isRuleMatch;
-
-//not disallowed
-- (BOOL)isNotDisallowed;
-
 @end

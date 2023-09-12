@@ -65,14 +65,8 @@ static CGFloat const kTitlePaddingRight = 107.0f;
         name = [NSString stringWithFormat:@"%@ (USB)",name];
     }
     self.titleLabel.text = [NSString stringWithFormat:@"%@",name];
-    BOOL allowed = ([item isRuleMatch] || [item isNotDisallowed]);
-    if(allowed) {
-        self.connectSwitch.hidden = NO;
-        self.disallowLabel.hidden = YES;
-    }else {
-        self.connectSwitch.hidden = YES;
-        self.disallowLabel.hidden = NO;
-    }
+    self.connectSwitch.hidden = NO;
+    self.disallowLabel.hidden = YES;
 }
 
 + (CGFloat)getTextWidth {

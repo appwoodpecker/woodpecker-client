@@ -17,7 +17,7 @@ extern NSString * const kADHShowOnConnectionFailed;
 @interface ADHOrganizer (Private)
 
 - (ADHAppConnector *)connector;
-- (ADHProtocol *)protocol;
+- (ADHSocketChannel *)protocol;
 - (ADHDispatcher *)dispatcher;
 - (void)clearAutoConnectTry;
 - (NSBundle *)adhBundle;

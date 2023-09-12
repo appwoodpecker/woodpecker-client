@@ -134,6 +134,14 @@
 
 #if TARGET_OS_IPHONE
 
++ (BOOL)isSimulator {
+    if (TARGET_IPHONE_SIMULATOR == 1) {
+        return YES;
+    } else{
+        return NO;
+    }
+}
+
 #elif TARGET_OS_MAC
 
 + (BOOL)isSandboxed {

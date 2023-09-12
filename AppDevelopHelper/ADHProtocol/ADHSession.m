@@ -7,6 +7,7 @@
 //
 
 #import "ADHSession.h"
+#import "ADHSocketChannel.h"
 
 @implementation ADHSession
 
@@ -75,7 +76,6 @@
 }
 
 @end
-
 
 
 

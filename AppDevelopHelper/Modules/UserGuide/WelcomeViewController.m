@@ -19,6 +19,7 @@
 @property (weak) IBOutlet NSView *page2;
 
 @property (weak) IBOutlet NSTextField *privacyTitleLabel;
+@property (weak) IBOutlet NSTextField *privacyDescLabel;
 @property (weak) IBOutlet NSButton *privacyNextButton;
 @property (weak) IBOutlet NSTextField *privacyLabel1;
 @property (weak) IBOutlet NSTextField *privacyLabel2;
@@ -108,6 +109,16 @@
     [nextButton setTextColor:[Appearance themeColor]];
     self.privacyTitleLabel.textColor = [Appearance themeColor];
     if([LocalizationUtil isChinese]) {
+        {
+            NSMutableAttributedString * content = [[NSMutableAttributedString alloc] initWithString:@"我们支持USB或本地Wifi进行通信，如果您使用本地Wifi进行通信，由于iOS 14对本地网络使用增加了权限，因此需要您在App应用的Info.plist增加以下两项：" attributes:defaultAttr];
+            NSString *text = content.string;
+            NSRange strongRange1 = [text rangeOfString:@"USB"];
+            NSRange strongRange2 = [text rangeOfString:@"本地Wifi"];
+            [content setAttributes:linkAttr range:strongRange1];
+            [content setAttributes:linkAttr range:strongRange2];
+            self.privacyDescLabel.attributedStringValue = content;
+        }
+        
         NSMutableAttributedString * content1 = [[NSMutableAttributedString alloc] initWithString:@"1. 在Privacy - Local Network Usage Description添加本地网络描述" attributes:defaultAttr];
         NSString *text = content1.string;
         NSRange strongRange = [text rangeOfString:@"Privacy - Local Network Usage Description"];
@@ -122,6 +133,15 @@
         [content2 setAttributes:strongAttr range:strongRange2];
         self.privacyLabel2.attributedStringValue = content2;
     }else {
+        {
+            NSMutableAttributedString * content = [[NSMutableAttributedString alloc] initWithString:@"We support USB or Local Wifi to transfer data, If you choose wifi to transfer data between mac and your app, on iOS 14, system add a new privacy about local network usage,  we need add two keys in your app's Info.plist file:" attributes:defaultAttr];
+            NSString *text = content.string;
+            NSRange strongRange1 = [text rangeOfString:@"USB"];
+            NSRange strongRange2 = [text rangeOfString:@"Local Wifi"];
+            [content setAttributes:linkAttr range:strongRange1];
+            [content setAttributes:linkAttr range:strongRange2];
+            self.privacyDescLabel.attributedStringValue = content;
+        }
         NSMutableAttributedString * content1 = [[NSMutableAttributedString alloc] initWithString:@"1.  Add description in Privacy - Local Network Usage Description" attributes:defaultAttr];
         NSString *text = content1.string;
         NSRange strongRange = [text rangeOfString:@"Privacy - Local Network Usage Description"];

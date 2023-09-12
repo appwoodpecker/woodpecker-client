@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ADHGCDAsyncSocket.h"
 #import "ADHRemoteService.h"
+#import "ADHPTChannel.h"
 
 
 extern NSString * const kADHConnectorConnectStatusUpdate;
@@ -24,6 +25,8 @@ typedef void (^ADHAppConnectorConnectFailedBlock)(NSError * error);
 
 @interface ADHAppConnector : NSObject
 
+//USB连接
+- (void)startUsbConnection;
 //搜索服务
 - (void)startSearchServiceWithUpdateBlock: (ADHAppConnectorSearchUpdateBlock)updateBlock error: (ADHAppConnectorSearchFailedBlock)errorBlock;
 //停止搜索服务，主动停止外界接收不到回调事件
@@ -42,7 +45,7 @@ typedef void (^ADHAppConnectorConnectFailedBlock)(NSError * error);
 
 - (BOOL)isSearching;
 - (BOOL)isConnecting;
-- (BOOL)isConnected;
+- (BOOL)isSocketConnected;
 
 - (NSString *)connectedHost;
 - (uint16_t)connectedPort;
@@ -50,6 +53,11 @@ typedef void (^ADHAppConnectorConnectFailedBlock)(NSError * error);
 - (BOOL)isRemoteServiceConnected: (ADHRemoteService *)remoteService;
 
 @property (nonatomic, weak) id <ADHGCDAsyncSocketDelegate> socketIODelegate;
+@property (nonatomic, weak) id <ADHPTChannelDelegate> usbIODelegate;
+
+
+- (BOOL)isUsbConnected;
+- (ADHPTChannel *)usbChannel;
 
 @end
 

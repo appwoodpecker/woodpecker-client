@@ -36,6 +36,9 @@
 #import "ADHStateMasterActionService.h"
 #import "ADHUtilityActionService.h"
 #import "ADHFirebaseActionService.h"
+#import "ADHSocketChannel.h"
+#import "ADHUsbChannel.h"
+#import "ADHUtil.h"
 
 NSString * const kADHOrganizerWindowDidVisible = @"ADHOrganizerWindowDidVisible";
 NSString * const kADHOrganizerWorkStatusUpdate = @"ADHOrganizerWorkStatusUpdate";
@@ -49,7 +52,7 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
 @interface ADHOrganizer ()
 
 @property (nonatomic, strong) ADHLaunchOptions *launchOptions;
-@property (nonatomic, strong) ADHProtocol * mProtocol;
+@property (nonatomic, strong) ADHProtocol *mProtocol;
 @property (nonatomic, strong) ADHDispatcher *mDispatcher;
 @property (nonatomic, strong) ADHAppConnector * mConnector;
 
@@ -86,17 +89,8 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
     self = [super init];
     if (self) {
         [self loadLaunchOptions];
-        [self versionSetup];
     }
     return self;
-}
-
-- (void)versionSetup {
-    //clear userdefaults setup before 1.1.0
-    if([[NSUserDefaults standardUserDefaults] objectForKey:@"woodpecker"]) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"woodpecker"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
 }
 
 - (void)loadLaunchOptions {
@@ -189,11 +183,11 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
 }
 
 - (void)setup {
-    ADHProtocol * protocol = [ADHProtocol protocol];
+    ADHProtocol *protocol = [ADHProtocol protocol];
     self.mProtocol = protocol;
     
     ADHAppConnector * connector = [[ADHAppConnector alloc] init];
-    connector.socketIODelegate = self.mProtocol;
+    connector.socketIODelegate = self.mProtocol.socketChannel;
     self.mConnector = connector;
     
     ADHDispatcher *dispatcher = [[ADHDispatcher alloc] init];
@@ -208,8 +202,8 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addWindowGestureRegcognizer) name:UIWindowDidBecomeVisibleNotification object:nil];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onConnectionStatusUpdate:) name:kADHConnectorConnectStatusUpdate object:nil];
-    //尝试自动连接
-    [self performSelector:@selector(tryAutoConnect) withObject:nil afterDelay:ADHOrganizerAutoConnectDelay];
+    //尝试USB自动连接，无线连接手动连接
+    [self performSelector:@selector(tryConnect) withObject:nil afterDelay:ADHOrganizerAutoConnectDelay];
     
     [[ADHKeepAliveService service] start];
 }
@@ -245,8 +239,8 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
 }
 
 - (void)onConnectionStatusUpdate:(NSNotification *)noti {
-    [self updateProtocolSocket];
-    if(![self.mConnector isConnected]){
+    [self updateProtocolChannel];
+    if(![self.mConnector isSocketConnected]){
 //        NSLog(@"unconnected -_-");
         //unconnect
         NSDictionary *userInfo = noti.userInfo;
@@ -257,7 +251,7 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
         }else {
             [self doTryRecoverConnection];
         }
-    }else if([self.mConnector isConnected]){
+    } else if([self.mConnector isSocketConnected]){
 //        NSLog(@"connected ^_^");
         //connected
         self.workingHost = self.mConnector.connectedHost;
@@ -275,12 +269,31 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
     });
 }
 
-- (void)updateProtocolSocket {
-    if([self.mConnector isConnected]){
+- (void)updateProtocolChannel {
+    //usb
+    if ([self.mConnector isUsbConnected]) {
+        [self.mProtocol setUsb:self.mConnector.usbChannel];
+        self.mConnector.usbIODelegate = self.mProtocol.usbChannel;
+    } else {
+        [self.mProtocol setUsb:nil];
+        self.mConnector.usbIODelegate = nil;
+    }
+    //socket
+    if([self.mConnector isSocketConnected]){
         ADHGCDAsyncSocket * clientSocket = [self.mConnector socket];
         [self.mProtocol setSocket:clientSocket];
     }else{
         [self.mProtocol setSocket:nil];
+    }
+}
+
+- (void)tryConnect {
+    if ([ADHUtil isSimulator]) {
+        //模拟器使用socket连接
+        [self tryAutoConnect];
+    } else {
+        //真机使用usb连接
+        [self.mConnector startUsbConnection];
     }
 }
 
@@ -312,7 +325,7 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
     }else{
         adhDebugLog(@"开始搜索...");
         [self.mConnector startSearchServiceWithUpdateBlock:^(NSArray<ADHRemoteService *> *serviceList, BOOL moreComing) {
-            if([self.mConnector isConnected] || [self.mConnector isConnecting]) {
+            if([self.mConnector isSocketConnected] || [self.mConnector isConnecting]) {
                 return;
             }
             if(serviceList.count == 0){
@@ -349,10 +362,8 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
                 //根据匹配规则尝试链接
                 ADHRemoteService *matchService = nil;
                 for (ADHRemoteService *service in serviceList) {
-                    if([service isRuleMatch]) {
-                        matchService = service;
-                        break;
-                    }
+                    matchService = service;
+                    break;
                 }
                 if(matchService) {
                     adhDebugLog(@"找到match服务: %@，尝试连接",matchService.name);
@@ -374,10 +385,8 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
                             //查找一个允许的
                             ADHRemoteService *allowedService = nil;
                             for (ADHRemoteService *service in serviceList) {
-                                if([service isNotDisallowed]) {
-                                    allowedService = service;
-                                    break;
-                                }
+                                allowedService = service;
+                                break;
                             }
                             if(allowedService) {
                                 adhDebugLog(@"找到一个允许的服务，尝试连接");
@@ -418,7 +427,7 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
     if(self.shouldTryRecoverConnection) {
         self.bLaunchAutoConnectRoutine = NO;
         if(self.workingHost.length > 0 && self.workingPort > 0){
-            if(![self.connector isConnected] && ![self.connector isConnecting]){
+            if(![self.connector isSocketConnected] && ![self.connector isConnecting]){
                 self.tryRecoverConnectionCounter++;
                 if(self.tryRecoverConnectionCounter <= ADHOrganizerAutoRecoverConnectionMaxCount){
                     [self tryConnectToHost:self.workingHost port:self.workingPort];
@@ -456,7 +465,7 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
 }
 
 - (BOOL)isWorking {
-    return [self.connector isConnected];
+    return [self.connector isSocketConnected];
 }
 
 @end

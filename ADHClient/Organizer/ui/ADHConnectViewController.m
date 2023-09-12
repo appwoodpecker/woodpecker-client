@@ -199,7 +199,7 @@
         if([item.host isEqualToString:remoteHost] && item.port == remotePort){
             if([self.connector isConnecting]){
                 item.connectStatus = ADHRemoteServiceStatusConnecting;
-            }else if([self.connector isConnected]){
+            }else if([self.connector isSocketConnected]){
                 item.connectStatus = ADHRemoteServiceStatusConnected;
             }else{
                 item.connectStatus = ADHRemoteServiceStatusUnConnect;

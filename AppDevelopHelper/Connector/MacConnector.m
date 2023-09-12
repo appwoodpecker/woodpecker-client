@@ -11,16 +11,31 @@
 #import "DeviceUtil.h"
 #import "AppContextManager.h"
 #import "Preference.h"
-#import "ADHAllowDeviceUtil.h"
+#import "ADHDispatcher+Default.h"
+#import "ADHPTChannel.h"
+#import "ADHPTUSBHub.h"
+#import "ADHSocketChannel.h"
+#import "ADHUsbChannel.h"
+#import "ADHUsb.h"
+#import "DeviceManager.h"
 
-@interface MacConnector() <ADHGCDAsyncSocketDelegate,NSNetServiceDelegate>
+
+@interface MacConnector() <ADHGCDAsyncSocketDelegate,NSNetServiceDelegate, ADHPTChannelDelegate>
 
 @property (nonatomic, strong) ADHGCDAsyncSocket * mSocket;
 @property (nonatomic, strong) NSNetService * mNetService;
 @property (nonatomic, strong) NSMutableArray * mClientApps;
+//用于在正式连接前进行握手(是否可连、framework版本等)
+@property (nonatomic, strong) NSMutableArray * mShakeApps;
 
-@property (nonatomic, strong) ADHApiClient *mApiClient;
-@property (nonatomic, strong) ADHProtocol *mProtocol;
+//USB
+@property (nonatomic, strong) dispatch_queue_t usbConnectedQueue;
+@property (nonatomic, strong) NSMutableArray *mUsbs;
+
+@property (nonatomic, strong) NSNumber *connectingToDeviceID;
+@property (nonatomic, strong) NSNumber *connectedDeviceID;
+@property (nonatomic, strong) NSDictionary *connectedDeviceProperties;
+@property (nonatomic, strong) ADHPTChannel *connectedChannel;
 
 @end
 
@@ -29,15 +44,12 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.mApiClient = [[ADHApiClient alloc] init];
-        self.mProtocol = [[ADHProtocol alloc] init];
-        [self.mApiClient setProtocol:self.mProtocol];
+        
     }
     return self;
 }
 
-- (void)disConnect
-{
+- (void)disConnect {
     if(self.mNetService){
         self.mNetService.delegate = nil;
         [self.mNetService stop];
@@ -54,6 +66,14 @@
 //start connect service
 - (void)startService {
     [self disConnect];
+    self.mClientApps = [NSMutableArray array];
+    self.mShakeApps = [NSMutableArray array];
+    self.mUsbs = [NSMutableArray array];
+    [self startSocketService];
+    [self startUsbService];
+}
+
+- (void)startSocketService {
     //setup socket
     ADHGCDAsyncSocket * socket = [[ADHGCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
     NSError * error = nil;
@@ -69,7 +89,6 @@
         return;
     }
     self.mSocket = socket;
-    self.mClientApps = [NSMutableArray array];
     //publish service
     NSString * deviceName = [DeviceUtil deviceName];
     NSString * serviceName = [NSString stringWithFormat:@"%@ (%@)",kADHNetServiceName,deviceName];
@@ -80,6 +99,7 @@
     self.mNetService = netService;
     [self.mNetService publish];
 }
+
 
 - (NSData *)txtRecordData {
     NSMutableDictionary * txtDic = [NSMutableDictionary dictionary];
@@ -123,59 +143,14 @@
 //    NSLog(@"service did not publish: %@",errorDict);
 }
 
-- (void)addApp: (ADHGCDAsyncSocket *)sock {
-    [self.mProtocol setSocket:sock];
-    NSString *remoteHost = [sock connectedHost];
-    NSString *localHost = [sock localHost];
-//    NSLog(@"remote: %@ local: %@",remoteHost,localHost);
+- (void)addAppWithSocket:(ADHGCDAsyncSocket *)sock usb:(ADHUsb *)usb {
+    ADHApp *shakeApp = [self createShakeApp:sock usb:usb];
+    [self.mShakeApps addObject:shakeApp];
+    NSString *shakeId = shakeApp.shakeId;
     __weak typeof(self) wself = self;
-    [self.mApiClient requestWithService:@"adh.appinfo" action:@"appinfo" body:nil payload:nil progressChanged:nil onSuccess:^(NSDictionary *body, NSData *payload) {
+    [shakeApp.apiClient requestWithService:@"adh.appinfo" action:@"appinfo" body:nil payload:nil progressChanged:nil onSuccess:^(NSDictionary *body, NSData *payload) {
         NSDictionary * appInfo = body;
-        BOOL allowed = NO;
-        /**
-         1.模拟器
-         两种方法
-         1. ip相同
-         2. simhost值为同一用户
-         */
-        if(remoteHost && localHost && [remoteHost isEqualToString:localHost]) {
-//            NSLog(@"same ip -> 模拟器");
-            allowed = YES;
-        }
-        if(!allowed) {
-            NSString * simhost = nil;
-            if(appInfo[@"simhost"]) {
-                simhost = appInfo[@"simhost"];
-                //zhangxiaogang
-                NSString *hostName = [DeviceUtil hostName];
-                if([hostName isEqualToString:simhost]) {
-//                    NSLog(@"sim host -> 模拟器");
-                    allowed = YES;
-                }
-            }
-        }
-        /*
-         2.usb直连
-         169.254为link-local https://en.wikipedia.org/wiki/Link-local_address
-         是Mac为连接的usb设备分配的ip
-        */
-        if(!allowed) {
-            if([remoteHost hasPrefix:@"169.254"]) {
-//                NSLog(@"usb设备");
-                allowed = YES;
-            }
-        }
-        //3.设备名称是否允许
         NSString * deviceName = appInfo[@"deviceName"];
-        if(!allowed) {
-            allowed = [ADHAllowDeviceUtil checkName:deviceName notDisallowed:[DeviceUtil getDeviceAllowData]];
-        }
-        if(!allowed) {
-            //断开sock链接
-            adhConsoleLog(@"Device is not allowed: %@",deviceName);
-            [sock disconnect];
-            return ;
-        }
         NSString * bundleId = appInfo[@"bundleId"];
         NSString * appName = appInfo[@"appName"];
         NSString * systemVersion = appInfo[@"systemVersion"];
@@ -192,8 +167,7 @@
         if(appInfo[@"simulator"]) {
             simulator = [appInfo[@"simulator"] boolValue];
         }
-        ADHApp * app = [[ADHApp alloc] init];
-        app.socket = sock;
+        ADHApp *app = [self findShakeApp:shakeId];
         app.deviceName = deviceName;
         app.appName = appName;
         app.bundleId = bundleId;
@@ -210,19 +184,50 @@
         //before add new app, try to remove the same bad app
         [wself tryRemoveTheSameApp:app];
         [wself.mClientApps addObject:app];
+        [wself.mShakeApps removeObject:app];
         if(wself.delegate && [wself.delegate respondsToSelector:@selector(connectorClientDidConnect:)]){
             [wself.delegate connectorClientDidConnect:app];
         }
     } onFailed:^(NSError *error) {
         
-    } overSocket:sock];
+    }];
+}
+
+
+- (ADHApp *)createShakeApp:(ADHGCDAsyncSocket *)sock usb:(ADHUsb *)usb {
+    ADHProtocol *protocol = [ADHProtocol protocol];
+    [protocol setSocket:sock];
+    [protocol setUsb:usb.channel];
+    ADHApiClient *apiClient = [[ADHApiClient alloc] init];
+    [apiClient setProtocol:protocol];
+    ADHDispatcher *dispatcher = [ADHDispatcher macClientDispatcher];
+    [apiClient setDispatcher:dispatcher];
+    NSString *remoteHost = [sock connectedHost];
+    NSTimeInterval interval = [[NSDate date] timeIntervalSince1970];
+    ADHApp * app = [[ADHApp alloc] init];
+    app.protocol = protocol;
+    app.apiClient = apiClient;
+    app.shakeId = [NSString stringWithFormat:@"%@-%.f",remoteHost,interval];
+    app.usb = usb;
+    return app;
+}
+
+- (ADHApp *)findShakeApp:(NSString *)shakeId {
+    ADHApp *targetApp = nil;
+    for (ADHApp *app in self.mShakeApps) {
+        if ([app.shakeId isEqualToString:shakeId]) {
+            targetApp = app;
+            break;;
+        }
+    }
+    return targetApp;
 }
 
 /**
  * try to remove bad app
  * this will happen when the other socket closed without notify here, so the socket still looks good, but actually is broken.
  */
-- (void)tryRemoveTheSameApp: (ADHApp *)theApp {
+- (void)tryRemoveTheSameApp:(ADHApp *)theApp {
     ADHApp *badApp = nil;
     for (ADHApp * app in self.mClientApps) {
         if([app.deviceName isEqualToString:theApp.deviceName] && [app.bundleId isEqualToString:theApp.bundleId]) {
@@ -236,19 +241,36 @@
     }
 }
 
-- (void)removeApp: (ADHGCDAsyncSocket *)sock
-{
-    ADHApp * app = [self appWithSocket:sock];
+- (void)removeAppWithSocket:(ADHGCDAsyncSocket *)sock usb:(ADHUsb *)usb {
+    ADHApp * app = nil;
+    if (sock != nil) {
+        app = [self findAppWithSocket:sock];
+    } else if (usb != nil) {
+        app = [self findAppWithChannel:usb.channel];
+    }
     if(app){
         [self.mClientApps removeObject:app];
+        if(self.delegate && [self.delegate respondsToSelector:@selector(connectorClientDidDisConnect:)]){
+            [self.delegate connectorClientDidDisConnect:app];
+        }
     }
 }
 
-- (ADHApp *)appWithSocket: (ADHGCDAsyncSocket *)sock
-{
+- (ADHApp *)findAppWithSocket:(ADHGCDAsyncSocket *)sock {
     ADHApp * targetApp = nil;
     for (ADHApp * app in self.mClientApps) {
-        if(app.socket == sock){
+        if([app.protocol matchWithSocket:sock]){
+            targetApp = app;
+            break;
+        }
+    }
+    return targetApp;
+}
+
+- (ADHApp *)findAppWithChannel:(ADHPTChannel *)channel {
+    ADHApp * targetApp = nil;
+    for (ADHApp * app in self.mClientApps) {
+        if([app.protocol matchWithUsb:channel]){
             targetApp = app;
             break;
         }
@@ -269,10 +291,8 @@
 
 #pragma mark -----------------   manually disconnect app ----------------
 
-- (void)disConnectApp: (ADHApp *)app {
-    if(app.socket.isConnected) {
-        [app.socket disconnect];
-    }
+- (void)disConnectApp:(ADHApp *)app {
+    [app.protocol disConnect];
     [self.mClientApps removeObject:app];
 }
 
@@ -280,23 +300,18 @@
 /**
  * 新的client连接
  */
-- (void)socket:(ADHGCDAsyncSocket *)sock didAcceptNewSocket:(ADHGCDAsyncSocket *)newSocket
-{
-    [self addApp:newSocket];
+- (void)socket:(ADHGCDAsyncSocket *)sock didAcceptNewSocket:(ADHGCDAsyncSocket *)newSocket {
+    [self addAppWithSocket:newSocket usb:nil];
 }
 
 /**
  * Server/Client
  * socket断开链接
  **/
-- (void)socketDidDisconnect:(ADHGCDAsyncSocket *)sock withError:(nullable NSError *)err
-{
-    ADHApp * app = [self appWithSocket:sock];
+- (void)socketDidDisconnect:(ADHGCDAsyncSocket *)sock withError:(nullable NSError *)err {
+    ADHApp * app = [self findAppWithSocket:sock];
     if(app){
-        [self removeApp:sock];
-        if(self.delegate && [self.delegate respondsToSelector:@selector(connectorClientDidDisConnect:)]){
-            [self.delegate connectorClientDidDisConnect:app];
-        }
+        [self removeAppWithSocket:sock usb:nil];
     }
 }
 
@@ -343,22 +358,200 @@
     return interval;
 }
 
-- (id<ADHGCDAsyncSocketDelegate>)getIODelegate: (ADHGCDAsyncSocket *)sock {
-    NSArray<AppContext *>* contextList = [[AppContextManager manager] contextList];
-    ADHProtocol *targetProtocol = nil;
-    for (AppContext *context in contextList) {
-        if(context.protocol.socket == sock) {
-            targetProtocol = context.protocol;
+- (id<ADHGCDAsyncSocketDelegate>)getIODelegate:(ADHGCDAsyncSocket *)sock {
+    id<ADHGCDAsyncSocketDelegate> targetChannel = nil;
+    for (ADHApp *app in self.mClientApps) {
+        if([app.protocol matchWithSocket:sock]) {
+            targetChannel = app.protocol.socketChannel;
             break;
         }
     }
-    if(!targetProtocol) {
-        if(self.mProtocol.socket == sock) {
-            targetProtocol = self.mProtocol;
+    
+    if(!targetChannel) {
+        for (ADHApp *app in self.mShakeApps) {
+            if([app.protocol matchWithSocket:sock]) {
+                targetChannel = app.protocol.socketChannel;
+                break;
+            }
         }
     }
-    return targetProtocol;
+    return targetChannel;
 }
+
+
+#pragma mark USB
+
+- (void)startUsbService {
+    self.usbConnectedQueue = dispatch_queue_create("woodpecker.usbconnect", DISPATCH_QUEUE_SERIAL);
+    // Start listening for device attached/detached notifications
+    [self startListeningForDevices];
+}
+
+- (void)startListeningForDevices {
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserverForName:ADHPTUSBDeviceDidAttachNotification object:ADHPTUSBHub.sharedHub queue:nil usingBlock:^(NSNotification *noti) {
+        NSNumber *deviceID = [noti.userInfo objectForKey:ADHPTUSBHubNotificationKeyDeviceID];
+        NSDictionary *properties = [noti.userInfo objectForKey:ADHPTUSBHubNotificationKeyProperties];
+        NSString *udid = properties[@"UDID"];
+//        NSLog(@"ADHPTUSBDeviceDidAttachNotification: %@", deviceID);
+        [self onUsbAttatch:udid deviceId:deviceID];
+    }];
+    [nc addObserverForName:ADHPTUSBDeviceDidDetachNotification object:ADHPTUSBHub.sharedHub queue:nil usingBlock:^(NSNotification *note) {
+        NSNumber *deviceID = [note.userInfo objectForKey:ADHPTUSBHubNotificationKeyDeviceID];
+//        NSLog(@"ADHPTUSBDeviceDidDetachNotification: %@", deviceID);
+        [self onUsbDetatched:deviceID];
+    }];
+}
+
+- (void)onUsbAttatch:(NSString *)udid deviceId:(NSNumber *)deviceId {
+    ADHUsb *usb = [self findUsbWithUdid:udid];
+    if (usb == nil) {
+        usb = [ADHUsb new];
+        usb.udid = udid;
+        [self.mUsbs addObject:usb];
+    }
+    usb.deviceId = deviceId;
+    usb.attatched = YES;
+    usb.state = ADHUsbStateDisConnect;
+    [self enqueueConnectToUSBDevice];
+}
+
+- (void)onUsbDetatched:(NSNumber *)deviceId {
+    ADHUsb *usb = [self findUsbWithDeviceId:deviceId];
+    if (usb == nil) {
+        return;
+    }
+    [self removeAppWithSocket:nil usb:usb];
+    if (usb.channel != nil) {
+        [usb.channel close];
+    }
+    usb.channel = nil;
+    usb.attatched = NO;
+    usb.state = ADHUsbStateDisConnect;
+}
+
+- (void)enqueueConnectToUSBDevice {
+    //cancel repeat schedule
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(enqueueConnectToUSBDevice) object:nil];
+    dispatch_async(self.usbConnectedQueue, ^{
+        //根据测试，这里需要用main thread，如果不用再iOS lockscreen断开重新连接的时候不稳定
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self connectToUSBDevice];
+        });
+    });
+}
+
+- (void)connectToUSBDevice {
+    for (ADHUsb *usb in self.mUsbs) {
+        if (usb.attatched && usb.state == ADHUsbStateDisConnect) {
+            usb.state = ADHUsbStateConnecting;
+            NSNumber *deviceId = usb.deviceId;
+            if ([DeviceManager.shared isDeviceClosed:deviceId]) {
+                continue;
+            }
+            ADHPTChannel *channel = [ADHPTChannel channelWithDelegate:self];
+            channel.userInfo = usb.deviceId;
+            [channel connectToPort:kADHUsbPort overUSBHub:ADHPTUSBHub.sharedHub deviceID:deviceId callback:^(NSError *error) {
+                ADHUsb *usb = [self findUsbWithDeviceId:deviceId];
+                if (error) {
+                    if (error.domain == ADHPTUSBHubErrorDomain && error.code == ADHPTUSBHubErrorConnectionRefused) {
+//                        NSLog(@"Failed to connect to device #%@: %@", channel.userInfo, error);
+                    } else {
+//                        NSLog(@"Failed to connect to device #%@: %@", channel.userInfo, error);
+                    }
+                    usb.state = ADHUsbStateDisConnect;
+                } else {
+                    usb.channel = channel;
+                    usb.state = ADHUsbStateConnected;
+                    [self addAppWithSocket:nil usb:usb];
+//                    NSLog(@"connect success %@", deviceId);
+                }
+            }];
+        }
+    }
+    [self performSelector:@selector(enqueueConnectToUSBDevice) withObject:nil afterDelay:kADHUsbReconnectDelay];
+}
+
+#pragma mark - PTChannelDelegate
+
+- (void)ioFrameChannel:(ADHPTChannel*)channel didReceiveFrameOfType:(uint32_t)type tag:(uint32_t)tag payload:(NSData *)payload {
+    id<ADHPTChannelDelegate> ioDelegate = [self getUsbIODelegate:channel];
+    [ioDelegate ioFrameChannel:channel didReceiveFrameOfType:type tag:tag payload:payload];
+}
+
+- (void)ioFrameChannel:(ADHPTChannel*)channel didEndWithError:(NSError*)error {
+    ADHUsb *usb = [self findUsbWithChannel:channel];
+    if (usb == nil) {
+        return;
+    }
+    NSNumber *deviceId = usb.deviceId;
+    [self removeAppWithSocket:nil usb:usb];
+    usb.channel = nil;
+    usb.state = ADHUsbStateDisConnect;
+    BOOL shouldAutoConnect = (usb.attatched && error == nil);
+    if ([DeviceManager.shared isDeviceClosed:deviceId]) {
+        shouldAutoConnect = NO;
+    }
+    if (shouldAutoConnect) {
+        //channel关闭，但是设备没有断开，尝试恢复链接
+//        NSLog(@"Trying reconnect to %@", channel.userInfo);
+        [self performSelector:@selector(enqueueConnectToUSBDevice) withObject:nil afterDelay:kADHUsbReconnectDelay];
+    }
+}
+
+- (ADHUsb *)findUsbWithUdid:(NSString *)udid {
+    ADHUsb *targetUsb = nil;
+    for (ADHUsb *usb in self.mUsbs) {
+        if ([usb.udid isEqualToString:udid]) {
+            targetUsb = usb;
+            break;
+        }
+    }
+    return targetUsb;
+}
+
+- (ADHUsb *)findUsbWithDeviceId:(NSNumber *)deviceId {
+    ADHUsb *targetUsb = nil;
+    for (ADHUsb *usb in self.mUsbs) {
+        if ([usb.deviceId isEqualTo:deviceId]) {
+            targetUsb = usb;
+            break;
+        }
+    }
+    return targetUsb;
+}
+
+- (ADHUsb *)findUsbWithChannel:(ADHPTChannel *)channel {
+    ADHUsb *targetUsb = nil;
+    for (ADHUsb *usb in self.mUsbs) {
+        if ([usb.channel isEqualTo:channel]) {
+            targetUsb = usb;
+            break;
+        }
+    }
+    return targetUsb;
+}
+
+- (id<ADHPTChannelDelegate>)getUsbIODelegate:(ADHPTChannel *)channel {
+    id<ADHPTChannelDelegate> targetChannel = nil;
+    for (ADHApp *app in self.mClientApps) {
+        if([app.protocol matchWithUsb:channel]) {
+            targetChannel = app.protocol.usbChannel;
+            break;
+        }
+    }
+    
+    if(!targetChannel) {
+        for (ADHApp *app in self.mShakeApps) {
+            if([app.protocol matchWithUsb:channel]) {
+                targetChannel = app.protocol.usbChannel;
+                break;
+            }
+        }
+    }
+    return targetChannel;
+}
+
 
 @end
 

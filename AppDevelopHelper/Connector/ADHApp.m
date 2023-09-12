@@ -7,6 +7,7 @@
 //
 
 #import "ADHApp.h"
+#import "ADHUsb.h"
 
 @implementation ADHApp
 
@@ -55,6 +56,14 @@
 
 - (BOOL)isAndroid {
     return (self.platform == ADHPlatformAndroid);
+}
+
+- (BOOL)isUSB {
+    return (self.usb != nil);
+}
+
+- (NSNumber *)usbDeviceId {
+    return self.usb.deviceId;
 }
 
 @end

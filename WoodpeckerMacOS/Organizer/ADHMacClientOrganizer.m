@@ -28,6 +28,7 @@
 #import "ADHNotificationObserver.h"
 #import "ADHNetworkActionService.h"
 #import "ADHConsoleActionService.h"
+#import "ADHSocketChannel.h"
 
 
 NSString * const kADHOrganizerWindowDidVisible = @"ADHOrganizerWindowDidVisible";
@@ -39,7 +40,7 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
 @interface ADHMacClientOrganizer ()<NSGestureRecognizerDelegate>
 
 @property (nonatomic, strong) ADHLaunchOptions *launchOptions;
-@property (nonatomic, strong) ADHProtocol * mProtocol;
+@property (nonatomic, strong) ADHProtocol *mProtocol;
 @property (nonatomic, strong) ADHDispatcher *mDispatcher;
 @property (nonatomic, strong) ADHAppConnector * mConnector;
 @property (nonatomic, strong) ADHMacWindow *mWindow;
@@ -187,11 +188,11 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
 }
 
 - (void)setup {
-    ADHProtocol * protocol = [ADHProtocol protocol];
+    ADHProtocol *protocol = [ADHProtocol protocol];
     self.mProtocol = protocol;
     
     ADHAppConnector * connector = [[ADHAppConnector alloc] init];
-    connector.socketIODelegate = self.mProtocol;
+    connector.socketIODelegate = self.mProtocol.socketChannel;
     self.mConnector = connector;
     
     ADHDispatcher * dispatcher = [[ADHDispatcher alloc] init];
@@ -234,7 +235,7 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
 
 - (void)onConnectionStatusUpdate:(NSNotification *)noti {
     [self updateProtocolSocket];
-    if(![self.mConnector isConnected]){
+    if(![self.mConnector isSocketConnected]){
         //        NSLog(@"unconnected -_-");
         //unconnect
         NSDictionary *userInfo = noti.userInfo;
@@ -245,7 +246,7 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
         }else {
             [self doTryRecoverConnection];
         }
-    }else if([self.mConnector isConnected]){
+    }else if([self.mConnector isSocketConnected]){
         //        NSLog(@"connected ^_^");
         //connected
         self.workingHost = self.mConnector.connectedHost;
@@ -264,7 +265,7 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
 }
 
 - (void)updateProtocolSocket {
-    if([self.mConnector isConnected]){
+    if([self.mConnector isSocketConnected]){
         ADHGCDAsyncSocket * clientSocket = [self.mConnector socket];
         [self.mProtocol setSocket:clientSocket];
     }else{
@@ -300,7 +301,7 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
     }else{
         adhDebugLog(@"开始搜索...");
         [self.mConnector startSearchServiceWithUpdateBlock:^(NSArray<ADHRemoteService *> *serviceList, BOOL moreComing) {
-            if([self.mConnector isConnected] || [self.mConnector isConnecting]) {
+            if([self.mConnector isSocketConnected] || [self.mConnector isConnecting]) {
                 return;
             }
             if(serviceList.count == 0){
@@ -374,7 +375,7 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
     if(self.shouldTryRecoverConnection) {
         self.bLaunchAutoConnectRoutine = NO;
         if(self.workingHost.length > 0 && self.workingPort > 0){
-            if(![self.connector isConnected] && ![self.connector isConnecting]){
+            if(![self.connector isSocketConnected] && ![self.connector isConnecting]){
                 self.tryRecoverConnectionCounter++;
                 if(self.tryRecoverConnectionCounter <= ADHOrganizerAutoRecoverConnectionMaxCount){
                     [self tryConnectToHost:self.workingHost port:self.workingPort];
@@ -404,7 +405,7 @@ static NSTimeInterval const ADHOrganizerAutoConnectDelay = 0.1;
 }
 
 - (BOOL)isWorking {
-    return [self.connector isConnected];
+    return [self.connector isSocketConnected];
 }
 
 
