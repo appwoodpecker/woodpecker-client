@@ -37,13 +37,13 @@
     self.mDispatcher = dispatcher;
 }
 
-- (void)requestWithService: (NSString *)service
-                    action: (NSString *)action
-                      body: (NSDictionary *)userInfo
-                   payload: (NSData *)payload
-           progressChanged: (ADHApiClientProgressBlock)progressBlock
-                 onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback {
+- (void)requestWithService: (nonnull NSString *)service
+                    action: (nonnull NSString *)action
+                      body: (nullable NSDictionary *)userInfo
+                   payload: (nullable NSData *)payload
+           progressChanged: (nullable ADHApiClientProgressBlock)progressBlock
+                 onSuccess: (nullable ADHApiClientRequestSuccessBlock)successCallback
+                  onFailed: (nullable ADHApiClientFailedBlock)failedCallback {
     NSMutableDictionary * body = [NSMutableDictionary dictionary];
     NSDictionary * serviceInfo = @{
                                @"service" : adhvf_safestringfy(service),
@@ -57,46 +57,46 @@
     [self _requestWithBody:body payload:payload progressChanged:progressBlock onSuccess:successCallback onFailed:failedCallback];
 }
 
-- (void)requestWithService: (NSString *)service
-                    action: (NSString *)action
-                      body: (NSDictionary *)userInfo
-                 onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback {
+- (void)requestWithService: (nonnull NSString *)service
+                    action: (nonnull NSString *)action
+                      body: (nullable NSDictionary *)userInfo
+                 onSuccess: (nullable ADHApiClientRequestSuccessBlock)successCallback
+                  onFailed: (nullable ADHApiClientFailedBlock)failedCallback {
     [self requestWithService:service action:action body:userInfo payload:nil progressChanged:nil onSuccess:successCallback onFailed:failedCallback];
 }
 
-- (void)requestWithService: (NSString *)service
-                    action: (NSString *)action
-                 onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback
+- (void)requestWithService: (nonnull NSString *)service
+                    action: (nonnull NSString *)action
+                 onSuccess: (nullable ADHApiClientRequestSuccessBlock)successCallback
+                  onFailed: (nullable ADHApiClientFailedBlock)failedCallback
 {
     [self requestWithService:service action:action body:nil payload:nil progressChanged:nil onSuccess:successCallback onFailed:failedCallback];
 }
 
 
-- (void)requestWithService:(NSString *)service
-                    action:(NSString *)action
-                      body:(NSDictionary *)body
-           progressChanged:(ADHApiClientProgressBlock)progressBlock
-                 onSuccess:(ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed:(ADHApiClientFailedBlock)failedCallback {
+- (void)requestWithService:(nonnull NSString *)service
+                    action:(nonnull NSString *)action
+                      body:(nullable NSDictionary *)body
+           progressChanged:(nullable ADHApiClientProgressBlock)progressBlock
+                 onSuccess:(nullable ADHApiClientRequestSuccessBlock)successCallback
+                  onFailed:(nullable ADHApiClientFailedBlock)failedCallback {
     [self requestWithService:service action:action body:body payload:nil progressChanged:progressBlock onSuccess:successCallback onFailed:failedCallback];
 }
 
-- (void)requestWithService:(NSString *)service
-                    action:(NSString *)action
-           progressChanged:(ADHApiClientProgressBlock)progressBlock
-                 onSuccess:(ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed:(ADHApiClientFailedBlock)failedCallback {
+- (void)requestWithService:(nonnull NSString *)service
+                    action:(nonnull NSString *)action
+           progressChanged:(nullable ADHApiClientProgressBlock)progressBlock
+                 onSuccess:(nullable ADHApiClientRequestSuccessBlock)successCallback
+                  onFailed:(nullable ADHApiClientFailedBlock)failedCallback {
     [self requestWithService:service action:action body:nil payload:nil progressChanged:progressBlock onSuccess:successCallback onFailed:failedCallback];
 }
 
 //Client Api
-- (void)_requestWithBody:(NSDictionary *)body
-                 payload:(NSData *)payload
-         progressChanged:(ADHApiClientProgressBlock)progressBlock
-               onSuccess:(ADHApiClientRequestSuccessBlock)successCallback
-                onFailed:(ADHApiClientFailedBlock)failedCallback {
+- (void)_requestWithBody:(nonnull NSDictionary *)body
+                 payload:(nullable NSData *)payload
+         progressChanged:(nullable ADHApiClientProgressBlock)progressBlock
+               onSuccess:(nullable ADHApiClientRequestSuccessBlock)successCallback
+                onFailed:(nullable ADHApiClientFailedBlock)failedCallback {
     [self.mProtocol.workChannel requestWithBody:body payload:payload onSendChanged:^(ADHSession *session) {
         [self performInMainQueue:^{
             if(progressBlock){
@@ -147,12 +147,12 @@
     }];
 }
 
-- (void)responseSession: (ADHSession *)session
-               withBody: (NSDictionary *)body
-                payload: (NSData *)payload
-        progressChanged: (ADHApiClientProgressBlock)progressBlock
-              onSuccess: (ADHApiClientResponseSuccessBlock)successCallback
-               onFailed: (ADHApiClientFailedBlock)failedCallback
+- (void)responseSession: (nonnull ADHSession *)session
+               withBody: (nonnull NSDictionary *)body
+                payload: (nullable NSData *)payload
+        progressChanged: (nullable ADHApiClientProgressBlock)progressBlock
+              onSuccess: (nullable ADHApiClientResponseSuccessBlock)successCallback
+               onFailed: (nullable ADHApiClientFailedBlock)failedCallback
 {
     if(!body){
         body = @{};

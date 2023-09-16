@@ -10,6 +10,10 @@
 		1F052678227D8AD4003D84C1 /* WebDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F052676227D8AD4003D84C1 /* WebDebugViewController.m */; };
 		1F052679227D8AD4003D84C1 /* WebDebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F052677227D8AD4003D84C1 /* WebDebugViewController.xib */; };
 		1F05AF452AB0C80B00D08DBF /* ADHAppConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0C3A1FAEB0DB00E2CCC8 /* ADHAppConnector.m */; };
+		1F05AF552AB54CCF00D08DBF /* IPCServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF542AB54CCF00D08DBF /* IPCServer.swift */; };
+		1F05AF562AB558C200D08DBF /* NSObject+ADHUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA18FA51FA4BD7400DC85E2 /* NSObject+ADHUtil.m */; };
+		1F05AF592AB562E100D08DBF /* IPCCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF572AB562E100D08DBF /* IPCCaller.m */; };
+		1F05AF5A2AB5637200D08DBF /* NSObject+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0BE21FAD783D00E2CCC8 /* NSObject+Json.m */; };
 		1F06B70A217238FD000CAD80 /* ADHKeepAliveService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F06B708217238FD000CAD80 /* ADHKeepAliveService.m */; };
 		1F06B70B217238FD000CAD80 /* ADHKeepAliveService.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F06B709217238FD000CAD80 /* ADHKeepAliveService.h */; };
 		1F085EF62520B4F5008A91E3 /* ViewInsetsAttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F085EF52520B4F5008A91E3 /* ViewInsetsAttributeCell.m */; };
@@ -824,6 +828,10 @@
 		1F052675227D8AD4003D84C1 /* WebDebugViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebDebugViewController.h; sourceTree = "<group>"; };
 		1F052676227D8AD4003D84C1 /* WebDebugViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebDebugViewController.m; sourceTree = "<group>"; };
 		1F052677227D8AD4003D84C1 /* WebDebugViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebDebugViewController.xib; sourceTree = "<group>"; };
+		1F05AF532AB54CCE00D08DBF /* Woodpecker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Woodpecker-Bridging-Header.h"; sourceTree = "<group>"; };
+		1F05AF542AB54CCF00D08DBF /* IPCServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPCServer.swift; sourceTree = "<group>"; };
+		1F05AF572AB562E100D08DBF /* IPCCaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPCCaller.m; sourceTree = "<group>"; };
+		1F05AF582AB562E100D08DBF /* IPCCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPCCaller.h; sourceTree = "<group>"; };
 		1F06B708217238FD000CAD80 /* ADHKeepAliveService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADHKeepAliveService.m; sourceTree = "<group>"; };
 		1F06B709217238FD000CAD80 /* ADHKeepAliveService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADHKeepAliveService.h; sourceTree = "<group>"; };
 		1F085EF42520B4F5008A91E3 /* ViewInsetsAttributeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewInsetsAttributeCell.h; sourceTree = "<group>"; };
@@ -1064,7 +1072,7 @@
 		1F3311082AA3069E00EBBE26 /* ADHUsbChannel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADHUsbChannel.m; sourceTree = "<group>"; };
 		1F3311152AA33C9700EBBE26 /* ADHDispatcher+Default.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ADHDispatcher+Default.h"; sourceTree = "<group>"; };
 		1F3311162AA33C9700EBBE26 /* ADHDispatcher+Default.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ADHDispatcher+Default.m"; sourceTree = "<group>"; };
-		1F33112E2AA6187800EBBE26 /* woodpk */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = woodpk; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F33112E2AA6187800EBBE26 /* wooder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = wooder; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F3311302AA6187800EBBE26 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1F33113A2AA61DF600EBBE26 /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install.sh; sourceTree = "<group>"; };
 		1F33113E2AA8BF4400EBBE26 /* ADHUsb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADHUsb.h; sourceTree = "<group>"; };
@@ -1923,6 +1931,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F05AF512AB54C8500D08DBF /* Wooder */ = {
+			isa = PBXGroup;
+			children = (
+				1F05AF542AB54CCF00D08DBF /* IPCServer.swift */,
+			);
+			path = Wooder;
+			sourceTree = "<group>";
+		};
 		1F063CCA2748DF8B00425C97 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -2039,6 +2055,7 @@
 		1F0F0BFF1FAD818700E2CCC8 /* other */ = {
 			isa = PBXGroup;
 			children = (
+				1F05AF532AB54CCE00D08DBF /* Woodpecker-Bridging-Header.h */,
 				1F457CA21F9F65C500C7D604 /* MainMenu.xib */,
 				1F457CA51F9F65C500C7D604 /* Info.plist */,
 				1F457CA61F9F65C500C7D604 /* main.m */,
@@ -2439,13 +2456,15 @@
 			path = peertalk;
 			sourceTree = "<group>";
 		};
-		1F33112F2AA6187800EBBE26 /* woodpk */ = {
+		1F33112F2AA6187800EBBE26 /* wooder */ = {
 			isa = PBXGroup;
 			children = (
 				1F33113A2AA61DF600EBBE26 /* install.sh */,
+				1F05AF582AB562E100D08DBF /* IPCCaller.h */,
+				1F05AF572AB562E100D08DBF /* IPCCaller.m */,
 				1F3311302AA6187800EBBE26 /* main.m */,
 			);
-			path = woodpk;
+			path = wooder;
 			sourceTree = "<group>";
 		};
 		1F33659C213B604D00D7A10A /* view */ = {
@@ -2729,7 +2748,7 @@
 				1F53D30420021AB600A09429 /* WoodPeckeriOS */,
 				1F26E5E72298D5F700BFD5E0 /* MacClient */,
 				1F26E5FE2298D6E700BFD5E0 /* WoodpeckerMacOS */,
-				1F33112F2AA6187800EBBE26 /* woodpk */,
+				1F33112F2AA6187800EBBE26 /* wooder */,
 				1F457C9B1F9F65C500C7D604 /* Products */,
 				1FDB2A8D219C615F00A1A0AA /* Frameworks */,
 				97533ED13A328944C6E6DCE1 /* Pods */,
@@ -2745,7 +2764,7 @@
 				1F53D30320021AB600A09429 /* WoodPeckeriOS.framework */,
 				1F26E5E62298D5F600BFD5E0 /* MacClient.app */,
 				1F26E5FD2298D6E700BFD5E0 /* WoodpeckerMacOS.framework */,
-				1F33112E2AA6187800EBBE26 /* woodpk */,
+				1F33112E2AA6187800EBBE26 /* wooder */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2758,6 +2777,7 @@
 				1FA18FAA1FA5AA2700DC85E2 /* ADHServer */,
 				1F457CB21F9F674000C7D604 /* ADHProtocol */,
 				1F0F0C311FAEB0AA00E2CCC8 /* Connector */,
+				1F05AF512AB54C8500D08DBF /* Wooder */,
 				1F0F0BE01FAD77F800E2CCC8 /* Components */,
 				1F33D4EB1FAEBFB700E81794 /* Organizer */,
 				1FA18FAB1FA5AAFE00DC85E2 /* Modules */,
@@ -4506,9 +4526,9 @@
 			productReference = 1F26E5FD2298D6E700BFD5E0 /* WoodpeckerMacOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		1F33112D2AA6187800EBBE26 /* woodpk */ = {
+		1F33112D2AA6187800EBBE26 /* wooder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1F3311322AA6187900EBBE26 /* Build configuration list for PBXNativeTarget "woodpk" */;
+			buildConfigurationList = 1F3311322AA6187900EBBE26 /* Build configuration list for PBXNativeTarget "wooder" */;
 			buildPhases = (
 				1F33112A2AA6187800EBBE26 /* Sources */,
 				1F33112B2AA6187800EBBE26 /* Frameworks */,
@@ -4518,9 +4538,9 @@
 			);
 			dependencies = (
 			);
-			name = woodpk;
+			name = wooder;
 			productName = wdpk;
-			productReference = 1F33112E2AA6187800EBBE26 /* woodpk */;
+			productReference = 1F33112E2AA6187800EBBE26 /* wooder */;
 			productType = "com.apple.product-type.tool";
 		};
 		1F457C991F9F65C500C7D604 /* Woodpecker */ = {
@@ -4613,6 +4633,7 @@
 					};
 					1F457C991F9F65C500C7D604 = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 1400;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -4663,7 +4684,7 @@
 				1F53D30220021AB600A09429 /* WoodPeckeriOS */,
 				1F26E5E52298D5F600BFD5E0 /* MacClient */,
 				1F26E5FC2298D6E700BFD5E0 /* WoodpeckerMacOS */,
-				1F33112D2AA6187800EBBE26 /* woodpk */,
+				1F33112D2AA6187800EBBE26 /* wooder */,
 			);
 		};
 /* End PBXProject section */
@@ -5046,6 +5067,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F3311312AA6187800EBBE26 /* main.m in Sources */,
+				1F05AF592AB562E100D08DBF /* IPCCaller.m in Sources */,
+				1F05AF562AB558C200D08DBF /* NSObject+ADHUtil.m in Sources */,
+				1F05AF5A2AB5637200D08DBF /* NSObject+Json.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5204,6 +5228,7 @@
 				1F68AE1D20E71C7D00CBEB05 /* relationships.c in Sources */,
 				1FE5D6F92812F4BE007E0179 /* XYInAppReceipt.m in Sources */,
 				1FEC9337222F496A00B24162 /* ViewBooleanAttributeCell.m in Sources */,
+				1F05AF552AB54CCF00D08DBF /* IPCServer.swift in Sources */,
 				1FB43AB420AB012A00BD5B85 /* JsonTextViewController.m in Sources */,
 				1FC9595021EB406900FB7128 /* SandboxContainerViewController.m in Sources */,
 				1FB43AAD20A9CABA00BD5B85 /* NetworkCookieViewController.m in Sources */,
@@ -5957,6 +5982,7 @@
 			baseConfigurationReference = EDFB2CB99AC55B66E69605EF /* Pods-Woodpecker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = WoodPecker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
@@ -5991,6 +6017,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppDevelopHelper/Woodpecker-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -5999,6 +6028,7 @@
 			baseConfigurationReference = 8766CE88BBA198F7CC7D7D83 /* Pods-Woodpecker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = WoodPecker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
@@ -6030,6 +6060,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppDevelopHelper/Woodpecker-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -6159,6 +6191,7 @@
 			baseConfigurationReference = BC845298650045FE9725B575 /* Pods-Woodpecker.beta.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = WoodPecker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
@@ -6191,6 +6224,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppDevelopHelper/Woodpecker-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Beta;
 		};
@@ -6335,7 +6370,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1F3311322AA6187900EBBE26 /* Build configuration list for PBXNativeTarget "woodpk" */ = {
+		1F3311322AA6187900EBBE26 /* Build configuration list for PBXNativeTarget "wooder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1F3311332AA6187900EBBE26 /* Debug */,

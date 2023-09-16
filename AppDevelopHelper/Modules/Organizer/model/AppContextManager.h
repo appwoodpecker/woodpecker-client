@@ -16,7 +16,7 @@ extern NSString *const kAppContextAppStatusUpdate;
 @protocol AppContextManagerObserver;
 @interface AppContextManager : NSObject <MacConnectorDelegate>
 
-+ (AppContextManager *)manager;
++ (AppContextManager *)sharedManager;
 //所有contextList
 - (NSArray<AppContext *> *)contextList;
 //UI可见的contexts
@@ -26,7 +26,7 @@ extern NSString *const kAppContextAppStatusUpdate;
 - (void)addObsever: (id<AppContextManagerObserver>)observer;
 
 - (void)setTopContext: (AppContext *)context;
-- (AppContext *)topContext;
+- (nullable AppContext *)topContext;
 
 - (void)removeApp: (AppContext *)context;
 

@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL notworking;
 
 + (AppContext *)context;
-- (ADHApiClient *)apiClient;
+- (nullable ADHApiClient *)apiClient;
 - (ADHProtocol *)protocol;
 - (ADHApp *)app;
 - (void)setApp:(ADHApp *)app;

@@ -38,7 +38,7 @@
 
 - (void)start {
     MacConnector * connector = [[MacConnector alloc] init];
-    connector.delegate = [AppContextManager manager];
+    connector.delegate = [AppContextManager sharedManager];
     [connector startService];
     self.mConnector = connector;
 }

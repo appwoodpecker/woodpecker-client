@@ -22,7 +22,7 @@ NSString *const kAppContextAppStatusUpdate = @"kAppContextAppStatusUpdate";
 
 @implementation AppContextManager
 
-+ (AppContextManager *)manager {
++ (AppContextManager *)sharedManager {
     static AppContextManager *sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

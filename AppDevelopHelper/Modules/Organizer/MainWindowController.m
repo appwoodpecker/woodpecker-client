@@ -237,7 +237,7 @@ static NSInteger const kToolMenuTag = 101;
 #pragma mark -----------------   apps   ----------------
 
 - (void)startConnect {
-    [[AppContextManager manager] addObsever:self];
+    [[AppContextManager sharedManager] addObsever:self];
     [[MacOrganizer organizer] start];
 }
 
@@ -296,7 +296,7 @@ static NSInteger const kToolMenuTag = 101;
 }
 
 - (void)updateConnectionStatusUI {
-    NSInteger count = [AppContextManager manager].visibleContextList.count;
+    NSInteger count = [AppContextManager sharedManager].visibleContextList.count;
     if(count == 0) {
         self.tabVC.view.hidden = YES;
         self.waitingLayout.hidden = NO;

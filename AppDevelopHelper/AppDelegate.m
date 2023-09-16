@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Preference.h"
 #import "PayService.h"
+#import <Woodpecker-Swift.h>
 
 @interface AppDelegate ()
 
@@ -57,6 +58,7 @@
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"NSAutomaticQuoteSubstitutionEnabled"];
     [Preference addLaunchTimes];
     [Appearance setMGSFragariaColor];
+    [IPCServer.shared setup];
 }
 
 - (void)observeAppearanceChange {

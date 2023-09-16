@@ -49,7 +49,7 @@ static CGFloat const kTabItemWidth = 240.0f;
 }
 
 - (void)addNotification {
-    [[AppContextManager manager] addObsever:self];
+    [[AppContextManager sharedManager] addObsever:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLayout) name:NSWindowDidResizeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAppearanceUI) name:[Appearance effectiveAppearance] object:nil];
 }
@@ -91,7 +91,7 @@ static CGFloat const kTabItemWidth = 240.0f;
 }
 
 - (void)updateConnectionCountUI {
-    NSArray *contextList = [AppContextManager manager].visibleContextList;
+    NSArray *contextList = [AppContextManager sharedManager].visibleContextList;
     if(contextList.count >0) {
         self.connectionView.hidden = YES;
         self.tabLayout.hidden = NO;
@@ -202,7 +202,7 @@ static CGFloat const kTabItemWidth = 240.0f;
     }
     for (NSInteger i=0; i<itemViews.count; i++) {
         ADHView *itemView = itemViews[i];
-        AppContext *context = [[AppContextManager manager] contextWithTag:itemView.vtag];
+        AppContext *context = [[AppContextManager sharedManager] contextWithTag:itemView.vtag];
         NSArray *subviews = itemView.subviews;
         NSImageView *skinImageView = subviews[0];
         NSImageView *statusIcon = subviews[1];
@@ -242,8 +242,8 @@ static CGFloat const kTabItemWidth = 240.0f;
 - (void)tabButtonClicked: (NSButton *)button {
     ADHView *itemView = (ADHView *)button.superview;
     NSInteger tag = itemView.vtag;
-    AppContext *context = [[AppContextManager manager] contextWithTag:tag];
-    [[AppContextManager manager] setTopContext:context];
+    AppContext *context = [[AppContextManager sharedManager] contextWithTag:tag];
+    [[AppContextManager sharedManager] setTopContext:context];
     [self updateTabStateUI];
 }
 
@@ -251,12 +251,12 @@ static CGFloat const kTabItemWidth = 240.0f;
     ADHView *itemView = (ADHView *)closeButton.superview;
     NSInteger tag = itemView.vtag;
     NSInteger nextTag = [self getNearestTab:tag];
-    AppContext *context = [[AppContextManager manager] contextWithTag:tag];
-    [[AppContextManager manager] removeApp:context];
+    AppContext *context = [[AppContextManager sharedManager] contextWithTag:tag];
+    [[AppContextManager sharedManager] removeApp:context];
     [self removeTabWithTag:tag];
     if(nextTag != NSNotFound) {
-        AppContext *nextContext = [[AppContextManager manager] contextWithTag:nextTag];
-        [[AppContextManager manager] setTopContext:nextContext];
+        AppContext *nextContext = [[AppContextManager sharedManager] contextWithTag:nextTag];
+        [[AppContextManager sharedManager] setTopContext:nextContext];
         [self updateTabStateUI];
     }
     [self updateConnectionCountUI];

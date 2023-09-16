@@ -38,7 +38,7 @@ NSString * const kNetworkTransactionUpdateUserInfoUpdateList = @"recordlist";
     NSArray * dataList = data[@"list"];
     if(dataList.count == 0) return;
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-    AppContext *context = [[AppContextManager manager] contextWithApiClient:apiClient];
+    AppContext *context = [[AppContextManager sharedManager] contextWithApiClient:apiClient];
     if(context) {
         userInfo[@"context"] = context;
     }

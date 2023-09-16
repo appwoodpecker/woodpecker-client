@@ -28,49 +28,49 @@ typedef void (^ADHApiClientFailedBlock)(NSError *error);
 - (void)setDispatcher: (ADHDispatcher *)dispatcher;
 
 //Client Api
-- (void)requestWithService: (NSString *)service
-                    action: (NSString *)action
-                      body: (NSDictionary *)body
-                   payload: (NSData *)payload
-           progressChanged: (ADHApiClientProgressBlock)progressBlock
-                 onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback;
+- (void)requestWithService: (nonnull NSString *)service
+                    action: (nonnull NSString *)action
+                      body: (nullable NSDictionary *)body
+                   payload: (nullable NSData *)payload
+           progressChanged: (nullable ADHApiClientProgressBlock)progressBlock
+                 onSuccess: (nullable ADHApiClientRequestSuccessBlock)successCallback
+                  onFailed: (nullable ADHApiClientFailedBlock)failedCallback;
 
 //no progress
-- (void)requestWithService: (NSString *)service
-                    action: (NSString *)action
-                      body: (NSDictionary *)userInfo
-                 onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback;
+- (void)requestWithService: (nonnull NSString *)service
+                    action: (nonnull NSString *)action
+                      body: (nullable NSDictionary *)userInfo
+                 onSuccess: (nullable ADHApiClientRequestSuccessBlock)successCallback
+                  onFailed: (nullable ADHApiClientFailedBlock)failedCallback;
 
-- (void)requestWithService: (NSString *)service
-                    action: (NSString *)action
-                 onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback;
+- (void)requestWithService: (nonnull NSString *)service
+                    action: (nonnull NSString *)action
+                 onSuccess: (nullable ADHApiClientRequestSuccessBlock)successCallback
+                  onFailed: (nullable ADHApiClientFailedBlock)failedCallback;
 
 
-- (void)requestWithService: (NSString *)service
-                    action: (NSString *)action
-                      body: (NSDictionary *)body
-           progressChanged: (ADHApiClientProgressBlock)progressBlock
-                 onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback;
+- (void)requestWithService: (nonnull NSString *)service
+                    action: (nonnull NSString *)action
+                      body: (nullable NSDictionary *)body
+           progressChanged: (nullable ADHApiClientProgressBlock)progressBlock
+                 onSuccess: (nullable ADHApiClientRequestSuccessBlock)successCallback
+                  onFailed: (nullable ADHApiClientFailedBlock)failedCallback;
 
-- (void)requestWithService: (NSString *)service
-                    action: (NSString *)action
-           progressChanged: (ADHApiClientProgressBlock)progressBlock
-                 onSuccess: (ADHApiClientRequestSuccessBlock)successCallback
-                  onFailed: (ADHApiClientFailedBlock)failedCallback;
+- (void)requestWithService: (nonnull NSString *)service
+                    action: (nonnull NSString *)action
+           progressChanged: (nullable ADHApiClientProgressBlock)progressBlock
+                 onSuccess: (nullable ADHApiClientRequestSuccessBlock)successCallback
+                  onFailed: (nullable ADHApiClientFailedBlock)failedCallback;
 
 
 
 //Server Api
-- (void)responseSession: (ADHSession *)session
-               withBody: (NSDictionary *)body
-                payload: (NSData *)payload
-        progressChanged: (ADHApiClientProgressBlock)progressBlock
-              onSuccess: (ADHApiClientResponseSuccessBlock)successCallback
-               onFailed: (ADHApiClientFailedBlock)failedCallback;
+- (void)responseSession: (nonnull ADHSession *)session
+               withBody: (nonnull NSDictionary *)body
+                payload: (nullable NSData *)payload
+        progressChanged: (nullable ADHApiClientProgressBlock)progressBlock
+              onSuccess: (nullable ADHApiClientResponseSuccessBlock)successCallback
+               onFailed: (nullable ADHApiClientFailedBlock)failedCallback;
 
 
 @end

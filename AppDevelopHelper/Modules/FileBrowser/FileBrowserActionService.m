@@ -33,7 +33,7 @@ NSString * const kFileBrowserActionServiceFileUpdateNotification = @"kFileBrowse
         body = @{};
     }
     NSMutableDictionary *userInfo = [body mutableCopy];
-    AppContext *context = [AppContextManager.manager contextWithApiClient:apiClient];
+    AppContext *context = [AppContextManager.sharedManager contextWithApiClient:apiClient];
     if(context) {
         userInfo[@"context"] = context;
     }

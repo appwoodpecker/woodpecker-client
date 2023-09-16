@@ -30,7 +30,7 @@
 {
     NSDictionary * data = request.body;
     NSData * payload = request.payload;
-    AppContext *context = [AppContextManager.manager contextWithApiClient:apiClient];
+    AppContext *context = [AppContextManager.sharedManager contextWithApiClient:apiClient];
     if(context) {
         LogRecorder *recorder = [LogRecorder recorderWithContext:context];
         [recorder logWithBody:data payload:payload];
@@ -42,7 +42,7 @@
     NSDictionary *body = request.body;
     NSArray<NSString *> *list = body[@"list"];
     if([list isKindOfClass:[NSArray class]] && list.count > 0) {
-        AppContext *context = [AppContextManager.manager contextWithApiClient:apiClient];
+        AppContext *context = [AppContextManager.sharedManager contextWithApiClient:apiClient];
         if(context) {
             LogRecorder *recorder = [LogRecorder recorderWithContext:context];
             [recorder onReceiveNewLog:list];

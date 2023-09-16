@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IPCCaller.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        NSString *text = [[IPCCaller new] call];
+        if (text == nil) {
+            text = @"something wrong";
+        }
+        NSLog(@"%@",text);
     }
     return 0;
 }

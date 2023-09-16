@@ -35,7 +35,7 @@ NSString * const kNotificationServiceNotificationReceived = @"kNotificationServi
     }
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     userInfo[@"list"] = itemList;
-    AppContext *context = [AppContextManager.manager contextWithApiClient:apiClient];
+    AppContext *context = [AppContextManager.sharedManager contextWithApiClient:apiClient];
     if(context) {
         userInfo[@"context"] = context;
     }
