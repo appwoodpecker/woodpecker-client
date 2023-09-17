@@ -10,6 +10,8 @@
 @import CoreFoundation;
 
 NSString *const kUserDefaultSuiteName = @"suitename";
+NSString *const kUserDefaultKey = @"key";
+NSString *const kUserDefaultValue = @"value";
 
 @implementation ADHUserDefaultsActionService
 
@@ -28,7 +30,7 @@ NSString *const kUserDefaultSuiteName = @"suitename";
              };
 }
 
-- (NSUserDefaults *)userDefaultsWithSuiteName: (NSString *)suiteName {
+- (NSUserDefaults *)userDefaultsWithSuiteName:(NSString *)suiteName {
     NSUserDefaults *userDefaults = nil;
     if([suiteName isKindOfClass:[NSString class]] && suiteName.length > 0) {
         userDefaults = [[NSUserDefaults alloc] initWithSuiteName:suiteName];
@@ -38,31 +40,43 @@ NSString *const kUserDefaultSuiteName = @"suitename";
     return userDefaults;
 }
 
-- (void)onRequestData: (ADHRequest *)request {
+- (void)onRequestData:(ADHRequest *)request {
     NSDictionary *body = request.body;
     NSString *suiteName = body[kUserDefaultSuiteName];
+    NSString *key = body[kUserDefaultKey];
     NSUserDefaults *userDefaults = [self userDefaultsWithSuiteName:suiteName];
-    NSDictionary * dic = [userDefaults dictionaryRepresentation];
-    NSData * data = [NSKeyedArchiver archivedDataWithRootObject:dic];
+    NSMutableDictionary *resultDict = [NSMutableDictionary dictionary];
+    if ([key isKindOfClass:[NSString class]] && key.length > 0) {
+        id value = [userDefaults objectForKey:key];
+        if (value != nil) {
+            resultDict[key] = value;
+        }
+    } else {
+        NSDictionary * dict = [userDefaults dictionaryRepresentation];
+        [resultDict addEntriesFromDictionary:dict];
+    }
+    NSData * data = [NSKeyedArchiver archivedDataWithRootObject:resultDict];
     [request finishWithBody:nil payload:data];
 }
 
-- (void)onUpdateValue: (ADHRequest *)request {
+- (void)onUpdateValue:(ADHRequest *)request {
     NSDictionary * body = request.body;
     NSData * payload = request.payload;
-    NSString * key = body[@"key"];
+    NSString * key = body[kUserDefaultKey];
     id value = [NSKeyedUnarchiver unarchiveObjectWithData:payload];
     NSString *suiteName = body[kUserDefaultSuiteName];
     NSUserDefaults *userDefaults = [self userDefaultsWithSuiteName:suiteName];
     [userDefaults setObject:value forKey:key];
     [userDefaults synchronize];
-    [request finish];
+    [request finishWithBody:@{
+                              @"success" : @(1),
+                              }];
 }
 
 - (void)onAddRequest: (ADHRequest *)request {
     NSDictionary *body = request.body;
-    NSString *key = adhvf_safestringfy(body[@"key"]);
-    NSString *value = adhvf_safestringfy(body[@"value"]);
+    NSString *key = adhvf_safestringfy(body[kUserDefaultKey]);
+    NSString *value = adhvf_safestringfy(body[kUserDefaultValue]);
     if(key.length > 0) {
         NSString *suiteName = body[kUserDefaultSuiteName];
         NSUserDefaults *userDefaults = [self userDefaultsWithSuiteName:suiteName];
@@ -80,7 +94,7 @@ NSString *const kUserDefaultSuiteName = @"suitename";
 
 - (void)onRemoveRequest: (ADHRequest *)request {
     NSDictionary *body = request.body;
-    NSString *key = adhvf_safestringfy(body[@"key"]);
+    NSString *key = adhvf_safestringfy(body[kUserDefaultKey]);
     NSString *suiteName = body[kUserDefaultSuiteName];
     NSUserDefaults *userDefaults = [self userDefaultsWithSuiteName:suiteName];
     id value = [userDefaults objectForKey:key];

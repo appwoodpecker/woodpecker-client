@@ -14,10 +14,10 @@ class IPCServer: NSObject {
     private lazy var listenThread = makeListenThread()
     
     public static let shared = IPCServer()
-    private static let portId = "lifebetter.woodpecker.wooder" as CFString
+    
     private let semaphore = DispatchSemaphore(value: 0)
     
-    private var resultBody: [AnyHashable:Any]?
+    private var response: IPCResponse?
     
     override private init() {
         
@@ -32,7 +32,7 @@ class IPCServer: NSObject {
         let runloop = RunLoop.current
         let info = Unmanaged.passUnretained(self).toOpaque()
         var context = CFMessagePortContext(version: 0, info: info, retain: nil, release: nil, copyDescription: nil)
-        guard let messagePort = CFMessagePortCreateLocal(nil, IPCServer.portId, callback, &context, nil) else {
+        guard let messagePort = CFMessagePortCreateLocal(nil, IPC.portId, callback, &context, nil) else {
             return
         }
         guard let source = CFMessagePortCreateRunLoopSource(nil, messagePort, 0) else {
@@ -43,32 +43,31 @@ class IPCServer: NSObject {
     }
     
     private lazy var callback: CFMessagePortCallBack = { messagePort, messageID, cfData, info in
-        IPCServer.shared.resultBody = nil
-        guard let requestData = cfData as? Data,
-              let json = String(data: requestData, encoding: .utf8) as? NSString,
-              let requestBody = json.adh_jsonObject() as? NSDictionary else {
+        IPCServer.shared.response = nil
+        guard let data = cfData as? Data,
+              let request = IPCRequest.unarchive(data) else {
             return nil
         }
-        let service = requestBody["service"] as? String ?? "adh.appinfo"
-        let action = requestBody["action"] as? String ?? "basicinfo"
+        let service = request.service
+        let action = request.action
+        let body = request.body
+        let payload = request.payload
         guard let apiClient = AppContextManager.shared().topContext()?.apiClient() else {
             return nil
         }
-        apiClient.request(withService: service, action: action) { body, payload in
-            IPCServer.shared.resultBody = body
+        apiClient.request(withService: service, action: action, body: body, payload: payload, progressChanged: nil) { resBody, resPayload in
+            let response = IPCResponse(body: resBody, payload: resPayload)
+            IPCServer.shared.response = response
             IPCServer.shared.semaphore.signal()
         } onFailed: { error in
             IPCServer.shared.semaphore.signal()
         }
         IPCServer.shared.semaphore.wait()
-        guard let resultBody = IPCServer.shared.resultBody as? NSDictionary,
-              let resultJson = resultBody.adh_jsonPresentation() else {
+        guard let response = IPCServer.shared.response,
+              let responseData = response.archive() else {
             return nil
         }
-        guard let resultData = resultJson.data(using: .utf8) else {
-            return nil
-        }
-        return Unmanaged.passRetained(resultData as CFData)
+        return Unmanaged.passRetained(responseData as CFData)
     }
     
     private func makeListenThread() -> Thread {

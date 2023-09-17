@@ -106,11 +106,6 @@
     NSString * deviceName = [DeviceUtil deviceName];
     NSData * deviceData = [deviceName dataUsingEncoding:NSUTF8StringEncoding];
     txtDic[@"name"] = deviceData;
-    //device
-    NSDictionary *allowDic = [DeviceUtil getDeviceAllowData];
-    NSString *allowText = [allowDic adh_jsonPresentation];
-    NSData *allowData = [allowText dataUsingEncoding:NSUTF8StringEncoding];
-    txtDic[@"rule"] = allowData;
     NSData * txtData = [NSNetService dataFromTXTRecordDictionary:txtDic];
     return txtData;
 }

@@ -149,18 +149,6 @@
     return ret;
 }
 
-+ (NSDictionary *)getDeviceAllowData {
-    NSArray *allowList = [Preference getAllowedDeviceList];
-    NSArray *disallowList = [Preference getDisallowedDeviceList];
-    BOOL disallowOthers = [Preference disallowOtherDevice];
-    NSMutableDictionary * allowDic = [NSMutableDictionary dictionary];
-    allowDic[@"a"] = allowList;
-    allowDic[@"da"] = disallowList;
-    allowDic[@"do"] = [NSNumber numberWithBool:disallowOthers];
-    return allowDic;
-}
-
-
 + (NSString *)getDeviceModel: (NSString *)deviceModel {
     if ([deviceModel isEqualToString:@"iPhone3,1"])    return @"iPhone 4";
     if ([deviceModel isEqualToString:@"iPhone3,2"])    return @"iPhone 4";

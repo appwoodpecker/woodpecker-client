@@ -31,7 +31,6 @@
 + (BOOL)isSandboxed;
 + (BOOL)isDarkMode;
 
-+ (NSDictionary *)getDeviceAllowData;
 //util
 + (NSString *)getDeviceModel: (NSString *)deviceModel;
 

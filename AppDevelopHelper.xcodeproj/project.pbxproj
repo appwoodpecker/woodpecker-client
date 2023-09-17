@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,9 +11,21 @@
 		1F052679227D8AD4003D84C1 /* WebDebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F052677227D8AD4003D84C1 /* WebDebugViewController.xib */; };
 		1F05AF452AB0C80B00D08DBF /* ADHAppConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0C3A1FAEB0DB00E2CCC8 /* ADHAppConnector.m */; };
 		1F05AF552AB54CCF00D08DBF /* IPCServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF542AB54CCF00D08DBF /* IPCServer.swift */; };
-		1F05AF562AB558C200D08DBF /* NSObject+ADHUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA18FA51FA4BD7400DC85E2 /* NSObject+ADHUtil.m */; };
-		1F05AF592AB562E100D08DBF /* IPCCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF572AB562E100D08DBF /* IPCCaller.m */; };
-		1F05AF5A2AB5637200D08DBF /* NSObject+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0BE21FAD783D00E2CCC8 /* NSObject+Json.m */; };
+		1F05AF602AB5964E00D08DBF /* IPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF5E2AB5960F00D08DBF /* IPC.swift */; };
+		1F05AF6E2AB59A0A00D08DBF /* IPCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF6D2AB59A0A00D08DBF /* IPCClient.swift */; };
+		1F05AF742AB59A4E00D08DBF /* IPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF5E2AB5960F00D08DBF /* IPC.swift */; };
+		1F05AF772AB59B7900D08DBF /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF762AB59B7900D08DBF /* MainApp.swift */; };
+		1F05AF782AB59BED00D08DBF /* NSObject+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0BE21FAD783D00E2CCC8 /* NSObject+Json.m */; };
+		1F05AF7D2AB59CC300D08DBF /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF7C2AB59CC300D08DBF /* UserDefault.swift */; };
+		1F05AF822AB5A20100D08DBF /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 1F05AF812AB5A20100D08DBF /* ArgumentParser */; };
+		1F05AF842AB5A20100D08DBF /* generate-manual in Frameworks */ = {isa = PBXBuildFile; productRef = 1F05AF832AB5A20100D08DBF /* generate-manual */; };
+		1F05AF882AB6A74800D08DBF /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF872AB6A74800D08DBF /* Service.swift */; };
+		1F05AF8A2AB6E17D00D08DBF /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF892AB6E17D00D08DBF /* Dispatcher.swift */; };
+		1F05AF8D2AB7010D00D08DBF /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF8C2AB7010D00D08DBF /* View.swift */; };
+		1F05AF8F2AB701D300D08DBF /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF8E2AB701D300D08DBF /* AppInfo.swift */; };
+		1F05AF902AB705DA00D08DBF /* ADHDateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F32577E1FE4FF6800D165D0 /* ADHDateUtil.m */; };
+		1F05AF922AB707CF00D08DBF /* ADHValueFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0BE41FAD783D00E2CCC8 /* ADHValueFilter.m */; };
+		1F05AF962AB70D1500D08DBF /* NSObject.Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF952AB70D1500D08DBF /* NSObject.Extension.swift */; };
 		1F06B70A217238FD000CAD80 /* ADHKeepAliveService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F06B708217238FD000CAD80 /* ADHKeepAliveService.m */; };
 		1F06B70B217238FD000CAD80 /* ADHKeepAliveService.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F06B709217238FD000CAD80 /* ADHKeepAliveService.h */; };
 		1F085EF62520B4F5008A91E3 /* ViewInsetsAttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F085EF52520B4F5008A91E3 /* ViewInsetsAttributeCell.m */; };
@@ -207,8 +219,6 @@
 		1F3311142AA31F8400EBBE26 /* ADHPTProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3310EB2AA2BE2800EBBE26 /* ADHPTProtocol.m */; };
 		1F3311172AA33C9700EBBE26 /* ADHDispatcher+Default.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F3311152AA33C9700EBBE26 /* ADHDispatcher+Default.h */; };
 		1F3311182AA33C9700EBBE26 /* ADHDispatcher+Default.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3311162AA33C9700EBBE26 /* ADHDispatcher+Default.m */; };
-		1F3311312AA6187800EBBE26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3311302AA6187800EBBE26 /* main.m */; };
-		1F33113C2AA61E3100EBBE26 /* install.sh in Resources */ = {isa = PBXBuildFile; fileRef = 1F33113A2AA61DF600EBBE26 /* install.sh */; };
 		1F3311402AA8BF4400EBBE26 /* ADHUsb.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F33113F2AA8BF4400EBBE26 /* ADHUsb.m */; };
 		1F3311432AAC1E8700EBBE26 /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3311422AAC1E8700EBBE26 /* DeviceManager.m */; };
 		1F33659F213B606A00D7A10A /* KeyChainValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F33659E213B606A00D7A10A /* KeyChainValueCell.m */; };
@@ -760,6 +770,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		1F05AF632AB599EE00D08DBF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		1F26E6382298EB4900BFD5E0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -779,15 +798,6 @@
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1F33112C2AA6187800EBBE26 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
 		};
 		1F53D30F20021AB600A09429 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -830,8 +840,18 @@
 		1F052677227D8AD4003D84C1 /* WebDebugViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebDebugViewController.xib; sourceTree = "<group>"; };
 		1F05AF532AB54CCE00D08DBF /* Woodpecker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Woodpecker-Bridging-Header.h"; sourceTree = "<group>"; };
 		1F05AF542AB54CCF00D08DBF /* IPCServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPCServer.swift; sourceTree = "<group>"; };
-		1F05AF572AB562E100D08DBF /* IPCCaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPCCaller.m; sourceTree = "<group>"; };
-		1F05AF582AB562E100D08DBF /* IPCCaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPCCaller.h; sourceTree = "<group>"; };
+		1F05AF5E2AB5960F00D08DBF /* IPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPC.swift; sourceTree = "<group>"; };
+		1F05AF652AB599EE00D08DBF /* wooder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = wooder; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F05AF6D2AB59A0A00D08DBF /* IPCClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPCClient.swift; sourceTree = "<group>"; };
+		1F05AF6F2AB59A0F00D08DBF /* install.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = install.sh; sourceTree = "<group>"; };
+		1F05AF702AB59A2D00D08DBF /* wooder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "wooder-Bridging-Header.h"; sourceTree = "<group>"; };
+		1F05AF762AB59B7900D08DBF /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
+		1F05AF7C2AB59CC300D08DBF /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		1F05AF872AB6A74800D08DBF /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		1F05AF892AB6E17D00D08DBF /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
+		1F05AF8C2AB7010D00D08DBF /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		1F05AF8E2AB701D300D08DBF /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
+		1F05AF952AB70D1500D08DBF /* NSObject.Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.Extension.swift; sourceTree = "<group>"; };
 		1F06B708217238FD000CAD80 /* ADHKeepAliveService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADHKeepAliveService.m; sourceTree = "<group>"; };
 		1F06B709217238FD000CAD80 /* ADHKeepAliveService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADHKeepAliveService.h; sourceTree = "<group>"; };
 		1F085EF42520B4F5008A91E3 /* ViewInsetsAttributeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewInsetsAttributeCell.h; sourceTree = "<group>"; };
@@ -1072,9 +1092,6 @@
 		1F3311082AA3069E00EBBE26 /* ADHUsbChannel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADHUsbChannel.m; sourceTree = "<group>"; };
 		1F3311152AA33C9700EBBE26 /* ADHDispatcher+Default.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ADHDispatcher+Default.h"; sourceTree = "<group>"; };
 		1F3311162AA33C9700EBBE26 /* ADHDispatcher+Default.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ADHDispatcher+Default.m"; sourceTree = "<group>"; };
-		1F33112E2AA6187800EBBE26 /* wooder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = wooder; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F3311302AA6187800EBBE26 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1F33113A2AA61DF600EBBE26 /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install.sh; sourceTree = "<group>"; };
 		1F33113E2AA8BF4400EBBE26 /* ADHUsb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADHUsb.h; sourceTree = "<group>"; };
 		1F33113F2AA8BF4400EBBE26 /* ADHUsb.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADHUsb.m; sourceTree = "<group>"; };
 		1F3311412AAC1E8700EBBE26 /* DeviceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceManager.h; sourceTree = "<group>"; };
@@ -1877,6 +1894,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1F05AF622AB599EE00D08DBF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F05AF822AB5A20100D08DBF /* ArgumentParser in Frameworks */,
+				1F05AF842AB5A20100D08DBF /* generate-manual in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F26E5E32298D5F600BFD5E0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1890,13 +1916,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F28FBA022A2C52F00C2CF25 /* UserNotifications.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1F33112B2AA6187800EBBE26 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1934,9 +1953,59 @@
 		1F05AF512AB54C8500D08DBF /* Wooder */ = {
 			isa = PBXGroup;
 			children = (
+				1F05AF5E2AB5960F00D08DBF /* IPC.swift */,
 				1F05AF542AB54CCF00D08DBF /* IPCServer.swift */,
 			);
 			path = Wooder;
+			sourceTree = "<group>";
+		};
+		1F05AF662AB599F100D08DBF /* wooder */ = {
+			isa = PBXGroup;
+			children = (
+				1F05AF942AB70D0300D08DBF /* util */,
+				1F05AF7B2AB59CA400D08DBF /* Service */,
+				1F05AF7A2AB59C9A00D08DBF /* IPC */,
+				1F05AF792AB59C8900D08DBF /* Organizer */,
+				1F05AF702AB59A2D00D08DBF /* wooder-Bridging-Header.h */,
+			);
+			path = wooder;
+			sourceTree = "<group>";
+		};
+		1F05AF792AB59C8900D08DBF /* Organizer */ = {
+			isa = PBXGroup;
+			children = (
+				1F05AF6F2AB59A0F00D08DBF /* install.sh */,
+				1F05AF872AB6A74800D08DBF /* Service.swift */,
+				1F05AF762AB59B7900D08DBF /* MainApp.swift */,
+				1F05AF892AB6E17D00D08DBF /* Dispatcher.swift */,
+			);
+			path = Organizer;
+			sourceTree = "<group>";
+		};
+		1F05AF7A2AB59C9A00D08DBF /* IPC */ = {
+			isa = PBXGroup;
+			children = (
+				1F05AF6D2AB59A0A00D08DBF /* IPCClient.swift */,
+			);
+			path = IPC;
+			sourceTree = "<group>";
+		};
+		1F05AF7B2AB59CA400D08DBF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1F05AF7C2AB59CC300D08DBF /* UserDefault.swift */,
+				1F05AF8C2AB7010D00D08DBF /* View.swift */,
+				1F05AF8E2AB701D300D08DBF /* AppInfo.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		1F05AF942AB70D0300D08DBF /* util */ = {
+			isa = PBXGroup;
+			children = (
+				1F05AF952AB70D1500D08DBF /* NSObject.Extension.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 		1F063CCA2748DF8B00425C97 /* Recovered References */ = {
@@ -2456,17 +2525,6 @@
 			path = peertalk;
 			sourceTree = "<group>";
 		};
-		1F33112F2AA6187800EBBE26 /* wooder */ = {
-			isa = PBXGroup;
-			children = (
-				1F33113A2AA61DF600EBBE26 /* install.sh */,
-				1F05AF582AB562E100D08DBF /* IPCCaller.h */,
-				1F05AF572AB562E100D08DBF /* IPCCaller.m */,
-				1F3311302AA6187800EBBE26 /* main.m */,
-			);
-			path = wooder;
-			sourceTree = "<group>";
-		};
 		1F33659C213B604D00D7A10A /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -2748,7 +2806,7 @@
 				1F53D30420021AB600A09429 /* WoodPeckeriOS */,
 				1F26E5E72298D5F700BFD5E0 /* MacClient */,
 				1F26E5FE2298D6E700BFD5E0 /* WoodpeckerMacOS */,
-				1F33112F2AA6187800EBBE26 /* wooder */,
+				1F05AF662AB599F100D08DBF /* wooder */,
 				1F457C9B1F9F65C500C7D604 /* Products */,
 				1FDB2A8D219C615F00A1A0AA /* Frameworks */,
 				97533ED13A328944C6E6DCE1 /* Pods */,
@@ -2764,7 +2822,7 @@
 				1F53D30320021AB600A09429 /* WoodPeckeriOS.framework */,
 				1F26E5E62298D5F600BFD5E0 /* MacClient.app */,
 				1F26E5FD2298D6E700BFD5E0 /* WoodpeckerMacOS.framework */,
-				1F33112E2AA6187800EBBE26 /* wooder */,
+				1F05AF652AB599EE00D08DBF /* wooder */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4489,6 +4547,28 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		1F05AF642AB599EE00D08DBF /* wooder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F05AF692AB599F100D08DBF /* Build configuration list for PBXNativeTarget "wooder" */;
+			buildPhases = (
+				1F05AF612AB599EE00D08DBF /* Sources */,
+				1F05AF622AB599EE00D08DBF /* Frameworks */,
+				1F05AF632AB599EE00D08DBF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F05AF862AB5A6BD00D08DBF /* PBXTargetDependency */,
+			);
+			name = wooder;
+			packageProductDependencies = (
+				1F05AF812AB5A20100D08DBF /* ArgumentParser */,
+				1F05AF832AB5A20100D08DBF /* generate-manual */,
+			);
+			productName = wooder;
+			productReference = 1F05AF652AB599EE00D08DBF /* wooder */;
+			productType = "com.apple.product-type.tool";
+		};
 		1F26E5E52298D5F600BFD5E0 /* MacClient */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F26E5F72298D5F700BFD5E0 /* Build configuration list for PBXNativeTarget "MacClient" */;
@@ -4525,23 +4605,6 @@
 			productName = WoodpeckerMacOS;
 			productReference = 1F26E5FD2298D6E700BFD5E0 /* WoodpeckerMacOS.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		1F33112D2AA6187800EBBE26 /* wooder */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1F3311322AA6187900EBBE26 /* Build configuration list for PBXNativeTarget "wooder" */;
-			buildPhases = (
-				1F33112A2AA6187800EBBE26 /* Sources */,
-				1F33112B2AA6187800EBBE26 /* Frameworks */,
-				1F33112C2AA6187800EBBE26 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = wooder;
-			productName = wdpk;
-			productReference = 1F33112E2AA6187800EBBE26 /* wooder */;
-			productType = "com.apple.product-type.tool";
 		};
 		1F457C991F9F65C500C7D604 /* Woodpecker */ = {
 			isa = PBXNativeTarget;
@@ -4608,9 +4671,14 @@
 		1F457C921F9F65C500C7D604 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = lifebetter;
 				TargetAttributes = {
+					1F05AF642AB599EE00D08DBF = {
+						CreatedOnToolsVersion = 14.0;
+						LastSwiftMigration = 1400;
+					};
 					1F26E5E52298D5F600BFD5E0 = {
 						CreatedOnToolsVersion = 10.1;
 						ProvisioningStyle = Manual;
@@ -4625,10 +4693,6 @@
 					};
 					1F26E5FC2298D6E700BFD5E0 = {
 						CreatedOnToolsVersion = 10.1;
-						ProvisioningStyle = Automatic;
-					};
-					1F33112D2AA6187800EBBE26 = {
-						CreatedOnToolsVersion = 14.0;
 						ProvisioningStyle = Automatic;
 					};
 					1F457C991F9F65C500C7D604 = {
@@ -4675,6 +4739,9 @@
 				en,
 			);
 			mainGroup = 1F457C911F9F65C500C7D604;
+			packageReferences = (
+				1F05AF802AB5A20100D08DBF /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+			);
 			productRefGroup = 1F457C9B1F9F65C500C7D604 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -4684,7 +4751,7 @@
 				1F53D30220021AB600A09429 /* WoodPeckeriOS */,
 				1F26E5E52298D5F600BFD5E0 /* MacClient */,
 				1F26E5FC2298D6E700BFD5E0 /* WoodpeckerMacOS */,
-				1F33112D2AA6187800EBBE26 /* wooder */,
+				1F05AF642AB599EE00D08DBF /* wooder */,
 			);
 		};
 /* End PBXProject section */
@@ -4828,7 +4895,6 @@
 				1FC9593221E7874B00FB7128 /* UserDefaultSuiteViewController.xib in Resources */,
 				1F7FE0DA20E7CD4B00B7DF7D /* libxlsxwriter-LICENSE.txt in Resources */,
 				1F28FB4722A217DE00C2CF25 /* SandboxWorkpathCell.xib in Resources */,
-				1F33113C2AA61E3100EBBE26 /* install.sh in Resources */,
 				1F46B26720F64B0C000A0E6C /* FileActivityViewController.xib in Resources */,
 				1F0F0C241FADA6DB00E2CCC8 /* DatabaseViewController.xib in Resources */,
 				1FA5721F24C5179D008795DB /* FirebaseViewController.xib in Resources */,
@@ -4974,6 +5040,25 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1F05AF612AB599EE00D08DBF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F05AF8F2AB701D300D08DBF /* AppInfo.swift in Sources */,
+				1F05AF902AB705DA00D08DBF /* ADHDateUtil.m in Sources */,
+				1F05AF8D2AB7010D00D08DBF /* View.swift in Sources */,
+				1F05AF742AB59A4E00D08DBF /* IPC.swift in Sources */,
+				1F05AF882AB6A74800D08DBF /* Service.swift in Sources */,
+				1F05AF7D2AB59CC300D08DBF /* UserDefault.swift in Sources */,
+				1F05AF962AB70D1500D08DBF /* NSObject.Extension.swift in Sources */,
+				1F05AF782AB59BED00D08DBF /* NSObject+Json.m in Sources */,
+				1F05AF8A2AB6E17D00D08DBF /* Dispatcher.swift in Sources */,
+				1F05AF772AB59B7900D08DBF /* MainApp.swift in Sources */,
+				1F05AF6E2AB59A0A00D08DBF /* IPCClient.swift in Sources */,
+				1F05AF922AB707CF00D08DBF /* ADHValueFilter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F26E5E22298D5F600BFD5E0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5059,17 +5144,6 @@
 				1F26E6302298EA8000BFD5E0 /* ADHFileUtil.m in Sources */,
 				1F26E660229A7A8200BFD5E0 /* ADHLocalizationBundle.m in Sources */,
 				1FF88F79229ADA8A001CC3E3 /* ADHLogger.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1F33112A2AA6187800EBBE26 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1F3311312AA6187800EBBE26 /* main.m in Sources */,
-				1F05AF592AB562E100D08DBF /* IPCCaller.m in Sources */,
-				1F05AF562AB558C200D08DBF /* NSObject+ADHUtil.m in Sources */,
-				1F05AF5A2AB5637200D08DBF /* NSObject+Json.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5197,6 +5271,7 @@
 				1F32348B1FC1C5BB007C2AA7 /* WKWebViewJavascriptBridge.m in Sources */,
 				1F46B26C20F64DF9000A0E6C /* FileBrowserActionService.m in Sources */,
 				1F0F0BE81FAD783E00E2CCC8 /* NSObject+Json.m in Sources */,
+				1F05AF602AB5964E00D08DBF /* IPC.swift in Sources */,
 				1F224C19249EF7C9004766DC /* ADHClickTextField.m in Sources */,
 				1F55F6BB247B44F600312CA2 /* StateSandboxViewController.m in Sources */,
 				1F9DB0BB221AE87B00561BFF /* ViewColorAttributeCell.m in Sources */,
@@ -5521,6 +5596,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1F05AF862AB5A6BD00D08DBF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 1F05AF852AB5A6BD00D08DBF /* ArgumentParser */;
+		};
 		1F28FB3B22A0187000C2CF25 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1F26E5FC2298D6E700BFD5E0 /* WoodpeckerMacOS */;
@@ -5667,6 +5746,82 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1F05AF6A2AB599F100D08DBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8HG49Q463F;
+				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "wooder/wooder-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1F05AF6B2AB599F100D08DBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8HG49Q463F;
+				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "wooder/wooder-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		1F05AF6C2AB599F100D08DBF /* Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8HG49Q463F;
+				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "wooder/wooder-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Beta;
+		};
 		1F26E5F42298D5F700BFD5E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -5678,7 +5833,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MacClient/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -5700,7 +5858,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MacClient/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_FAST_MATH = YES;
 				OTHER_CFLAGS = "";
@@ -5721,7 +5882,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MacClient/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_FAST_MATH = YES;
 				OTHER_CFLAGS = "";
@@ -5749,7 +5913,11 @@
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/WoodpeckerMacOS/WoodpeckerMacOS.pch";
 				INFOPLIST_FILE = WoodpeckerMacOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -5779,7 +5947,11 @@
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/WoodpeckerMacOS/WoodpeckerMacOS.pch";
 				INFOPLIST_FILE = WoodpeckerMacOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.WoodpeckerMacOS;
@@ -5808,7 +5980,11 @@
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/WoodpeckerMacOS/WoodpeckerMacOS.pch";
 				INFOPLIST_FILE = WoodpeckerMacOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.WoodpeckerMacOS;
@@ -5816,55 +5992,6 @@
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Beta;
-		};
-		1F3311332AA6187900EBBE26 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		1F3311342AA6187900EBBE26 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		1F3311352AA6187900EBBE26 /* Beta */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Beta;
 		};
@@ -6007,7 +6134,10 @@
 					"$(PROJECT_DIR)/AppDevelopHelper/Components/ReceiptCheck/OpenSSL-OSX/opensslIncludes/**",
 				);
 				INFOPLIST_FILE = AppDevelopHelper/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppDevelopHelper/Components/ReceiptCheck/OpenSSL-OSX/lib",
@@ -6049,7 +6179,10 @@
 					"$(PROJECT_DIR)/AppDevelopHelper/Components/ReceiptCheck/OpenSSL-OSX/opensslIncludes/**",
 				);
 				INFOPLIST_FILE = AppDevelopHelper/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppDevelopHelper/Components/ReceiptCheck/OpenSSL-OSX/lib",
@@ -6083,7 +6216,11 @@
 				INFOPLIST_FILE = WoodPeckeriOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = mh_dylib;
 				MARKETING_VERSION = 1.4.0;
 				ONLY_ACTIVE_ARCH = NO;
@@ -6117,7 +6254,11 @@
 				INFOPLIST_FILE = WoodPeckeriOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = mh_dylib;
 				MARKETING_VERSION = 1.4.0;
 				ONLY_ACTIVE_ARCH = NO;
@@ -6213,7 +6354,10 @@
 					"$(PROJECT_DIR)/AppDevelopHelper/Components/ReceiptCheck/OpenSSL-OSX/opensslIncludes/**",
 				);
 				INFOPLIST_FILE = AppDevelopHelper/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppDevelopHelper/Components/ReceiptCheck/OpenSSL-OSX/lib",
@@ -6237,7 +6381,7 @@
 				CODE_SIGN_ENTITLEMENTS = ADHClient/ADHClient.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8HG49Q463F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -6245,7 +6389,10 @@
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ADHClient/ADHClient.pch";
 				INFOPLIST_FILE = ADHClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6272,7 +6419,11 @@
 				INFOPLIST_FILE = WoodPeckeriOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = mh_dylib;
 				MARKETING_VERSION = 1.4.0;
 				ONLY_ACTIVE_ARCH = NO;
@@ -6298,7 +6449,7 @@
 				CODE_SIGN_ENTITLEMENTS = ADHClient/ADHClient.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8HG49Q463F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -6310,7 +6461,10 @@
 				);
 				INFOPLIST_FILE = ADHClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -6328,7 +6482,7 @@
 				CODE_SIGN_ENTITLEMENTS = ADHClient/ADHClient.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8HG49Q463F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -6336,7 +6490,10 @@
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ADHClient/ADHClient.pch";
 				INFOPLIST_FILE = ADHClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -6350,6 +6507,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1F05AF692AB599F100D08DBF /* Build configuration list for PBXNativeTarget "wooder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F05AF6A2AB599F100D08DBF /* Debug */,
+				1F05AF6B2AB599F100D08DBF /* Release */,
+				1F05AF6C2AB599F100D08DBF /* Beta */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1F26E5F72298D5F700BFD5E0 /* Build configuration list for PBXNativeTarget "MacClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -6366,16 +6533,6 @@
 				1F26E6072298D6E700BFD5E0 /* Debug */,
 				1F26E6082298D6E700BFD5E0 /* Release */,
 				1F26E6092298D6E700BFD5E0 /* Beta */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1F3311322AA6187900EBBE26 /* Build configuration list for PBXNativeTarget "wooder" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1F3311332AA6187900EBBE26 /* Debug */,
-				1F3311342AA6187900EBBE26 /* Release */,
-				1F3311352AA6187900EBBE26 /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -6421,6 +6578,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1F05AF802AB5A20100D08DBF /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1F05AF812AB5A20100D08DBF /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1F05AF802AB5A20100D08DBF /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		1F05AF832AB5A20100D08DBF /* generate-manual */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1F05AF802AB5A20100D08DBF /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = "generate-manual";
+		};
+		1F05AF852AB5A6BD00D08DBF /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1F05AF802AB5A20100D08DBF /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1F457C921F9F65C500C7D604 /* Project object */;
 }

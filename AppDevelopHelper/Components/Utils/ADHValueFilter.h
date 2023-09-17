@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-
+NS_ASSUME_NONNULL_BEGIN
 //object -> (integer,bool)
 extern BOOL adhvf_boolValue(id param);
 extern NSInteger adhvf_integerValue(id param);
@@ -31,3 +31,4 @@ extern NSString * adhvf_const_strfalse(void);
 
 
 @end
+NS_ASSUME_NONNULL_END

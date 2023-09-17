@@ -102,7 +102,7 @@ static CGFloat const kDefaultSSHeight = 568;
     if(!self.isPlaying){
         [self.updateButton showHud];
     }
-    [self.apiClient requestWithService:@"adh.device" action:@"screenshort" onSuccess:^(NSDictionary *body, NSData *payload) {
+    [self.apiClient requestWithService:@"adh.device" action:@"screenshot" onSuccess:^(NSDictionary *body, NSData *payload) {
         wself.updateDate = [NSDate date];
         [wself updateScreenshot:body imageData:payload];
         wself.isLoadingScreenshot = NO;
@@ -382,7 +382,7 @@ static CGFloat const kDefaultSSHeight = 568;
     }
     __weak typeof(self) wself = self;
     [self.downloadButton showHud];
-    [self.apiClient requestWithService:@"adh.device" action:@"screenshort" onSuccess:^(NSDictionary *body, NSData *payload) {
+    [self.apiClient requestWithService:@"adh.device" action:@"screenshot" onSuccess:^(NSDictionary *body, NSData *payload) {
         [wself.downloadButton hideHud];
         if(payload) {
             NSData *imageData = payload;

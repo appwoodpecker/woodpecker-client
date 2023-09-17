@@ -20,13 +20,15 @@
 + (NSDictionary<NSString*,NSString *> *)actionList
 {
     return @{
-             @"screenshort" : NSStringFromSelector(@selector(onRequestScreenshort:)),
+            //spell fix
+             @"screenshort" : NSStringFromSelector(@selector(onRequestScreenshot:)),
+             @"screenshot" : NSStringFromSelector(@selector(onRequestScreenshot:)),
              @"info" : NSStringFromSelector(@selector(onRequestInfo:)),
              @"onTouchEvent" : NSStringFromSelector(@selector(onRequestTouchEvent:)),
              };
 }
 
-- (void)onRequestScreenshort: (ADHRequest *)request {
+- (void)onRequestScreenshot: (ADHRequest *)request {
     dispatch_async(dispatch_get_main_queue(), ^{
         UIApplicationState state = [UIApplication.sharedApplication applicationState];
         if(state == UIApplicationStateActive) {
