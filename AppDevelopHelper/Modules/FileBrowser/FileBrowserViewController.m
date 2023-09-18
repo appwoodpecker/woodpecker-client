@@ -778,7 +778,7 @@
 }
 
 - (NSString *)getPreviewAppPath {
-    NSString * workPath = [[EnvtService service] appFileWorkPath];
+    NSString * workPath = [[EnvtService sharedService] appFileWorkPath];
     ADHApp * app = self.context.app;
     NSString * appPath = [NSString stringWithFormat:@"%@/%@",app.deviceName,app.bundleId];
     NSString * resultPath = [workPath stringByAppendingPathComponent:appPath];
@@ -918,7 +918,7 @@
     }
     if(!targetPath) {
         //sandbox work path
-        NSString *sandboxPath = [[EnvtService service] appFileWorkPath];
+        NSString *sandboxPath = [[EnvtService sharedService] appFileWorkPath];
         if([ADHFileUtil dirExistsAtPath:sandboxPath]) {
             targetPath = sandboxPath;
         }
@@ -940,7 +940,7 @@
     [ADHAlert alertWithMessage:kLocalized(@"alert_title") infoText:infoText confirmText:kLocalized(@"yes") cancelText:kLocalized(@"cancel") comfirmBlock:^{
         NSString *targetPath = nil;
         if(deleteAll) {
-            targetPath = [[EnvtService service] appFileWorkPath];
+            targetPath = [[EnvtService sharedService] appFileWorkPath];
         }else {
             targetPath = [wself getPreviewAppPath];
         }
@@ -958,7 +958,7 @@
     self.rootPreviewItem = nil;
     self.searchPreviewItem = nil;
     [self.outlineView reloadData];
-    [[EnvtService service] resetAppfileWorkPathIfNeeded];
+    [[EnvtService sharedService] resetAppfileWorkPathIfNeeded];
 }
 
 

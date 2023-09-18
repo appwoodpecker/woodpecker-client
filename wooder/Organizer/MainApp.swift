@@ -33,10 +33,9 @@ struct MainApp: ParsableCommand {
     
     @Option
     var output: String?
-    
-    
+
     func run() {
-        print("[action]:\(cmd), [arg1]:\(arg1 ?? ""), [arg2]: \(arg2 ?? "")")
+        print("[action]:\(cmd), [arg1]:\(arg1 ?? ""), [arg2]: \(arg2 ?? "") [-i]: \(input ?? "") [-o]: \(output ?? "")")
         var service = ""
         var action = ""
         let comps = cmd.components(separatedBy: ".")

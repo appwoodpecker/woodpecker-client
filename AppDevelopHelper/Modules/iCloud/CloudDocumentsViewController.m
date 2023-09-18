@@ -350,7 +350,7 @@
 #pragma mark -----------------   info   ----------------
 
 - (NSString *)getWorkPath {
-    NSString * workPath = [[EnvtService service] iCloudWorkPath];
+    NSString * workPath = [[EnvtService sharedService] iCloudWorkPath];
     ADHApp * app = self.context.app;
     NSString * appPath = [NSString stringWithFormat:@"%@/%@",app.deviceName,app.bundleId];
     NSString * resultPath = [workPath stringByAppendingPathComponent:appPath];

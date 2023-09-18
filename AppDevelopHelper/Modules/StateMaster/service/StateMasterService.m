@@ -365,7 +365,7 @@ static NSMutableArray *serviceList = nil;
 #pragma mark -----------------   util   ----------------
 
 - (NSString *)getWorkPath {
-    NSString * rootPath = [EnvtService.service stateMasterPath];
+    NSString * rootPath = [EnvtService.sharedService stateMasterPath];
     ADHApp * app = self.context.app;
     NSString *appPath = app.bundleId;
     NSString * resultPath = [rootPath stringByAppendingPathComponent:appPath];
@@ -373,7 +373,7 @@ static NSMutableArray *serviceList = nil;
 }
 
 - (NSString *)getSharedPath {
-    NSString * rootPath = [EnvtService.service stateMasterPath];
+    NSString * rootPath = [EnvtService.sharedService stateMasterPath];
     NSString *resultPath = [rootPath stringByAppendingPathComponent:@"shared"];
     return resultPath;
 }

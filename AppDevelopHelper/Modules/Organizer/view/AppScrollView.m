@@ -173,7 +173,7 @@ static NSString *const kTabPlugin = @"plugin";
 
 
 - (NSArray *)getPluginList {
-    NSString * pluginPath = [[EnvtService service] pluginPath];
+    NSString * pluginPath = [[EnvtService sharedService] pluginPath];
     NSFileManager * fileManager = [NSFileManager defaultManager];
     NSURL *fileURL = [NSURL fileURLWithPath:pluginPath];
     NSMutableArray *pluginList = [NSMutableArray array];
@@ -215,7 +215,7 @@ static NSString *const kTabPlugin = @"plugin";
 
 - (NSArray *)getPluginItems
 {
-    NSString * pluginPath = [[EnvtService service] pluginPath];
+    NSString * pluginPath = [[EnvtService sharedService] pluginPath];
     NSArray* pluginList = [self getPluginList];
     NSMutableArray * pluginItems = [NSMutableArray array];
     for (NSDictionary *itemData in pluginList) {

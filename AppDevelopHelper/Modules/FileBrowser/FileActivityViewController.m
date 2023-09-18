@@ -435,7 +435,7 @@ static CGFloat const kColumnFlexibleMinUnitWidth = 200.0f;
 
 - (NSString *)getPreviewAppPath {
     //文件预览
-    NSString * workPath = [[EnvtService service] appFileWorkPath];
+    NSString * workPath = [[EnvtService sharedService] appFileWorkPath];
     ADHApp * app = self.context.app;
     NSString * appPath = [NSString stringWithFormat:@"%@/%@",app.deviceName,app.bundleId];
     NSString * resultPath = [workPath stringByAppendingPathComponent:appPath];

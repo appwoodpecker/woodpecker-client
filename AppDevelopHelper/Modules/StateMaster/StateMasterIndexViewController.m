@@ -544,7 +544,7 @@ static NSInteger const kMaxEncodeCount = 2;
 }
 
 - (NSString *)getWorkPath {
-    NSString * rootPath = [EnvtService.service stateMasterPath];
+    NSString * rootPath = [EnvtService.sharedService stateMasterPath];
     ADHApp * app = self.context.app;
     NSString *appPath = app.bundleId;
     NSString * resultPath = [rootPath stringByAppendingPathComponent:appPath];
@@ -552,7 +552,7 @@ static NSInteger const kMaxEncodeCount = 2;
 }
 
 - (NSString *)getSharedPath {
-    NSString * rootPath = [EnvtService.service stateMasterPath];
+    NSString * rootPath = [EnvtService.sharedService stateMasterPath];
     NSString *resultPath = [rootPath stringByAppendingPathComponent:@"shared"];
     return resultPath;
 }

@@ -231,7 +231,7 @@ static NSInteger const kToolMenuTag = 101;
 
 - (void)setupWorkPath
 {
-    [[EnvtService service] setupWorkEnvt];
+    [[EnvtService sharedService] setupWorkEnvt];
 }
 
 #pragma mark -----------------   apps   ----------------
@@ -335,7 +335,7 @@ static NSInteger const kToolMenuTag = 101;
 #pragma mark -----------------   tool bar   ----------------
 
 - (void)pluginHomeMenuSelected: (NSMenuItem *)menu {
-    NSString * pluginPath = [[EnvtService service] pluginPath];
+    NSString * pluginPath = [[EnvtService sharedService] pluginPath];
     [[NSWorkspace sharedWorkspace] openFile:pluginPath];
 }
 

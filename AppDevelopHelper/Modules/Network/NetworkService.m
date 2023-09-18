@@ -34,7 +34,7 @@ static NSMutableArray *serviceList = nil;
 }
 
 - (NSString *)workPath {
-    NSString * networkPath = [[EnvtService service] networkWorkPath];
+    NSString * networkPath = [[EnvtService sharedService] networkWorkPath];
     return networkPath;
 }
 
@@ -42,7 +42,7 @@ static NSMutableArray *serviceList = nil;
 
 
 - (NSString *)getTransactionResponseBodyPath: (ADHNetworkTransaction *)transaction {
-    NSString * networkPath = [[EnvtService service] networkWorkPath];
+    NSString * networkPath = [[EnvtService sharedService] networkWorkPath];
     NSString * suggestedFilename = [transaction.response suggestedFilename];
     NSString * fileName = [NSString stringWithFormat:@"%@_%@",transaction.requestID,suggestedFilename];
     NSString * path = [networkPath stringByAppendingPathComponent:fileName];
@@ -88,7 +88,7 @@ static NSMutableArray *serviceList = nil;
     static BOOL bCleared = NO;
     if(!bCleared) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSString * networkPath = [[EnvtService service] networkWorkPath];
+            NSString * networkPath = [[EnvtService sharedService] networkWorkPath];
             [ADHFileUtil emptyDir:networkPath];
         });
         bCleared = YES;

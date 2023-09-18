@@ -26,6 +26,11 @@
 		1F05AF902AB705DA00D08DBF /* ADHDateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F32577E1FE4FF6800D165D0 /* ADHDateUtil.m */; };
 		1F05AF922AB707CF00D08DBF /* ADHValueFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0BE41FAD783D00E2CCC8 /* ADHValueFilter.m */; };
 		1F05AF962AB70D1500D08DBF /* NSObject.Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF952AB70D1500D08DBF /* NSObject.Extension.swift */; };
+		1F05AF982AB880D000D08DBF /* Sandbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF972AB880D000D08DBF /* Sandbox.swift */; };
+		1F05AF992AB8833700D08DBF /* EnvtService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F32347A1FC166F0007C2AA7 /* EnvtService.m */; };
+		1F05AF9A2AB8837F00D08DBF /* ADHFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0BE61FAD783E00E2CCC8 /* ADHFileUtil.m */; };
+		1F05AF9B2AB8859100D08DBF /* ADHFileHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C05C91FB3463F00A0AFD1 /* ADHFileHash.m */; };
+		1F05AF9C2AB8859E00D08DBF /* ADHUserDefaultUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3234601FBFFB32007C2AA7 /* ADHUserDefaultUtil.m */; };
 		1F06B70A217238FD000CAD80 /* ADHKeepAliveService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F06B708217238FD000CAD80 /* ADHKeepAliveService.m */; };
 		1F06B70B217238FD000CAD80 /* ADHKeepAliveService.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F06B709217238FD000CAD80 /* ADHKeepAliveService.h */; };
 		1F085EF62520B4F5008A91E3 /* ViewInsetsAttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F085EF52520B4F5008A91E3 /* ViewInsetsAttributeCell.m */; };
@@ -852,6 +857,7 @@
 		1F05AF8C2AB7010D00D08DBF /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		1F05AF8E2AB701D300D08DBF /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		1F05AF952AB70D1500D08DBF /* NSObject.Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.Extension.swift; sourceTree = "<group>"; };
+		1F05AF972AB880D000D08DBF /* Sandbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sandbox.swift; sourceTree = "<group>"; };
 		1F06B708217238FD000CAD80 /* ADHKeepAliveService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADHKeepAliveService.m; sourceTree = "<group>"; };
 		1F06B709217238FD000CAD80 /* ADHKeepAliveService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADHKeepAliveService.h; sourceTree = "<group>"; };
 		1F085EF42520B4F5008A91E3 /* ViewInsetsAttributeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewInsetsAttributeCell.h; sourceTree = "<group>"; };
@@ -1962,7 +1968,8 @@
 		1F05AF662AB599F100D08DBF /* wooder */ = {
 			isa = PBXGroup;
 			children = (
-				1F05AF942AB70D0300D08DBF /* util */,
+				1F05AF9D2AB8872700D08DBF /* Config */,
+				1F05AF942AB70D0300D08DBF /* Utility */,
 				1F05AF7B2AB59CA400D08DBF /* Service */,
 				1F05AF7A2AB59C9A00D08DBF /* IPC */,
 				1F05AF792AB59C8900D08DBF /* Organizer */,
@@ -1996,16 +2003,24 @@
 				1F05AF7C2AB59CC300D08DBF /* UserDefault.swift */,
 				1F05AF8C2AB7010D00D08DBF /* View.swift */,
 				1F05AF8E2AB701D300D08DBF /* AppInfo.swift */,
+				1F05AF972AB880D000D08DBF /* Sandbox.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
 		};
-		1F05AF942AB70D0300D08DBF /* util */ = {
+		1F05AF942AB70D0300D08DBF /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				1F05AF952AB70D1500D08DBF /* NSObject.Extension.swift */,
 			);
-			path = util;
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		1F05AF9D2AB8872700D08DBF /* Config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 		1F063CCA2748DF8B00425C97 /* Recovered References */ = {
@@ -5050,12 +5065,17 @@
 				1F05AF742AB59A4E00D08DBF /* IPC.swift in Sources */,
 				1F05AF882AB6A74800D08DBF /* Service.swift in Sources */,
 				1F05AF7D2AB59CC300D08DBF /* UserDefault.swift in Sources */,
+				1F05AF9C2AB8859E00D08DBF /* ADHUserDefaultUtil.m in Sources */,
 				1F05AF962AB70D1500D08DBF /* NSObject.Extension.swift in Sources */,
 				1F05AF782AB59BED00D08DBF /* NSObject+Json.m in Sources */,
+				1F05AF992AB8833700D08DBF /* EnvtService.m in Sources */,
+				1F05AF9B2AB8859100D08DBF /* ADHFileHash.m in Sources */,
 				1F05AF8A2AB6E17D00D08DBF /* Dispatcher.swift in Sources */,
 				1F05AF772AB59B7900D08DBF /* MainApp.swift in Sources */,
 				1F05AF6E2AB59A0A00D08DBF /* IPCClient.swift in Sources */,
+				1F05AF982AB880D000D08DBF /* Sandbox.swift in Sources */,
 				1F05AF922AB707CF00D08DBF /* ADHValueFilter.m in Sources */,
+				1F05AF9A2AB8837F00D08DBF /* ADHFileUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

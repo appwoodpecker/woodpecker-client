@@ -165,7 +165,7 @@
         if(self.context.app.isMacOS) {
             requiredKey = @"WoodpeckerMacOS";
         }
-        NSString * requiredVersion = [[EnvtService service] configWithKey:requiredKey];
+        NSString * requiredVersion = [[EnvtService sharedService] configWithKey:requiredKey];
         NSString * requiredVersionText = [requiredVersion stringByReplacingOccurrencesOfString:@"." withString:@""];
         NSInteger requiredValue = [requiredVersionText integerValue];
         //当前版本

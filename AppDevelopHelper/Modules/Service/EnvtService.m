@@ -8,6 +8,8 @@
 
 #import "EnvtService.h"
 #import "ADHUserDefaultUtil.h"
+#import "ADHFileUtil.h"
+#import "ADHValueFilter.h"
 
 NSString * const kEnvtServiceWorkEnvtSetupFinish = @"kEnvtServiceWorkEnvtSetupFinish";
 NSString * const kEnvtServiceWorkEnvtSetupUserInfoPlugin = @"pluginUpdate";
@@ -23,7 +25,7 @@ NSString * const kUDPluginVersionKey = @"version";
 
 @implementation EnvtService
 
-+ (EnvtService *)service
++ (EnvtService *)sharedService
 {
     static EnvtService * service = nil;
     static dispatch_once_t onceToken;
@@ -229,7 +231,7 @@ NSString * const kUDPluginVersionKey = @"version";
 //okay always WoodPecker
 - (NSString *)appName
 {
-    return @"WoodPecker";
+    return @"Woodpecker";
 }
 
 

@@ -275,7 +275,7 @@ static NSInteger const kTagIcon = 102;
 }
 
 - (NSArray *)getPluginList {
-    NSString * pluginPath = [[EnvtService service] pluginPath];
+    NSString * pluginPath = [[EnvtService sharedService] pluginPath];
     NSFileManager * fileManager = [NSFileManager defaultManager];
     NSURL *fileURL = [NSURL fileURLWithPath:pluginPath];
     NSMutableArray *pluginList = [NSMutableArray array];
@@ -317,7 +317,7 @@ static NSInteger const kTagIcon = 102;
 
 - (NSArray *)getPluginItems {
     NSMutableArray * pluginItems = [NSMutableArray array];
-    NSString * pluginPath = [[EnvtService service] pluginPath];
+    NSString * pluginPath = [[EnvtService sharedService] pluginPath];
     NSArray* pluginList = [self getPluginList];
     for (NSDictionary *itemData in pluginList) {
         NSString *fileName = itemData[@"name"];

@@ -13,7 +13,7 @@ extern NSString * const kEnvtServiceWorkEnvtSetupUserInfoPlugin;
 
 @interface EnvtService : NSObject
 
-+ (EnvtService *)service;
++ (EnvtService *)sharedService;
 
 - (void)setupWorkEnvt;
 

@@ -152,7 +152,7 @@
 }
 
 - (NSString *)getBundlePath {
-    NSString * workPath = [[EnvtService service] appBundleWorkPath];
+    NSString * workPath = [[EnvtService sharedService] appBundleWorkPath];
     ADHApp * app = self.context.app;
     NSString * appPath = [NSString stringWithFormat:@"%@/%@",app.deviceName,app.bundleId];
     NSString * resultPath = [workPath stringByAppendingPathComponent:appPath];
@@ -479,7 +479,7 @@
     }
     if(!targetPath) {
         //App bundle folder
-        NSString * workPath = [[EnvtService service] appBundleWorkPath];
+        NSString * workPath = [[EnvtService sharedService] appBundleWorkPath];
         if([ADHFileUtil dirExistsAtPath:workPath]) {
             targetPath = workPath;
         }
@@ -506,7 +506,7 @@
         NSString *targetPath = nil;
         if(deleteAll) {
             //App bundle folder
-            targetPath = [[EnvtService service] appBundleWorkPath];
+            targetPath = [[EnvtService sharedService] appBundleWorkPath];
         }else {
             targetPath = wself.appBundlePath;
         }
@@ -524,7 +524,7 @@
     self.rootPreviewItem = nil;
     self.searchPreviewItem = nil;
     [self.outlineView reloadData];
-    [[EnvtService service] resetAppBundleWorkPathIfNeeded];
+    [[EnvtService sharedService] resetAppBundleWorkPathIfNeeded];
 }
 
 

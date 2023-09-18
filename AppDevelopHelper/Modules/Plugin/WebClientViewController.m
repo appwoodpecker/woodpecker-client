@@ -57,7 +57,7 @@
 - (void)loadContent {
     NSString * path = self.pluginPath;
     NSURL * requestURL = [NSURL fileURLWithPath:path];
-    NSString * pluginHomePath = [[EnvtService service] pluginPath];
+    NSString * pluginHomePath = [[EnvtService sharedService] pluginPath];
     NSURL * pluginHomeURL = [NSURL fileURLWithPath:pluginHomePath];
     [self.webView loadFileURL:requestURL allowingReadAccessToURL:pluginHomeURL];
 }

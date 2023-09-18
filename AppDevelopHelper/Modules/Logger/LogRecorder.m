@@ -135,7 +135,7 @@ static NSMutableArray *gRecorderList;
 }
 
 - (NSString *)workPath {
-    NSString * workPath = [[EnvtService service] loggerWorkPath];
+    NSString * workPath = [[EnvtService sharedService] loggerWorkPath];
     return workPath;
 }
 

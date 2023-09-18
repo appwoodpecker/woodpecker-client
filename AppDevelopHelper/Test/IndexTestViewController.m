@@ -262,7 +262,7 @@
 }
 
 - (void)doFileTest {
-    NSString *testPath = [[EnvtService service] appFileWorkPath];
+    NSString *testPath = [[EnvtService sharedService] appFileWorkPath];
     NSString * filePath = [testPath stringByAppendingPathComponent:@"test.txt"];
     NSData *data = [@"lllll" dataUsingEncoding:NSUTF8StringEncoding];
     NSTimeInterval day = 24 * 60 * 60;
