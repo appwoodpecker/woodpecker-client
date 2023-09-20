@@ -19,27 +19,18 @@ class UserDefault: Service {
     }
     
     override class var name: String {
-        return "adh.userdefaults"
+        return "UesrDefaults"
     }
     
-    
-    override func run() {
-        var action = ""
-        if let value = request.action {
-            action = value
-        }
-        if action.isEmpty {
-            action = "get"
-        }
-        if action == "get" {
-            getAction()
-        } else if action == "update" {
-            updateAction()
-        }
+    override var actions: [Action] {
+        return [
+            Action(aliasNames: ["get","read","fetch"], actionName:"getAction"),
+            Action(aliasNames: ["set", "update", "write","save"], actionName:"updateAction"),
+        ]
     }
     
     //MARK: - get ud.get key
-    func getAction() {
+    @objc func getAction() {
         if let key = request.arg1, !key.isEmpty {
             //get key
             var body = [AnyHashable:Any]()
@@ -73,7 +64,7 @@ class UserDefault: Service {
         }
     }
     
-    func updateAction() {
+    @objc func updateAction() {
         guard let key = request.arg1, !key.isEmpty,
               let value = request.arg2 else {
             return
@@ -89,6 +80,5 @@ class UserDefault: Service {
         }
         print("update succeed")
     }
-    
     
 }

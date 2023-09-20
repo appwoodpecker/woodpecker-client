@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Service {
+class Service: NSObject {
 
     struct Request {
         let action: String?
@@ -16,6 +16,11 @@ class Service {
         let arg2: String?
         let input: String?
         let output: String?
+    }
+    
+    struct Action {
+        let aliasNames: [String]
+        let actionName: String
     }
     
     let request: Request
@@ -31,13 +36,36 @@ class Service {
     class var aliasNames: [String] {
         return []
     }
+    
+    var actions: [Action] {
+        return []
+    }
 
     func validate() -> (Bool, String?) {
         return (true, nil)
     }
     
     func run() {
-        
+        var actionName = ""
+        if let value = request.action {
+            actionName = value
+        }
+        var targetAction: Action?
+        for action in self.actions {
+            if action.aliasNames.contains(actionName) {
+                targetAction = action
+                break
+            }
+        }
+        if targetAction == nil {
+            targetAction = self.actions.first
+        }
+        guard let action = targetAction else {
+            return
+        }
+        print("[\(type(of:self).name).\(action.actionName)]")
+        let sel = NSSelectorFromString(action.actionName)
+        self.performSelector(onMainThread: sel, with: nil, waitUntilDone: true)
     }
     
     func send(service:String, action: String, body: [AnyHashable:Any]? = nil, payload:Data? = nil) -> IPCResponse {
