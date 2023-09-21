@@ -20,18 +20,10 @@ class View: Service {
         return "adh.view"
     }
     
-    
-    override func run() {
-        var action = ""
-        if let value = request.action {
-            action = value
-        }
-        if action.isEmpty {
-            action = "get"
-        }
-        if action == "get" {
+    override var actions: [Action] {
+        return [
             
-        }
+        ]
     }
     
 }

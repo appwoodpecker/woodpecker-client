@@ -11,79 +11,79 @@ import AppKit
 
 class Sandbox: Service {
     
+    override class var name: String {
+        return "Sandbox"
+    }
+    
     override class var aliasNames: [String] {
         return [
             "sandbox", "file", "fb",
         ]
     }
     
-    override class var name: String {
-        return "Sandbox"
+    override var actions: [Action] {
+        return [
+            Action(aliasNames: ["read","get","fetch"], actionName:"readFile"),
+            Action(aliasNames: ["write", "save", "update"], actionName:"writeFile"),
+        ]
     }
     
+    
     //wooder file Documents/file.data
-    override func run() {
-        var action = ""
-        if let value = request.action {
-            action = value
+    @objc func readFile() {
+        guard let path = request.arg1 else {
+            return
         }
-        if action.isEmpty {
-            action = "read"
-        }
-        if action == "read" {
-            guard let path = request.arg1 else {
-                return
-            }
-            let url = URL(fileURLWithPath: path)
-            let filename = url.lastPathComponent
-            var destPath = ""
-            if let outputPath = request.output {
-                if ADHFileUtil.dirExists(atPath: outputPath) {
-                    destPath = outputPath.appending("/\(filename)")
-                } else {
-                    destPath = outputPath
-                }
+        let url = URL(fileURLWithPath: path)
+        let filename = url.lastPathComponent
+        var destPath = ""
+        if let outputPath = request.output {
+            if ADHFileUtil.dirExists(atPath: outputPath) {
+                destPath = outputPath.appending("/\(filename)")
             } else {
-                guard let downloadDir = NSSearchPathForDirectoriesInDomains(.downloadsDirectory, .userDomainMask, true).first else {
-                    return
-                }
-                destPath = downloadDir.appending("/\(filename)")
+                destPath = outputPath
             }
-            var body = [AnyHashable:Any]()
-            body["path"] = path
-            let response = send(service: "adh.sandbox", action: "readfile", body: body, payload: nil)
-            if let fileData = response.payload {
-                if ADHFileUtil.fileExists(atPath: destPath) {
-                    ADHFileUtil.deleteFile(atPath: destPath)
-                }
-                ADHFileUtil.save(fileData, atPath: destPath)
-                let fileURL = URL(fileURLWithPath: destPath)
-                NSWorkspace.shared.activateFileViewerSelecting([fileURL])
-            } else {
-                print("file \(path) not exists")
-            }
-        } else if action == "write" {
-            guard let path = request.arg1 else {
+        } else {
+            guard let downloadDir = NSSearchPathForDirectoriesInDomains(.downloadsDirectory, .userDomainMask, true).first else {
                 return
             }
-            guard let inputPath = request.input else {
-                return
-            }
-            let fileURL = URL(fileURLWithPath: inputPath)
-            guard let fileData = try? Data.init(contentsOf: fileURL) else {
-                return
-            }
-            var body = [AnyHashable:Any]()
-            body["path"] = path
-            let response = send(service: "adh.sandbox", action: "writefile", body: body, payload: fileData)
-            guard let success = response.body?["success"] as? Int,
-                    success == 1 else {
-                print("write file failed")
-                return
-            }
-            print("file write succeed")
+            destPath = downloadDir.appending("/\(filename)")
         }
-        
+        var body = [AnyHashable:Any]()
+        body["path"] = path
+        let response = send(service: "adh.sandbox", action: "readfile", body: body, payload: nil)
+        if let fileData = response.payload {
+            if ADHFileUtil.fileExists(atPath: destPath) {
+                ADHFileUtil.deleteFile(atPath: destPath)
+            }
+            ADHFileUtil.save(fileData, atPath: destPath)
+            let fileURL = URL(fileURLWithPath: destPath)
+            NSWorkspace.shared.activateFileViewerSelecting([fileURL])
+        } else {
+            print("file \(path) not exists")
+        }
+    }
+    
+    @objc func writeFile() {
+        guard let path = request.arg1 else {
+            return
+        }
+        guard let inputPath = request.input else {
+            return
+        }
+        let fileURL = URL(fileURLWithPath: inputPath)
+        guard let fileData = try? Data.init(contentsOf: fileURL) else {
+            return
+        }
+        var body = [AnyHashable:Any]()
+        body["path"] = path
+        let response = send(service: "adh.sandbox", action: "writefile", body: body, payload: fileData)
+        guard let success = response.body?["success"] as? Int,
+                success == 1 else {
+            print("write file failed")
+            return
+        }
+        print("file write succeed")
     }
     
 }
