@@ -10,6 +10,7 @@
 		1F052678227D8AD4003D84C1 /* WebDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F052676227D8AD4003D84C1 /* WebDebugViewController.m */; };
 		1F052679227D8AD4003D84C1 /* WebDebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F052677227D8AD4003D84C1 /* WebDebugViewController.xib */; };
 		1F05AF452AB0C80B00D08DBF /* ADHAppConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0C3A1FAEB0DB00E2CCC8 /* ADHAppConnector.m */; };
+		1F05AFA02ABC795500D08DBF /* AttributeTyper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF9F2ABC795500D08DBF /* AttributeTyper.m */; };
 		1F06B70A217238FD000CAD80 /* ADHKeepAliveService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F06B708217238FD000CAD80 /* ADHKeepAliveService.m */; };
 		1F06B70B217238FD000CAD80 /* ADHKeepAliveService.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F06B709217238FD000CAD80 /* ADHKeepAliveService.h */; };
 		1F085EF62520B4F5008A91E3 /* ViewInsetsAttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F085EF52520B4F5008A91E3 /* ViewInsetsAttributeCell.m */; };
@@ -665,7 +666,6 @@
 		1FE5C60D208C2BC0000EC631 /* ControllerHierarchyTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5C60B208C2BC0000EC631 /* ControllerHierarchyTestViewController.xib */; };
 		1FE5D679280AC18C007E0179 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D677280AC18C007E0179 /* PayViewController.m */; };
 		1FE5D67A280AC18C007E0179 /* PayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5D678280AC18C007E0179 /* PayViewController.xib */; };
-		1FE5D67D280BFB6E007E0179 /* AttributeTyper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D67C280BFB6E007E0179 /* AttributeTyper.m */; };
 		1FE5D680280C098F007E0179 /* NSView+ADHExtends.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D67E280C098F007E0179 /* NSView+ADHExtends.m */; };
 		1FE5D6EE2812F4BE007E0179 /* PayService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D6C22812F4BE007E0179 /* PayService.m */; };
 		1FE5D6EF2812F4BE007E0179 /* NSNotification+XYStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D6CA2812F4BE007E0179 /* NSNotification+XYStore.m */; };
@@ -824,6 +824,8 @@
 		1F052675227D8AD4003D84C1 /* WebDebugViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebDebugViewController.h; sourceTree = "<group>"; };
 		1F052676227D8AD4003D84C1 /* WebDebugViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebDebugViewController.m; sourceTree = "<group>"; };
 		1F052677227D8AD4003D84C1 /* WebDebugViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebDebugViewController.xib; sourceTree = "<group>"; };
+		1F05AF9E2ABC795400D08DBF /* AttributeTyper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeTyper.h; sourceTree = "<group>"; };
+		1F05AF9F2ABC795500D08DBF /* AttributeTyper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeTyper.m; sourceTree = "<group>"; };
 		1F06B708217238FD000CAD80 /* ADHKeepAliveService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADHKeepAliveService.m; sourceTree = "<group>"; };
 		1F06B709217238FD000CAD80 /* ADHKeepAliveService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADHKeepAliveService.h; sourceTree = "<group>"; };
 		1F085EF42520B4F5008A91E3 /* ViewInsetsAttributeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewInsetsAttributeCell.h; sourceTree = "<group>"; };
@@ -1745,8 +1747,6 @@
 		1FE5D676280AC18C007E0179 /* PayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayViewController.h; sourceTree = "<group>"; };
 		1FE5D677280AC18C007E0179 /* PayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayViewController.m; sourceTree = "<group>"; };
 		1FE5D678280AC18C007E0179 /* PayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayViewController.xib; sourceTree = "<group>"; };
-		1FE5D67B280BFB6D007E0179 /* AttributeTyper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttributeTyper.h; path = "../../../../../../Desktop/半边山下/code/app-ios/bbsx/bbsx/Component/Util/AttributeTyper.h"; sourceTree = "<group>"; };
-		1FE5D67C280BFB6E007E0179 /* AttributeTyper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttributeTyper.m; path = "../../../../../../Desktop/半边山下/code/app-ios/bbsx/bbsx/Component/Util/AttributeTyper.m"; sourceTree = "<group>"; };
 		1FE5D67E280C098F007E0179 /* NSView+ADHExtends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+ADHExtends.m"; sourceTree = "<group>"; };
 		1FE5D67F280C098F007E0179 /* NSView+ADHExtends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+ADHExtends.h"; sourceTree = "<group>"; };
 		1FE5D6C12812F4BE007E0179 /* PayService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayService.h; sourceTree = "<group>"; };
@@ -2017,8 +2017,8 @@
 				1FC7DDA021154C2A004A9520 /* LocalizationUtil.m */,
 				1FC9592821E6377700FB7128 /* EntitlementUtil.h */,
 				1FC9592921E6377700FB7128 /* EntitlementUtil.m */,
-				1FE5D67B280BFB6D007E0179 /* AttributeTyper.h */,
-				1FE5D67C280BFB6E007E0179 /* AttributeTyper.m */,
+				1F05AF9E2ABC795400D08DBF /* AttributeTyper.h */,
+				1F05AF9F2ABC795500D08DBF /* AttributeTyper.m */,
 				1FA5721724C28DDD008795DB /* UIUtil.h */,
 				1FA5721824C28DDD008795DB /* UIUtil.m */,
 			);
@@ -5128,6 +5128,7 @@
 				1FFDCE2D2482911A00FB4192 /* StateMasterService.m in Sources */,
 				1F74F277219704B60012B7CB /* NSString+ADHBase64.m in Sources */,
 				1F5F2F2F2222C33E00B8B0DA /* ADHViewDebugUtil.m in Sources */,
+				1F05AFA02ABC795500D08DBF /* AttributeTyper.m in Sources */,
 				1F224BF1249C3FE2004766DC /* CircularProgressView.m in Sources */,
 				1FC7A2721FB9CD5F006780AD /* DBItem.m in Sources */,
 				1F68AE1620E71C7D00CBEB05 /* core.c in Sources */,
@@ -5226,7 +5227,6 @@
 				1F5F2F5F222BC9FC00B8B0DA /* ViewStepperAttributeCell.m in Sources */,
 				1F9F966520C395A8006C5BAC /* NotificationViewController.m in Sources */,
 				1FE5D6EF2812F4BE007E0179 /* NSNotification+XYStore.m in Sources */,
-				1FE5D67D280BFB6E007E0179 /* AttributeTyper.m in Sources */,
 				1F6195F81FCAAC030095D22E /* PlainTextViewController.m in Sources */,
 				1F9F966B20C3AD1C006C5BAC /* NotificationCellItem.m in Sources */,
 				1F224C1E24B01F57004766DC /* HomeViewController.m in Sources */,
