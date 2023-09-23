@@ -17,7 +17,7 @@ class View: Service {
     }
     
     override class var name: String {
-        return "adh.view"
+        return "View"
     }
     
     override var actions: [Action] {

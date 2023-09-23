@@ -18,16 +18,25 @@ struct Dispatcher {
         Sandbox.self,
         Device.self,
         Controller.self,
+        Bundle.self,
+        Help.self,
     ]
     
     static let shared = Dispatcher()
     private init() {}
     
-    func dispatch(service: String) -> Service.Type? {
-        let target = services.first { item in
-            return item.aliasNames.contains(service)
+    func dispatch(service: String) -> Service.Type {
+        var result: Service.Type
+        if let target = services.first(where: { item in
+            return item.aliasNames.contains { name in
+                return name.lowercased() == service.lowercased()
+            }
+        }) {
+            result = target
+        } else {
+            result = services.last!
         }
-        return target
+        return result
     }
     
 }

@@ -21,6 +21,7 @@ class Service: NSObject {
     struct Action {
         let aliasNames: [String]
         let actionName: String
+        var usage: String = ""
     }
     
     let request: Request
@@ -51,8 +52,11 @@ class Service: NSObject {
             actionName = value
         }
         var targetAction: Action?
+        let lowerActionName = actionName.lowercased()
         for action in self.actions {
-            if action.aliasNames.contains(actionName) {
+            if action.aliasNames.contains(where: { name in
+                return name.lowercased() == lowerActionName
+            }) {
                 targetAction = action
                 break
             }
@@ -63,7 +67,7 @@ class Service: NSObject {
         guard let action = targetAction else {
             return
         }
-        print("[\(type(of:self).name).\(action.actionName)]")
+//        print("[\(type(of:self).name).\(action.actionName)]")
         let sel = NSSelectorFromString(action.actionName)
         self.performSelector(onMainThread: sel, with: nil, waitUntilDone: true)
     }

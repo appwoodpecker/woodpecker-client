@@ -39,13 +39,12 @@ class Device: Service {
     @objc func snapshotAction() {
         let response = send(service: "adh.device", action: "screenshot")
         guard let data = response.payload else {
-            print("get payload failed")
+            retError()
             return
         }
         guard let downloadPath = NSSearchPathForDirectoriesInDomains(.downloadsDirectory, .userDomainMask, true).first else {
             return
         }
-        print("download path\(downloadPath)")
         let dateText = ADHDateUtil.formatString(with: Date(), dateFormat: "YYYY-MM-dd HH.mm.ss")
         let filename = "Screenshot \(dateText).png"
         let filePath = downloadPath.appending("/\(filename)")

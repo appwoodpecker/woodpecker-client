@@ -283,6 +283,8 @@
 		1F3C22611FEE257700421A91 /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C22601FEE257700421A91 /* NetworkService.m */; };
 		1F3DBB6E2ABE9BA000789EAD /* JsonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3DBB6D2ABE9BA000789EAD /* JsonUtil.swift */; };
 		1F3DBB702ABED16500789EAD /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3DBB6F2ABED16500789EAD /* Controller.swift */; };
+		1F3DBB722ABED87800789EAD /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3DBB712ABED87800789EAD /* Bundle.swift */; };
+		1F3DBB742ABEDD2A00789EAD /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3DBB732ABEDD2A00789EAD /* Help.swift */; };
 		1F3ED2251FCC678700B9E30A /* ADHFilePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3ED2231FCC678700B9E30A /* ADHFilePreviewController.m */; };
 		1F3ED2261FCC678700B9E30A /* ADHFilePreviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3ED2241FCC678700B9E30A /* ADHFilePreviewController.xib */; };
 		1F3ED4E21FF291C800A98AB4 /* LogActionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3ED4E11FF291C800A98AB4 /* LogActionService.m */; };
@@ -1203,6 +1205,8 @@
 		1F3C22601FEE257700421A91 /* NetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkService.m; sourceTree = "<group>"; };
 		1F3DBB6D2ABE9BA000789EAD /* JsonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtil.swift; sourceTree = "<group>"; };
 		1F3DBB6F2ABED16500789EAD /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		1F3DBB712ABED87800789EAD /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		1F3DBB732ABEDD2A00789EAD /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		1F3ED2221FCC678700B9E30A /* ADHFilePreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADHFilePreviewController.h; sourceTree = "<group>"; };
 		1F3ED2231FCC678700B9E30A /* ADHFilePreviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADHFilePreviewController.m; sourceTree = "<group>"; };
 		1F3ED2241FCC678700B9E30A /* ADHFilePreviewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ADHFilePreviewController.xib; sourceTree = "<group>"; };
@@ -2015,6 +2019,8 @@
 				1F05AF8E2AB701D300D08DBF /* AppInfo.swift */,
 				1F0547C52ABE8CC70036C431 /* Device.swift */,
 				1F3DBB6F2ABED16500789EAD /* Controller.swift */,
+				1F3DBB712ABED87800789EAD /* Bundle.swift */,
+				1F3DBB732ABEDD2A00789EAD /* Help.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -5082,6 +5088,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F05AF8F2AB701D300D08DBF /* AppInfo.swift in Sources */,
+				1F3DBB722ABED87800789EAD /* Bundle.swift in Sources */,
 				1F05AF902AB705DA00D08DBF /* ADHDateUtil.m in Sources */,
 				1F05AF8D2AB7010D00D08DBF /* View.swift in Sources */,
 				1F0547C62ABE8CC70036C431 /* Device.swift in Sources */,
@@ -5096,6 +5103,7 @@
 				1F05AF8A2AB6E17D00D08DBF /* Dispatcher.swift in Sources */,
 				1F3DBB6E2ABE9BA000789EAD /* JsonUtil.swift in Sources */,
 				1F05AF772AB59B7900D08DBF /* MainApp.swift in Sources */,
+				1F3DBB742ABEDD2A00789EAD /* Help.swift in Sources */,
 				1F3DBB702ABED16500789EAD /* Controller.swift in Sources */,
 				1F05AF6E2AB59A0A00D08DBF /* IPCClient.swift in Sources */,
 				1F05AF982AB880D000D08DBF /* Sandbox.swift in Sources */,

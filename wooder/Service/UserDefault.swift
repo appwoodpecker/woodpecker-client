@@ -24,9 +24,9 @@ class UserDefault: Service {
     
     override var actions: [Action] {
         return [
-            Action(aliasNames: ["get","read","fetch"], actionName:"getAction"),
-            Action(aliasNames: ["set", "update", "write","save"], actionName:"updateAction"),
-            Action(aliasNames: ["remove", "delete"], actionName:"removeAction"),
+            Action(aliasNames: ["get","read","fetch"], actionName:"getAction", usage: "wooder ud.get testkey"),
+            Action(aliasNames: ["set", "update", "write","save"], actionName:"updateAction", usage: "wooder ud.set testkey 1"),
+            Action(aliasNames: ["remove", "delete"], actionName:"removeAction", usage: "wooder ud.remove testkey"),
         ]
     }
     

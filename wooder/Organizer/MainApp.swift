@@ -35,7 +35,7 @@ struct MainApp: ParsableCommand {
     var output: String?
 
     func run() {
-        print("[action]:\(cmd), [arg1]:\(arg1 ?? ""), [arg2]: \(arg2 ?? "") [-i]: \(input ?? "") [-o]: \(output ?? "")")
+//        print("[action]:\(cmd), [arg1]:\(arg1 ?? ""), [arg2]: \(arg2 ?? "") [-i]: \(input ?? "") [-o]: \(output ?? "")")
         var service = ""
         var action = ""
         let comps = cmd.components(separatedBy: ".")
@@ -46,9 +46,7 @@ struct MainApp: ParsableCommand {
             action = comps[1]
         }
         let request = Service.Request(action: action, arg1: arg1, arg2: arg2, input: input, output: output)
-        guard let serviceClass = Dispatcher.shared.dispatch(service: service) else {
-            return
-        }
+        let serviceClass = Dispatcher.shared.dispatch(service: service)
         let app = serviceClass.init(request: request)
         app.run()
     }
