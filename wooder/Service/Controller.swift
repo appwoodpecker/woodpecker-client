@@ -23,12 +23,14 @@ class Controller: Service {
     
     override var actions: [Action] {
         return [
-            Action(aliasNames: ["top","visible"], actionName:"topAction"),
+            Action(aliasNames: ["top","visible"], actionName:"topAction", usage: "wooder page.top"),
         ]
     }
     
     @objc func topAction() {
-        let response = send(service:"adh.controller-hierarchy", action: "top")
+        guard let response = send(service:"adh.controller-hierarchy", action: "top") else {
+            return
+        }
         guard let code = response.body?["success"] as? Int, code == 1,
               let content = response.body?["content"] as? String, !content.isEmpty else {
             retError()

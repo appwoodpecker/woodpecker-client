@@ -25,8 +25,8 @@ class UserDefault: Service {
     override var actions: [Action] {
         return [
             Action(aliasNames: ["get","read","fetch"], actionName:"getAction", usage: "wooder ud.get testkey"),
-            Action(aliasNames: ["set", "update", "write","save"], actionName:"updateAction", usage: "wooder ud.set testkey 1"),
-            Action(aliasNames: ["remove", "delete"], actionName:"removeAction", usage: "wooder ud.remove testkey"),
+            Action(aliasNames: ["set","update","write","save"], actionName:"updateAction", usage: "wooder ud.set testkey 1"),
+            Action(aliasNames: ["remove","delete"], actionName:"removeAction", usage: "wooder ud.remove testkey"),
         ]
     }
     
@@ -36,7 +36,9 @@ class UserDefault: Service {
             //get key
             var body = [AnyHashable:Any]()
             body["key"] = key
-            let response = send(service:"adh.userdefaults", action: "requestData", body: body, payload: nil)
+            guard let response = send(service:"adh.userdefaults", action: "requestData", body: body, payload: nil) else {
+                return
+            }
             guard let payload = response.payload else {
                 retError("key not exists")
                 return
@@ -52,7 +54,9 @@ class UserDefault: Service {
             }
         } else {
             //get all
-            let response = send(service:"adh.userdefaults", action: "requestData", body: nil, payload: nil)
+            guard let response = send(service:"adh.userdefaults", action: "requestData", body: nil, payload: nil) else {
+                return
+            }
             guard let payload = response.payload else {
                 retError("empty")
                 return
@@ -73,7 +77,9 @@ class UserDefault: Service {
         var body = [AnyHashable:Any]()
         body["key"] = key
         let payload = value.archive()
-        let response = send(service:"adh.userdefaults", action: "updateValue", body: body, payload: payload)
+        guard let response = send(service:"adh.userdefaults", action: "updateValue", body: body, payload: payload) else {
+            return
+        }
         guard let _ = response.body?["success"] as? Int else {
             retError()
             return
@@ -87,7 +93,9 @@ class UserDefault: Service {
         }
         var body = [AnyHashable:Any]()
         body["key"] = key
-        let response = send(service:"adh.userdefaults", action: "remove", body: body)
+        guard let response = send(service:"adh.userdefaults", action: "remove", body: body) else {
+            return
+        }
         guard let _ = response.body?["success"] as? Int else {
             retError()
             return

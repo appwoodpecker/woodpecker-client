@@ -23,18 +23,20 @@ class AppInfo: Service {
     
     override var actions: [Action] {
         return [
-            Action(aliasNames: ["version","v"], actionName:"versionAction"),
-            Action(aliasNames: ["name","displayName"], actionName:"nameAction"),
-            Action(aliasNames: ["id","bundleId","idetifier"], actionName:"bundleIdAction"),
-            Action(aliasNames: ["scheme","schemes","urlScheme","urlSchemes","schemeList"], actionName:"schemeAction"),
-            Action(aliasNames: ["font","fonts"], actionName:"fontAction"),
-            Action(aliasNames: ["infoDict","infoDictionary"], actionName:"infoDictAction"),
+            Action(aliasNames: ["version","v"], actionName:"versionAction", usage: "wooder app.version"),
+            Action(aliasNames: ["name","displayName"], actionName:"nameAction", usage: "wooder app.name"),
+            Action(aliasNames: ["id","bundleId","idetifier"], actionName:"bundleIdAction", usage: "wooder app.bundleId"),
+            Action(aliasNames: ["scheme","schemes","urlScheme","urlSchemes","schemeList"], actionName:"schemeAction", usage: "wooder app.scheme"),
+            Action(aliasNames: ["font","fonts"], actionName:"fontAction", usage: "wooder app.font"),
+            Action(aliasNames: ["infoDict","infoDictionary"], actionName:"infoDictAction", usage: "wooder app.infoDict"),
         ]
     }
     
     //wooder app.v
     @objc func versionAction() {
-        let response = send(service:"adh.appinfo", action: "dashboard")
+        guard let response = send(service:"adh.appinfo", action: "dashboard") else {
+            return
+        }
         guard let body = response.body else {
             retError()
             return
@@ -49,7 +51,9 @@ class AppInfo: Service {
     }
     
     @objc func nameAction() {
-        let response = send(service:"adh.appinfo", action: "dashboard")
+        guard let response = send(service:"adh.appinfo", action: "dashboard") else {
+            return
+        }
         guard let body = response.body else {
             retError()
             return
@@ -62,7 +66,9 @@ class AppInfo: Service {
     }
     
     @objc func bundleIdAction() {
-        let response = send(service:"adh.appinfo", action: "dashboard")
+        guard let response = send(service:"adh.appinfo", action: "dashboard") else {
+            return
+        }
         guard let body = response.body else {
             retError()
             return
@@ -75,7 +81,9 @@ class AppInfo: Service {
     }
     
     @objc func schemeAction() {
-        let response = send(service:"adh.appinfo", action: "basicInfo")
+        guard let response = send(service:"adh.appinfo", action: "basicInfo") else {
+            return
+        }
         guard let body = response.body else {
             retError()
             return
@@ -109,7 +117,9 @@ class AppInfo: Service {
     }
     
     @objc func fontAction() {
-        let response = send(service:"adh.appinfo", action: "basicInfo")
+        guard let response = send(service:"adh.appinfo", action: "basicInfo") else {
+            return
+        }
         guard let body = response.body else {
             retError()
             return
@@ -144,7 +154,9 @@ class AppInfo: Service {
     
     //wooder app.infoDict key
     @objc func infoDictAction() {
-        let response = send(service:"adh.appinfo", action: "infoDict")
+        guard let response = send(service:"adh.appinfo", action: "infoDict") else {
+            return
+        }
         guard let body = response.body else {
             retError()
             return

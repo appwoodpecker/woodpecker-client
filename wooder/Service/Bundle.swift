@@ -24,7 +24,7 @@ class Bundle: Service {
     
     override var actions: [Action] {
         return [
-            Action(aliasNames: ["read","get","fetch"], actionName:"readFile"),
+            Action(aliasNames: ["read","get","fetch"], actionName:"readFile", usage: "wooder bundle.read path-to-bundle-path -o path-to-dest-path"),
         ]
     }
     
@@ -50,7 +50,9 @@ class Bundle: Service {
         }
         var body = [AnyHashable:Any]()
         body["path"] = path
-        let response = send(service: "adh.bundle", action: "readfile", body: body, payload: nil)
+        guard let response = send(service: "adh.bundle", action: "readfile", body: body, payload: nil) else {
+            return
+        }
         if let fileData = response.payload {
             if ADHFileUtil.fileExists(atPath: destPath) {
                 ADHFileUtil.deleteFile(atPath: destPath)

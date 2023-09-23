@@ -23,21 +23,23 @@ class Device: Service {
     
     override var actions: [Action] {
         return [
-            Action(aliasNames: ["name"], actionName:"nameAction"),
-            Action(aliasNames: ["snapshot"], actionName:"snapshotAction"),
-            Action(aliasNames: ["os","version","v","systemVersion"], actionName:"versionAction"),
-            Action(aliasNames: ["model"], actionName:"modelAction"),
-            Action(aliasNames: ["resolution","pixel"], actionName:"resolutionAction"),
-            Action(aliasNames: ["timezone"], actionName:"timezoneAction"),
-            Action(aliasNames: ["locale"], actionName:"localeAction"),
-            Action(aliasNames: ["calendar"], actionName:"calendarAction"),
-            Action(aliasNames: ["ip"], actionName:"ipAction")
+            Action(aliasNames: ["name"], actionName:"nameAction", usage: "wooder device.name"),
+            Action(aliasNames: ["snapshot"], actionName:"snapshotAction", usage: "wooder device.snapshot"),
+            Action(aliasNames: ["os","version","v","systemVersion"], actionName:"versionAction", usage: "wooder device.os"),
+            Action(aliasNames: ["model"], actionName:"modelAction", usage: "wooder device.model"),
+            Action(aliasNames: ["resolution","pixel"], actionName:"resolutionAction", usage: "wooder device.resolution"),
+            Action(aliasNames: ["timezone"], actionName:"timezoneAction", usage: "wooder device.timezone"),
+            Action(aliasNames: ["locale"], actionName:"localeAction", usage: "wooder device.locale"),
+            Action(aliasNames: ["calendar"], actionName:"calendarAction", usage: "wooder device.calendar"),
+            Action(aliasNames: ["ip"], actionName:"ipAction", usage: "wooder device.ip")
         ]
     }
     
     //wooder app.snapshot
     @objc func snapshotAction() {
-        let response = send(service: "adh.device", action: "screenshot")
+        guard let response = send(service: "adh.device", action: "screenshot") else {
+            return
+        }
         guard let data = response.payload else {
             retError()
             return
@@ -54,7 +56,9 @@ class Device: Service {
     }
     
     @objc func versionAction() {
-        let response = send(service:"adh.appinfo", action: "basicInfo")
+        guard let response = send(service:"adh.appinfo", action: "basicInfo") else {
+            return
+        }
         guard let body = response.body else {
             retError()
             return
@@ -81,7 +85,9 @@ class Device: Service {
     }
     
     @objc func modelAction() {
-        let response = send(service:"adh.appinfo", action: "basicInfo")
+        guard let response = send(service:"adh.appinfo", action: "basicInfo") else {
+            return
+        }
         guard let body = response.body else {
             retError()
             return
@@ -108,7 +114,9 @@ class Device: Service {
     }
     
     @objc func nameAction() {
-        let response = send(service:"adh.appinfo", action: "dashboard")
+        guard let response = send(service:"adh.appinfo", action: "dashboard") else {
+            return
+        }
         guard let body = response.body else {
             retError()
             return
@@ -121,7 +129,9 @@ class Device: Service {
     }
     
     @objc func resolutionAction() {
-        let response = send(service:"adh.appinfo", action: "basicInfo")
+        guard let response = send(service:"adh.appinfo", action: "basicInfo") else {
+            return
+        }
         guard let body = response.body else {
             retError()
             return
@@ -148,7 +158,9 @@ class Device: Service {
     }
     
     @objc func timezoneAction() {
-        let response = send(service:"adh.appinfo", action: "basicInfo")
+        guard let response = send(service:"adh.appinfo", action: "basicInfo") else {
+            return
+        }
         guard let body = response.body else {
             retError()
             return
@@ -175,7 +187,9 @@ class Device: Service {
     }
     
     @objc func localeAction() {
-        let response = send(service:"adh.appinfo", action: "basicInfo")
+        guard let response = send(service:"adh.appinfo", action: "basicInfo") else {
+            return
+        }
         guard let body = response.body else {
             retError()
             return
@@ -202,7 +216,9 @@ class Device: Service {
     }
     
     @objc func calendarAction() {
-        let response = send(service:"adh.appinfo", action: "basicInfo")
+        guard let response = send(service:"adh.appinfo", action: "basicInfo") else {
+            return
+        }
         guard let body = response.body else {
             retError()
             return
@@ -229,7 +245,9 @@ class Device: Service {
     }
     
     @objc func ipAction() {
-        let response = send(service:"adh.appinfo", action: "basicInfo")
+        guard let response = send(service:"adh.appinfo", action: "basicInfo") else {
+            return
+        }
         guard let body = response.body else {
             retError()
             return

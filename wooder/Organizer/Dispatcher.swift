@@ -14,7 +14,7 @@ struct Dispatcher {
     let services = [
         AppInfo.self,
         UserDefault.self,
-        View.self,
+//        View.self,
         Sandbox.self,
         Device.self,
         Controller.self,

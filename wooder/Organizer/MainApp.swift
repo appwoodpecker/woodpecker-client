@@ -13,8 +13,6 @@ import ArgumentParser
 /**
  wooder ud.get key
  wooder ud.update key value
- wooder view.tree
- wooder ud.get key
  */
 @main
 struct MainApp: ParsableCommand {
@@ -28,10 +26,10 @@ struct MainApp: ParsableCommand {
     @Argument
     var arg2: String?
     
-    @Option
+    @Option(name: [.short, .customLong("input")])
     var input: String?
     
-    @Option
+    @Option(name: [.short, .customLong("output")])
     var output: String?
 
     func run() {

@@ -15,9 +15,11 @@ class IPCClient {
     
     func request(_ request: IPCRequest) -> IPCResponse? {
         guard let data = request.archive() else {
+            print("🌿 request archive failed")
             return nil
         }
         guard let messagePort = CFMessagePortCreateRemote(nil, IPC.portId) else {
+            print("🌿 please ensure woodpecker client is running")
             return nil
         }
         var unmanagedData: Unmanaged<CFData>? = nil
@@ -25,9 +27,15 @@ class IPCClient {
         let cfData = unmanagedData?.takeRetainedValue()
         if status == kCFMessagePortSuccess {
             if let data = cfData as Data? {
-               return IPCResponse.unarchive(data)
+                if let response = IPCResponse.unarchive(data) {
+                    return response
+                } else {
+                    print("🌿 please ensure woodpecker client and app is connected, or restart woopdecker client")
+                    return nil
+                }
             }
         }
+        print("🌿 woodpecker client response failed, please try later")
         return nil
     }
     

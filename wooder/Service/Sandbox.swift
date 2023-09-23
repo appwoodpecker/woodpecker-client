@@ -23,9 +23,9 @@ class Sandbox: Service {
     
     override var actions: [Action] {
         return [
-            Action(aliasNames: ["read","get","fetch"], actionName:"readFile"),
-            Action(aliasNames: ["write", "save", "update"], actionName:"writeFile"),
-            Action(aliasNames: ["remove", "delete", "del"], actionName:"removeFile"),
+            Action(aliasNames: ["read","get","fetch"], actionName:"readFile", usage: "wooder file.read /Documents/testfile.json -o path-to-dest-path"),
+            Action(aliasNames: ["write", "save", "update"], actionName:"writeFile", usage: "wooder file.write /Documents/testfile.json -i path-to-input-file"),
+            Action(aliasNames: ["remove", "delete", "del"], actionName:"removeFile", usage: "wooder file.remove /Documents/testfile.json"),
         ]
     }
     
@@ -52,7 +52,9 @@ class Sandbox: Service {
         }
         var body = [AnyHashable:Any]()
         body["path"] = path
-        let response = send(service: "adh.sandbox", action: "readfile", body: body, payload: nil)
+        guard let response = send(service: "adh.sandbox", action: "readfile", body: body, payload: nil) else {
+            return
+        }
         if let fileData = response.payload {
             if ADHFileUtil.fileExists(atPath: destPath) {
                 ADHFileUtil.deleteFile(atPath: destPath)
@@ -70,15 +72,19 @@ class Sandbox: Service {
             return
         }
         guard let inputPath = request.input else {
+            retError("provide input file with: -i path-to-your-file")
             return
         }
         let fileURL = URL(fileURLWithPath: inputPath)
         guard let fileData = try? Data.init(contentsOf: fileURL) else {
+            retError("invalid input path")
             return
         }
         var body = [AnyHashable:Any]()
         body["path"] = path
-        let response = send(service: "adh.sandbox", action: "writefile", body: body, payload: fileData)
+        guard let response = send(service: "adh.sandbox", action: "writefile", body: body, payload: fileData) else {
+            return
+        }
         guard let success = response.body?["success"] as? Int, success == 1 else {
             retError()
             return
@@ -97,7 +103,9 @@ class Sandbox: Service {
         var body = [AnyHashable:Any]()
         body["path"] = path
         body["isDir"] = isDir
-        let response = send(service: "adh.sandbox", action: "removefile", body: body)
+        guard let response = send(service: "adh.sandbox", action: "removefile", body: body) else {
+            return
+        }
         guard let success = response.body?["success"] as? Int, success == 1 else {
             retError()
             return

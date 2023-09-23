@@ -72,13 +72,12 @@ class Service: NSObject {
         self.performSelector(onMainThread: sel, with: nil, waitUntilDone: true)
     }
     
-    func send(service:String, action: String, body: [AnyHashable:Any]? = nil, payload:Data? = nil) -> IPCResponse {
+    func send(service:String, action: String, body: [AnyHashable:Any]? = nil, payload:Data? = nil) -> IPCResponse? {
         let request = IPCRequest(service: service, action: action, body: body, payload: payload)
         if let response = IPCClient.shared.request(request) {
             return response
-        } else {
-            return IPCResponse(body: [AnyHashable:Any](), payload: nil)
         }
+        return nil
     }
     
     
