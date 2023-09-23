@@ -36,6 +36,8 @@
              @"dashboard" : NSStringFromSelector(@selector(onRequestDashboard:)),
              //基本信息
              @"basicInfo" : NSStringFromSelector(@selector(onRequestBasicInfo:)),
+             //info dict
+             @"infoDict" : NSStringFromSelector(@selector(onRequestInfoDict:)),
              };
 }
 
@@ -139,7 +141,7 @@
 #endif
 }
 
-- (void)onRequestInfo : (ADHRequest *)request {
+- (void)onRequestInfo:(ADHRequest *)request {
 #if TARGET_OS_IPHONE
     NSMutableDictionary *data = [NSMutableDictionary dictionary];
     NSMutableDictionary *fontData = [NSMutableDictionary dictionary];
@@ -172,10 +174,14 @@
 }
 
 
+- (void)onRequestInfoDict:(ADHRequest *)request {
+    NSDictionary * info = [[NSBundle mainBundle] infoDictionary];
+    [request finishWithBody:info];
+}
 
 #pragma mark -----------------   Dashboard   ----------------
 
-- (void)onRequestDashboard : (ADHRequest *)request {
+- (void)onRequestDashboard:(ADHRequest *)request {
     NSMutableDictionary *data = [NSMutableDictionary dictionary];
     NSData *payload = nil;
 #if TARGET_OS_IPHONE
@@ -241,8 +247,8 @@
     CGFloat screenWidth = screen.bounds.size.width;
     CGFloat screenHeight = screen.bounds.size.height;
     CGFloat scale = screen.scale;
-    NSString *resolution = [NSString stringWithFormat:@"%.f x %.f (%.fx)",screenWidth,screenHeight,scale];
-    NSString *resTip = [NSString stringWithFormat:@"%.f x %.f",screenWidth*scale,screenHeight*scale];
+    NSString *resolution = [NSString stringWithFormat:@"%.fx%.f (%.fx)",screenWidth,screenHeight,scale];
+    NSString *resTip = [NSString stringWithFormat:@"%.fx%.f",screenWidth*scale,screenHeight*scale];
     [list addObject:@{
                       @"name": @"Resolution",
                       @"value" : resolution,

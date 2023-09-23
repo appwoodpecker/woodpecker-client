@@ -35,6 +35,7 @@
 + (NSDictionary<NSString*,NSString *> *)actionList {
     return @{
              @"hierarchy" : NSStringFromSelector(@selector(controllerHierarchyRequest:)),
+             @"top" : NSStringFromSelector(@selector(topControllerRequest:)),
              };
 }
 
@@ -103,6 +104,30 @@
     }
     return resultVCS;
 }
+
+- (void)topControllerRequest: (ADHRequest *)request {
+    __weak typeof(self) wself = self;
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [wself updateVisibleViewController];
+        UIViewController *topVC = self.visibleViewControllers.lastObject;
+        if (topVC != nil) {
+            NSString *className = NSStringFromClass(topVC.class) ?: @"";
+            NSString *addr = [self getInstanceAddr:topVC] ?: @"";
+            NSString *content = [NSString stringWithFormat:@"%@ (%@)",className,addr];
+            [request finishWithBody:@{
+                @"success" : @(1),
+                @"content" : adhvf_safestringfy(content),
+            }];
+        } else {
+            [request finishWithBody:@{
+                @"success" : @(0),
+            }];
+        }
+        //release
+        wself.visibleViewControllers = nil;
+    });
+}
+
 
 - (void)controllerHierarchyRequest: (ADHRequest *)request {
     __weak typeof(self) wself = self;

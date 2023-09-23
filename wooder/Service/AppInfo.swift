@@ -23,27 +23,144 @@ class AppInfo: Service {
     
     override var actions: [Action] {
         return [
-            Action(aliasNames: ["snapshot",], actionName:"snapshotAction"),
+            Action(aliasNames: ["version","v"], actionName:"versionAction"),
+            Action(aliasNames: ["name","displayName"], actionName:"nameAction"),
+            Action(aliasNames: ["id","bundleId","idetifier"], actionName:"bundleIdAction"),
+            Action(aliasNames: ["scheme","schemes","urlScheme","urlSchemes","schemeList"], actionName:"schemeAction"),
+            Action(aliasNames: ["font","fonts"], actionName:"fontAction"),
+            Action(aliasNames: ["infoDict","infoDictionary"], actionName:"infoDictAction"),
         ]
     }
     
-    //wooder app.snapshot
-    @objc func snapshotAction() {
-        let response = send(service: "adh.device", action: "screenshot")
-        guard let data = response.payload else {
-            print("get payload failed")
+    //wooder app.v
+    @objc func versionAction() {
+        let response = send(service:"adh.appinfo", action: "dashboard")
+        guard let body = response.body else {
+            retError()
             return
         }
-        guard let downloadPath = NSSearchPathForDirectoriesInDomains(.downloadsDirectory, .userDomainMask, true).first else {
+        guard let version = body["version"] as? String,
+              let build = body["build"] as? String else {
+            retError()
             return
         }
-        print("download path\(downloadPath)")
-        let dateText = ADHDateUtil.formatString(with: Date(), dateFormat: "YYYY-MM-dd HH.mm.ss")
-        let filename = "Screenshot \(dateText).png"
-        let filePath = downloadPath.appending("/\(filename)")
-        let fileURL = URL(fileURLWithPath: filePath)
-        try? data.write(to: fileURL)
-        NSWorkspace.shared.activateFileViewerSelecting([fileURL])
+        let msg = "\(version) (\(build))"
+        retSuccess(msg)
     }
+    
+    @objc func nameAction() {
+        let response = send(service:"adh.appinfo", action: "dashboard")
+        guard let body = response.body else {
+            retError()
+            return
+        }
+        guard let name = body["appName"] as? String else {
+            retError()
+            return
+        }
+        retSuccess(name)
+    }
+    
+    @objc func bundleIdAction() {
+        let response = send(service:"adh.appinfo", action: "dashboard")
+        guard let body = response.body else {
+            retError()
+            return
+        }
+        guard let name = body["bundleId"] as? String else {
+            retError()
+            return
+        }
+        retSuccess(name)
+    }
+    
+    @objc func schemeAction() {
+        let response = send(service:"adh.appinfo", action: "basicInfo")
+        guard let body = response.body else {
+            retError()
+            return
+        }
+        guard let valueList = body["value"] as? [[String:Any]] else {
+            retError()
+            return
+        }
+        let targetItem = valueList.first { item in
+            if let name = item["name"] as? String {
+                return name == "URL Schemes"
+            }
+            return false
+        }
+        guard let targetItem = targetItem else {
+            retError()
+            return
+        }
+        guard let schemeList = targetItem["value"] as? [[String:Any]] else {
+            retError()
+            return
+        }
+        var schemes = [String]()
+        for item in schemeList {
+            if let value = item["value"] as? String, !value.isEmpty {
+                schemes.append(value)
+            }
+        }
+        let json = JsonUtil.json(schemes) ?? "[]"
+        retSuccess(json)
+    }
+    
+    @objc func fontAction() {
+        let response = send(service:"adh.appinfo", action: "basicInfo")
+        guard let body = response.body else {
+            retError()
+            return
+        }
+        guard let valueList = body["value"] as? [[String:Any]] else {
+            retError()
+            return
+        }
+        let targetItem = valueList.first { item in
+            if let name = item["name"] as? String {
+                return name == "Fonts"
+            }
+            return false
+        }
+        guard let targetItem = targetItem else {
+            retError()
+            return
+        }
+        guard let schemeList = targetItem["value"] as? [[String:Any]] else {
+            retError()
+            return
+        }
+        var schemes = [String]()
+        for item in schemeList {
+            if let value = item["value"] as? String, !value.isEmpty {
+                schemes.append(value)
+            }
+        }
+        let json = JsonUtil.json(schemes) ?? "[]"
+        retSuccess(json)
+    }
+    
+    //wooder app.infoDict key
+    @objc func infoDictAction() {
+        let response = send(service:"adh.appinfo", action: "infoDict")
+        guard let body = response.body else {
+            retError()
+            return
+        }
+        if let key = request.arg1, !key.isEmpty {
+            guard let value = body[key] else {
+                retError("key not exists")
+                return
+            }
+            retSuccess(value: value)
+        } else {
+            let msg = JsonUtil.json(body) ?? "{}"
+            retSuccess(msg)
+        }
+    }
+    
+    
     
 }

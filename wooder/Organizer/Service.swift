@@ -83,6 +83,18 @@ class Service: NSObject {
         print(msg)
     }
     
+    func retSuccess(value: Any) {
+        if let array = value as? [Any] {
+            let msg = JsonUtil.json(array) ?? ""
+            retSuccess(msg)
+        } else if let dicts = value as? [AnyHashable:Any] {
+            let msg = JsonUtil.json(dicts) ?? ""
+            retSuccess(msg)
+        } else {
+            retSuccess("\(value)")
+        }
+    }
+    
     func retError(_ msg: String = "error") {
         print(msg)
     }

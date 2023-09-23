@@ -15,7 +15,9 @@ struct Dispatcher {
         AppInfo.self,
         UserDefault.self,
         View.self,
-        Sandbox.self
+        Sandbox.self,
+        Device.self,
+        Controller.self,
     ]
     
     static let shared = Dispatcher()
