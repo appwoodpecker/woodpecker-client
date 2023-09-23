@@ -25,6 +25,7 @@ class Sandbox: Service {
         return [
             Action(aliasNames: ["read","get","fetch"], actionName:"readFile"),
             Action(aliasNames: ["write", "save", "update"], actionName:"writeFile"),
+            Action(aliasNames: ["remove", "delete", "del"], actionName:"removeFile"),
         ]
     }
     
@@ -60,7 +61,7 @@ class Sandbox: Service {
             let fileURL = URL(fileURLWithPath: destPath)
             NSWorkspace.shared.activateFileViewerSelecting([fileURL])
         } else {
-            print("file \(path) not exists")
+            retError("file not exists: \(path)")
         }
     }
     
@@ -78,12 +79,30 @@ class Sandbox: Service {
         var body = [AnyHashable:Any]()
         body["path"] = path
         let response = send(service: "adh.sandbox", action: "writefile", body: body, payload: fileData)
-        guard let success = response.body?["success"] as? Int,
-                success == 1 else {
-            print("write file failed")
+        guard let success = response.body?["success"] as? Int, success == 1 else {
+            retError()
             return
         }
-        print("file write succeed")
+        retSuccess()
+    }
+    
+    @objc func removeFile() {
+        guard let path = request.arg1 else {
+            return
+        }
+        var isDir = false
+        if path.hasSuffix("/") {
+            isDir = true
+        }
+        var body = [AnyHashable:Any]()
+        body["path"] = path
+        body["isDir"] = isDir
+        let response = send(service: "adh.sandbox", action: "removefile", body: body)
+        guard let success = response.body?["success"] as? Int, success == 1 else {
+            retError()
+            return
+        }
+        retSuccess()
     }
     
 }

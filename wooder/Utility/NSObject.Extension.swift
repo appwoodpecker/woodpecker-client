@@ -27,5 +27,3 @@ extension String {
     }
     
 }
-
-

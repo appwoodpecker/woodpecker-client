@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F052678227D8AD4003D84C1 /* WebDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F052676227D8AD4003D84C1 /* WebDebugViewController.m */; };
 		1F052679227D8AD4003D84C1 /* WebDebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F052677227D8AD4003D84C1 /* WebDebugViewController.xib */; };
+		1F0547C62ABE8CC70036C431 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0547C52ABE8CC70036C431 /* Device.swift */; };
 		1F05AF452AB0C80B00D08DBF /* ADHAppConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0C3A1FAEB0DB00E2CCC8 /* ADHAppConnector.m */; };
 		1F05AF552AB54CCF00D08DBF /* IPCServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF542AB54CCF00D08DBF /* IPCServer.swift */; };
 		1F05AF602AB5964E00D08DBF /* IPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AF5E2AB5960F00D08DBF /* IPC.swift */; };
@@ -31,6 +32,7 @@
 		1F05AF9A2AB8837F00D08DBF /* ADHFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F0BE61FAD783E00E2CCC8 /* ADHFileUtil.m */; };
 		1F05AF9B2AB8859100D08DBF /* ADHFileHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C05C91FB3463F00A0AFD1 /* ADHFileHash.m */; };
 		1F05AF9C2AB8859E00D08DBF /* ADHUserDefaultUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3234601FBFFB32007C2AA7 /* ADHUserDefaultUtil.m */; };
+		1F05AFA42ABC870F00D08DBF /* ADHEventService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F05AFA32ABC870F00D08DBF /* ADHEventService.m */; };
 		1F06B70A217238FD000CAD80 /* ADHKeepAliveService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F06B708217238FD000CAD80 /* ADHKeepAliveService.m */; };
 		1F06B70B217238FD000CAD80 /* ADHKeepAliveService.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F06B709217238FD000CAD80 /* ADHKeepAliveService.h */; };
 		1F085EF62520B4F5008A91E3 /* ViewInsetsAttributeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F085EF52520B4F5008A91E3 /* ViewInsetsAttributeCell.m */; };
@@ -279,6 +281,7 @@
 		1F3AD2D02048F8190010A156 /* NSView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3AD2CE2048F7B70010A156 /* NSView+Size.m */; };
 		1F3AD2D620493E1F0010A156 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F3AD2D820493E1F0010A156 /* Localizable.strings */; };
 		1F3C22611FEE257700421A91 /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3C22601FEE257700421A91 /* NetworkService.m */; };
+		1F3DBB6E2ABE9BA000789EAD /* JsonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3DBB6D2ABE9BA000789EAD /* JsonUtil.swift */; };
 		1F3ED2251FCC678700B9E30A /* ADHFilePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3ED2231FCC678700B9E30A /* ADHFilePreviewController.m */; };
 		1F3ED2261FCC678700B9E30A /* ADHFilePreviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3ED2241FCC678700B9E30A /* ADHFilePreviewController.xib */; };
 		1F3ED4E21FF291C800A98AB4 /* LogActionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3ED4E11FF291C800A98AB4 /* LogActionService.m */; };
@@ -843,6 +846,7 @@
 		1F052675227D8AD4003D84C1 /* WebDebugViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebDebugViewController.h; sourceTree = "<group>"; };
 		1F052676227D8AD4003D84C1 /* WebDebugViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebDebugViewController.m; sourceTree = "<group>"; };
 		1F052677227D8AD4003D84C1 /* WebDebugViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebDebugViewController.xib; sourceTree = "<group>"; };
+		1F0547C52ABE8CC70036C431 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		1F05AF532AB54CCE00D08DBF /* Woodpecker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Woodpecker-Bridging-Header.h"; sourceTree = "<group>"; };
 		1F05AF542AB54CCF00D08DBF /* IPCServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPCServer.swift; sourceTree = "<group>"; };
 		1F05AF5E2AB5960F00D08DBF /* IPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPC.swift; sourceTree = "<group>"; };
@@ -858,6 +862,8 @@
 		1F05AF8E2AB701D300D08DBF /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		1F05AF952AB70D1500D08DBF /* NSObject.Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.Extension.swift; sourceTree = "<group>"; };
 		1F05AF972AB880D000D08DBF /* Sandbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sandbox.swift; sourceTree = "<group>"; };
+		1F05AFA22ABC870F00D08DBF /* ADHEventService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADHEventService.h; sourceTree = "<group>"; };
+		1F05AFA32ABC870F00D08DBF /* ADHEventService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADHEventService.m; sourceTree = "<group>"; };
 		1F06B708217238FD000CAD80 /* ADHKeepAliveService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADHKeepAliveService.m; sourceTree = "<group>"; };
 		1F06B709217238FD000CAD80 /* ADHKeepAliveService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADHKeepAliveService.h; sourceTree = "<group>"; };
 		1F085EF42520B4F5008A91E3 /* ViewInsetsAttributeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewInsetsAttributeCell.h; sourceTree = "<group>"; };
@@ -1194,6 +1200,7 @@
 		1F3AD2D920493E270010A156 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F3C225F1FEE257700421A91 /* NetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkService.h; sourceTree = "<group>"; };
 		1F3C22601FEE257700421A91 /* NetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkService.m; sourceTree = "<group>"; };
+		1F3DBB6D2ABE9BA000789EAD /* JsonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtil.swift; sourceTree = "<group>"; };
 		1F3ED2221FCC678700B9E30A /* ADHFilePreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADHFilePreviewController.h; sourceTree = "<group>"; };
 		1F3ED2231FCC678700B9E30A /* ADHFilePreviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADHFilePreviewController.m; sourceTree = "<group>"; };
 		1F3ED2241FCC678700B9E30A /* ADHFilePreviewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ADHFilePreviewController.xib; sourceTree = "<group>"; };
@@ -2004,6 +2011,7 @@
 				1F05AF8C2AB7010D00D08DBF /* View.swift */,
 				1F05AF8E2AB701D300D08DBF /* AppInfo.swift */,
 				1F05AF972AB880D000D08DBF /* Sandbox.swift */,
+				1F0547C52ABE8CC70036C431 /* Device.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -2012,6 +2020,7 @@
 			isa = PBXGroup;
 			children = (
 				1F05AF952AB70D1500D08DBF /* NSObject.Extension.swift */,
+				1F3DBB6D2ABE9BA000789EAD /* JsonUtil.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -2021,6 +2030,15 @@
 			children = (
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		1F05AFA12ABC838100D08DBF /* EventSupport */ = {
+			isa = PBXGroup;
+			children = (
+				1F05AFA22ABC870F00D08DBF /* ADHEventService.h */,
+				1F05AFA32ABC870F00D08DBF /* ADHEventService.m */,
+			);
+			path = EventSupport;
 			sourceTree = "<group>";
 		};
 		1F063CCA2748DF8B00425C97 /* Recovered References */ = {
@@ -4253,6 +4271,7 @@
 		1FDB8A6522159B1700B835FD /* ViewDebug */ = {
 			isa = PBXGroup;
 			children = (
+				1F05AFA12ABC838100D08DBF /* EventSupport */,
 				1FDB8A6622159B5600B835FD /* ADHViewDebugActionService.h */,
 				1FDB8A6722159B5600B835FD /* ADHViewDebugActionService.m */,
 				1FDB8A6F22159C4800B835FD /* ADHViewDebugService.h */,
@@ -5062,6 +5081,7 @@
 				1F05AF8F2AB701D300D08DBF /* AppInfo.swift in Sources */,
 				1F05AF902AB705DA00D08DBF /* ADHDateUtil.m in Sources */,
 				1F05AF8D2AB7010D00D08DBF /* View.swift in Sources */,
+				1F0547C62ABE8CC70036C431 /* Device.swift in Sources */,
 				1F05AF742AB59A4E00D08DBF /* IPC.swift in Sources */,
 				1F05AF882AB6A74800D08DBF /* Service.swift in Sources */,
 				1F05AF7D2AB59CC300D08DBF /* UserDefault.swift in Sources */,
@@ -5071,6 +5091,7 @@
 				1F05AF992AB8833700D08DBF /* EnvtService.m in Sources */,
 				1F05AF9B2AB8859100D08DBF /* ADHFileHash.m in Sources */,
 				1F05AF8A2AB6E17D00D08DBF /* Dispatcher.swift in Sources */,
+				1F3DBB6E2ABE9BA000789EAD /* JsonUtil.swift in Sources */,
 				1F05AF772AB59B7900D08DBF /* MainApp.swift in Sources */,
 				1F05AF6E2AB59A0A00D08DBF /* IPCClient.swift in Sources */,
 				1F05AF982AB880D000D08DBF /* Sandbox.swift in Sources */,
@@ -5600,6 +5621,7 @@
 				1F74F280219704B60012B7CB /* NSData+ADHCommonCrypto.m in Sources */,
 				1FD0BEE71FA21CF000B1BA5C /* main.m in Sources */,
 				1F6B3D2C2130F7810038098A /* KeyChainTestViewController.m in Sources */,
+				1F05AFA42ABC870F00D08DBF /* ADHEventService.m in Sources */,
 				1FDB8A6D22159B7E00B835FD /* ViewDebugTestViewController.m in Sources */,
 				1FAC37C71FD6FC5600D70851 /* NetworkTestViewController.m in Sources */,
 				1F3890D6208F6C2100D5F2F4 /* CHPageViewController.m in Sources */,

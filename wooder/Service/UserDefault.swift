@@ -26,6 +26,7 @@ class UserDefault: Service {
         return [
             Action(aliasNames: ["get","read","fetch"], actionName:"getAction"),
             Action(aliasNames: ["set", "update", "write","save"], actionName:"updateAction"),
+            Action(aliasNames: ["remove", "delete"], actionName:"removeAction"),
         ]
     }
     
@@ -37,30 +38,30 @@ class UserDefault: Service {
             body["key"] = key
             let response = send(service:"adh.userdefaults", action: "requestData", body: body, payload: nil)
             guard let payload = response.payload else {
-                print("key not found 1")
+                retError("key not exists")
                 return
             }
             guard let dict = payload.dictUnarchived() else {
-                print("payload empty")
+                retError()
                 return
             }
             if let value = dict[key] {
-                print("\(value)")
+                retSuccess("\(value)")
             } else {
-                print("key not found 2")
+                retError("key not exists")
             }
         } else {
             //get all
             let response = send(service:"adh.userdefaults", action: "requestData", body: nil, payload: nil)
             guard let payload = response.payload else {
-                print("key not found 1")
+                retError("empty")
                 return
             }
             guard let dict = payload.dictUnarchived() else {
-                print("payload empty")
+                retError("empty")
                 return
             }
-            print("\(dict)")
+            retSuccess("\(dict)")
         }
     }
     
@@ -73,12 +74,25 @@ class UserDefault: Service {
         body["key"] = key
         let payload = value.archive()
         let response = send(service:"adh.userdefaults", action: "updateValue", body: body, payload: payload)
-        guard let success = response.body?["success"] as? Int,
-                success == 1 else {
-            print("update failed")
+        guard let _ = response.body?["success"] as? Int else {
+            retError()
             return
         }
-        print("update succeed")
+        retSuccess()
+    }
+    
+    @objc func removeAction() {
+        guard let key = request.arg1, !key.isEmpty else {
+            return
+        }
+        var body = [AnyHashable:Any]()
+        body["key"] = key
+        let response = send(service:"adh.userdefaults", action: "remove", body: body)
+        guard let _ = response.body?["success"] as? Int else {
+            retError()
+            return
+        }
+        retSuccess()
     }
     
 }

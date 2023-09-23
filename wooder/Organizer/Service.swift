@@ -77,4 +77,14 @@ class Service: NSObject {
         }
     }
     
+    
+    ///response
+    func retSuccess(_ msg: String = "success") {
+        print(msg)
+    }
+    
+    func retError(_ msg: String = "error") {
+        print(msg)
+    }
+    
 }
