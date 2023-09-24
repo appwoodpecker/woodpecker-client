@@ -1,6 +1,6 @@
 #!/bin/sh -ex
 
-TOOL_NAME="woodpk"
+TOOL_NAME="wooder"
 
 TOOL_DIR=`dirname "$0"`
 TOOL_PATH="$TOOL_DIR/$TOOL_NAME"
@@ -11,4 +11,4 @@ mkdir -p "$INSTALL_DIR"
 
 ln -sf "$TOOL_PATH" "$INSTALL_PATH"
 
-printf "🎉 Install tool done, try 'woodpk info'"
+printf "🎉 Install CLI successfully"

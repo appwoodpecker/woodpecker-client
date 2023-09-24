@@ -340,34 +340,37 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                         <items>
-                            <menuItem title="Usage" keyEquivalent="?" id="FKE-Sm-Kum">
+                            <menuItem title="Usage" tag="100" keyEquivalent="?" id="FKE-Sm-Kum">
                                 <connections>
                                     <action selector="showHelp:" target="-1" id="y7X-2Q-9no"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Framework" id="rmo-3C-hXZ">
+                            <menuItem title="Framework" tag="200" id="rmo-3C-hXZ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Framework" showsStateColumn="NO" id="kj8-tQ-KA7">
                                     <items>
-                                        <menuItem title="CocoaPods" id="nwd-5S-Ryb">
+                                        <menuItem title="CocoaPods" tag="201" id="nwd-5S-Ryb">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="Carthage" id="80X-hm-Sfu">
+                                        <menuItem title="SPM" tag="202" id="hCq-v1-0ts">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
-                                        <menuItem title="Download" id="Ejt-b3-G8O">
+                                        <menuItem title="Carthage" tag="203" id="80X-hm-Sfu">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Download" tag="204" id="Ejt-b3-G8O">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Client Info" id="SeA-Am-IEJ">
+                            <menuItem title="CLI Install" tag="300" id="iog-8K-H9j">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
-                            <menuItem title="Rate Me ⭐️" id="pzC-cB-HAw">
+                            <menuItem title="Rate Me ⭐️" tag="400" id="pzC-cB-HAw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
-                            <menuItem title="Feedback" id="Cw4-oO-zb0">
+                            <menuItem title="Feedback" tag="500" id="Cw4-oO-zb0">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                         </items>

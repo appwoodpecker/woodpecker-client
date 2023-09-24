@@ -69,7 +69,7 @@ class Help: Service {
     
     func noServiceHelp() {
         let services = Dispatcher.shared.services
-        print("🌿 wooder support following services:")
+        print("🌿 wooder support following tools:")
         for serviceType in services {
             guard serviceType != Help.self else {
                 continue
@@ -80,6 +80,7 @@ class Help: Service {
                 print("  - \(name): wooder help \(first)")
             }
         }
+        print("🌿 try wooder app.name")
     }
     
     /**

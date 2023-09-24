@@ -32,8 +32,15 @@
 #import "ApiViewController.h"
 
 
-static NSInteger const kProMenuTag = 100;
-static NSInteger const kToolMenuTag = 101;
+static NSInteger const kUsageTag = 100;
+static NSInteger const kFrameworkTag = 200;
+static NSInteger const kLibCocoapodsTag = 201;
+static NSInteger const kLibSPMTag = 202;
+static NSInteger const kLibCarthageTag = 203;
+static NSInteger const kLibDownloadTag = 204;
+static NSInteger const kCLITag = 300;
+static NSInteger const kRateTag = 400;
+static NSInteger const kFeedbackTag = 500;
 
 
 @interface MainWindowController ()<NSToolbarDelegate,AppContextManagerObserver>
@@ -162,23 +169,27 @@ static NSInteger const kToolMenuTag = 101;
     NSMenu * helpMenu = helpItem.submenu;
     
     //help
-    NSMenuItem * helpSubItem = [helpMenu itemAtIndex:0];
+    NSMenuItem * helpSubItem = [helpMenu itemWithTag:kUsageTag];
     helpSubItem.target = self;
     helpSubItem.action = @selector(helpMenuSelected:);
     ///framework
-    NSMenuItem * frameSubItem = [helpMenu itemAtIndex:1];
+    NSMenuItem * frameSubItem = [helpMenu itemWithTag:kFrameworkTag];
     NSMenu * frameMenu = frameSubItem.submenu;
     NSArray *frameItems = frameMenu.itemArray;
     //pod
-    NSMenuItem * podSubItem = frameItems[0];
+    NSMenuItem * podSubItem = [frameMenu itemWithTag:kLibCocoapodsTag];
     podSubItem.target = self;
     podSubItem.action = @selector(podMenuSelected:);
+    //SPM
+    NSMenuItem * spmSubItem = [frameMenu itemWithTag:kLibSPMTag];
+    spmSubItem.target = self;
+    spmSubItem.action = @selector(spmMenuSelected:);
     //carthage
-    NSMenuItem * carthageSubItem = frameItems[1];
+    NSMenuItem * carthageSubItem = [frameMenu itemWithTag:kLibCarthageTag];
     carthageSubItem.target = self;
     carthageSubItem.action = @selector(carthageMenuSelected:);
     //download
-    NSMenuItem * downloadSubItem = frameItems[2];
+    NSMenuItem * downloadSubItem = [frameMenu itemWithTag:kLibDownloadTag];
     downloadSubItem.target = self;
     downloadSubItem.action = @selector(downloadMenuSelected:);
     
@@ -194,16 +205,10 @@ static NSInteger const kToolMenuTag = 101;
     NSMenuItem * feedbackItem = [helpMenu itemAtIndex:4];
     feedbackItem.target = self;
     feedbackItem.action = @selector(feedbackMenuSelected:);
-    
     //cmd
-    /*
-    NSMenuItem *cmdItem = [helpMenu itemWithTag:kToolMenuTag];
+    NSMenuItem *cmdItem = [helpMenu itemWithTag:kCLITag];
     cmdItem.target = self;
     cmdItem.action = @selector(cmdMenuSelected:);
-    */
-    
-    //pro
-    [self updateProMenuUI];
 }
 
 - (void)initUI {
@@ -419,6 +424,12 @@ static NSInteger const kToolMenuTag = 101;
     [self.window.contentView showToastWithIcon:@"icon_status_ok" statusText:kLocalized(@"common_text_copied")];
 }
 
+- (void)spmMenuSelected: (NSMenuItem *)menuItem {
+    NSString *pod = kSPMText;
+    [DeviceUtil pasteText:pod];
+    [self.window.contentView showToastWithIcon:@"icon_status_ok" statusText:kLocalized(@"common_text_copied")];
+}
+
 - (void)carthageMenuSelected: (NSMenuItem *)menuItem {
     NSString *carthage = kCarthageText;
     [DeviceUtil pasteText:carthage];
@@ -430,10 +441,23 @@ static NSInteger const kToolMenuTag = 101;
 }
 
 - (void)cmdMenuSelected:(NSMenuItem *)menuItem {
-    NSString *path = [[[NSBundle mainBundle] sharedSupportPath] stringByAppendingPathComponent:@"install.sh"];
+    NSString *workPath = [[NSBundle mainBundle] sharedSupportPath];
+    NSString *path = [workPath stringByAppendingPathComponent:@"install.sh"];
+    //copy script
     NSString *cmd = [NSString stringWithFormat:@"sh %@",path];
     [DeviceUtil pasteText:cmd];
-    [self.window.contentView showToastWithIcon:@"icon_status_ok" statusText:@"Script copied, Please run in the terminal"];
+    //try run script
+    NSTask *task = [NSTask new];
+    task.qualityOfService = NSQualityOfServiceUserInteractive;
+    task.executableURL = [NSURL fileURLWithPath:path];
+    NSError *error = nil;
+    BOOL result = [task launchAndReturnError:&error];
+    [task waitUntilExit];
+    if (result) {
+        [self.window.contentView showToastWithIcon:@"icon_status_ok" statusText:@"🎉 Install CLI successfully, try 'wooder help'"];
+    } else {
+        [self.window.contentView showToastWithIcon:@"icon_status_error" statusText:@"Install failed, script was copied, please try run in the terminal"];
+    }
 }
 
 /**
@@ -449,27 +473,7 @@ static NSInteger const kToolMenuTag = 101;
 }
 
 - (void)onAuthStateUpdate {
-    [self updateProMenuUI];
     [self updatePremiumUI];
-}
-
-- (void)updateProMenuUI {
-    NSMenu * mainMenu = self.window.menu;
-    //Help Menu
-    NSMenuItem * helpItem = [mainMenu itemWithTitle:@"Help"];
-    NSMenu * helpMenu = helpItem.submenu;
-    //remove old
-    {
-        NSMenuItem *proItem = [helpMenu itemWithTag:kProMenuTag];
-        if(proItem) {
-            [helpMenu removeItem:proItem];
-        }
-    }
-    if(!isPro) {
-        NSMenuItem *proItem = [[NSMenuItem alloc] initWithTitle:@"Go Pro 👑" action:@selector(goPro) keyEquivalent:@""];
-        proItem.tag = kProMenuTag;
-        [helpMenu addItem:proItem];
-    }
 }
 
 - (void)goPro {
@@ -495,8 +499,6 @@ static NSInteger const kToolMenuTag = 101;
 
 - (void)setupWaitingUI {
     AppScrollView *appView = [[AppScrollView alloc] initWithFrame:self.waitingContentView.bounds];
-//    appView.wantsLayer = YES;
-//    appView.layer.backgroundColor = [NSColor greenColor].CGColor;
     [self.waitingContentView addSubview:appView];
     self.appView = appView;
 }
