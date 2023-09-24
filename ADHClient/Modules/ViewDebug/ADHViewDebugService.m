@@ -163,6 +163,9 @@
 }
 
 - (NSData *)snapshotThisView: (UIView *)view {
+    if (view.bounds.size.width < 1 || view.bounds.size.height < 1) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, [UIScreen mainScreen].scale);
     NSArray *subViews = view.subviews;
     NSMutableArray *hiddenValues = [NSMutableArray arrayWithCapacity:subViews.count];
