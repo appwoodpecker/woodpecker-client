@@ -286,6 +286,7 @@
 		1F3DBB742ABEDD2A00789EAD /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3DBB732ABEDD2A00789EAD /* Help.swift */; };
 		1F3DBB7A2ABF324400789EAD /* wooder in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F05AF652AB599EE00D08DBF /* wooder */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		1F3DBB7B2ABFDA0900789EAD /* install.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1F05AF6F2AB59A0F00D08DBF /* install.sh */; };
+		1F3DBBB42AC01D9400789EAD /* AttributeTyper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3DBBB32AC01D9300789EAD /* AttributeTyper.m */; };
 		1F3ED2251FCC678700B9E30A /* ADHFilePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3ED2231FCC678700B9E30A /* ADHFilePreviewController.m */; };
 		1F3ED2261FCC678700B9E30A /* ADHFilePreviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3ED2241FCC678700B9E30A /* ADHFilePreviewController.xib */; };
 		1F3ED4E21FF291C800A98AB4 /* LogActionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3ED4E11FF291C800A98AB4 /* LogActionService.m */; };
@@ -691,7 +692,6 @@
 		1FE5C60D208C2BC0000EC631 /* ControllerHierarchyTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5C60B208C2BC0000EC631 /* ControllerHierarchyTestViewController.xib */; };
 		1FE5D679280AC18C007E0179 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D677280AC18C007E0179 /* PayViewController.m */; };
 		1FE5D67A280AC18C007E0179 /* PayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5D678280AC18C007E0179 /* PayViewController.xib */; };
-		1FE5D67D280BFB6E007E0179 /* AttributeTyper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D67C280BFB6E007E0179 /* AttributeTyper.m */; };
 		1FE5D680280C098F007E0179 /* NSView+ADHExtends.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D67E280C098F007E0179 /* NSView+ADHExtends.m */; };
 		1FE5D6EE2812F4BE007E0179 /* PayService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D6C22812F4BE007E0179 /* PayService.m */; };
 		1FE5D6EF2812F4BE007E0179 /* NSNotification+XYStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5D6CA2812F4BE007E0179 /* NSNotification+XYStore.m */; };
@@ -1217,6 +1217,8 @@
 		1F3DBB6F2ABED16500789EAD /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		1F3DBB712ABED87800789EAD /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		1F3DBB732ABEDD2A00789EAD /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
+		1F3DBBB22AC01D9200789EAD /* AttributeTyper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeTyper.h; sourceTree = "<group>"; };
+		1F3DBBB32AC01D9300789EAD /* AttributeTyper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeTyper.m; sourceTree = "<group>"; };
 		1F3ED2221FCC678700B9E30A /* ADHFilePreviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADHFilePreviewController.h; sourceTree = "<group>"; };
 		1F3ED2231FCC678700B9E30A /* ADHFilePreviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADHFilePreviewController.m; sourceTree = "<group>"; };
 		1F3ED2241FCC678700B9E30A /* ADHFilePreviewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ADHFilePreviewController.xib; sourceTree = "<group>"; };
@@ -1799,8 +1801,6 @@
 		1FE5D676280AC18C007E0179 /* PayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayViewController.h; sourceTree = "<group>"; };
 		1FE5D677280AC18C007E0179 /* PayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayViewController.m; sourceTree = "<group>"; };
 		1FE5D678280AC18C007E0179 /* PayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayViewController.xib; sourceTree = "<group>"; };
-		1FE5D67B280BFB6D007E0179 /* AttributeTyper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttributeTyper.h; path = "../../../../../../Desktop/半边山下/code/app-ios/bbsx/bbsx/Component/Util/AttributeTyper.h"; sourceTree = "<group>"; };
-		1FE5D67C280BFB6E007E0179 /* AttributeTyper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttributeTyper.m; path = "../../../../../../Desktop/半边山下/code/app-ios/bbsx/bbsx/Component/Util/AttributeTyper.m"; sourceTree = "<group>"; };
 		1FE5D67E280C098F007E0179 /* NSView+ADHExtends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+ADHExtends.m"; sourceTree = "<group>"; };
 		1FE5D67F280C098F007E0179 /* NSView+ADHExtends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+ADHExtends.h"; sourceTree = "<group>"; };
 		1FE5D6C12812F4BE007E0179 /* PayService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayService.h; sourceTree = "<group>"; };
@@ -2153,8 +2153,8 @@
 				1FC7DDA021154C2A004A9520 /* LocalizationUtil.m */,
 				1FC9592821E6377700FB7128 /* EntitlementUtil.h */,
 				1FC9592921E6377700FB7128 /* EntitlementUtil.m */,
-				1FE5D67B280BFB6D007E0179 /* AttributeTyper.h */,
-				1FE5D67C280BFB6E007E0179 /* AttributeTyper.m */,
+				1F3DBBB22AC01D9200789EAD /* AttributeTyper.h */,
+				1F3DBBB32AC01D9300789EAD /* AttributeTyper.m */,
 				1FA5721724C28DDD008795DB /* UIUtil.h */,
 				1FA5721824C28DDD008795DB /* UIUtil.m */,
 			);
@@ -5276,6 +5276,7 @@
 				1F457CBB1F9F74A500C7D604 /* ADHPResponse.m in Sources */,
 				1FE5D6F72812F4BE007E0179 /* NSDate+XYStoreExtension.m in Sources */,
 				1F37C12F2033353F004B21E8 /* NotificationInfoViewController.m in Sources */,
+				1F3DBBB42AC01D9400789EAD /* AttributeTyper.m in Sources */,
 				1F3AD2BE204844BF0010A156 /* HelpCell.m in Sources */,
 				1F4C05DC1FB48A8700A0AFD1 /* DBTable.m in Sources */,
 				1F68AE1B20E71C7D00CBEB05 /* hash_table.c in Sources */,
@@ -5388,7 +5389,6 @@
 				1F5F2F5F222BC9FC00B8B0DA /* ViewStepperAttributeCell.m in Sources */,
 				1F9F966520C395A8006C5BAC /* NotificationViewController.m in Sources */,
 				1FE5D6EF2812F4BE007E0179 /* NSNotification+XYStore.m in Sources */,
-				1FE5D67D280BFB6E007E0179 /* AttributeTyper.m in Sources */,
 				1F6195F81FCAAC030095D22E /* PlainTextViewController.m in Sources */,
 				1F9F966B20C3AD1C006C5BAC /* NotificationCellItem.m in Sources */,
 				1F224C1E24B01F57004766DC /* HomeViewController.m in Sources */,
@@ -6217,7 +6217,7 @@
 					"$(PROJECT_DIR)/AppDevelopHelper/Components/ReceiptCheck/OpenSSL-OSX/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6262,7 +6262,7 @@
 					"$(PROJECT_DIR)/AppDevelopHelper/Components/ReceiptCheck/OpenSSL-OSX/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -6296,7 +6296,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.4.2;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -6334,7 +6334,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.4.2;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -6437,7 +6437,7 @@
 					"$(PROJECT_DIR)/AppDevelopHelper/Components/ReceiptCheck/OpenSSL-OSX/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.4.1;
+				MARKETING_VERSION = 1.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -6499,7 +6499,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = mh_dylib;
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.4.2;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
