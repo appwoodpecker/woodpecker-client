@@ -18,10 +18,10 @@
 "Yew-Ao-qun.title" = "1.  Cocoapods";
 
 /* Class = "NSTextFieldCell"; title = "2. Carthage"; ObjectID = "aVN-tS-moH"; */
-"aVN-tS-moH.title" = "2. Carthage";
+"aVN-tS-moH.title" = "2. 2. Swift Package Manager";
 
 /* Class = "NSTextFieldCell"; title = "3. Maually import"; ObjectID = "ffo-aS-La8"; */
-"ffo-aS-La8.title" = "3. 手动安装";
+"ffo-aS-La8.title" = "3. Carthage";
 
 /* Class = "NSTextFieldCell"; title = "Run your app,  have fun"; ObjectID = "mW8-ch-ow5"; */
 "mW8-ch-ow5.title" = "运行App，立刻使用";

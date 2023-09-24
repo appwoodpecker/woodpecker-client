@@ -454,9 +454,13 @@ static NSInteger const kFeedbackTag = 500;
     BOOL result = [task launchAndReturnError:&error];
     [task waitUntilExit];
     if (result) {
-        [self.window.contentView showToastWithIcon:@"icon_status_ok" statusText:@"🎉 Install CLI successfully, try 'wooder help'"];
+        [ADHAlert alertWithMessage:@"🎉Install successfully" infoText:@"Try 'wooder help', CLI was installed at /usr/local/bin/wooder" comfirmBlock:^{
+            
+        }];
     } else {
-        [self.window.contentView showToastWithIcon:@"icon_status_error" statusText:@"Install failed, script was copied, please try run in the terminal"];
+        [ADHAlert alertWithMessage:@"Install failed" infoText:@"Script was copied, please try install in the terminal" comfirmBlock:^{
+            
+        }];
     }
 }
 

@@ -113,15 +113,15 @@
                                     </connections>
                                 </button>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jcl-JG-BE0">
-                                    <rect key="frame" x="58" y="173" width="88" height="20"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="2. Carthage" id="aVN-tS-moH">
+                                    <rect key="frame" x="58" y="173" width="190" height="20"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="2. Swift Package Manager" id="aVN-tS-moH">
                                         <font key="font" metaFont="systemLight" size="16"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vCc-mV-Sxr">
-                                    <rect key="frame" x="154" y="173" width="20" height="20"/>
+                                    <rect key="frame" x="256" y="173" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="KSX-L6-IMg"/>
                                         <constraint firstAttribute="height" constant="20" id="d6o-y0-Fvt"/>
@@ -131,12 +131,12 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="carthageButtonClicked:" target="-2" id="5eW-oK-rT9"/>
+                                        <action selector="spmButtonClicked:" target="-2" id="b4u-LV-RpT"/>
                                     </connections>
                                 </button>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OUR-Ot-SBS">
-                                    <rect key="frame" x="58" y="129" width="119" height="20"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="3. Manual install" id="ffo-aS-La8">
+                                    <rect key="frame" x="58" y="129" width="88" height="20"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="3. Carthage" id="ffo-aS-La8">
                                         <font key="font" metaFont="systemLight" size="16"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -157,7 +157,7 @@
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="o47-ce-VQx">
-                                    <rect key="frame" x="185" y="129" width="20" height="20"/>
+                                    <rect key="frame" x="154" y="129" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="CRU-fx-5AJ"/>
                                         <constraint firstAttribute="height" constant="20" id="iLq-C4-dBr"/>
@@ -167,7 +167,7 @@
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="manuallyButtonClicked:" target="-2" id="Chq-ES-Ol8"/>
+                                        <action selector="carthageButtonClicked:" target="-2" id="GsF-Ok-4n7"/>
                                     </connections>
                                 </button>
                             </subviews>

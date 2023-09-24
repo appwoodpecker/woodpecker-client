@@ -239,14 +239,16 @@
     [self showSuccessWithText:kLocalized(@"common_text_copied")];
 }
 
+- (IBAction)spmButtonClicked:(id)sender {
+    NSString *pod = kSPMText;
+    [DeviceUtil pasteText:pod];
+    [self showSuccessWithText:kLocalized(@"common_text_copied")];
+}
+
 - (IBAction)carthageButtonClicked:(id)sender {
     NSString *carthage = kCarthageText;
     [DeviceUtil pasteText:carthage];
     [self showSuccessWithText:kLocalized(@"common_text_copied")];
-}
-
-- (IBAction)manuallyButtonClicked:(id)sender {
-    [UrlUtil openExternalLocalizedUrl:@"web_usage"];
 }
 
 - (IBAction)previousButtonPressed:(id)sender {
