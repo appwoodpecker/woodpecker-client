@@ -5289,7 +5289,6 @@
 				1FFDCE2D2482911A00FB4192 /* StateMasterService.m in Sources */,
 				1F74F277219704B60012B7CB /* NSString+ADHBase64.m in Sources */,
 				1F5F2F2F2222C33E00B8B0DA /* ADHViewDebugUtil.m in Sources */,
-				1F05AFA02ABC795500D08DBF /* AttributeTyper.m in Sources */,
 				1F224BF1249C3FE2004766DC /* CircularProgressView.m in Sources */,
 				1FC7A2721FB9CD5F006780AD /* DBItem.m in Sources */,
 				1F68AE1620E71C7D00CBEB05 /* core.c in Sources */,
@@ -6190,7 +6189,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 73;
+				CURRENT_PROJECT_VERSION = 74;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6239,7 +6238,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 73;
+				CURRENT_PROJECT_VERSION = 74;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6413,7 +6412,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 73;
+				CURRENT_PROJECT_VERSION = 74;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

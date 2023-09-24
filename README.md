@@ -12,11 +12,12 @@ It helps you:
 <br>
 
 **Source code**
- - **AppDevelopHelper**: the mac app
- - **WoodPeckeriOS**: ios framework wrapper
+ - **AppDevelopHelper**: Woodpecker mac client
+ - **WoodPeckeriOS**: ios framework
  - **ADHClient**: ios demo app
-- **WoodpeckerMacOS**: cocoa framework wrapper
+ - **WoodpeckerMacOS**: cocoa framework
  - **MacClient**: mac demo app
+ - **wooder**: CLI tool 
  
 **Next Plan:**
-- build a command line tool, we could interaction with apps in terminal
+- build a command line tool, we could interaction with apps in terminal (1.4.2 added)
