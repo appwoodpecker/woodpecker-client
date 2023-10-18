@@ -8,7 +8,6 @@
 
 #import "ADHNotificationService.h"
 #import "ADHNotificationItem.h"
-#import "UNLegacyNotificationTrigger.h"
 
 @import CoreLocation;
 
@@ -255,14 +254,10 @@ API_AVAILABLE(ios(10.0),macos(10.14)){
             //Push
             triggerType = ADHNotificationTriggerTypePush;
             triggerDetail = @"Remote Push";
-        }else if([trigger isKindOfClass:[UNLegacyNotificationTrigger class]]) {
-            //UILocalNotification（非region类型）
-            UNLegacyNotificationTrigger *legacyTrigger = (UNLegacyNotificationTrigger *)trigger;
+        } else {
+            //UILocalNotification（非region类型） fix Non-public API usage
             triggerType = ADHNotificationTriggerTypeLegacyCalendar;
-            triggerDetail = [self readbleTextFromCalendarUnit:legacyTrigger.repeatInterval calendar:legacyTrigger.repeatCalendar];
-            triggerDetail = [NSString stringWithFormat:@"%@",triggerDetail];
-            triggerRepeat = (legacyTrigger.repeatInterval > 0);
-            nextTriggerTimeinterval = [legacyTrigger.date timeIntervalSince1970];
+            triggerDetail = @"Unknow";
         }
         item.triggerType = triggerType;
         item.triggerRepeat = triggerRepeat;

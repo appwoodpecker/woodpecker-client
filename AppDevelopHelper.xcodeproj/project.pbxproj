@@ -1600,7 +1600,6 @@
 		1FA5721D24C5179D008795DB /* FirebaseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirebaseViewController.xib; sourceTree = "<group>"; };
 		1FA5722124C51818008795DB /* ADHFirebaseActionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADHFirebaseActionService.m; sourceTree = "<group>"; };
 		1FA5722224C51818008795DB /* ADHFirebaseActionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADHFirebaseActionService.h; sourceTree = "<group>"; };
-		1FAB5A292145018800FAB1BC /* UNLegacyNotificationTrigger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNLegacyNotificationTrigger.h; sourceTree = "<group>"; };
 		1FAC37A41FD3ADBD00D70851 /* NetworkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkViewController.h; sourceTree = "<group>"; };
 		1FAC37A51FD3ADBD00D70851 /* NetworkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkViewController.m; sourceTree = "<group>"; };
 		1FAC37A61FD3ADBD00D70851 /* NetworkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkViewController.xib; sourceTree = "<group>"; };
@@ -2744,7 +2743,6 @@
 			children = (
 				1F3AD27A2043BA190010A156 /* ADHNotificationItem.h */,
 				1F3AD2792043BA190010A156 /* ADHNotificationItem.m */,
-				1FAB5A292145018800FAB1BC /* UNLegacyNotificationTrigger.h */,
 			);
 			path = model;
 			sourceTree = "<group>";
