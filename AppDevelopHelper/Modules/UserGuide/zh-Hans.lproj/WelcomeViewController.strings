@@ -15,10 +15,10 @@
 "Sxw-UL-2MX.title" = "1. 在Privacy - Local Network Usage Description 添加本地网络描述";
 
 /* Class = "NSTextFieldCell"; title = "1.  Cocoapods"; ObjectID = "Yew-Ao-qun"; */
-"Yew-Ao-qun.title" = "1.  Cocoapods";
+"Yew-Ao-qun.title" = "1. Cocoapods";
 
 /* Class = "NSTextFieldCell"; title = "2. Carthage"; ObjectID = "aVN-tS-moH"; */
-"aVN-tS-moH.title" = "2. 2. Swift Package Manager";
+"aVN-tS-moH.title" = "2. Swift Package Manager";
 
 /* Class = "NSTextFieldCell"; title = "3. Maually import"; ObjectID = "ffo-aS-La8"; */
 "ffo-aS-La8.title" = "3. Carthage";

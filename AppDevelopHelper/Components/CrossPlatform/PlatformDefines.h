@@ -36,7 +36,7 @@ struct ADH_COLOR {
     CGFloat alpha;
 };
 
-typedef struct CG_BOXABLE ADH_COLOR ADH_COLOR;
+typedef struct ADH_COLOR ADH_COLOR;
 
 struct ADH_FRAME {
     CGFloat centerX;
@@ -45,7 +45,7 @@ struct ADH_FRAME {
     CGFloat height;
 };
 
-typedef struct CG_BOXABLE ADH_FRAME ADH_FRAME;
+typedef struct ADH_FRAME ADH_FRAME;
 
 struct ADH_INSETS {
     CGFloat top;
@@ -54,7 +54,7 @@ struct ADH_INSETS {
     CGFloat right;
 };
 
-typedef struct CG_BOXABLE ADH_INSETS ADH_INSETS;
+typedef struct ADH_INSETS ADH_INSETS;
 
 #endif
 extern ADH_COLOR adhColorZero(void);

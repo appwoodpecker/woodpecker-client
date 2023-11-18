@@ -46,6 +46,7 @@ static NSString *const kTabPlugin = @"plugin";
 }
 
 - (void)addContents {
+    self.clipsToBounds = YES;
     NSView *appView = [[NSView alloc] initWithFrame:self.bounds];
     NSImageView *coverImageView = [[NSImageView alloc] initWithFrame:self.bounds];
     self.coverImageView = coverImageView;

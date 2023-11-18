@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -765,19 +765,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1B3A7E502B05136C001CEA12 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F457C921F9F65C500C7D604 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F05AF642AB599EE00D08DBF;
+			remoteInfo = wooder;
+		};
 		1F28FB3A22A0187000C2CF25 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1F457C921F9F65C500C7D604 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 1F26E5FC2298D6E700BFD5E0;
 			remoteInfo = WoodpeckerMacOS;
-		};
-		1F3DBB7C2ABFE30400789EAD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F457C921F9F65C500C7D604 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1F05AF642AB599EE00D08DBF;
-			remoteInfo = wooder;
 		};
 		1F53D30820021AB600A09429 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -4669,7 +4669,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				1F3DBB7D2ABFE30400789EAD /* PBXTargetDependency */,
+				1B3A7E512B05136C001CEA12 /* PBXTargetDependency */,
 			);
 			name = Woodpecker;
 			productName = AppDevelopHelper;
@@ -5657,6 +5657,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1B3A7E512B05136C001CEA12 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F05AF642AB599EE00D08DBF /* wooder */;
+			targetProxy = 1B3A7E502B05136C001CEA12 /* PBXContainerItemProxy */;
+		};
 		1F05AF862AB5A6BD00D08DBF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 1F05AF852AB5A6BD00D08DBF /* ArgumentParser */;
@@ -5665,11 +5670,6 @@
 			isa = PBXTargetDependency;
 			target = 1F26E5FC2298D6E700BFD5E0 /* WoodpeckerMacOS */;
 			targetProxy = 1F28FB3A22A0187000C2CF25 /* PBXContainerItemProxy */;
-		};
-		1F3DBB7D2ABFE30400789EAD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1F05AF642AB599EE00D08DBF /* wooder */;
-			targetProxy = 1F3DBB7C2ABFE30400789EAD /* PBXContainerItemProxy */;
 		};
 		1F53D30920021AB600A09429 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5820,8 +5820,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5848,8 +5849,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5875,8 +5877,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8HG49Q463F;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
