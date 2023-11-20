@@ -10,6 +10,7 @@
 #import "ADHViewNode.h"
 #import "ViewDebugNode.h"
 #import "ADHViewDebugUtil.h"
+#import "ViewDebugIndicatorNode.h"
 
 @import SceneKit;
 
@@ -43,6 +44,8 @@ static CGFloat const kNodeZSpace = 0.3;
 
 @property (nonatomic, strong) NSTrackingArea *trackingArea;
 @property (nonatomic, assign) BOOL bViewLayouted;
+
+@property (nonatomic, assign) BOOL optionPressed;
 
 @end
 
@@ -104,6 +107,7 @@ static CGFloat const kNodeZSpace = 0.3;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNodeSelectStateUpdate:) name:kViewDebugNodeSelectStateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNodeAttrUpdate:) name:kViewDebugNodeAttributeUpdateNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateAppearanceUI) name:[Appearance effectiveAppearance] object:nil];
+    
 }
 
 - (void)updateAppearanceUI {
@@ -294,7 +298,7 @@ static CGFloat const kNodeZSpace = 0.3;
     [self traverseUpdateNodeSnapshot:self.contentNode data:snapshotData];
 }
 
-- (void)traverseUpdateNodeSnapshot: (ViewDebugNode *)node data: (NSDictionary *)snapshotData {
+- (void)traverseUpdateNodeSnapshot:(ViewDebugNode *)node data: (NSDictionary *)snapshotData {
     for (ViewDebugNode *child in node.childNodes) {
         if([child isKindOfClass:[ViewDebugNode class]]) {
             ADHViewNode *vNode = child.viewNode;
@@ -310,7 +314,7 @@ static CGFloat const kNodeZSpace = 0.3;
 
 #pragma mark -----------------   notification   ----------------
 
-- (void)onNodeSelectStateUpdate: (NSNotification *)noti {
+- (void)onNodeSelectStateUpdate:(NSNotification *)noti {
     if(noti.object == self) {
         return;
     }
@@ -322,12 +326,12 @@ static CGFloat const kNodeZSpace = 0.3;
     [self updateSelectedNode:node];
 }
 
-- (ViewDebugNode *)findDebugNodeWithvNode: (ADHViewNode *)vnode {
+- (ViewDebugNode *)findDebugNodeWithvNode:(ADHViewNode *)vnode {
     ViewDebugNode *targetNode = [self traverseNode:self.contentNode targetNode:vnode];
     return targetNode;
 }
 
-- (ViewDebugNode *)traverseNode: (ViewDebugNode *)node targetNode: (ADHViewNode *)vNode {
+- (ViewDebugNode *)traverseNode:(ViewDebugNode *)node targetNode: (ADHViewNode *)vNode {
     ViewDebugNode *targetNode = nil;
     if(node.viewNode != vNode) {
         if(node.childNodes) {
@@ -366,26 +370,37 @@ static CGFloat const kNodeZSpace = 0.3;
     NSPoint eventLocation = [event locationInWindow];
     NSPoint location = [self.view convertPoint:eventLocation fromView:nil];
     SCNHitTestResult *result = [[self.sceneView hitTest:location options:nil] firstObject];
-    ViewDebugNode *node = (ViewDebugNode *)result.node;
+    SCNNode *testNode = (SCNNode *)result.node;
+    ViewDebugNode *node = nil;
+    if ([testNode isKindOfClass:[ViewDebugIndicatorNode class]]) {
+        node = [(ViewDebugIndicatorNode *)testNode mainNode];
+    } else if ([testNode isKindOfClass:[ViewDebugNode class]]) {
+        node = (ViewDebugNode *)testNode;
+    }
     if(![node isKindOfClass:[ViewDebugNode class]]) {
         if(self.highlightedNode && self.highlightedNode != self.selectedNode) {
             [self.highlightedNode setHighlighted:NO];
+            [self.highlightedNode setFocused:NO];
             self.highlightedNode = nil;
         }
-    }else {
+    } else {
         if(self.highlightedNode == node) {
             return;
         }
         if(self.highlightedNode && self.highlightedNode != self.selectedNode) {
             [self.highlightedNode setHighlighted:NO];
+            [self.highlightedNode setFocused:NO];
             self.highlightedNode = nil;
         }
         [node setHighlighted:YES];
         self.highlightedNode = node;
+        if (self.optionPressed) {
+            [node setFocused:YES];
+        }
     }
 }
 
-- (void)clickGestureRecognized: (NSClickGestureRecognizer *)recognizer {
+- (void)clickGestureRecognized:(NSClickGestureRecognizer *)recognizer {
     NSPoint location = [recognizer locationInView:self.sceneView];
     SCNHitTestResult *result = [[self.sceneView hitTest:location options:nil] firstObject];
     ViewDebugNode *node = (ViewDebugNode *)result.node;
@@ -401,7 +416,7 @@ static CGFloat const kNodeZSpace = 0.3;
     [[NSNotificationCenter defaultCenter] postNotificationName:kViewDebugNodeSelectStateNotification object:self userInfo:info];
 }
 
-- (void)updateSelectedNode: (ViewDebugNode *)node {
+- (void)updateSelectedNode:(ViewDebugNode *)node {
     if(![node isKindOfClass:[ViewDebugNode class]]) {
         if(self.selectedNode) {
             [self.selectedNode setSelected:NO];
@@ -431,7 +446,40 @@ static CGFloat const kNodeZSpace = 0.3;
     }
 }
 
-- (void)doubleClickRecognized: (NSClickGestureRecognizer *)recognizer {
+
+//down可能多次， up有一次
+- (void)flagsChanged:(NSEvent *)event {
+    if(event.modifierFlags & NSEventModifierFlagOption) {
+        NSLog(@"alt is down!!!");
+        if (self.optionPressed) {
+            return;
+        }
+        self.optionPressed = YES;
+        [self onOptionPressed];
+    }
+    else if([event keyCode] == 58 || [event keyCode] == 61) {
+        NSLog(@"alt is up!!!");
+        self.optionPressed = NO;
+        [self onOptionReleased];
+    }
+}
+
+- (void)onOptionPressed {
+    if (self.highlightedNode == nil) {
+        return;
+    }
+    [self.highlightedNode setFocused:YES];
+}
+
+- (void)onOptionReleased {
+    if (self.highlightedNode == nil) {
+        return;
+    }
+    [self.highlightedNode setFocused:NO];
+}
+
+
+- (void)doubleClickRecognized:(NSClickGestureRecognizer *)recognizer {
     NSPoint location = [recognizer locationInView:self.sceneView];
     SCNHitTestResult *result = [[self.sceneView hitTest:location options:nil] firstObject];
     if(!result) {

@@ -17,9 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (ViewDebugNode *)nodeWithVNode: (ADHViewNode *)viewNode scale: (CGFloat)scale;
 
-- (void)addBorder;
-- (void)setHighlighted: (BOOL)highlighted;
-- (void)setSelected: (BOOL)selected;
+- (void)setHighlighted:(BOOL)highlighted;
+- (void)setSelected:(BOOL)selected;
+- (void)setFocused:(BOOL)focused;
 
 - (void)updateAttrState: (NSString *)key snapshot: (NSData *)snapshot scale: (CGFloat)nodeScale;
 - (void)updateSnapshot: (NSData *)imageData;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B3A7E542B09FF55001CEA12 /* ViewDebugIndicatorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A7E532B09FF55001CEA12 /* ViewDebugIndicatorNode.m */; };
 		1F052678227D8AD4003D84C1 /* WebDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F052676227D8AD4003D84C1 /* WebDebugViewController.m */; };
 		1F052679227D8AD4003D84C1 /* WebDebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F052677227D8AD4003D84C1 /* WebDebugViewController.xib */; };
 		1F0547C62ABE8CC70036C431 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0547C52ABE8CC70036C431 /* Device.swift */; };
@@ -856,6 +857,8 @@
 
 /* Begin PBXFileReference section */
 		14FF499EECA49E02C69938ED /* Pods_ADHClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADHClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B3A7E522B09FF55001CEA12 /* ViewDebugIndicatorNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewDebugIndicatorNode.h; sourceTree = "<group>"; };
+		1B3A7E532B09FF55001CEA12 /* ViewDebugIndicatorNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewDebugIndicatorNode.m; sourceTree = "<group>"; };
 		1F052675227D8AD4003D84C1 /* WebDebugViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebDebugViewController.h; sourceTree = "<group>"; };
 		1F052676227D8AD4003D84C1 /* WebDebugViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebDebugViewController.m; sourceTree = "<group>"; };
 		1F052677227D8AD4003D84C1 /* WebDebugViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebDebugViewController.xib; sourceTree = "<group>"; };
@@ -4162,6 +4165,8 @@
 			children = (
 				1FB918A722183C35008D5B0F /* ViewDebugNode.h */,
 				1FB918A822183C35008D5B0F /* ViewDebugNode.m */,
+				1B3A7E522B09FF55001CEA12 /* ViewDebugIndicatorNode.h */,
+				1B3A7E532B09FF55001CEA12 /* ViewDebugIndicatorNode.m */,
 			);
 			path = 3d;
 			sourceTree = "<group>";
@@ -5471,6 +5476,7 @@
 				1F68AE1720E71C7D00CBEB05 /* theme.c in Sources */,
 				1FBB931F20498236008AB8CF /* ConnectItemCell.m in Sources */,
 				1F68AE1220E71C7D00CBEB05 /* packager.c in Sources */,
+				1B3A7E542B09FF55001CEA12 /* ViewDebugIndicatorNode.m in Sources */,
 				1FEC93632235D6A700B24162 /* ViewFontAttributeCell.m in Sources */,
 				1FCD05DC221DA034002FF3EA /* ADHAttributeRender.m in Sources */,
 				1FA18FC11FA5ACB100DC85E2 /* FileBrowserViewController.m in Sources */,

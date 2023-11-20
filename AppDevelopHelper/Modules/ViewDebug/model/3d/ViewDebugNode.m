@@ -8,8 +8,12 @@
 
 #import "ViewDebugNode.h"
 #import "ViewDebugDomain.h"
+#import "DeviceUtil.h"
+#import "ViewDebugIndicatorNode.h"
 
 @interface ViewDebugNode ()
+
+@property (nonatomic, strong) ViewDebugIndicatorNode *indicatorNode;
 
 @end
 
@@ -43,32 +47,11 @@
     return isTransparent;
 }
 
+#pragma mark alpha node border
+
 - (void)addBorder {
-    ViewDebugNode *node = self;
-    SCNGeometry *gemotry = node.geometry;
-    //add border
-    SCNVector3 min, max;
-    [gemotry getBoundingBoxMin:&min max:&max];
-    SCNVector3 topLeft = SCNVector3Make(min.x, max.y, 0);
-    SCNVector3 topRight = SCNVector3Make(max.x, max.y, 0);
-    SCNVector3 bottomLeft = SCNVector3Make(min.x, min.y, 0);
-    SCNVector3 bottomRight = SCNVector3Make(max.x, min.y, 0);
-    
     NSColor *lineColor = [NSColor colorWithWhite:1.0 alpha:0.4];
-    SCNNode *topLine = [self createLineFrom:topLeft to:topRight color:lineColor];
-    SCNNode *leftLine = [self createLineFrom:topLeft to:bottomLeft color:lineColor];
-    SCNNode *bottomLine = [self createLineFrom:bottomLeft to:bottomRight color:lineColor];
-    SCNNode *rightLine = [self createLineFrom:topRight to:bottomRight color:lineColor];
-    
-    topLine.name = @"border";
-    leftLine.name = @"border";
-    bottomLine.name = @"border";
-    rightLine.name = @"border";
-    
-    [node addChildNode:topLine];
-    [node addChildNode:leftLine];
-    [node addChildNode:bottomLine];
-    [node addChildNode:rightLine];
+    [self addRectBorder:@"border" color:lineColor];
 }
 
 - (NSArray<ViewDebugNode *> *)borderNodes {
@@ -92,115 +75,42 @@
     }
 }
 
-- (void)addHighlightedBorder {
-    ViewDebugNode *node = self;
-    SCNNode * hNode = [node childNodeWithName:@"higlighted" recursively:NO];
-    if(hNode) {
-        //已经添加
+#pragma mark indicator
+
+- (void)addIndicatorNodeIfNeeded {
+    if (self.indicatorNode != nil) {
         return;
     }
-    SCNGeometry *gemotry = node.geometry;
-    //add border
-    SCNVector3 min, max;
-    [gemotry getBoundingBoxMin:&min max:&max];
-    SCNVector3 topLeft = SCNVector3Make(min.x, max.y, 0);
-    SCNVector3 topRight = SCNVector3Make(max.x, max.y, 0);
-    SCNVector3 bottomLeft = SCNVector3Make(min.x, min.y, 0);
-    SCNVector3 bottomRight = SCNVector3Make(max.x, min.y, 0);
-    
-    NSColor *lineColor = [NSColor blueColor];
-    SCNNode *topLine = [self createLineFrom:topLeft to:topRight color:lineColor];
-    SCNNode *leftLine = [self createLineFrom:topLeft to:bottomLeft color:lineColor];
-    SCNNode *bottomLine = [self createLineFrom:bottomLeft to:bottomRight color:lineColor];
-    SCNNode *rightLine = [self createLineFrom:topRight to:bottomRight color:lineColor];
-    
-    topLine.name = @"higlighted";
-    leftLine.name = @"higlighted";
-    bottomLine.name = @"higlighted";
-    rightLine.name = @"higlighted";
-    
-    [node addChildNode:topLine];
-    [node addChildNode:leftLine];
-    [node addChildNode:bottomLine];
-    [node addChildNode:rightLine];
-
+    SCNPlane *plane = (SCNPlane *)self.geometry;
+    SCNPlane *indicatorPlane = [SCNPlane planeWithWidth:plane.width height:plane.height];
+    ViewDebugIndicatorNode *indicatorNode = (ViewDebugIndicatorNode *)[ViewDebugIndicatorNode nodeWithGeometry:indicatorPlane];
+    indicatorNode.mainNode = self;
+    [self addChildNode:indicatorNode];
+    self.indicatorNode = indicatorNode;
 }
 
-- (void)recreateSelectedNodeIfNeeded {
-    NSArray *highlightNodes = [self highlightedNodes];
-    if(highlightNodes.count > 0) {
-        for (SCNNode *node in highlightNodes) {
-            [node removeFromParentNode];
-        }
-    }
-    SCNNode *selectedNode = [self selectedNode];
-    BOOL selected = (selectedNode && !selectedNode.hidden);
-    if(selectedNode) {
-        [selectedNode removeFromParentNode];
-    }
-    if(selected) {
-        [self addHighlightedBorder];
-        [self setSelected:YES];
-    }
+#pragma mark highlighted
+
+- (void)setHighlighted:(BOOL)highlighted {
+    [self addIndicatorNodeIfNeeded];
+    self.indicatorNode.highlighted = highlighted;
 }
 
-- (NSArray<ViewDebugNode *> *)highlightedNodes {
-    NSMutableArray *hNodes = [NSMutableArray array];
-    NSArray *children = [self childNodes];
-    for (SCNNode *node in children) {
-        if([node.name isEqualToString:@"higlighted"]) {
-            [hNodes addObject:node];
-        }
-    }
-    return hNodes;
+#pragma mark selected
+
+- (void)setSelected:(BOOL)selected {
+    [self addIndicatorNodeIfNeeded];
+    self.indicatorNode.selected = selected;
 }
 
-- (SCNNode *)selectedNode {
-    SCNNode *sNode = [self childNodeWithName:@"selected" recursively:NO];
-    return sNode;
+#pragma mark focused
+
+- (void)setFocused:(BOOL)focused {
+    [self addIndicatorNodeIfNeeded];
+    self.indicatorNode.focused = focused;
 }
 
-- (void)setHighlighted: (BOOL)highlighted {
-    if(highlighted) {
-        //add highlighted border
-        [self addHighlightedBorder];
-        NSArray *hNodes = [self highlightedNodes];
-        for (SCNNode *node in hNodes) {
-            node.hidden = NO;
-        }
-    }else {
-        NSArray *hNodes = [self highlightedNodes];
-        for (SCNNode *node in hNodes) {
-            node.hidden = YES;
-        }
-    }
-}
-
-- (void)setSelected: (BOOL)selected {
-    ViewDebugNode *node = self;
-    if(selected) {
-        //add s node
-        SCNPlane *plane = (SCNPlane *)node.geometry;
-        SCNNode *sNode = [node childNodeWithName:@"selected" recursively:NO];
-        if(!sNode) {
-            SCNPlane *sPlane = [SCNPlane planeWithWidth:plane.width height:plane.height];
-            sPlane.firstMaterial.diffuse.contents = [[NSColor blueColor] colorWithAlphaComponent:0.3];
-            SCNNode *sNode = [SCNNode nodeWithGeometry:sPlane];
-            sNode.name = @"selected";
-            [node addChildNode:sNode];
-        }else {
-            sNode.hidden = NO;
-        }
-    }else {
-        SCNNode *sNode = [node childNodeWithName:@"selected" recursively:NO];
-        if(sNode) {
-            sNode.hidden = YES;
-        }
-        [self setHighlighted:NO];
-    }
-}
-
-                             
+#pragma mark actions
 
 - (void)updateAttrState: (NSString *)key snapshot: (NSData *)snapshot scale: (CGFloat)nodeScale {
     ADHViewNode *viewNode = self.viewNode;
@@ -228,7 +138,9 @@
         }
         if(sizeUpdate) {
             [self recreateBorderIfNeeded];
-            [self recreateSelectedNodeIfNeeded];
+            if (self.indicatorNode) {
+                [self.indicatorNode updateStyle];
+            }
         }
     }
     if(snapshot) {
@@ -264,5 +176,31 @@
     return geometry;
 }
 
+- (void)addRectBorder:(NSString *)name color:(NSColor *)color {
+    ViewDebugNode *node = self;
+    SCNGeometry *gemotry = node.geometry;
+    //add border
+    SCNVector3 min, max;
+    [gemotry getBoundingBoxMin:&min max:&max];
+    SCNVector3 topLeft = SCNVector3Make(min.x, max.y, 0);
+    SCNVector3 topRight = SCNVector3Make(max.x, max.y, 0);
+    SCNVector3 bottomLeft = SCNVector3Make(min.x, min.y, 0);
+    SCNVector3 bottomRight = SCNVector3Make(max.x, min.y, 0);
+    
+    SCNNode *topLine = [self createLineFrom:topLeft to:topRight color:color];
+    SCNNode *leftLine = [self createLineFrom:topLeft to:bottomLeft color:color];
+    SCNNode *bottomLine = [self createLineFrom:bottomLeft to:bottomRight color:color];
+    SCNNode *rightLine = [self createLineFrom:topRight to:bottomRight color:color];
+    
+    topLine.name = name;
+    leftLine.name = name;
+    bottomLine.name = name;
+    rightLine.name = name;
+    
+    [node addChildNode:topLine];
+    [node addChildNode:leftLine];
+    [node addChildNode:bottomLine];
+    [node addChildNode:rightLine];
+}
 
 @end
