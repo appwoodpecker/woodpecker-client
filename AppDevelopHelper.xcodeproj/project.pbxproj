@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		1B3A7E542B09FF55001CEA12 /* ViewDebugIndicatorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A7E532B09FF55001CEA12 /* ViewDebugIndicatorNode.m */; };
+		1B3A7E5A2B0D02F8001CEA12 /* ViewMeasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A7E592B0D02F8001CEA12 /* ViewMeasure.swift */; };
+		1B3A7E602B0E3F55001CEA12 /* ViewMeasurePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A7E5F2B0E3F55001CEA12 /* ViewMeasurePreviewView.swift */; };
+		1B3A7E622B0E42A2001CEA12 /* NSView.Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A7E612B0E42A2001CEA12 /* NSView.Extension.swift */; };
+		1B3A7E672B0E443C001CEA12 /* NSTextField.Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A7E642B0E443C001CEA12 /* NSTextField.Extension.swift */; };
+		1B3A7E682B0E443C001CEA12 /* NSColor.Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A7E652B0E443C001CEA12 /* NSColor.Extension.swift */; };
+		1B3A7E692B0E443C001CEA12 /* CGFloat.Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A7E662B0E443C001CEA12 /* CGFloat.Extension.swift */; };
+		1B3A7E6B2B11E5E7001CEA12 /* ViewLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3A7E6A2B11E5E7001CEA12 /* ViewLineView.swift */; };
 		1F052678227D8AD4003D84C1 /* WebDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F052676227D8AD4003D84C1 /* WebDebugViewController.m */; };
 		1F052679227D8AD4003D84C1 /* WebDebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F052677227D8AD4003D84C1 /* WebDebugViewController.xib */; };
 		1F0547C62ABE8CC70036C431 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0547C52ABE8CC70036C431 /* Device.swift */; };
@@ -859,6 +866,13 @@
 		14FF499EECA49E02C69938ED /* Pods_ADHClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADHClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B3A7E522B09FF55001CEA12 /* ViewDebugIndicatorNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewDebugIndicatorNode.h; sourceTree = "<group>"; };
 		1B3A7E532B09FF55001CEA12 /* ViewDebugIndicatorNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewDebugIndicatorNode.m; sourceTree = "<group>"; };
+		1B3A7E592B0D02F8001CEA12 /* ViewMeasure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMeasure.swift; sourceTree = "<group>"; };
+		1B3A7E5F2B0E3F55001CEA12 /* ViewMeasurePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMeasurePreviewView.swift; sourceTree = "<group>"; };
+		1B3A7E612B0E42A2001CEA12 /* NSView.Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSView.Extension.swift; sourceTree = "<group>"; };
+		1B3A7E642B0E443C001CEA12 /* NSTextField.Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTextField.Extension.swift; sourceTree = "<group>"; };
+		1B3A7E652B0E443C001CEA12 /* NSColor.Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColor.Extension.swift; sourceTree = "<group>"; };
+		1B3A7E662B0E443C001CEA12 /* CGFloat.Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloat.Extension.swift; sourceTree = "<group>"; };
+		1B3A7E6A2B11E5E7001CEA12 /* ViewLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLineView.swift; sourceTree = "<group>"; };
 		1F052675227D8AD4003D84C1 /* WebDebugViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebDebugViewController.h; sourceTree = "<group>"; };
 		1F052676227D8AD4003D84C1 /* WebDebugViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebDebugViewController.m; sourceTree = "<group>"; };
 		1F052677227D8AD4003D84C1 /* WebDebugViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebDebugViewController.xib; sourceTree = "<group>"; };
@@ -1980,6 +1994,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B3A7E632B0E4426001CEA12 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1B3A7E662B0E443C001CEA12 /* CGFloat.Extension.swift */,
+				1B3A7E652B0E443C001CEA12 /* NSColor.Extension.swift */,
+				1B3A7E642B0E443C001CEA12 /* NSTextField.Extension.swift */,
+				1B3A7E612B0E42A2001CEA12 /* NSView.Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		1F05AF512AB54C8500D08DBF /* Wooder */ = {
 			isa = PBXGroup;
 			children = (
@@ -2111,6 +2136,7 @@
 		1F0F0BE01FAD77F800E2CCC8 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				1B3A7E632B0E4426001CEA12 /* Extension */,
 				1F68AD9B20E7188100CBEB05 /* Library */,
 				1F5F2F1C222241E700B8B0DA /* CrossPlatform */,
 				1F9F962A20C02F7D006C5BAC /* Deflate */,
@@ -2342,6 +2368,8 @@
 				1F238CAC223F15D9009F2B12 /* ViewTreeCell.h */,
 				1F238CAD223F15D9009F2B12 /* ViewTreeCell.m */,
 				1F238CAF223F15E5009F2B12 /* ViewTreeCell.xib */,
+				1B3A7E5F2B0E3F55001CEA12 /* ViewMeasurePreviewView.swift */,
+				1B3A7E6A2B11E5E7001CEA12 /* ViewLineView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3974,6 +4002,7 @@
 				1FCD05DE221DA128002FF3EA /* ADHAttributeUtil.m */,
 				1F238CB2223F1A76009F2B12 /* ViewDebugDomain.h */,
 				1F238CB3223F1A76009F2B12 /* ViewDebugDomain.m */,
+				1B3A7E592B0D02F8001CEA12 /* ViewMeasure.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -4670,6 +4699,7 @@
 				1F457C981F9F65C500C7D604 /* Resources */,
 				1F6195F41FCAA5310095D22E /* Embed Frameworks */,
 				1F3311292AA6181800EBBE26 /* CopyFiles */,
+				DC8A71BEDA7DC76BFFA388AD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -5092,6 +5122,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DC8A71BEDA7DC76BFFA388AD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Woodpecker/Pods-Woodpecker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Woodpecker/Pods-Woodpecker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -5257,6 +5307,7 @@
 				1F68AE1120E71C7D00CBEB05 /* shared_strings.c in Sources */,
 				1F1ECE92205B833300AA4F14 /* DeviceInfoViewController.m in Sources */,
 				1F238CB4223F1A76009F2B12 /* ViewDebugDomain.m in Sources */,
+				1B3A7E6B2B11E5E7001CEA12 /* ViewLineView.swift in Sources */,
 				1FDB2A95219FB73F00A1A0AA /* ToolsViewController.m in Sources */,
 				1FE5B7241FB7FF9B007C6F6E /* SplitTestViewController.m in Sources */,
 				1F55F6C9247F40F400312CA2 /* ADHFileNode.m in Sources */,
@@ -5309,6 +5360,7 @@
 				1FE5D6FB2812F4BE007E0179 /* XYStoreUserDefaultsPersistence.m in Sources */,
 				1FE5D6F62812F4BE007E0179 /* XYStoreiTunesReceiptVerifier.m in Sources */,
 				1FFF7DD22262CC6B0070E7F1 /* WelcomeViewController.m in Sources */,
+				1B3A7E682B0E443C001CEA12 /* NSColor.Extension.swift in Sources */,
 				1FE5C607208C1E19000EC631 /* ADHControllerHierarchy.m in Sources */,
 				1F4BEDFE20B95A5900410C69 /* WebActionService.m in Sources */,
 				1FE5D6F02812F4BE007E0179 /* XYStore.m in Sources */,
@@ -5418,6 +5470,7 @@
 				1F2AD91320E1138800597929 /* LocalizationRow.m in Sources */,
 				1F74F281219704B60012B7CB /* NSData+ADHBase64.m in Sources */,
 				1F0A6E1C2337136600417E9D /* ADHCloudItem.m in Sources */,
+				1B3A7E692B0E443C001CEA12 /* CGFloat.Extension.swift in Sources */,
 				1F3AD2CC2048F5A10010A156 /* PresentAnimator.m in Sources */,
 				1FC7DDA121154C2A004A9520 /* LocalizationUtil.m in Sources */,
 				1FEC93592235265600B24162 /* ViewValueAttributeCell.m in Sources */,
@@ -5454,6 +5507,7 @@
 				1FE5C5F12083888C000EC631 /* UrlUtil.m in Sources */,
 				1FB918B6221932B9008D5B0F /* ViewDebugViewController.m in Sources */,
 				1F0F95C324847E62007BA53E /* StateCollectionAddItem.m in Sources */,
+				1B3A7E622B0E42A2001CEA12 /* NSView.Extension.swift in Sources */,
 				1F68AE1920E71C7D00CBEB05 /* worksheet.c in Sources */,
 				1F9F967A20C408C1006C5BAC /* UpdateInfoViewController.m in Sources */,
 				1F3AD2D02048F8190010A156 /* NSView+Size.m in Sources */,
@@ -5471,6 +5525,7 @@
 				1F68AE1F20E71C7D00CBEB05 /* app.c in Sources */,
 				1FDB8A5121F41E8400B835FD /* BundleItemView.m in Sources */,
 				1F11B86E20A7D56F0033B568 /* FunctionUtil.m in Sources */,
+				1B3A7E602B0E3F55001CEA12 /* ViewMeasurePreviewView.swift in Sources */,
 				1FEAD92C20F9F34D00BE387B /* ADHFileActivityItem.m in Sources */,
 				1F98AA511FD837FE00664B50 /* NetworkActionService.m in Sources */,
 				1F68AE1720E71C7D00CBEB05 /* theme.c in Sources */,
@@ -5496,6 +5551,7 @@
 				1F238C9F223DE847009F2B12 /* ViewGestureRecognizerViewController.m in Sources */,
 				1F3FC1CE1FE94B1300321D45 /* DispatchQueueTestViewController.m in Sources */,
 				1F4C06061FB725EB00A0AFD1 /* TestWindowController.m in Sources */,
+				1B3A7E672B0E443C001CEA12 /* NSTextField.Extension.swift in Sources */,
 				1F68AE1E20E71C7D00CBEB05 /* content_types.c in Sources */,
 				1FB43AB820AB03A300BD5B85 /* JsonKVCell.m in Sources */,
 				1FE5D6F32812F4BE007E0179 /* NSObject+YYModel.m in Sources */,
@@ -5512,6 +5568,7 @@
 				1F9F966E20C3EA1B006C5BAC /* NotificationInfoItemCell.m in Sources */,
 				1FEC933C22314D0200B24162 /* ViewSelectAttributeCell.m in Sources */,
 				1F3C22611FEE257700421A91 /* NetworkService.m in Sources */,
+				1B3A7E5A2B0D02F8001CEA12 /* ViewMeasure.swift in Sources */,
 				1FBB932E204AA044008AB8CF /* NotificationCell.m in Sources */,
 				1F0F0C171FADA6B400E2CCC8 /* EGODatabaseResult.m in Sources */,
 				1F3AD2A3204583C80010A156 /* NotificationActionService.m in Sources */,

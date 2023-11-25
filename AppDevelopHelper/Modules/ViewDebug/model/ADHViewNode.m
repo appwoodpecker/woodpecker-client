@@ -120,4 +120,12 @@
     return viewAttr;
 }
 
+- (ADH_FRAME)frame {
+    return self.viewAttribute.frame;
+}
+
+- (ADH_FRAME)frameInWindow {
+    return self.viewAttribute.frameInWindow;
+}
+
 @end

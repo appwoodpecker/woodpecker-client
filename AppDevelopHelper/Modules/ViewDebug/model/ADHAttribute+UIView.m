@@ -24,7 +24,7 @@
         CGRect frameInWindow = [view convertRect:view.bounds toView:view.window];
         attr.frameInWindow = adhFrameFromFrame(frameInWindow);
     } else {
-        attr.frameInWindow = adhFrameMake(0, 0, 0, 0);
+        attr.frameInWindow = adhFrameMake(0, 0, view.frame.size.width, view.frame.size.height);
     }
     attr.backgroundColor = adhColorFromUIColor(view.backgroundColor);
     attr.alpha = view.alpha;

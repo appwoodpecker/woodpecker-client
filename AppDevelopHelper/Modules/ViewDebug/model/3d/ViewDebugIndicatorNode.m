@@ -7,13 +7,17 @@
 //
 
 #import "ViewDebugIndicatorNode.h"
+#import "ViewDebugDomain.h"
 
 @interface ViewDebugIndicatorNode ()
 
+//border
 @property (nonatomic, strong) SCNNode *topLine;
 @property (nonatomic, strong) SCNNode *leftLine;
 @property (nonatomic, strong) SCNNode *bottomLine;
 @property (nonatomic, strong) SCNNode *rightLine;
+
+@property (nonatomic, strong) SCNNode *sizeNode;
 
 @end
 
@@ -37,6 +41,18 @@
         SCNGeometry *line = lineNode.geometry;
         line.firstMaterial.diffuse.contents = borderColor;
     }
+    //
+    if (self.selected) {
+        SCNText *sizeText = (SCNText *)self.sizeNode.geometry;
+        ADHViewAttribute *attr = self.mainNode.viewNode.viewAttribute;
+        CGFloat width = attr.frame.width;
+        CGFloat height = attr.frame.height;
+        sizeText.string = [NSString stringWithFormat:@"%.f, %.f",width,height];
+        [self addChildNode:self.sizeNode];
+    } else {
+        [self.sizeNode removeFromParentNode];
+    }
+    
 }
 
 - (void)createBorderIfNeeded {
@@ -44,7 +60,7 @@
         return;
     }
     [self addRectBorder];
- }
+}
 
 - (NSArray *)borderLines {
     return @[self.topLine, self.leftLine, self.bottomLine, self.rightLine];
@@ -84,6 +100,19 @@
     return [[NSColor redColor] colorWithAlphaComponent:0.3];
 }
 
+#pragma mark getter
+
+- (SCNNode *)sizeNode {
+    if (_sizeNode == nil) {
+        SCNText *text = [SCNText textWithString:@"AAA" extrusionDepth:0];
+        text.font = [NSFont systemFontOfSize:14 weight:NSFontWeightBold];
+        text.firstMaterial.diffuse.contents = NSColor.blueColor;
+        SCNNode *node = [SCNNode nodeWithGeometry:text];
+        _sizeNode = node;
+    }
+    return _sizeNode;
+}
+
 #pragma mark util
 
 - (SCNNode *)createLineFrom:(SCNVector3)start to:(SCNVector3)end {
@@ -92,11 +121,6 @@
     SCNGeometryElement *element = [SCNGeometryElement geometryElementWithData:source.data primitiveType:SCNGeometryPrimitiveTypeLine primitiveCount:2 bytesPerIndex:source.data.length/2];
     SCNGeometry *line = [SCNGeometry geometryWithSources:@[source] elements:@[element]];
     SCNNode *lineNode = [SCNNode nodeWithGeometry:line];
-    /*
-    SCNMaterial * material = [[SCNMaterial alloc] init];
-    material.diffuse.contents = color;
-    line.materials = @[material];
-    */
     return lineNode;
 }
 
@@ -126,3 +150,4 @@
 }
 
 @end
+

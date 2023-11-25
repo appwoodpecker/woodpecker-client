@@ -149,8 +149,6 @@
     if(factor > 1.0) {
         factor = 1.0;
     }
-    //node scale
-    self.domain.nodeScale = factor * kBaseNodeScale;
 }
 
 - (void)onNodeSelectStateUpdate: (NSNotification *)noti {

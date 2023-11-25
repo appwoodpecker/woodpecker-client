@@ -15,13 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) ADHViewNode * viewNode;
 
-+ (ViewDebugNode *)nodeWithVNode: (ADHViewNode *)viewNode scale: (CGFloat)scale;
++ (ViewDebugNode *)nodeWithVNode:(ADHViewNode *)viewNode;
 
 - (void)setHighlighted:(BOOL)highlighted;
 - (void)setSelected:(BOOL)selected;
 - (void)setFocused:(BOOL)focused;
 
-- (void)updateAttrState: (NSString *)key snapshot: (NSData *)snapshot scale: (CGFloat)nodeScale;
+- (void)updateAttrState: (NSString *)key snapshot: (NSData *)snapshot;
 - (void)updateSnapshot: (NSData *)imageData;
 
 @end

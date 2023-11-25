@@ -11,7 +11,8 @@
 #import "ViewDebugNode.h"
 #import "ADHViewDebugUtil.h"
 #import "ViewDebugIndicatorNode.h"
-
+#import "Woodpecker-Swift.h"
+@import Masonry;
 @import SceneKit;
 
 static CGFloat const kNodeZSpace = 0.3;
@@ -44,6 +45,8 @@ static CGFloat const kNodeZSpace = 0.3;
 
 @property (nonatomic, strong) NSTrackingArea *trackingArea;
 @property (nonatomic, assign) BOOL bViewLayouted;
+@property (nonatomic, strong) ViewMeasurePreviewView *measureView;
+
 
 @property (nonatomic, assign) BOOL optionPressed;
 
@@ -66,6 +69,11 @@ static CGFloat const kNodeZSpace = 0.3;
 - (void)setupAfterXib {
     self.actionLayout.wantsLayer = YES;
     [self updateAppearanceUI];
+    [self.view addSubview:self.measureView];
+    [self.measureView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).inset(320);
+        make.right.equalTo(self.view).inset(200);
+    }];
 }
 
 - (void)initUI {
@@ -82,6 +90,8 @@ static CGFloat const kNodeZSpace = 0.3;
     sceneView.backgroundColor = [NSColor colorWithRed:0x40/255.0f green:0x40/255.0f blue:0x40/255.0f alpha:1.0f];
     self.sceneView = sceneView;
     self.scene = scene;
+    CGFloat scale = 0.013;
+    scene.rootNode.scale = SCNVector3Make(scale, scale, 1);
     SCNCamera * camera = [[SCNCamera alloc] init];
     camera.usesOrthographicProjection = YES;
     camera.orthographicScale = 5;
@@ -138,6 +148,7 @@ static CGFloat const kNodeZSpace = 0.3;
     self.nodeTree = self.domain.rootNode;
     self.snapshotData = self.domain.snapshotData;
     [self renderNodeTree];
+    self.measureView.rootNode = self.domain.rootNode;
 }
 
 - (void)onSnapshotUpdate: (NSNotification *)noti {
@@ -223,7 +234,7 @@ static CGFloat const kNodeZSpace = 0.3;
 
 - (void)renderNode: (ADHViewNode *)vNode parent: (SCNNode *)parent {
     ADHViewAttribute *attr = [vNode viewAttribute];
-    ViewDebugNode *node = [ViewDebugNode nodeWithVNode:vNode scale:self.domain.nodeScale];
+    ViewDebugNode *node = [ViewDebugNode nodeWithVNode:vNode];
     if(!node) {
         return;
     }
@@ -234,9 +245,8 @@ static CGFloat const kNodeZSpace = 0.3;
         self.contentNode = node;
     }else {
         SCNPlane *parentPlane = (SCNPlane *)(parent.geometry);
-        CGFloat nodeScale = self.domain.nodeScale;
-        CGFloat x = -(attr.frame.centerX*nodeScale - parentPlane.width/2.0f);
-        CGFloat y = attr.frame.centerY*nodeScale - parentPlane.height/2.0f;
+        CGFloat x = -(attr.frame.centerX - parentPlane.width/2.0f);
+        CGFloat y = attr.frame.centerY - parentPlane.height/2.0f;
         CGFloat z = (vNode.d3Level-vNode.parent.d3Level) * kNodeZSpace;
         SCNVector3 position = SCNVector3Make(-x, -y, z);
         node.position = position;
@@ -252,7 +262,7 @@ static CGFloat const kNodeZSpace = 0.3;
 
 - (void)renderNode: (ADHViewNode *)vNode parent: (SCNNode *)parent baseLevel: (int)baseLevel level: (int *)level {
     ADHViewAttribute *attr = [vNode viewAttribute];
-    ViewDebugNode *node = [ViewDebugNode nodeWithVNode:vNode scale:self.domain.nodeScale];
+    ViewDebugNode *node = [ViewDebugNode nodeWithVNode:vNode];
     if(!node) {
         return;
     }
@@ -263,9 +273,8 @@ static CGFloat const kNodeZSpace = 0.3;
         self.contentNode = node;
     }else {
         SCNPlane *parentPlane = (SCNPlane *)(parent.geometry);
-        CGFloat nodeScale = self.domain.nodeScale;
-        CGFloat x = -(attr.frame.centerX*nodeScale - parentPlane.width/2.0f);
-        CGFloat y = attr.frame.centerY*nodeScale - parentPlane.height/2.0f;
+        CGFloat x = -(attr.frame.centerX - parentPlane.width/2.0f);
+        CGFloat y = attr.frame.centerY - parentPlane.height/2.0f;
         CGFloat z = (*level - baseLevel) * kNodeZSpace;
         SCNVector3 position = SCNVector3Make(-x, -y, z);
         node.position = position;
@@ -359,7 +368,7 @@ static CGFloat const kNodeZSpace = 0.3;
         ViewDebugNode *dNode = [self findDebugNodeWithvNode:node];
         if(dNode) {
             NSData *snapshot = [self.domain snapshotData][node.weakViewAddr];
-            [dNode updateAttrState:key snapshot:snapshot scale:self.domain.nodeScale];
+            [dNode updateAttrState:key snapshot:snapshot];
         }
     }
 }
@@ -412,6 +421,7 @@ static CGFloat const kNodeZSpace = 0.3;
             info[@"node"] = vnode;
         }
     }
+    [self updateMeasureUI];
     //notify
     [[NSNotificationCenter defaultCenter] postNotificationName:kViewDebugNodeSelectStateNotification object:self userInfo:info];
 }
@@ -469,6 +479,7 @@ static CGFloat const kNodeZSpace = 0.3;
         return;
     }
     [self.highlightedNode setFocused:YES];
+    [self updateMeasureUI];
 }
 
 - (void)onOptionReleased {
@@ -476,6 +487,7 @@ static CGFloat const kNodeZSpace = 0.3;
         return;
     }
     [self.highlightedNode setFocused:NO];
+    [self updateMeasureUI];
 }
 
 
@@ -491,6 +503,20 @@ static CGFloat const kNodeZSpace = 0.3;
     SCNNode *camera = self.sceneView.pointOfView;
     camera.eulerAngles = SCNVector3Zero;
     camera.position = SCNVector3Make(0, 0, 10000);
+}
+
+#pragma mark measure
+
+- (ViewMeasurePreviewView *)measureView {
+    if (!_measureView) {
+        _measureView = [ViewMeasurePreviewView createView];
+    }
+    return _measureView;
+}
+
+- (void)updateMeasureUI {
+    self.measureView.mainNode = self.selectedNode.viewNode;
+    self.measureView.targetNode = self.highlightedNode.viewNode;
 }
 
 @end

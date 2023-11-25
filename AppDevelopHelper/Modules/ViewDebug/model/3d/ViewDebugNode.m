@@ -19,13 +19,13 @@
 
 @implementation ViewDebugNode
 
-+ (ViewDebugNode *)nodeWithVNode: (ADHViewNode *)viewNode scale: (CGFloat)nodeScale {
++ (ViewDebugNode *)nodeWithVNode: (ADHViewNode *)viewNode {
     ADHViewAttribute *attr = [viewNode viewAttribute];
     if(attr.frame.width == 0 || attr.frame.height == 0) {
         return nil;
     }
-    CGFloat width = attr.frame.width * nodeScale;
-    CGFloat height = attr.frame.height * nodeScale;
+    CGFloat width = attr.frame.width;
+    CGFloat height = attr.frame.height;
     SCNPlane *plane = [SCNPlane planeWithWidth:width height:height];
     NSImage *image = [NSImage imageNamed:@"icon_transparent"];
     plane.firstMaterial.diffuse.contents = image;
@@ -112,14 +112,14 @@
 
 #pragma mark actions
 
-- (void)updateAttrState: (NSString *)key snapshot: (NSData *)snapshot scale: (CGFloat)nodeScale {
+- (void)updateAttrState: (NSString *)key snapshot: (NSData *)snapshot {
     ADHViewNode *viewNode = self.viewNode;
     SCNPlane *plane = (SCNPlane *)self.geometry;
     if([key isEqualToString:@"frame"]) {
         ADHViewAttribute *attr = [viewNode viewAttribute];
         
-        CGFloat width = attr.frame.width * nodeScale;
-        CGFloat height = attr.frame.height * nodeScale;
+        CGFloat width = attr.frame.width;
+        CGFloat height = attr.frame.height;
         BOOL sizeUpdate = NO;
         if(width != plane.width || height != plane.height) {
             sizeUpdate = YES;
@@ -129,8 +129,8 @@
         ViewDebugNode *parent = (ViewDebugNode *)self.parentNode;
         if(parent) {
             SCNPlane *parentPlane = (SCNPlane *)(parent.geometry);
-            CGFloat x = -(attr.frame.centerX * nodeScale - parentPlane.width/2.0f);
-            CGFloat y = attr.frame.centerY * nodeScale - parentPlane.height/2.0f;
+            CGFloat x = -(attr.frame.centerX - parentPlane.width/2.0f);
+            CGFloat y = attr.frame.centerY - parentPlane.height/2.0f;
             SCNVector3 position = self.position;
             position.x = -x;
             position.y = -y;

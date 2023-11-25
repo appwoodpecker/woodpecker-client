@@ -34,6 +34,9 @@
 
 - (ADHViewAttribute *)viewAttribute;
 
+- (ADH_FRAME)frame;
+- (ADH_FRAME)frameInWindow;
+
 //search
 @property (nonatomic, strong) NSArray * filteredChildNodes;
 

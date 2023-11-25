@@ -47,8 +47,6 @@ extern NSString *const kViewDebugNodeAttributeUpdateNotification;
 
 - (void)updateNodeSnapshot: (ADHViewNode *)node snapshot: (NSData *)snapshot;
 
-//3d node size缩放系数
-@property (nonatomic, assign) CGFloat nodeScale;
 @property (nonatomic, strong) NSString * serviceAddr;
 
 @end

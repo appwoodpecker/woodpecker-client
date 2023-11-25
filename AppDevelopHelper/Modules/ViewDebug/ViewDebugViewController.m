@@ -40,7 +40,6 @@
     ViewDebugDomain *domain = [[ViewDebugDomain alloc] init];
     domain.context = self.context;
     self.domain = domain;
-    self.domain.nodeScale = kBaseNodeScale;
 }
 
 - (void)setupAfterXib {

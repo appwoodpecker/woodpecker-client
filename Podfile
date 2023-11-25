@@ -5,6 +5,9 @@ target 'Woodpecker' do
   # Comment the next line if you don't want to use dynamic frameworks
   platform :macos, '10.12'
   use_frameworks!
+  
+  pod 'SnapKit', '5.6.0'
+  pod 'Masonry', '1.1.0'
 
 
 end
