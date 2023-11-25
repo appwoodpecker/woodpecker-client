@@ -23,23 +23,10 @@ class ViewMeasurePreviewView: NSView {
     lazy var targetView = createTargetView()
     lazy var mainView = createMainView()
     var measureViews = [NSView]()
-    var rootNode: ADHViewNode? {
-        didSet {
-            updateFrameUI()
-        }
-    }
     
-    var mainNode: ADHViewNode? {
-        didSet {
-            updateUI()
-        }
-    }
-    
-    var targetNode: ADHViewNode? {
-        didSet {
-            updateUI()
-        }
-    }
+    var rootNode: ADHViewNode?
+    var mainNode: ADHViewNode?
+    var targetNode: ADHViewNode?
     
     var containerSize: CGSize = .zero
     var windowSize: CGSize = .zero
@@ -98,24 +85,30 @@ class ViewMeasurePreviewView: NSView {
             make.height.equalTo(frameHeight)
         }
         //更新内容
-        updateUI()
         self.superview?.needsLayout = true
         self.superview?.layout()
     }
   
     
     func updateUI() {
-        guard let mainNode = mainNode else {
-            return
+        measureViews.forEach { view in
+            view.removeFromSuperview()
         }
-        let mainFactor = caculateNodeScaleFactor(mainNode.frameInWindow())
-        mainView.snp.remakeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(mainFactor.width)
-            make.height.equalToSuperview().multipliedBy(mainFactor.height)
-            make.centerX.equalToSuperview().multipliedBy(mainFactor.centerX)
-            make.centerY.equalToSuperview().multipliedBy(mainFactor.centerY)
+        measureViews.removeAll()
+        if let mainNode = mainNode {
+            mainView.isHidden = false
+            let mainFactor = caculateNodeScaleFactor(mainNode.frameInWindow())
+            mainView.snp.remakeConstraints { make in
+                make.width.equalToSuperview().multipliedBy(mainFactor.width)
+                make.height.equalToSuperview().multipliedBy(mainFactor.height)
+                make.centerX.equalToSuperview().multipliedBy(mainFactor.centerX)
+                make.centerY.equalToSuperview().multipliedBy(mainFactor.centerY)
+            }
+        } else {
+            mainView.isHidden = true
         }
         if let targetNode = self.targetNode {
+            targetView.isHidden = false
             let targertFactor = caculateNodeScaleFactor(targetNode.frameInWindow())
             targetView.snp.remakeConstraints { make in
                 make.width.equalToSuperview().multipliedBy(targertFactor.width)
@@ -123,12 +116,10 @@ class ViewMeasurePreviewView: NSView {
                 make.centerX.equalToSuperview().multipliedBy(targertFactor.centerX)
                 make.centerY.equalToSuperview().multipliedBy(targertFactor.centerY)
             }
+            updateMeasureUI()
+        } else {
+            targetView.isHidden = true
         }
-        measureViews.forEach { view in
-            view.removeFromSuperview()
-        }
-        measureViews.removeAll()
-        updateMeasureUI()
     }
     
     func updateMeasureUI() {
@@ -142,7 +133,7 @@ class ViewMeasurePreviewView: NSView {
         for joint in xJoints {
             addMeasureJoint(frame1: frame1, frame2: frame2, joint: joint, direction: .horizonal)
         }
-        let yJoints = ViewMeasure.caculateXJoint(r1: frame1, r2: frame2)
+        let yJoints = ViewMeasure.caculateYJoint(r1: frame1, r2: frame2)
         for joint in yJoints {
             addMeasureJoint(frame1: frame1, frame2: frame2, joint: joint, direction: .vertical)
         }
@@ -156,8 +147,13 @@ class ViewMeasurePreviewView: NSView {
             let endX = joint.border2 == .min ? frame2.minX : frame2.maxX
             let endY = startY
             //guide line
-            let rect = CGRect(x: startX, y: startY, width: endX - startX, height: 0)
-            let line = addXGuideLine(rect: rect)
+            let guideX = min(startX, endX)
+            let guideWidth = abs(endX - startX)
+            if guideWidth < 1 {
+                return
+            }
+            let rect = CGRect(x: guideX, y: startY, width:guideWidth, height: 0)
+            let line = addGuideLine(rect: rect, direction:.horizonal)
             if endY < frame2.minY || endY > frame2.maxY {
                 //dash guide line
                 let guideX = endX
@@ -171,33 +167,71 @@ class ViewMeasurePreviewView: NSView {
                     guideEndY = endY
                 }
                 let guideRect = CGRect(x: guideX, y: guideStartY, width: 0, height: guideEndY - guideStartY)
-                addYGuideLine(rect: guideRect, dash: true)
+                addGuideLine(rect: guideRect, direction: .vertical, dash: true)
             }
             //measure label
             let label = "\(Int(rect.width))"
-            addXGuideLabel(label: label, relative:line)
+            addGuideLabel(label: label, relative:line, direction:.horizonal)
         } else {
-            
+            let startX = frame1.midX
+            let startY = joint.border1 == .min ? frame1.minY : frame1.maxY
+            let endX = startX
+            let endY = joint.border2 == .min ? frame2.minY : frame2.maxY
+            //guide line
+            let guideY = min(startY, endY)
+            let guideHeight = abs(endY - startY)
+            if guideHeight < 1 {
+                return
+            }
+            let rect = CGRect(x: startX, y: guideY, width: 0, height: guideHeight)
+            let line = addGuideLine(rect: rect, direction: .vertical)
+            if endX < frame2.minX || endX > frame2.maxX {
+                //dash guide line
+                let guideY = endY
+                var guideStartX: CGFloat = 0
+                var guideEndX: CGFloat = 0
+                if endX < frame2.minX {
+                    guideStartX = endX
+                    guideEndX = frame2.minX
+                } else {
+                    guideStartX = frame2.maxX
+                    guideEndX = endX
+                }
+                let guideRect = CGRect(x: guideStartX, y:guideY , width: guideEndX - guideStartX, height: 0)
+                addGuideLine(rect: guideRect, direction:.horizonal, dash: true)
+            }
+            //measure label
+            let label = "\(Int(rect.height))"
+            addGuideLabel(label: label, relative:line, direction:.vertical)
         }
     }
     
     @discardableResult
-    func addXGuideLine(rect: CGRect, dash: Bool = false) -> NSView {
-        let line = ViewLineView(direction: .horizonal, dash: dash)
+    func addGuideLine(rect: CGRect, direction: Direction, dash: Bool = false) -> NSView {
+        let line = ViewLineView(direction: direction, dash: dash)
         let frame = adhFrameFromRect(rect: rect)
         frameView.addSubview(line)
         let factor = caculateNodeScaleFactor(frame)
-        line.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(factor.width)
-            make.height.equalTo(1)
-            make.centerX.equalToSuperview().multipliedBy(factor.centerX)
-            make.centerY.equalToSuperview().multipliedBy(factor.centerY)
+        if direction == .horizonal {
+            line.snp.makeConstraints { make in
+                make.width.equalToSuperview().multipliedBy(factor.width)
+                make.height.equalTo(1)
+                make.centerX.equalToSuperview().multipliedBy(factor.centerX)
+                make.centerY.equalToSuperview().multipliedBy(factor.centerY)
+            }
+        } else {
+            line.snp.makeConstraints { make in
+                make.width.equalTo(1)
+                make.height.equalToSuperview().multipliedBy(factor.height)
+                make.centerX.equalToSuperview().multipliedBy(factor.centerX)
+                make.centerY.equalToSuperview().multipliedBy(factor.centerY)
+            }
         }
         measureViews.append(line)
         return line
     }
     
-    func addXGuideLabel(label: String, relative line: NSView) {
+    func addGuideLabel(label: String, relative line: NSView, direction: Direction) {
         let textfield = NSTextField.createLabel()
         textfield.font = NSFont.systemFont(ofSize: 10.0)
         textfield.textColor = .white
@@ -206,33 +240,20 @@ class ViewMeasurePreviewView: NSView {
         textfield.cornerRadius = 4.0
         textfield.alignment = .center
         textfield.stringValue = label
-        textfield.sizeToFit()
-        let width = textfield.bounds.size.width + 8
-        let height = textfield.bounds.size.height
+        textfield.toolTip = label
         frameView.addSubview(textfield)
-        textfield.snp.makeConstraints { make in
-            make.top.equalTo(line).offset(8)
-            make.centerX.equalTo(line)
-            make.width.equalTo(width)
-            make.height.equalTo(height)
+        if direction == .horizonal {
+            textfield.snp.makeConstraints { make in
+                make.top.equalTo(line).offset(4)
+                make.centerX.equalTo(line)
+            }
+        } else {
+            textfield.snp.makeConstraints { make in
+                make.left.equalTo(line).offset(4)
+                make.centerY.equalTo(line)
+            }
         }
         measureViews.append(textfield)
-    }
-    
-    @discardableResult
-    func addYGuideLine(rect: CGRect, dash: Bool = false) -> NSView {
-        let line = ViewLineView(direction: .vertical, dash: dash)
-        let frame = adhFrameFromRect(rect: rect)
-        frameView.addSubview(line)
-        let factor = caculateNodeScaleFactor(frame)
-        line.snp.makeConstraints { make in
-            make.width.equalTo(1)
-            make.height.equalToSuperview().multipliedBy(factor.height)
-            make.centerX.equalToSuperview().multipliedBy(factor.centerX)
-            make.centerY.equalToSuperview().multipliedBy(factor.centerY)
-        }
-        measureViews.append(line)
-        return line
     }
     
 }

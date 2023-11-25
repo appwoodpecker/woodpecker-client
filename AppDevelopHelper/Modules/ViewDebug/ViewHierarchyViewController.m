@@ -148,7 +148,6 @@ static CGFloat const kNodeZSpace = 0.3;
     self.nodeTree = self.domain.rootNode;
     self.snapshotData = self.domain.snapshotData;
     [self renderNodeTree];
-    self.measureView.rootNode = self.domain.rootNode;
 }
 
 - (void)onSnapshotUpdate: (NSNotification *)noti {
@@ -161,8 +160,6 @@ static CGFloat const kNodeZSpace = 0.3;
         [self.contentNode removeFromParentNode];
         self.contentNode = nil;
     }
-    self.selectedNode = nil;
-    self.highlightedNode = nil;
     [self updateNodeTipUI];
     if (self.context.app.frameworkVersionValue >= 131) {
         //调整展示level
@@ -175,6 +172,11 @@ static CGFloat const kNodeZSpace = 0.3;
         [self renderNode:self.nodeTree parent:nil baseLevel:0 level:&level];
     }
     [self flattenHierarchyView];
+    self.measureView.rootNode = self.domain.rootNode;
+    self.selectedNode = nil;
+    self.highlightedNode = nil;
+    [self.measureView updateFrameUI];
+    [self updateMeasureUI];
 }
 
 - (void)traverseNodeLevel:(ADHViewNode *)vNode minLevel:(NSInteger)minLevel leveledViewNodes:(NSMutableDictionary<NSNumber *, ViewNodeLevelInfo *> *)levelInfos {
@@ -517,6 +519,7 @@ static CGFloat const kNodeZSpace = 0.3;
 - (void)updateMeasureUI {
     self.measureView.mainNode = self.selectedNode.viewNode;
     self.measureView.targetNode = self.highlightedNode.viewNode;
+    [self.measureView updateUI];
 }
 
 @end
