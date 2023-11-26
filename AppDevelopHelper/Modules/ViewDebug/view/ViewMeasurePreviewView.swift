@@ -29,7 +29,6 @@ class ViewMeasurePreviewView: NSView {
     var targetNode: ADHViewNode?
     
     var containerSize: CGSize = .zero
-    var windowSize: CGSize = .zero
         
     struct K {
         static let frameSize: CGFloat = 240
@@ -54,9 +53,10 @@ class ViewMeasurePreviewView: NSView {
         self.backgroundColor = NSColor(hex: 0x8FCD70)
         addSubview(frameView)
         frameView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+//            make.center.equalToSuperview()
             make.width.equalTo(0)
             make.height.equalTo(0)
+            make.edges.equalToSuperview().inset(8)
         }
         frameView.addSubview(mainView)
         frameView.addSubview(targetView)
@@ -79,14 +79,10 @@ class ViewMeasurePreviewView: NSView {
         let contentWidth = frameWidth + K.borderSize*2
         let contentHeight = frameHeight + K.borderSize*2
         self.containerSize = CGSize(width: contentWidth, height: contentHeight)
-        self.windowSize = CGSize(width: frameWidth, height: frameHeight)
         frameView.snp.updateConstraints { make in
             make.width.equalTo(frameWidth)
             make.height.equalTo(frameHeight)
         }
-        //更新内容
-        self.superview?.needsLayout = true
-        self.superview?.layout()
     }
   
     
@@ -305,10 +301,6 @@ extension ViewMeasurePreviewView {
         let view = NSView()
         view.backgroundColor = .systemRed.withAlphaComponent(0.5)
         return view
-    }
-    
-    override var intrinsicContentSize: NSSize {
-        return containerSize
     }
     
 }

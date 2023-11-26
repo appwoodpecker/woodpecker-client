@@ -70,15 +70,17 @@ static CGFloat const kNodeZSpace = 0.3;
     self.actionLayout.wantsLayer = YES;
     [self updateAppearanceUI];
     [self.view addSubview:self.measureView];
+    CGFloat edge = 20.0;
     [self.measureView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).inset(320);
-        make.right.equalTo(self.view).inset(200);
+        make.top.equalTo(self.view).inset(30+edge);
+        make.right.equalTo(self.view).inset(edge);
     }];
 }
 
 - (void)initUI {
     self.tipLabel.stringValue = @"";
     [self initScene];
+    self.measureView.hidden = true;
 }
 
 - (void)initScene {
@@ -176,6 +178,8 @@ static CGFloat const kNodeZSpace = 0.3;
     self.selectedNode = nil;
     self.highlightedNode = nil;
     [self.measureView updateFrameUI];
+    self.measureView.needsLayout = true;
+    [self.view layoutSubtreeIfNeeded];
     [self updateMeasureUI];
 }
 
@@ -389,25 +393,30 @@ static CGFloat const kNodeZSpace = 0.3;
         node = (ViewDebugNode *)testNode;
     }
     if(![node isKindOfClass:[ViewDebugNode class]]) {
-        if(self.highlightedNode && self.highlightedNode != self.selectedNode) {
-            [self.highlightedNode setHighlighted:NO];
-            [self.highlightedNode setFocused:NO];
-            self.highlightedNode = nil;
-        }
+        [self resetHighlightedNode];
+        [self showMeasureUI:false];
     } else {
-        if(self.highlightedNode == node) {
-            return;
+        //旧数据处理
+        if(self.highlightedNode != node) {
+            [self resetHighlightedNode];
+            [node setHighlighted:YES];
+            self.highlightedNode = node;
         }
-        if(self.highlightedNode && self.highlightedNode != self.selectedNode) {
-            [self.highlightedNode setHighlighted:NO];
-            [self.highlightedNode setFocused:NO];
-            self.highlightedNode = nil;
+        if (self.selectedNode != nil && self.highlightedNode == self.selectedNode) {
+            [self resetHighlightedNode];
         }
-        [node setHighlighted:YES];
-        self.highlightedNode = node;
         if (self.optionPressed) {
-            [node setFocused:YES];
+            [self.highlightedNode setFocused:YES];
+            [self showMeasureUI:true];
         }
+    }
+}
+
+- (void)resetHighlightedNode {
+    if(self.highlightedNode != nil) {
+        [self.highlightedNode setHighlighted:NO];
+        [self.highlightedNode setFocused:NO];
+        self.highlightedNode = nil;
     }
 }
 
@@ -423,30 +432,35 @@ static CGFloat const kNodeZSpace = 0.3;
             info[@"node"] = vnode;
         }
     }
-    [self updateMeasureUI];
     //notify
     [[NSNotificationCenter defaultCenter] postNotificationName:kViewDebugNodeSelectStateNotification object:self userInfo:info];
 }
 
 - (void)updateSelectedNode:(ViewDebugNode *)node {
+    if (self.highlightedNode != nil) {
+        [self.highlightedNode setHighlighted:NO];
+        self.highlightedNode = nil;
+    }
     if(![node isKindOfClass:[ViewDebugNode class]]) {
-        if(self.selectedNode) {
-            [self.selectedNode setSelected:NO];
-            self.selectedNode = nil;
+        [self resetSelectedNode];
+        [self resetHighlightedNode];
+    } else {
+        [self resetHighlightedNode];
+        if (self.selectedNode != node) {
+            [self resetSelectedNode];
+            [node setSelected:YES];
+            self.selectedNode = node;
         }
-    }else {
-        
-        if(self.selectedNode == node) {
-            return;
-        }
-        if(self.selectedNode) {
-            [self.selectedNode setSelected:NO];
-            self.selectedNode = nil;
-        }
-        [node setSelected:YES];
-        self.selectedNode = node;
     }
     [self updateNodeTipUI];
+    [self showMeasureUI:false];
+}
+
+- (void)resetSelectedNode {
+    if(self.selectedNode != nil) {
+        [self.selectedNode setSelected:NO];
+        self.selectedNode = nil;
+    }
 }
 
 - (void)updateNodeTipUI {
@@ -481,7 +495,7 @@ static CGFloat const kNodeZSpace = 0.3;
         return;
     }
     [self.highlightedNode setFocused:YES];
-    [self updateMeasureUI];
+    [self showMeasureUI:true];
 }
 
 - (void)onOptionReleased {
@@ -489,7 +503,7 @@ static CGFloat const kNodeZSpace = 0.3;
         return;
     }
     [self.highlightedNode setFocused:NO];
-    [self updateMeasureUI];
+    [self showMeasureUI:false];
 }
 
 
@@ -516,10 +530,37 @@ static CGFloat const kNodeZSpace = 0.3;
     return _measureView;
 }
 
+- (void)showMeasureUI:(BOOL)show {
+    BOOL nodeReady = self.selectedNode != nil && self.highlightedNode != nil;
+    if (show && nodeReady) {
+        [self updateMeasureUI];
+        self.measureView.hidden = false;
+    } else {
+        self.measureView.hidden = true;
+    }
+}
+
 - (void)updateMeasureUI {
-    self.measureView.mainNode = self.selectedNode.viewNode;
-    self.measureView.targetNode = self.highlightedNode.viewNode;
+    ADHViewNode *mainNode = self.selectedNode.viewNode;
+    ADHViewNode *targetNode = self.highlightedNode.viewNode;
+    if (mainNode != nil && targetNode != nil) {
+        CGRect frame1 = [self cgRectFromFrame:mainNode.frameInWindow];
+        CGRect frame2 = [self cgRectFromFrame:targetNode.frameInWindow];
+        if (CGRectContainsRect(frame2, frame1)) {
+            ADHViewNode *tmp = mainNode;
+            mainNode = targetNode;
+            targetNode = tmp;
+        }
+    }
+    self.measureView.mainNode = mainNode;
+    self.measureView.targetNode = targetNode;
     [self.measureView updateUI];
+}
+
+- (CGRect)cgRectFromFrame:(ADH_FRAME)frame {
+    CGFloat x = frame.centerX - frame.width/2;
+    CGFloat y = frame.centerY - frame.height/2;
+    return CGRectMake(x, y, frame.width, frame.height);
 }
 
 @end
