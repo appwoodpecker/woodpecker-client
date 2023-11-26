@@ -19,6 +19,7 @@ class ViewMeasurePreviewView: NSView {
         let centerY: CGFloat
     }
     
+    lazy var backgroundView = createBackgroundView()
     lazy var frameView = createFrameView()
     lazy var targetView = createTargetView()
     lazy var mainView = createMainView()
@@ -50,16 +51,18 @@ class ViewMeasurePreviewView: NSView {
     }
     
     func setupUI() {
-        self.backgroundColor = NSColor(hex: 0x8FCD70)
+        addSubview(backgroundView)
         addSubview(frameView)
-        frameView.snp.makeConstraints { make in
-//            make.center.equalToSuperview()
-            make.width.equalTo(0)
-            make.height.equalTo(0)
-            make.edges.equalToSuperview().inset(8)
-        }
         frameView.addSubview(mainView)
         frameView.addSubview(targetView)
+        backgroundView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        frameView.snp.makeConstraints { make in
+            make.width.equalTo(0)
+            make.height.equalTo(0)
+            make.edges.equalToSuperview().inset(4)
+        }
     }
     
     func updateFrameUI() {
@@ -245,7 +248,7 @@ class ViewMeasurePreviewView: NSView {
             }
         } else {
             textfield.snp.makeConstraints { make in
-                make.left.equalTo(line).offset(4)
+                make.left.equalTo(line.snp.right).offset(4)
                 make.centerY.equalTo(line)
             }
         }
@@ -264,8 +267,8 @@ extension ViewMeasurePreviewView {
         let frameHeight = frameNode.frame().height
         let widthScale = frame.width / frameWidth
         let heightScale = frame.height / frameHeight
-        let centerXScale = (frame.centerX / frameWidth) * 2
-        let centerYScale = (frame.centerY / frameHeight) * 2
+        let centerXScale = max((frame.centerX / frameWidth) * 2, 0.01)
+        let centerYScale = max((frame.centerY / frameHeight) * 2, 0.01)
         return ScaleFactor(width: widthScale, height: heightScale, centerX: centerXScale, centerY: centerYScale)
     }
     
@@ -285,9 +288,17 @@ extension ViewMeasurePreviewView {
 
 extension ViewMeasurePreviewView {
     
+    func createBackgroundView() -> NSView {
+        let view = NSView()
+        view.backgroundColor = NSColor(hex: 0x000000)
+        view.cornerRadius = 3
+        return view
+    }
+    
     func createFrameView() -> NSView {
         let view = NSView()
-        view.backgroundColor = .brown.withAlphaComponent(0.7)
+        view.backgroundColor = .white
+        view.cornerRadius = 2
         return view
     }
     
@@ -299,7 +310,7 @@ extension ViewMeasurePreviewView {
     
     func createTargetView() -> NSView {
         let view = NSView()
-        view.backgroundColor = .systemRed.withAlphaComponent(0.5)
+        view.backgroundColor = .systemRed.withAlphaComponent(0.3)
         return view
     }
     

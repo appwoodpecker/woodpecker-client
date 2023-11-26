@@ -546,7 +546,7 @@ static CGFloat const kNodeZSpace = 0.3;
     if (mainNode != nil && targetNode != nil) {
         CGRect frame1 = [self cgRectFromFrame:mainNode.frameInWindow];
         CGRect frame2 = [self cgRectFromFrame:targetNode.frameInWindow];
-        if (CGRectContainsRect(frame2, frame1)) {
+        if (CGRectContainsRect(frame1, frame2)) {
             ADHViewNode *tmp = mainNode;
             mainNode = targetNode;
             targetNode = tmp;

@@ -17,8 +17,6 @@
 @property (nonatomic, strong) SCNNode *bottomLine;
 @property (nonatomic, strong) SCNNode *rightLine;
 
-@property (nonatomic, strong) SCNNode *sizeNode;
-
 @end
 
 @implementation ViewDebugIndicatorNode
@@ -41,18 +39,6 @@
         SCNGeometry *line = lineNode.geometry;
         line.firstMaterial.diffuse.contents = borderColor;
     }
-    //
-    if (self.selected) {
-        SCNText *sizeText = (SCNText *)self.sizeNode.geometry;
-        ADHViewAttribute *attr = self.mainNode.viewNode.viewAttribute;
-        CGFloat width = attr.frame.width;
-        CGFloat height = attr.frame.height;
-        sizeText.string = [NSString stringWithFormat:@"%.f, %.f",width,height];
-        [self addChildNode:self.sizeNode];
-    } else {
-        [self.sizeNode removeFromParentNode];
-    }
-    
 }
 
 - (void)createBorderIfNeeded {
@@ -98,19 +84,6 @@
 
 - (NSColor *)focusedPlaneColor {
     return [[NSColor redColor] colorWithAlphaComponent:0.3];
-}
-
-#pragma mark getter
-
-- (SCNNode *)sizeNode {
-    if (_sizeNode == nil) {
-        SCNText *text = [SCNText textWithString:@"AAA" extrusionDepth:0];
-        text.font = [NSFont systemFontOfSize:14 weight:NSFontWeightBold];
-        text.firstMaterial.diffuse.contents = NSColor.blueColor;
-        SCNNode *node = [SCNNode nodeWithGeometry:text];
-        _sizeNode = node;
-    }
-    return _sizeNode;
 }
 
 #pragma mark util
