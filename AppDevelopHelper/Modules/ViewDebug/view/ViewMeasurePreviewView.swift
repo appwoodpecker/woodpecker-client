@@ -48,6 +48,14 @@ class ViewMeasurePreviewView: NSView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func addLayoutConstraint() {
+        self.snp.makeConstraints { make in
+            let edge: CGFloat = 20
+            make.top.equalToSuperview().inset(30+edge)
+            make.right.equalToSuperview().inset(edge)
+        }
+    }
+    
     func setupUI() {
         self.clipsToBounds = true
         addSubview(backgroundView)

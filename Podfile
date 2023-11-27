@@ -7,7 +7,6 @@ target 'Woodpecker' do
   use_frameworks!
   
   pod 'SnapKit', '5.6.0'
-  pod 'Masonry', '1.1.0'
 
 
 end

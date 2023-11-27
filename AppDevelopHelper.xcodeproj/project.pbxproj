@@ -4825,7 +4825,7 @@
 			);
 			mainGroup = 1F457C911F9F65C500C7D604;
 			packageReferences = (
-				1F05AF802AB5A20100D08DBF /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				1F05AF802AB5A20100D08DBF /* XCRemoteSwiftPackageReference "swift-argument-parser.git" */,
 			);
 			productRefGroup = 1F457C9B1F9F65C500C7D604 /* Products */;
 			projectDirPath = "";
@@ -5129,12 +5129,10 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Woodpecker/Pods-Woodpecker-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6253,7 +6251,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 74;
+				CURRENT_PROJECT_VERSION = 75;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6281,7 +6279,7 @@
 					"$(PROJECT_DIR)/AppDevelopHelper/Components/ReceiptCheck/OpenSSL-OSX/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.4.3;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6302,7 +6300,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 74;
+				CURRENT_PROJECT_VERSION = 75;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6326,7 +6324,7 @@
 					"$(PROJECT_DIR)/AppDevelopHelper/Components/ReceiptCheck/OpenSSL-OSX/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.4.3;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -6476,7 +6474,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 74;
+				CURRENT_PROJECT_VERSION = 75;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6501,7 +6499,7 @@
 					"$(PROJECT_DIR)/AppDevelopHelper/Components/ReceiptCheck/OpenSSL-OSX/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.4.3;
 				PRODUCT_BUNDLE_IDENTIFIER = lifebetter.woodpecker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -6718,7 +6716,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1F05AF802AB5A20100D08DBF /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+		1F05AF802AB5A20100D08DBF /* XCRemoteSwiftPackageReference "swift-argument-parser.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
 			requirement = {
@@ -6731,12 +6729,12 @@
 /* Begin XCSwiftPackageProductDependency section */
 		1F05AF812AB5A20100D08DBF /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1F05AF802AB5A20100D08DBF /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			package = 1F05AF802AB5A20100D08DBF /* XCRemoteSwiftPackageReference "swift-argument-parser.git" */;
 			productName = ArgumentParser;
 		};
 		1F05AF852AB5A6BD00D08DBF /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1F05AF802AB5A20100D08DBF /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			package = 1F05AF802AB5A20100D08DBF /* XCRemoteSwiftPackageReference "swift-argument-parser.git" */;
 			productName = ArgumentParser;
 		};
 /* End XCSwiftPackageProductDependency section */

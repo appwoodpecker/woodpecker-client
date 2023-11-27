@@ -12,7 +12,6 @@
 #import "ADHViewDebugUtil.h"
 #import "ViewDebugIndicatorNode.h"
 #import "Woodpecker-Swift.h"
-@import Masonry;
 @import SceneKit;
 
 static CGFloat const kNodeZSpace = 0.3;
@@ -70,11 +69,7 @@ static CGFloat const kNodeZSpace = 0.3;
     self.actionLayout.wantsLayer = YES;
     [self updateAppearanceUI];
     [self.view addSubview:self.measureView];
-    CGFloat edge = 20.0;
-    [self.measureView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).inset(30+edge);
-        make.right.equalTo(self.view).inset(edge);
-    }];
+    [self.measureView addLayoutConstraint];
 }
 
 - (void)initUI {
