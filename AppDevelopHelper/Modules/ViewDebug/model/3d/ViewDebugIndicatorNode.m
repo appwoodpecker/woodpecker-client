@@ -71,19 +71,19 @@
 }
 
 - (NSColor *)selectedPlaneColor {
-    return [[NSColor blueColor] colorWithAlphaComponent:0.3];
+    return [[NSColor systemBlueColor] colorWithAlphaComponent:0.5];
 }
 
 - (NSColor *)highlightedBorderColor {
-    return [NSColor blueColor];
+    return [NSColor systemBlueColor];
 }
 
 - (NSColor *)focusedBorderColor {
-    return [NSColor redColor];
+    return [NSColor systemRedColor];
 }
 
 - (NSColor *)focusedPlaneColor {
-    return [[NSColor redColor] colorWithAlphaComponent:0.3];
+    return [[NSColor systemRedColor] colorWithAlphaComponent:0.3];
 }
 
 #pragma mark util

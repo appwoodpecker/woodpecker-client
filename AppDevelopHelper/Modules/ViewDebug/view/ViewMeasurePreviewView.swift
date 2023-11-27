@@ -28,12 +28,10 @@ class ViewMeasurePreviewView: NSView {
     var rootNode: ADHViewNode?
     var mainNode: ADHViewNode?
     var targetNode: ADHViewNode?
-    
-    var containerSize: CGSize = .zero
-        
+            
     struct K {
         static let frameSize: CGFloat = 240
-        static let borderSize: CGFloat = 16
+        static let borderSize: CGFloat = 8
     }
     
     static func createView() -> ViewMeasurePreviewView {
@@ -51,6 +49,7 @@ class ViewMeasurePreviewView: NSView {
     }
     
     func setupUI() {
+        self.clipsToBounds = true
         addSubview(backgroundView)
         addSubview(frameView)
         frameView.addSubview(mainView)
@@ -61,7 +60,7 @@ class ViewMeasurePreviewView: NSView {
         frameView.snp.makeConstraints { make in
             make.width.equalTo(0)
             make.height.equalTo(0)
-            make.edges.equalToSuperview().inset(4)
+            make.edges.equalToSuperview().inset(K.borderSize)
         }
     }
     
@@ -79,9 +78,6 @@ class ViewMeasurePreviewView: NSView {
         } else {
             frameWidth =  Int(K.frameSize * (width/height)).asCGFloat
         }
-        let contentWidth = frameWidth + K.borderSize*2
-        let contentHeight = frameHeight + K.borderSize*2
-        self.containerSize = CGSize(width: contentWidth, height: contentHeight)
         frameView.snp.updateConstraints { make in
             make.width.equalTo(frameWidth)
             make.height.equalTo(frameHeight)
@@ -235,7 +231,11 @@ class ViewMeasurePreviewView: NSView {
         textfield.font = NSFont.systemFont(ofSize: 10.0)
         textfield.textColor = .white
         textfield.wantsLayer = true
-        textfield.layer?.backgroundColor = NSColor.red.cgColor
+        if direction == .vertical {
+            textfield.layer?.backgroundColor = NSColor.systemRed.cgColor
+        } else {
+            textfield.layer?.backgroundColor = NSColor.systemBlue.cgColor
+        }
         textfield.cornerRadius = 4.0
         textfield.alignment = .center
         textfield.stringValue = label
@@ -291,7 +291,7 @@ extension ViewMeasurePreviewView {
     func createBackgroundView() -> NSView {
         let view = NSView()
         view.backgroundColor = NSColor(hex: 0x000000)
-        view.cornerRadius = 3
+        view.cornerRadius = K.borderSize/2
         return view
     }
     
@@ -299,6 +299,7 @@ extension ViewMeasurePreviewView {
         let view = NSView()
         view.backgroundColor = .white
         view.cornerRadius = 2
+        view.clipsToBounds = false
         return view
     }
     

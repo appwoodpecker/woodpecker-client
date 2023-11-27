@@ -37,7 +37,14 @@ class ViewLineView: NSView {
         self.lineLayer.frame = self.bounds
         let layer = lineLayer
         let path = CGMutablePath()
-        path.addRect(bounds)
+        path.move(to: .zero)
+        if direction == .horizonal {
+            let endPoint = CGPoint(x: self.bounds.width, y: 0)
+            path.addLine(to: endPoint)
+        } else {
+            let endPoint = CGPoint(x: 0, y: self.bounds.height)
+            path.addLine(to: endPoint)
+        }
         layer.path = path
     }
     
@@ -46,7 +53,7 @@ class ViewLineView: NSView {
         let layer = CAShapeLayer()
         layer.strokeColor = NSColor.red.cgColor
         layer.fillColor = nil
-        layer.lineWidth = 0.5
+        layer.lineWidth = 1
         if dash {
             layer.lineDashPattern = [4, 4]
         } else {
