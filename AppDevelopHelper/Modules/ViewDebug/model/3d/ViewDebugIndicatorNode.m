@@ -88,38 +88,33 @@
 
 #pragma mark util
 
-- (SCNNode *)createLineFrom:(SCNVector3)start to:(SCNVector3)end {
-    SCNVector3 vectors[2] = {start,end};
-    SCNGeometrySource *source = [SCNGeometrySource geometrySourceWithVertices:vectors count:2];
-    SCNGeometryElement *element = [SCNGeometryElement geometryElementWithData:source.data primitiveType:SCNGeometryPrimitiveTypeLine primitiveCount:2 bytesPerIndex:source.data.length/2];
-    SCNGeometry *line = [SCNGeometry geometryWithSources:@[source] elements:@[element]];
-    SCNNode *lineNode = [SCNNode nodeWithGeometry:line];
-    return lineNode;
+- (SCNNode *)borderNodeWith:(CGFloat)width height:(CGFloat)height {
+    SCNPlane *plane = [SCNPlane planeWithWidth:width height:height];
+    return [SCNNode nodeWithGeometry:plane];
 }
 
 - (void)addRectBorder {
     SCNNode *node = self;
-    SCNGeometry *gemotry = node.geometry;
-    //add border
-    SCNVector3 min, max;
-    [gemotry getBoundingBoxMin:&min max:&max];
-    SCNVector3 topLeft = SCNVector3Make(min.x, max.y, 0);
-    SCNVector3 topRight = SCNVector3Make(max.x, max.y, 0);
-    SCNVector3 bottomLeft = SCNVector3Make(min.x, min.y, 0);
-    SCNVector3 bottomRight = SCNVector3Make(max.x, min.y, 0);
+    SCNPlane *plane = (SCNPlane *)node.geometry;
+    CGFloat borderWidth = 1;
+    SCNNode *topBorder = [self borderNodeWith:plane.width + borderWidth height:borderWidth];
+    SCNNode *bottomBorder = [self borderNodeWith:plane.width  + borderWidth height:borderWidth];
+    SCNNode *leftBorder = [self borderNodeWith:borderWidth height:plane.height];
+    SCNNode *rightBorder = [self borderNodeWith:borderWidth height:plane.height];
     
-    SCNNode *topLine = [self createLineFrom:topLeft to:topRight];
-    SCNNode *leftLine = [self createLineFrom:topLeft to:bottomLeft];
-    SCNNode *bottomLine = [self createLineFrom:bottomLeft to:bottomRight];
-    SCNNode *rightLine = [self createLineFrom:topRight to:bottomRight];
-    [node addChildNode:topLine];
-    [node addChildNode:leftLine];
-    [node addChildNode:bottomLine];
-    [node addChildNode:rightLine];
-    self.topLine = topLine;
-    self.leftLine = leftLine;
-    self.bottomLine = bottomLine;
-    self.rightLine = rightLine;
+    topBorder.position = SCNVector3Make(0, plane.height / 2, 0);
+    bottomBorder.position = SCNVector3Make(0, -plane.height / 2, 0);
+    leftBorder.position = SCNVector3Make(-plane.width / 2, 0, 0);
+    rightBorder.position = SCNVector3Make(plane.width / 2, 0, 0);
+    
+    [node addChildNode:topBorder];
+    [node addChildNode:bottomBorder];
+    [node addChildNode:leftBorder];
+    [node addChildNode:rightBorder];
+    self.topLine = topBorder;
+    self.bottomLine = bottomBorder;
+    self.leftLine = leftBorder;
+    self.rightLine = rightBorder;
 }
 
 @end

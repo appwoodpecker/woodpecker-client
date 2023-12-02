@@ -29,7 +29,7 @@ struct ViewMeasure {
         var result: [Joint] = []
         if r2.maxX < r1.minX {
             result.append(Joint(border1: .min, border2: .max))
-        } else if r2.maxX < r1.maxX {
+        } else if r2.maxX <= r1.maxX {
             result.append(Joint(border1: .min, border2: .min))
             if r2.minX > r1.minX {
                 result.append(Joint(border1: .max, border2: .max))
@@ -51,7 +51,7 @@ struct ViewMeasure {
         var result = [Joint]()
         if r2.maxY < r1.minY {
             result.append(Joint(border1: .min, border2: .max))
-        } else if r2.maxY < r1.maxY {
+        } else if r2.maxY <= r1.maxY {
             result.append(Joint(border1: .min, border2: .min))
             if r2.minY > r1.minY {
                 result.append(Joint(border1: .max, border2: .max))

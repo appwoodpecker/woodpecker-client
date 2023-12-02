@@ -140,6 +140,10 @@ static CGFloat const kNodeZSpace = 0.3;
     self.trackingArea = trackingArea;
 }
 
+- (IBAction)clipSwitchClicked:(id)sender {
+}
+
+
 //root node update
 - (void)onRootNodeUpdate: (NSNotification *)noti {
     self.nodeTree = self.domain.rootNode;
@@ -471,7 +475,7 @@ static CGFloat const kNodeZSpace = 0.3;
 //down可能多次， up有一次
 - (void)flagsChanged:(NSEvent *)event {
     if(event.modifierFlags & NSEventModifierFlagOption) {
-        NSLog(@"alt is down!!!");
+//        NSLog(@"alt is down!!!");
         if (self.optionPressed) {
             return;
         }
@@ -479,7 +483,7 @@ static CGFloat const kNodeZSpace = 0.3;
         [self onOptionPressed];
     }
     else if([event keyCode] == 58 || [event keyCode] == 61) {
-        NSLog(@"alt is up!!!");
+//        NSLog(@"alt is up!!!");
         self.optionPressed = NO;
         [self onOptionReleased];
     }
@@ -541,7 +545,7 @@ static CGFloat const kNodeZSpace = 0.3;
     if (mainNode != nil && targetNode != nil) {
         CGRect frame1 = [self cgRectFromFrame:mainNode.frameInWindow];
         CGRect frame2 = [self cgRectFromFrame:targetNode.frameInWindow];
-        if (CGRectContainsRect(frame1, frame2)) {
+        if (CGRectContainsRect(frame1, frame2) && !CGRectEqualToRect(frame1, frame2)) {
             ADHViewNode *tmp = mainNode;
             mainNode = targetNode;
             targetNode = tmp;

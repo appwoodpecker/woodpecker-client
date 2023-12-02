@@ -10,6 +10,7 @@
 #import "ViewDebugDomain.h"
 #import "DeviceUtil.h"
 #import "ViewDebugIndicatorNode.h"
+#import "Woodpecker-Swift.h"
 
 @interface ViewDebugNode ()
 
@@ -50,8 +51,7 @@
 #pragma mark alpha node border
 
 - (void)addBorder {
-    NSColor *lineColor = [NSColor colorWithWhite:1.0 alpha:0.4];
-    [self addRectBorder:@"border" color:lineColor];
+    [self addRectBorder:@"border" color:[[NSColor alloc] initWithHex:0xB7B7B7]];
 }
 
 - (NSArray<ViewDebugNode *> *)borderNodes {
@@ -159,48 +159,33 @@
 
 #pragma mark -----------------   util   ----------------
 
-- (SCNNode *)createLineFrom:(SCNVector3)start to: (SCNVector3)end color: (NSColor *)color {
-    SCNGeometry *line = [self lineFrom:start toVector:end];
-    SCNNode *lineNode = [SCNNode nodeWithGeometry:line];
-    SCNMaterial * material = [[SCNMaterial alloc] init];
-    material.diffuse.contents = color;
-    line.materials = @[material];
-    return lineNode;
-}
-
-- (SCNGeometry *)lineFrom: (SCNVector3 )start toVector: (SCNVector3)end {
-    SCNVector3 vectors[2] = {start,end};
-    SCNGeometrySource *source = [SCNGeometrySource geometrySourceWithVertices:vectors count:2];
-    SCNGeometryElement *element = [SCNGeometryElement geometryElementWithData:source.data primitiveType:SCNGeometryPrimitiveTypeLine primitiveCount:2 bytesPerIndex:source.data.length/2];
-    SCNGeometry *geometry = [SCNGeometry geometryWithSources:@[source] elements:@[element]];
-    return geometry;
+- (SCNNode *)borderNodeWith:(CGFloat)width height:(CGFloat)height {
+    SCNPlane *plane = [SCNPlane planeWithWidth:width height:height];
+    return [SCNNode nodeWithGeometry:plane];
 }
 
 - (void)addRectBorder:(NSString *)name color:(NSColor *)color {
-    ViewDebugNode *node = self;
-    SCNGeometry *gemotry = node.geometry;
-    //add border
-    SCNVector3 min, max;
-    [gemotry getBoundingBoxMin:&min max:&max];
-    SCNVector3 topLeft = SCNVector3Make(min.x, max.y, 0);
-    SCNVector3 topRight = SCNVector3Make(max.x, max.y, 0);
-    SCNVector3 bottomLeft = SCNVector3Make(min.x, min.y, 0);
-    SCNVector3 bottomRight = SCNVector3Make(max.x, min.y, 0);
+    SCNNode *node = self;
+    SCNPlane *plane = (SCNPlane *)node.geometry;
+    CGFloat borderWidth = 1;
+    SCNNode *topBorder = [self borderNodeWith:plane.width + borderWidth height:borderWidth];
+    SCNNode *bottomBorder = [self borderNodeWith:plane.width  + borderWidth height:borderWidth];
+    SCNNode *leftBorder = [self borderNodeWith:borderWidth height:plane.height];
+    SCNNode *rightBorder = [self borderNodeWith:borderWidth height:plane.height];
+    SCNMaterial * material = [[SCNMaterial alloc] init];
+    material.diffuse.contents = color;
+    for (SCNNode *node in @[topBorder, bottomBorder, leftBorder, rightBorder]) {
+        node.geometry.materials = @[material];
+    }
+    topBorder.position = SCNVector3Make(0, plane.height / 2, 0);
+    bottomBorder.position = SCNVector3Make(0, -plane.height / 2, 0);
+    leftBorder.position = SCNVector3Make(-plane.width / 2, 0, 0);
+    rightBorder.position = SCNVector3Make(plane.width / 2, 0, 0);
     
-    SCNNode *topLine = [self createLineFrom:topLeft to:topRight color:color];
-    SCNNode *leftLine = [self createLineFrom:topLeft to:bottomLeft color:color];
-    SCNNode *bottomLine = [self createLineFrom:bottomLeft to:bottomRight color:color];
-    SCNNode *rightLine = [self createLineFrom:topRight to:bottomRight color:color];
-    
-    topLine.name = name;
-    leftLine.name = name;
-    bottomLine.name = name;
-    rightLine.name = name;
-    
-    [node addChildNode:topLine];
-    [node addChildNode:leftLine];
-    [node addChildNode:bottomLine];
-    [node addChildNode:rightLine];
+    [node addChildNode:topBorder];
+    [node addChildNode:bottomBorder];
+    [node addChildNode:leftBorder];
+    [node addChildNode:rightBorder];
 }
 
 @end
